@@ -561,6 +561,12 @@ body[data-tab=defaults]{--hue1:#6f7f86;--hue2:#6f7f86}
 :root[data-theme=dark]{color-scheme:dark}
 :root[data-theme=light]{color-scheme:light}
 .brand .ver{font-size:11px;font-weight:700;letter-spacing:.02em;padding:2px 7px;border-radius:999px;background:var(--line);color:var(--mute);margin-left:2px;align-self:center;white-space:nowrap}
+/* v15: marker colors that phone browsers' own dark mode leaves alone */
+:root{--mark:#e0457b}
+.meter .limit{background:var(--mark)!important;opacity:1!important;box-shadow:0 0 0 1px rgba(224,69,123,.25)}
+.hero .meter .limit{background:#ffc23d!important}
+.bars i,.key i:not([style]){background:var(--mark)!important;opacity:1!important}
+.ghd.in,.ghead.in{border-bottom:2px solid #e2a92c!important;box-shadow:inset 4px 0 0 #e2a92c}
 </style>
 </head>
 <body>
@@ -589,7 +595,7 @@ body[data-tab=defaults]{--hue1:#6f7f86;--hue2:#6f7f86}
    (Or leave it empty and type it into the setup screen on each device.)
    ====================================================================== */
 const APP_KEY = '';
-const APP_VERSION = '14 · Nov 23, 2026';
+const APP_VERSION = '15 · Nov 23, 2026';
 
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
