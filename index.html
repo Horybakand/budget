@@ -530,6 +530,20 @@ input:disabled{background:transparent;border-color:transparent;color:var(--ink);
 body[data-tab=defaults]{--hue1:#6f7f86;--hue2:#6f7f86}
 .tabs button{font-size:11px}
 .tabs button svg{width:32px;height:32px}
+
+/* ---- v12: stronger colors in dark mode (light mode unchanged) ---- */
+:root{--bg:light-dark(#f3f7f6,#0f1513);--card:light-dark(#ffffff,#1a2320);--line:light-dark(#e3e9e5,#33403b);--track:light-dark(#edf2ef,#34433d);
+--fillg:light-dark(#0f9d94,#2fc4b7);--overg:light-dark(#e8893b,#ff9f5e);--coral:light-dark(#e8893b,#ffab73);
+--closedf:light-dark(#c6d0cb,#5b6863);--savef:light-dark(#8d8ad0,#aeaaf5);--mute:light-dark(#62706a,#a7b4ad)}
+.ghd.in,.ghead.in{background:light-dark(#fdf5d8,#4a3f1a);border-bottom-color:light-dark(#efe1ac,#76642e)}
+.ghd.in span:first-child,.ghd.in span:last-child,.ghead.in span,.ghead.in .gname{color:light-dark(#14201b,#fff3cf)}
+.ghd.in i,.ghead.in span i{color:light-dark(#62706a,#d9c99a)}
+.ghead.in .gname{border-bottom-color:light-dark(#e3cf86,#8a7535)}
+.meter .limit{background:light-dark(#14201b,#f4f8f6)}
+.rcols .bars em,.cols .bars em,.share .t em{background:var(--fillg)}
+.rcols .bars em.over,.cols .bars em.over{background:var(--overg)}
+.btn{background:light-dark(#0f9d94,#14a99e)}
+.wk.now{background:light-dark(#e2f3f1,#1f3a35)}
 </style>
 </head>
 <body>
@@ -1017,7 +1031,7 @@ function barHTML(value,plan,fillCol,label,noOver){
 function rowHTML(c,C){
   const s=C.by[c.id],cur=C.frac>0&&C.frac<1,save=c.kind==='save';
   const value=save?Math.max(0,s.avail):s.spent;
-  const fillCol=s.st==='closed'?'#c6d0cb':save?'#8d8ad0':s.st==='ahead'?'var(--amber)':'var(--fillg)';
+  const fillCol=s.st==='closed'?'var(--closedf)':save?'var(--savef)':s.st==='ahead'?'var(--amber)':'var(--fillg)';
   let tag='';
   if(s.st==='over')tag=`<b class="t-over">over by ${money(-s.rawAvail)}</b>`;
   else if(s.st==='closed')tag=s.short?`paid what I could · <b class="t-over">${money(s.shortAmt)} moves to ${esc(mName(addM(key,1),'s'))}</b>`:s.freed>0.004?`done · ${money(s.freed)} freed`:'done';
@@ -1217,7 +1231,7 @@ function drawWeeks(C){
 function drawPva(C){
   const box=$('#pva');if(!box)return;
   box.innerHTML=groupsOf(S.plan.cats).map(g=>{const cs=S.plan.cats.filter(c=>gName(c)===g&&!isUnused(c,C));if(!cs.length)return '';const t=groupTotal(cs,C),over=!t.save&&t.val>t.bud+0.5;
-    return `<details class="pvg"><summary><span class="gn">${esc(g)}</span><span class="gv" style="${over?'color:var(--coral)':''}">${money(t.val,0)} <i>of</i> ${money(t.bud,0)}</span>${barHTML(t.val,t.bud,t.save?'#8d8ad0':'var(--fillg)','Plan',t.save)}</summary>
+    return `<details class="pvg"><summary><span class="gn">${esc(g)}</span><span class="gv" style="${over?'color:var(--coral)':''}">${money(t.val,0)} <i>of</i> ${money(t.bud,0)}</span>${barHTML(t.val,t.bud,t.save?'var(--savef)':'var(--fillg)','Plan',t.save)}</summary>
     ${cs.map(c=>{const s=C.by[c.id],v=c.kind==='save'?Math.max(0,s.avail):s.spent,o=c.kind!=='save'&&v>s.budget+0.004;return `<button type="button" class="pvc" data-pvc="${esc(c.id)}"><span>${esc(c.name)}</span><span class="v" style="${o?'color:var(--coral)':''}"><b>${money(v,0)}</b> <i>of</i> ${money(s.budget,0)}</span></button>`}).join('')}</details>`}).join('');
   box.querySelectorAll('[data-pvc]').forEach(b=>b.onclick=()=>entrySheet('cat',b.dataset.pvc));
 }
