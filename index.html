@@ -653,9 +653,8 @@ body[data-tab=lock] .brand .ver{display:none}
 .dots.bad i{border-color:var(--coral)}
 @keyframes shake{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
 .pinerr{text-align:center;color:var(--coral);font-weight:700;min-height:22px;margin:2px 0 6px;font-size:14px}
-.keys{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:300px;margin:0 auto 14px}
-.keys button{height:62px;border-radius:18px;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:24px;font-weight:700}
-.keys button:active{background:var(--soft);transform:scale(.97)}
+.pinkeys{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:270px;margin:0 auto 14px}
+.pinkeys button{height:54px;border-radius:16px;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:22px;font-weight:700}
 .sdet{margin:6px 0 10px}
 .sdet summary{cursor:pointer;font-weight:700;color:var(--greenD);padding:6px 0}
 .sdet input{width:100%}
@@ -691,6 +690,122 @@ body[data-tab=home] .brand .demo,body[data-tab=lock] .brand .demo{display:none}
 :root[data-theme=dark]{--savegloss:linear-gradient(180deg,#e2e0ff 0%,#c0bcfb 48%,#aeaaf5 52%,#a9a5f2 100%)}
 .meter em[style*="--savef"]{background:var(--savegloss)!important}
 .hero .meter em:not(.ov){background:linear-gradient(180deg,#5f86d6 0%,#2f55ad 48%,#1f4596 52%,#1d418f 100%)!important}
+
+/* v24: peach-black page background in dark mode */
+@media (prefers-color-scheme: dark){:root:not([data-theme=light]){--bg:#1f1714}}
+:root[data-theme=dark]{--bg:#1f1714}
+
+/* v25: horizontal spending bars */
+.hbars{display:grid;gap:9px}
+.hb{display:grid;grid-template-columns:minmax(0,1fr) 62px;align-items:center;gap:8px}
+.hb.tap{cursor:pointer}
+.hbt{position:relative;height:28px;border-radius:9px;background:var(--track)}
+.hbt em{position:absolute;top:0;bottom:0;left:0;border-radius:9px;background:var(--fillgloss)}
+.hbt em.sv{background:var(--savegloss)}
+.hbt em.ov{border-radius:0 9px 9px 0;background:var(--goldgloss);box-shadow:inset 0 0 0 1.5px var(--goldEdge)}
+.hbt em:not(.ov):has(+ em.ov){border-radius:9px 0 0 9px}
+.hbt i{position:absolute;top:-3px;bottom:-3px;width:3px;margin-left:-1.5px;border-radius:2px;background:var(--mark);z-index:2}
+.hbl{position:absolute;top:0;bottom:0;display:block;line-height:28px;font-size:13.5px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;z-index:3;pointer-events:none}
+.hbl.in{left:9px;color:#fff;text-shadow:0 1px 2px rgba(0,50,100,.45)}
+.hbt em.sv ~ .hbl.in{text-shadow:0 1px 2px rgba(40,30,90,.5)}
+.hbl.out{color:var(--ink)}
+.hba{text-align:right;font-size:14px;white-space:nowrap}
+.hbmore{margin-top:6px;justify-self:start}
+
+.hbl.tagl{left:6px;top:4px;bottom:auto;line-height:20px;padding:0 7px;border-radius:7px;color:var(--ink);background:rgba(255,255,255,.88);box-shadow:0 1px 3px rgba(0,30,60,.18)}
+@media (prefers-color-scheme: dark){:root:not([data-theme=light]) .hbl.tagl{background:rgba(15,20,28,.78)}}
+:root[data-theme=dark] .hbl.tagl{background:rgba(15,20,28,.78)}
+
+/* v26: tap feedback + smaller keypads */
+.keys{gap:7px}
+.keys button{min-height:48px;font-size:21px;border-radius:14px}
+.keys .op{font-size:23px}
+button,.tile,[data-hb]{-webkit-tap-highlight-color:transparent;transition:background-color .18s ease,transform .12s ease,box-shadow .18s ease}
+.pressed{transform:scale(.95)}
+.keys button.pressed,.pinkeys button.pressed{background:color-mix(in srgb,var(--green) 34%,var(--card))!important;color:var(--ink)!important;border-color:var(--green)!important;box-shadow:0 0 0 3px color-mix(in srgb,var(--green) 25%,transparent)!important}
+.keys button.op.pressed{background:var(--green)!important;color:#fff!important}
+.tile.pressed,.fitem.pressed,[data-hb].pressed,.linkb.pressed{background:color-mix(in srgb,var(--green) 14%,var(--card))!important}
+.btn.pressed{filter:brightness(1.12)}
+
+/* v27: compact home (phone-style icons) + tighter pages + one-tab summary */
+.hero.home.compact{min-height:0;padding:14px 18px 12px;border-radius:22px}
+.hero.home.compact .hdate{font-size:30px;margin-top:2px}
+.hero.home.compact .hd2{font-size:15px}
+.hero.home.compact .hmeta{padding-top:10px;font-size:12px}
+.tiles{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:18px 8px!important;margin:20px 0 6px!important}
+.tile{background:none!important;border:0!important;box-shadow:none!important;padding:4px 0!important;min-height:0!important;align-items:center!important;gap:7px!important;text-align:center!important;flex-direction:column!important}
+.tile .pi{width:58px;height:58px;border-radius:18px;box-shadow:0 6px 14px -8px rgba(20,60,110,.55)}
+.tile .pi svg{width:28px;height:28px}
+.tile .tt b{font-size:13.5px;font-weight:700}
+.tile .tt small{display:none}
+.tile .badge{top:0!important;right:calc(50% - 38px)!important}
+.tile.pressed .pi{filter:brightness(1.1)}
+.hero{padding:16px 16px 14px;border-radius:22px}
+.hero .big{font-size:clamp(34px,10vw,48px)}
+h2.big2{font-size:18px;margin:18px 0 8px;padding:7px 2px}
+.row{padding:10px 14px}
+.pl{padding:8px 10px}
+.ghd{margin:12px 2px 6px}
+.gcard{margin-bottom:12px}
+.pagehead{margin:0 2px 8px}
+.pagehead .pi{width:30px;height:30px;border-radius:9px}
+.pagehead .pi svg{width:18px;height:18px}
+.kpis{gap:8px;margin-top:10px}
+.kpi{padding:10px 12px;border-radius:16px}
+.kpi b{font-size:clamp(18px,5.4vw,22px)}
+.pchips{flex-wrap:wrap;gap:6px;margin:2px 0 8px}
+.pchips::-webkit-scrollbar{display:none}
+.pchips button{flex:none;min-height:36px;padding:0 13px;font-size:13.5px}
+.rlab{margin:6px 4px 0;font-size:13px}
+
+/* v28: Actual as compact bars, bottom dock */
+.abars{padding:6px 4px 6px 12px}
+.abars .ghd.in{margin:-6px -4px 6px -12px}
+.rw.ab{border-top:0;align-items:center;gap:2px}
+.rw.ab .row.abt{display:grid;grid-template-columns:minmax(0,1fr) 74px;gap:8px;align-items:center;padding:5px 0;border:0;background:none}
+.ab .hbt{height:30px}
+.ab .hbl{line-height:30px}
+.ab .hbl.tagl{top:5px}
+.ab .hbt em.cl{background:linear-gradient(180deg,#d5dde6,#b9c4d0)}
+.aba{display:flex;flex-direction:column;align-items:flex-end;line-height:1.15}
+.aba b{font-size:14.5px;white-space:nowrap}
+.aba small{font-size:11.5px;color:var(--mute);font-weight:600;white-space:nowrap}
+.ab .ck{width:40px;height:40px;flex:none}
+.ab .ck svg{width:24px;height:24px}
+.ck0{width:40px;flex:none}
+.abadd{padding:8px 0 4px!important;min-height:0!important}
+.asort{margin:0 0 10px}
+.abars.gcard{margin-bottom:10px}
+@media (prefers-color-scheme: dark){:root:not([data-theme=light]) .ab .hbt em.cl{background:linear-gradient(180deg,#6b7787,#56616f)}}
+:root[data-theme=dark] .ab .hbt em.cl{background:linear-gradient(180deg,#6b7787,#56616f)}
+/* dock */
+.homeb{display:none!important}
+body:not([data-tab=home]):not([data-tab=""]):not([data-tab=lock]) .logo{display:grid!important}
+body:not([data-tab=home]):not([data-tab=""]):not([data-tab=lock]) .brand{background:none!important;box-shadow:none!important;padding:0!important;color:inherit!important}
+body:not([data-tab=home]):not([data-tab=""]):not([data-tab=lock]) #bname{letter-spacing:0!important;text-shadow:none!important}
+.dockhome{position:fixed;z-index:26;left:50%;transform:translateX(-50%);bottom:calc(16px + env(safe-area-inset-bottom));height:52px;padding:0 24px 0 20px;border:0;border-radius:999px;display:flex;align-items:center;gap:8px;font-weight:800;font-size:16px;color:#fff;background:linear-gradient(140deg,#4cc3ff,#1683dc);box-shadow:0 10px 26px -10px rgba(22,131,220,.85),0 0 0 4px color-mix(in srgb,var(--bg) 80%,transparent)}
+.dockhome[hidden]{display:none}
+.dockhome.pressed{transform:translateX(-50%) scale(.95)}
+.findb{bottom:calc(16px + env(safe-area-inset-bottom))!important;height:48px!important;padding:0 14px 0 12px!important;font-size:14px!important}
+.brand .demo{display:none!important}
+
+/* v30: note always open, editable entries, summary entries */
+.nd2{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;margin:10px 0}
+.nd2 input{min-width:0}
+.nd2 #dt{width:9.2em}
+.tx.ed{cursor:pointer}
+.tx.ed:active,.tx.ed.pressed{background:var(--soft)}
+.pen2{color:var(--mute);font-size:15px;width:26px;text-align:center;flex:none}
+.hbentb{padding:0 0 8px!important;min-height:0!important}
+.hbents{margin:-2px 0 6px 6px;padding:4px 0 4px 10px;border-left:2px solid var(--line)}
+.hbe{display:grid;grid-template-columns:4.2em minmax(0,1fr) auto;gap:8px;align-items:baseline;padding:5px 0;border-bottom:1px dashed var(--line);font-size:13.5px}
+.hbe:last-child{border-bottom:0}
+.hbe .d{color:var(--mute);font-size:12.5px;white-space:nowrap}
+.hbe .n{line-height:1.3;overflow-wrap:anywhere}
+.hbe .n i{color:var(--mute)}
+.hbe .n small{display:block;color:var(--mute);font-size:11.5px}
+.hbe b{white-space:nowrap;font-size:13.5px}
+.hb.open .hbt{box-shadow:0 0 0 2px var(--green)}
 </style>
 </head>
 <body>
@@ -710,6 +825,7 @@ body[data-tab=home] .brand .demo,body[data-tab=lock] .brand .demo{display:none}
   <button data-t="defaults"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Defaults<span class="badge" id="dfBadge" hidden></span></button>
 </div></nav>
 <div class="veil" id="veil"><div class="sheet" id="sheet" role="dialog" aria-modal="true"></div></div>
+<button class="dockhome" id="dockHome" aria-label="Home" hidden><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 11L12 4l8.5 7"/><path d="M6 9.5V20h4.5v-5.5h3V20H18V9.5"/></svg><span>Home</span></button>
 <button class="findb" id="findBtn" aria-label="Find a line" hidden><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L20 20"/></svg><span>Find</span></button>
 <div class="toast" id="toast"><span id="tmsg"></span><button id="tundo">Undo</button></div>
 
@@ -720,7 +836,7 @@ body[data-tab=home] .brand .demo,body[data-tab=lock] .brand .demo{display:none}
    (Or leave it empty and type it into the setup screen on each device.)
    ====================================================================== */
 const APP_KEY = '';
-const APP_VERSION = '23 · Nov 24, 2026';
+const APP_VERSION = '30 · Nov 25, 2026';
 
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -1111,15 +1227,15 @@ function pageHead(){
 }
 function render(){
   const signed=mode!=='setup';
-  $('#tabs').hidden=true;$('#findBtn').hidden=!signed||tab==='home';$('#mnav').style.visibility=signed?'visible':'hidden';
+  $('#tabs').hidden=true;$('#findBtn').hidden=$('#dockHome').hidden=!signed||tab==='home'||!unlocked;$('#mnav').style.visibility=signed?'visible':'hidden';
   if(tab==='week')tab='actual';if(tab==='charts')tab='summary';
   document.body.classList.remove('planmode');document.body.dataset.tab=signed?tab:'';
-  $('#bname').innerHTML=(signed&&unlocked&&tab!=='home'?'HOME':'Chikez Budget')+(mode==='demo'?'<span class="demo">Demo</span>':'');
+  $('#bname').innerHTML='Chikez Budget'+(mode==='demo'?'<span class="demo">Demo</span>':'');
   $('#mlabel').textContent=mName(key,'sy');
   for(const b of document.querySelectorAll('#tabs button'))b.setAttribute('aria-current',b.dataset.t===tab);
   const V=$('#view');
   if(!signed){V.innerHTML=setupHTML();bindSetup();return}
-  if(!unlocked){document.body.dataset.tab='lock';$('#findBtn').hidden=true;$('#mnav').style.visibility='hidden';V.innerHTML=pinHTML();bindPin();return}
+  if(!unlocked){document.body.dataset.tab='lock';$('#findBtn').hidden=true;$('#mnav').style.visibility='hidden';$('#dockHome').hidden=true;V.innerHTML=pinHTML();bindPin();return}
   if(tab==='home'){V.innerHTML=homeHTML();bindHome();return}
   if(!S){V.innerHTML='<p class="empty">Loading your budget…</p>';return}
   if(!S.plan&&tab==='receipts'&&!S.failed){V.innerHTML=pageHead()+receiptsHTML();bind();receiptsView();return}
@@ -1130,8 +1246,8 @@ function render(){
   planScope='month';if(tab==='defaults'&&!(TPL&&TPL.plan))tab='plan';
   const C=calc(S.plan,S.txns,S.k);
   V.innerHTML=pageHead()+(tab==='defaults'?planHTML(C,true):tab==='plan'?planHTML(C):tab==='summary'?summaryHTML(C):tab==='receipts'?receiptsHTML():actualHTML(C));
-  bind();badge2();
-  if(tab==='summary'){if(sumMode==='month')drawCharts(C);else reportsView()}
+  bind();badge2();if(tab==='actual')hbPlace();
+  if(tab==='summary')reportsView()
   if(tab==='receipts')receiptsView();
 }
 
@@ -1206,6 +1322,26 @@ function incRowHTML(i,C){
   const v=C.inc[i.id]||{exp:i.amt,got:0},done=v.exp>0&&v.got>=v.exp-0.004,extra=v.got-v.exp;
   return `<div class="rw"><button class="row" data-incopen="${esc(i.id)}"><span class="nm"><span class="dot" style="background:var(--green)"></span>${esc(i.name)}</span>${barHTML(v.got,v.exp,'var(--fillg)','Expected',true)}<span class="lim"><span>Received <b>${money(v.got)}</b>${v.exp<=0?'':' · '+(done?'<b class="t-ok">all in ✓</b>':'<b class="lft">'+money(Math.max(0,v.exp-v.got))+' still to come</b>')}${extra>0.004?' · '+money(extra)+' extra':''}</span></span></button></div>`;
 }
+
+function barVal(c,C){const s=C.by[c.id];return c.kind==='save'?Math.max(0,s.avail):s.spent}
+function abBar(v,p,cls,name){const sc=Math.max(v,p,0.01)/0.82,blue=Math.min(v,p>0?p:v)/sc*100,f=v/sc*100,pl=p/sc*100,over=p>0&&v>p+0.004&&cls!=='sv';
+  return `<div class="hbt"><em class="${cls}" style="width:${blue}%"></em>${over?`<em class="ov" style="left:${pl}%;width:${f-pl}%"></em>`:''}${p>0?`<i style="left:${pl}%"></i>`:''}<span class="hbl" data-fill="${blue}">${esc(name)}</span></div>`}
+function catBar(c,C){
+  const s=C.by[c.id],save=c.kind==='save',v=barVal(c,C);
+  let sub;
+  if(s.st==='closed')sub=s.short?`<span class="t-over">part paid</span>`:'done';
+  else if(save)sub='saved';
+  else if(s.st==='over')sub=`<span class="t-over">over ${money(-s.rawAvail,0)}</span>`;
+  else if(c.kind==='bill')sub=s.st==='paid'?'<span class="t-ok">paid ✓</span>':`${money(Math.max(0,s.avail),0)} to pay`;
+  else sub=`${money(s.avail,0)} left`;
+  const ck=save?'<span class="ck0"></span>':`<button class="ck${s.closed?' on':''}" data-done="${esc(c.id)}" aria-pressed="${s.closed}" aria-label="${s.closed?'Reopen':'Mark done for the month'}: ${esc(c.name)}"><svg viewBox="0 0 24 24" width="24" height="24"><circle cx="12" cy="12" r="10.5"/><path d="M7.5 12.4l3 3 6-6.4"/></svg></button>`;
+  return `<div class="rw ab"><button class="row abt" data-cat="${esc(c.id)}">${abBar(v,s.budget,s.st==='closed'?'cl':save?'sv':'',c.name)}<span class="aba"><b>${money(v,0)}</b><small>${sub}</small></span></button>${ck}</div>`;
+}
+function incBar(i,C){
+  const v=C.inc[i.id]||{exp:i.amt,got:0},done=v.exp>0&&v.got>=v.exp-0.004,extra=v.got-v.exp;
+  const sub=extra>0.004&&v.exp>0?`+${money(extra,0)} extra`:done?'<span class="t-ok">all in ✓</span>':v.exp>0?`${money(Math.max(0,v.exp-v.got),0)} to come`:'received';
+  return `<div class="rw ab"><button class="row abt" data-incopen="${esc(i.id)}">${abBar(v.got,v.exp,'',i.name)}<span class="aba"><b>${money(v.got,0)}</b><small>${sub}</small></span></button><span class="ck0"></span></div>`;
+}
 function donorFor(id,C,need){
   if(C.rta>=need)return {id:'rta',name:'Ready to assign',spare:C.rta};
   let best=null;for(const c of S.plan.cats){if(c.id===id||c.kind==='bill')continue;const s=C.by[c.id];
@@ -1221,11 +1357,16 @@ function actualHTML(C){
   <p>${key===todayKey?`About <b>${money(perDay,0)} a day</b> for everyday spending`:key<todayKey?'This month is finished':'This month hasn’t started'}</p>
   <div class="hbar">${barHTML(sp,pl,'#fff','Planned')}</div><p class="hfoot">Spent <b>${money(sp,0)}</b> so far, bills and everyday spending together</p></div>`;
   const src=p.income.filter(i=>i.amt>0||(C.inc[i.id]&&C.inc[i.id].got>0));
-  h+=`<h2 class="big2">Income <small>${money(C.received,0)} <i>of</i> ${money(C.expected,0)}</small></h2><div class="card">${src.map(i=>incRowHTML(i,C)).join('')||'<p class="empty">No income planned yet.</p>'}<div class="pl"><button type="button" class="btn ghost sm" id="addIncA" style="grid-column:1/-1;justify-self:start">+ Add income</button></div></div>`;
-  const hid=p.cats.filter(c=>isUnused(c,C));
-  h+=`<h2 class="big2">Expenses <small>${money(sp,0)} <i>of</i> ${money(pl,0)}</small></h2><div class="grid2">${groupsOf(p.cats).map(l=>{const cs=p.cats.filter(c=>gName(c)===l&&!isUnused(c,C)).sort((a,b)=>(C.by[a.id].closed-C.by[b.id].closed)||(C.by[b.id].spent-C.by[a.id].spent)||(b.planned-a.planned));const gt=groupTotal(p.cats.filter(c=>gName(c)===l),C);return cs.length?`<section><div class="card gcard"><div class="ghd in"><span>${esc(l)}</span><span>${money(gt.val,0)} <i>of</i> ${money(gt.bud,0)}</span></div>${cs.map(c=>rowHTML(c,C)).join('')}</div></section>`:''}).join('')}</div>`;
+  h+=`<h2 class="big2">Income <small>${money(C.received,0)} <i>of</i> ${money(C.expected,0)}</small></h2><div class="card abars">${src.map(i=>incBar(i,C)).join('')||'<p class="empty">No income planned yet.</p>'}<button type="button" class="linkb abadd" id="addIncA">+ Add income</button></div>`;
+  const vis=p.cats.filter(c=>!isUnused(c,C)),hid=p.cats.filter(c=>isUnused(c,C));
+  const by=(ls.get('mb-asort')||'big');
+  const ord=cs=>[...cs].sort((a,b)=>(C.by[a.id].closed-C.by[b.id].closed)||(barVal(b,C)-barVal(a,C))||(b.planned-a.planned));
+  h+=`<h2 class="big2">Expenses <small>${money(sp,0)} <i>of</i> ${money(pl,0)}</small></h2>
+  <div class="seg mini asort"><button type="button" data-asort="big" aria-pressed="${by==='big'}">Biggest first</button><button type="button" data-asort="grp" aria-pressed="${by==='grp'}">By group</button></div>`;
+  if(by==='grp')h+=groupsOf(p.cats).map(l=>{const cs=ord(vis.filter(c=>gName(c)===l));const gt=groupTotal(p.cats.filter(c=>gName(c)===l),C);return cs.length?`<div class="card abars gcard"><div class="ghd in"><span>${esc(l)}</span><span>${money(gt.val,0)} <i>of</i> ${money(gt.bud,0)}</span></div>${cs.map(c=>catBar(c,C)).join('')}</div>`:''}).join('');
+  else h+=`<div class="card abars">${ord(vis).map(c=>catBar(c,C)).join('')}</div>`;
   if(hid.length)h+=`<details class="others"><summary>${hid.length} more categor${hid.length>1?'ies':'y'} with nothing planned</summary><div class="card">${hid.map(c=>`<button class="row" data-cat="${esc(c.id)}"><span class="nm"><span class="dot" style="background:${colOf(c.id)}"></span>${esc(c.name)}</span><span class="av" style="font-size:13px;font-weight:600;color:var(--mute)">${esc(gName(c))}</span></button>`).join('')}</div></details>`;
-  h+=`<p class="muted" style="margin:14px 4px">The pink line on each bar is the plan. The fill is what came in or went out. Anything past the line, in gold, is over the plan.</p>`;
+  h+=`<p class="muted" style="margin:12px 4px">Tap a bar to add or see entries. Pink mark: plan · gold: past the plan · lavender: savings · gray: done.</p>`;
   return h;
 }
 function groupTotal(cs,C){let val=0,bud=0;for(const c of cs){const s=C.by[c.id];val+=c.kind==='save'?Math.max(0,s.avail):s.spent;bud+=s.budget}return {val,bud,save:cs.length&&cs.every(c=>c.kind==='save')}}
@@ -1242,9 +1383,9 @@ function weekCardHTML(C){
   return `<h2 class="big2">This week <small>${esc(mName(key,'s'))} ${w.s}–${w.e}</small></h2><div class="card wkline" style="margin-top:0;display:grid">${barHTML(w.spent,Math.round(w.allow),'var(--fillg)','Plan')}<div class="lim"><span>Spent <b>${money(w.spent,0)}</b> on everyday spending${over?` · <b class="t-over">${money(w.spent-w.allow,0)} over</b>`:` · ${money(w.allow-w.spent,0)} left`}</span></div></div>`;
 }
 function txHTML(t){
-  if(t.cat&&t.cat.startsWith('inc:')){const i=S.plan.income.find(x=>x.id===t.cat.slice(4));return `<div class="tx"><span class="d">${esc(mName(key,'s'))}<br><b>${+t.date.slice(8)}</b></span><span class="w">${esc(t.note||(i?i.name:'Income'))}<small><span class="dot" style="display:inline-block;width:8px;height:8px;background:var(--green);margin-right:5px"></span>Income · ${esc(i?i.name:'Removed source')}${t.by?' · '+esc(t.by):''}</small></span><span class="a" style="color:var(--greenD)">+${money(t.amt)}</span><button class="x" data-del="${esc(t.id)}" aria-label="Delete">×</button></div>`}
+  if(t.cat&&t.cat.startsWith('inc:')){const i=S.plan.income.find(x=>x.id===t.cat.slice(4));return `<div class="tx ed" data-edit="${esc(t.id)}"><span class="d">${esc(mName(key,'s'))}<br><b>${+t.date.slice(8)}</b></span><span class="w">${esc(t.note||(i?i.name:'Income'))}<small><span class="dot" style="display:inline-block;width:8px;height:8px;background:var(--green);margin-right:5px"></span>Income · ${esc(i?i.name:'Removed source')}${t.by?' · '+esc(t.by):''}</small></span><span class="a" style="color:var(--greenD)">+${money(t.amt)}</span><span class="pen2" aria-hidden="true">✎</span></div>`}
   if(t.rc){const c=catOf(t.cat);return `<div class="tx"><span class="d">${esc(mName(key,'s'))}<br><b>${+t.date.slice(8)}</b></span><span class="w">${esc(t.note||'Receipt')}<span class="rtag">receipt</span><small><span class="dot" style="display:inline-block;width:8px;height:8px;background:${colOf(t.cat)};margin-right:5px"></span>${esc(c?c.name:'Removed category')}${t.by?' · '+esc(t.by):''}</small></span><span class="a">${money(t.amt)}</span><span class="x" style="display:grid;place-items:center;font-size:16px" title="Edit it in the Receipts tab">🧾</span></div>`}
-  const c=catOf(t.cat);return `<div class="tx"><span class="d">${esc(mName(key,'s'))}<br><b>${+t.date.slice(8)}</b></span><span class="w">${esc(t.note||(c?c.name:'Spending'))}<small><span class="dot" style="display:inline-block;width:8px;height:8px;background:${colOf(t.cat)};margin-right:5px"></span>${esc(c?c.name:'Removed category')}${t.by?' · '+esc(t.by):''}</small></span><span class="a">${money(t.amt)}</span><button class="x" data-del="${esc(t.id)}" aria-label="Delete">×</button></div>`}
+  const c=catOf(t.cat);return `<div class="tx ed" data-edit="${esc(t.id)}"><span class="d">${esc(mName(key,'s'))}<br><b>${+t.date.slice(8)}</b></span><span class="w">${esc(t.note||(c?c.name:'Spending'))}<small><span class="dot" style="display:inline-block;width:8px;height:8px;background:${colOf(t.cat)};margin-right:5px"></span>${esc(c?c.name:'Removed category')}${t.by?' · '+esc(t.by):''}</small></span><span class="a">${money(t.amt)}</span><span class="pen2" aria-hidden="true">✎</span></div>`}
 
 /* ---- week ---- */
 function weekData(C){
@@ -1256,10 +1397,7 @@ function weekData(C){
 }
 /* ---- charts ---- */
 let sumMode='month',repSel=null;const repCache={};
-function summaryHTML(C){
-  const seg=`<div class="seg sumseg"><button type="button" data-sum="month" aria-pressed="${sumMode==='month'}">${esc(mName(key,'s'))}</button><button type="button" data-sum="reports" aria-pressed="${sumMode==='reports'}">Reports · any period</button></div>`;
-  return seg+(sumMode==='month'?weekCardHTML(C)+watchHTML(C)+chartsHTML(C):`<div id="repBox"><p class="empty">Loading your months…</p></div>`);
-}
+function summaryHTML(C){return `<div id="repBox"></div>`}
 const yr=k=>k.slice(0,4);
 function presetRange(p,ks){const first=ks[0]||todayKey,last=ks[ks.length-1]||todayKey,y=+todayKey.slice(0,4);
   if(p==='year')return [y+'-01',y+'-12'];if(p==='lastyear')return [(y-1)+'-01',(y-1)+'-12'];
@@ -1274,67 +1412,108 @@ async function loadRange(ks){
 }
 async function reportsView(){
   const box=$('#repBox');if(!box)return;
-  let ks=[];try{ks=await listMonths();monthsCache=ks}catch(e){}
-  if(!ks.length){box.innerHTML='<p class="empty">No months saved yet.</p>';return}
-  if(!repSel)repSel={p:'year',r:presetRange('year',ks)};
-  const all=[];for(let k=ks[0];k<=ks[ks.length-1];k=addM(k,1))all.push(k);
-  const opt=(sel)=>all.map(k=>`<option value="${k}" ${k===sel?'selected':''}>${esc(mName(k,'sy'))}</option>`).join('');
-  const [from,to]=repSel.r;
-  box.innerHTML=`<div class="presets">${[['3','Last 3 months'],['12','Last 12 months'],['year',String(+todayKey.slice(0,4))],['lastyear',String(+todayKey.slice(0,4)-1)],['all','All time']].map(([v,l])=>`<button type="button" data-pre="${v}" aria-pressed="${repSel.p===v}">${l}</button>`).join('')}</div>
-  <div class="range"><label>From<select id="rFrom">${opt(from<all[0]?all[0]:from)}</select></label><label>To<select id="rTo">${opt(to>all[all.length-1]?all[all.length-1]:to)}</select></label></div>
-  <div id="rep"><p class="empty">Building your report…</p></div>`;
-  box.querySelectorAll('[data-pre]').forEach(b=>b.onclick=()=>{repSel={p:b.dataset.pre,r:presetRange(b.dataset.pre,ks)};reportsView()});
-  const ch=()=>{let a=$('#rFrom').value,b=$('#rTo').value;if(a>b)[a,b]=[b,a];repSel={p:'custom',r:[a,b]};reportsView()};
-  $('#rFrom').onchange=ch;$('#rTo').onchange=ch;
-  const want=ks.filter(k=>k>=from&&k<=to);
+  if(!repSel){repSel={p:'year'};donutMode='group'}
+  const y=+todayKey.slice(0,4),P=repSel.p;
+  const chips=[['m',mName(key,'s')+' '+key.slice(0,4)],['3','3 months'],['12','12 months'],['year',String(y)],['lastyear',String(y-1)],['all','All'],['custom','Custom']];
+  let ks=monthsCache||[];
+  if(P!=='m'){try{ks=await listMonths();monthsCache=ks}catch(e){}}
+  let from,to;
+  if(P==='m')from=to=key;else if(P==='custom'){[from,to]=repSel.r||[addM(key,-2),key]}else [from,to]=presetRange(P,ks.length?ks:[key]);
+  const allK=[];if(ks.length)for(let k=ks[0];k<=ks[ks.length-1];k=addM(k,1))allK.push(k);
+  const opt=sel=>allK.map(k=>`<option value="${k}" ${k===sel?'selected':''}>${esc(mName(k,'sy'))}</option>`).join('');
+  box.innerHTML=`<div class="presets pchips">${chips.map(([v,l])=>`<button type="button" data-pre="${v}" aria-pressed="${P===v}">${esc(l)}</button>`).join('')}</div>
+   ${P==='custom'&&allK.length?`<div class="range"><label>From<select id="rFrom">${opt(from)}</select></label><label>To<select id="rTo">${opt(to)}</select></label></div>`:''}
+   <div id="rep"><p class="empty">Adding it up…</p></div>`;
+  box.querySelectorAll('[data-pre]').forEach(b=>b.onclick=()=>{const v=b.dataset.pre;repSel={p:v,r:v==='custom'?(repSel.r||[addM(key,-2),key]):null};reportsView()});
+  if($('#rFrom')){const ch=()=>{let a=$('#rFrom').value,b=$('#rTo').value;if(a>b)[a,b]=[b,a];repSel={p:'custom',r:[a,b]};reportsView()};$('#rFrom').onchange=ch;$('#rTo').onchange=ch}
+  let want=P==='m'?[key]:ks.filter(k=>k>=from&&k<=to);
+  if(P!=='m'&&S&&S.plan&&key>=from&&key<=to&&!want.includes(key))want=[...want,key].sort();
   if(!want.length){$('#rep').innerHTML='<p class="empty">Nothing saved in that period.</p>';return}
-  const data=await loadRange(want);if(!$('#rep'))return;
-  /* add everything up */
-  let income=0,expenses=0;const months=[],groups={},sources={},rows=[];
-  for(const m of data){if(!m.plan)continue;let mi=0,me=0;
-    const catBy={};for(const c of m.plan.cats)catBy[c.id]=c;const incBy={};for(const i of m.plan.income)incBy[i.id]=i;
+  const data=(await loadRange(want)).filter(m=>m&&m.plan).sort((a,b)=>a.k.localeCompare(b.k));if(!$('#rep'))return;
+  if(!data.length){$('#rep').innerHTML='<p class="empty">Nothing planned in that period.</p>';return}
+  const single=data.length===1;
+  let income=0,expenses=0,planned=0;const months=[],lines={},sources={},rows=[],ents={};
+  for(const m of data){const C=calc(m.plan,m.txns,m.k);let mi=0,me=0;
+    const incBy={};for(const i of m.plan.income)incBy[i.id]=i;const catBy={};for(const c of m.plan.cats)catBy[c.id]=c;
     for(const t of m.txns){
       if(t.cat&&t.cat.startsWith('inc:')){mi+=t.amt;const n=(incBy[t.cat.slice(4)]||{}).name||'Other income';sources[n]=(sources[n]||0)+t.amt;rows.push([t.date,'Income',n,t.amt,t.note,t.by]);continue}
-      const c=catBy[t.cat];me+=t.amt;const g=c?gName(c):'Removed',n=c?c.name:'Removed category';
-      const G=groups[g]=groups[g]||{total:0,cats:{}};G.total+=t.amt;G.cats[n]=(G.cats[n]||0)+t.amt;rows.push([t.date,g,n,-t.amt,t.note,t.by]);
-    }
+      const c=catBy[t.cat];if(!c||c.kind!=='save')me+=t.amt;(ents[t.cat]=ents[t.cat]||[]).push({date:t.date,amt:t.amt,note:t.note||'',by:t.by||'',id:t.id,k:m.k});rows.push([t.date,c?gName(c):'Removed',c?c.name:'Removed category',-t.amt,t.note,t.by])}
+    for(const c of m.plan.cats){const st=C.by[c.id],save=c.kind==='save';
+      const L=lines[c.id]=lines[c.id]||{id:c.id,name:c.name,group:gName(c),save,v:0,p:0};L.name=c.name;L.group=gName(c);
+      if(save){const v=single?Math.max(0,st.avail):(+c.planned||0);L.v+=v;L.p+=single?st.eff:(+c.planned||0)}
+      else{L.v+=st.spent;L.p+=st.eff;planned+=st.eff}}
     income+=mi;expenses+=me;months.push({k:m.k,mi,me})}
-  const n=months.length||1,net=income-expenses;
+  const n=months.length,net=income-expenses;
+  hbData={lines:Object.values(lines),single,ents};hbOpen=new Set();hbEntAll=false;
+  const label=single?mName(data[0].k):`${mName(data[0].k,'sy')} – ${mName(data[data.length-1].k,'sy')}`;
   const mx=Math.max(...months.map(x=>Math.max(x.mi,x.me)),1);
-  const gList=Object.entries(groups).sort((a,b)=>b[1].total-a[1].total);
   const sList=Object.entries(sources).sort((a,b)=>b[1]-a[1]);
-  const label=`${mName(from,'sy')} – ${mName(to,'sy')}`;
-  $('#rep').innerHTML=`<div class="kpis"><div class="kpi"><small>Money in</small><b>${money(income,0)}</b></div><div class="kpi"><small>Expenses</small><b>${money(expenses,0)}</b></div>
-   <div class="kpi ${net<0?'neg':'pos'}"><small>${net<0?'Spent more than came in':'Kept'}</small><b>${money(Math.abs(net),0)}</b></div><div class="kpi"><small>Average spend a month</small><b>${money(expenses/n,0)}</b></div></div>
-   <p class="muted" style="margin:8px 4px">${esc(label)} · ${months.length} month${months.length>1?'s':''} with data. Money in counts income you logged as received.</p>
-   <h2 class="big2">Month by month</h2><div class="card pad"><div class="rcols">${months.map(x=>`<div class="c"><div class="bars"><em class="${x.me>x.mi+0.5&&x.mi>0?'over':''}" style="height:${x.me/mx*100}%"></em>${x.mi>0?`<i style="bottom:${x.mi/mx*100}%"></i>`:''}</div><span class="lb">${esc(mName(x.k,'s'))}${x.k.endsWith('-01')||x===months[0]?' '+x.k.slice(2,4):''}</span></div>`).join('')}</div>
-   <div class="key"><span><i style="background:var(--green);height:8px;border-radius:3px"></i>Expenses</span><span><i></i>Money in</span></div><p class="muted tapnote" id="rNote">Tap a month to see its numbers.</p></div>
-   <h2 class="big2">Expenses by group</h2><div class="card">${gList.map(([g,G])=>`<details class="grp"><summary class="share"><div class="l"><span>▸ ${esc(g)}</span><b>${money(G.total,0)}</b></div><div class="t"><em style="width:${G.total/(gList[0][1].total||1)*100}%"></em></div><small>${Math.round(G.total/(expenses||1)*100)}% of expenses · ${money(G.total/n,0)} a month on average</small></summary>
-     <div class="sub2">${Object.entries(G.cats).sort((a,b)=>b[1]-a[1]).map(([c,v])=>`<div><span>${esc(c)}</span><b>${money(v,0)} <span class="muted" style="font-weight:500">· ${money(v/n,0)}/mo</span></b></div>`).join('')}</div></details>`).join('')||'<p class="empty">No expenses in this period.</p>'}</div>
-   <h2 class="big2">Money in by source</h2><div class="card">${sList.map(([k,v])=>`<div class="share"><div class="l"><span>${esc(k)}</span><b>${money(v,0)}</b></div><small>${money(v/n,0)} a month on average</small></div>`).join('')||'<p class="empty">No income logged in this period.</p>'}</div>
-   <div class="dlrow"><button class="btn ghost full2" id="dlSum">Download this report (CSV)</button><button class="btn line full2" id="dlAll">Download every entry in this period (CSV)</button></div>`;
+  $('#rep').innerHTML=`<div class="kpis k4"><div class="kpi"><small>Money in</small><b>${money(income,0)}</b></div><div class="kpi"><small>Spent</small><b>${money(expenses,0)}</b></div>
+    <div class="kpi ${net<0?'neg':'pos'}"><small>${net<0?'Spent more than came in':'Kept'}</small><b>${money(Math.abs(net),0)}</b></div>
+    <div class="kpi"><small>${single?'Planned to spend':'Average spent a month'}</small><b>${money(single?planned:expenses/(n||1),0)}</b></div></div>
+   <p class="muted rlab">${esc(label)}${single?'':` · ${n} months`}. Money in counts income logged as received.</p>
+   <h2 class="big2">Where your money went</h2><div class="card pad"><div class="seg mini" style="margin:0 0 12px"><button type="button" data-dm="cat" aria-pressed="${donutMode==='cat'}">Each line</button><button type="button" data-dm="group" aria-pressed="${donutMode==='group'}">By group</button></div><button type="button" class="linkb hbentb" id="hbEntAll">Show entries and notes</button><div id="hbars" class="hbars"></div><p class="muted tapnote">Largest first. Pink mark: plan · gold: past the plan · lavender: savings. Tap a bar to see its entries and notes.</p></div>
+   ${single?'':`<h2 class="big2">Month by month</h2><div class="card pad"><div class="rcols">${months.map(x=>`<div class="c"><div class="bars"><em class="${x.me>x.mi+0.5&&x.mi>0?'over':''}" style="height:${x.me/mx*100}%"></em>${x.mi>0?`<i style="bottom:${x.mi/mx*100}%"></i>`:''}</div><span class="lb">${esc(mName(x.k,'s'))}${x.k.endsWith('-01')||x===months[0]?' '+x.k.slice(2,4):''}</span></div>`).join('')}</div>
+   <div class="key"><span><i style="background:var(--green);height:8px;border-radius:3px"></i>Spent</span><span><i></i>Money in</span></div><p class="muted tapnote" id="rNote">Tap a month to see its numbers.</p></div>`}
+   ${sList.length?`<h2 class="big2">Money in by source</h2><div class="card">${sList.map(([k,v])=>`<div class="share"><div class="l"><span>${esc(k)}</span><b>${money(v,0)}</b></div>${single?'':`<small>${money(v/n,0)} a month on average</small>`}</div>`).join('')}</div>`:''}
+   <div class="dlrow"><button class="btn ghost full2" id="dlSum">Download this summary (CSV)</button><button class="btn line full2" id="dlAll">Download all entries with notes (table)</button></div>`;
+  $('#hbEntAll').onclick=()=>{hbEntAll=!hbEntAll;hbOpen=new Set();$('#hbEntAll').textContent=hbEntAll?'Hide entries and notes':'Show entries and notes';drawHBars()};
+  $('#rep').querySelectorAll('[data-dm]').forEach(b=>b.onclick=()=>{donutMode=b.dataset.dm;$('#rep').querySelectorAll('[data-dm]').forEach(x=>x.setAttribute('aria-pressed',x===b));drawHBars()});
+  drawHBars();
   $('#rep').querySelectorAll('.rcols .c').forEach((el,i)=>el.onclick=()=>{$('#rep').querySelectorAll('.rcols .c').forEach(x=>x.classList.remove('sel'));el.classList.add('sel');const x=months[i];
-    $('#rNote').innerHTML=`<b>${esc(mName(x.k))}</b>: money in ${money(x.mi,0)} · spent ${money(x.me,0)} · <b style="color:${x.mi-x.me<0?'var(--coral)':'var(--greenD)'}">${x.mi-x.me<0?'over by '+money(x.me-x.mi,0):'kept '+money(x.mi-x.me,0)}</b>`});
-  const csvDl=(name,lines)=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([lines.map(r=>r.map(csvCell).join(',')).join('\n')+'\n'],{type:'text/csv'}));a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1000)};
-  const tag=from===to?from:from+'_to_'+to;
-  $('#dlSum').onclick=()=>csvDl(`budget-report-${tag}.csv`,[['Type','Group','Category or source','Total','Average per month'],...gList.flatMap(([g,G])=>Object.entries(G.cats).map(([c,v])=>['Expense',g,c,v.toFixed(2),(v/n).toFixed(2)])),...sList.map(([k,v])=>['Income','',k,v.toFixed(2),(v/n).toFixed(2)]),[],['Month','Money in','Expenses'],...months.map(x=>[x.k,x.mi.toFixed(2),x.me.toFixed(2)])]);
+    $('#rNote').innerHTML=`<b>${esc(mName(x.k))}</b>: money in ${money(x.mi,0)} · spent ${money(x.me,0)} · <b>${x.mi-x.me<0?'over by '+money(x.me-x.mi,0):'kept '+money(x.mi-x.me,0)}</b>`});
+  const csvDl=(name,lines2)=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([lines2.map(r=>r.map(csvCell).join(',')).join('\n')+'\n'],{type:'text/csv'}));a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1000)};
+  const tag=data[0].k===data[data.length-1].k?data[0].k:data[0].k+'_to_'+data[data.length-1].k;
+  $('#dlSum').onclick=()=>csvDl(`budget-summary-${tag}.csv`,[['Group','Line','Planned','Actual','Average per month'],...Object.values(lines).sort((a,b)=>b.v-a.v).map(L=>[L.group,L.name+(L.save?' (savings)':''),L.p.toFixed(2),L.v.toFixed(2),(L.v/(n||1)).toFixed(2)]),[],['Income source','Received'],...sList.map(([k,v])=>[k,v.toFixed(2)]),[],['Month','Money in','Spent'],...months.map(x=>[x.k,x.mi.toFixed(2),x.me.toFixed(2)])]);
   $('#dlAll').onclick=()=>csvDl(`budget-entries-${tag}.csv`,[['Date','Group','Category or source','Amount','Note','Added by'],...rows.sort((a,b)=>a[0].localeCompare(b[0])).map(r=>[r[0],r[1],r[2],r[3].toFixed(2),r[4]||'',r[5]||''])]);
 }
-
+let hbData=null,hbOpen=new Set(),hbEntAll=false;
 function recentHTML(){const tx=[...S.txns].sort((a,b)=>b.date.localeCompare(a.date)).slice(0,15);return `<h2>Latest entries</h2><div class="card">${tx.length?tx.map(txHTML).join(''):'<p class="empty">Nothing logged yet.</p>'}</div>`}
-let donutMode='group',donutSel=-1,paceDay=null,weekOpen=null,histSel=null;
+let donutMode='cat',hbAll=false,donutSel=-1,paceDay=null,weekOpen=null,histSel=null;
 function chartsHTML(C){
-  return `<h2 class="big2">Where your money went <small>${money(C.spent,0)}</small></h2><div class="card pad"><div class="seg mini" style="margin:0 0 14px"><button type="button" data-dm="group" aria-pressed="${donutMode==='group'}">By group</button><button type="button" data-dm="cat" aria-pressed="${donutMode==='cat'}">By category</button></div><div class="donut"><div class="fig" id="donut" style="aspect-ratio:1"></div><div class="legend" id="legend"></div></div><p class="muted tapnote">Tap a slice or a name to see it.</p></div>
+  return `<h2 class="big2">Where your money went <small>${money(C.spent,0)}</small></h2><div class="card pad"><div class="seg mini" style="margin:0 0 14px"><button type="button" data-dm="cat" aria-pressed="${donutMode==='cat'}">Each line</button><button type="button" data-dm="group" aria-pressed="${donutMode==='group'}">By group</button></div><div id="hbars" class="hbars"></div><p class="muted tapnote">Largest spending first. The pink mark is the plan; gold is spending past it; lavender is savings set aside.${donutMode==='cat'?' Tap a bar to open that line.':''}</p></div>
   <h2 class="big2">Everyday spending pace</h2><div class="card pad"><div class="fig" id="pace" style="height:220px;touch-action:pan-y"></div><p class="muted tapnote" id="paceNote">Touch and slide across the chart to see any day.</p></div>
   <h2 class="big2">Week by week</h2><div class="card" id="weeks"></div>
   <h2 class="big2">Plan vs actual</h2><div class="card" id="pva"></div><p class="muted tapnote">Tap a group to see its lines; tap a line to open it.</p>
   <h2 class="big2">Last 6 months</h2><div class="card pad"><div id="months"><p class="muted">Loading history…</p></div><p class="muted tapnote" id="mNote">Tap a month to see its numbers.</p></div>`;
 }
-function drawCharts(C){drawDonut(C);drawPace(C);drawWeeks(C);drawPva(C);loadHistory()}
+function drawCharts(C){drawHBars(C);drawPace(C);drawWeeks(C);drawPva(C);loadHistory()}
 function donutItems(C){
   if(donutMode==='cat')return S.plan.cats.map(c=>({name:c.name,v:C.by[c.id].spent,col:colOf(c.id),id:c.id})).filter(x=>x.v>0).sort((a,b)=>b.v-a.v);
   const gs=groupsOf(S.plan.cats);return gs.map((g,i)=>{const cs=S.plan.cats.filter(c=>gName(c)===g);return {name:g,v:cs.reduce((a,c)=>a+C.by[c.id].spent,0),col:PAL[i%PAL.length],cats:cs}}).filter(x=>x.v>0).sort((a,b)=>b.v-a.v);
 }
+
+function drawHBars(){
+  const box=$('#hbars');if(!box||!hbData)return;
+  let items;const L=hbData.lines;
+  if(donutMode==='cat')items=L.map(x=>({...x}));
+  else{const g={};for(const x of L){const G=g[x.group]=g[x.group]||{name:x.group,v:0,p:0,save:true,ids:[]};G.v+=x.v;G.p+=x.p;G.ids.push(x.id);if(!x.save)G.save=false}items=Object.values(g);items.forEach(x=>x.id='g:'+x.name)}
+  items.sort((a,b)=>b.v-a.v||b.p-a.p);
+  const zero=items.filter(x=>x.v<=0.004),show=hbAll?items:items.filter(x=>x.v>0.004);
+  if(!show.length){box.innerHTML='<p class="muted">No spending yet in this period.</p>';return}
+  const max=Math.max(1,...show.map(x=>Math.max(x.v,x.p)));
+  const nm={};for(const x of L)nm[x.id]=x.name;
+  const entsOf=x=>(x.ids?x.ids.flatMap(id=>(hbData.ents[id]||[]).map(e=>({...e,line:nm[id]}))):(hbData.ents[x.id]||[])).sort((a,b)=>b.date.localeCompare(a.date));
+  const entHTML=x=>{const es=entsOf(x);return `<div class="hbents">${es.length?es.map(e=>`<div class="hbe"><span class="d">${esc(mName(e.k,'s'))} ${+e.date.slice(8)}</span><span class="n">${e.note?esc(e.note):'<i>No note</i>'}<small>${x.ids?esc(e.line)+(e.by?' · ':''):''}${esc(e.by)}</small></span><b>${money(e.amt)}</b></div>`).join(''):'<p class="muted" style="margin:4px 0">No entries.</p>'}</div>`};
+  const tap=true;
+  box.innerHTML=show.map(x=>{const f=x.v/max*100,pl=x.p/max*100,blue=Math.min(x.v,x.p>0?x.p:x.v)/max*100,over=!x.save&&x.p>0&&x.v>x.p+0.004;
+    const open=hbEntAll?entsOf(x).length>0:hbOpen.has(x.id);
+    return `<div class="hb${tap?' tap':''}${open?' open':''}" ${tap?`data-hb="${esc(x.id)}"`:''}><div class="hbt"><em class="${x.save?'sv':''}" style="width:${blue}%"></em>${over?`<em class="ov" style="left:${pl}%;width:${f-pl}%"></em>`:''}${x.p>0?`<i style="left:${pl}%"></i>`:''}<span class="hbl" data-fill="${blue}">${esc(x.name)}</span></div><b class="hba">${money(x.v,0)}</b></div>${open?entHTML(x):''}`}).join('')
+   +(zero.length?`<button type="button" class="linkb hbmore" id="hbMore">${hbAll?'Hide lines with nothing spent':`Show ${zero.length} line${zero.length>1?'s':''} with nothing spent`}</button>`:'');
+  hbPlace();
+  box.querySelectorAll('[data-hb]').forEach(el=>el.onclick=()=>{const id=el.dataset.hb;if(hbEntAll){hbEntAll=false;hbOpen=new Set(L.map(x=>x.id).concat(Object.keys(hbData.ents)));const b=$('#hbEntAll');if(b)b.textContent='Show entries and notes';hbOpen=new Set([...box.querySelectorAll('.hb.open')].map(e=>e.dataset.hb))}
+    if(hbOpen.has(id))hbOpen.delete(id);else hbOpen.add(id);drawHBars()});
+  box.querySelectorAll('[data-hbgo]').forEach(el=>el.onclick=()=>jumpTo('cat',el.dataset.hbgo));
+  const mo=$('#hbMore');if(mo)mo.onclick=()=>{hbAll=!hbAll;drawHBars()};
+}
+function hbPlace(){
+  document.querySelectorAll('.hbt').forEach(t=>{const l=t.querySelector('.hbl'),W=t.clientWidth,fill=W*(+l.dataset.fill)/100;
+    l.classList.remove('in','out','tagl');l.style.left='';l.style.maxWidth='';const lw=l.scrollWidth;
+    if(lw+16<=fill)l.classList.add('in');
+    else if(fill+8+lw<=W-4){l.classList.add('out');l.style.left=(fill+8)+'px'}
+    else {l.classList.add('tagl');l.style.maxWidth=(W-12)+'px'}});
+}
+addEventListener('resize',()=>{if(document.querySelector('.hbt'))hbPlace()});
 function drawDonut(C){
   const dn=$('#donut'),lg=$('#legend');if(!dn)return;
   let items=donutItems(C);if(items.length>8){const rest=items.slice(7);items=items.slice(0,7).concat([{name:'Everything else',v:rest.reduce((a,x)=>a+x.v,0),col:'#c9d2ce',rest}])}
@@ -1410,7 +1589,7 @@ async function loadHistory(){
     draw();
   }catch(e){if($('#months'))$('#months').innerHTML='<p class="muted">Couldn’t load older months right now.</p>'}
 }
-const ro=new ResizeObserver(()=>{clearTimeout(ro.t);ro.t=setTimeout(()=>{if(tab==='summary'&&sumMode==='month'&&S&&S.plan)drawCharts(calc(S.plan,S.txns,S.k))},120)});
+const ro=new ResizeObserver(()=>{clearTimeout(ro.t);ro.t=setTimeout(()=>{if(tab==='summary'&&$('#hbars'))hbPlace()},120)});
 ro.observe($('main'));
 
 /* ---- plan ---- */
@@ -1648,8 +1827,7 @@ function entrySheet(t,id){
   <div class="amtbox"><span class="cur">${esc(curSym())}</span><input id="amtIn" inputmode="none" autocomplete="off" placeholder="0.00"></div>
   <div id="res"></div>
   <div class="keys" style="margin-top:8px">${keys.map(k=>`<button type="button" data-k="${k}" class="${/[÷×−+]/.test(k)?'op':k==='⌫'?'bk':''}" aria-label="${k==='⌫'?'Delete':k}">${k}</button>`).join('')}</div>
-  <button type="button" class="linkb" id="extraT">Add a note or change the date</button>
-  <div id="extra" hidden><div class="f"><input id="note" placeholder="Note (optional)" maxlength="80" aria-label="Note"></div><div class="f"><input id="dt" type="date" value="${def}" min="${key}-01" max="${key}-${pad(dim(key))}" aria-label="Date"></div></div>
+  <div class="nd2"><input id="note" placeholder="Note (optional)" maxlength="120" aria-label="Note"><input id="dt" type="date" value="${def}" min="${key}-01" max="${key}-${pad(dim(key))}" aria-label="Date"></div>
   <button type="button" class="btn full" id="saveAmt">Save</button>
   ${tx.length?`<h3>${isInc?'Received':'Spent'} in ${mo}</h3><div class="card">${tx.map(txHTML).join('')}</div>`:''}
   <div class="pfoot"><div id="pview"><span class="muted">${isInc?'Expected':'Planned'} for ${mo}</span> <b>${money(planned)}</b><button type="button" class="pen" id="penBtn" aria-label="Change the ${isInc?'expected':'planned'} amount">✎</button></div>
@@ -1661,7 +1839,7 @@ function entrySheet(t,id){
     const show=()=>{const v=I.value.trim(),val=evalExpr(v);R.className='';R.textContent=!v?'':isNaN(val)?(hasOp(v)?'…':''):hasOp(v)?'= '+money(val):''};
     const save=()=>{const raw=I.value.trim(),a=evalExpr(raw);
       if(!(a>0)){R.textContent=raw?'That sum doesn’t work out. Check it.':'Type an amount first';R.className='err';return}
-      const dv=$('#dt').value,note=$('#note').value.trim().slice(0,80);
+      const dv=$('#dt').value,note=$('#note').value.trim().slice(0,120);
       const e={id:rid(),date:dv&&dv.startsWith(key)?dv:def,cat:tid,amt:a,note:note||(hasOp(raw)?raw:''),by:who()};
       closeSheet();persist('tx',T=>{if(!T.some(x=>x.id===e.id))T.push(e)});
       const after=calc(S.plan,S.txns,S.k);
@@ -1679,7 +1857,7 @@ function entrySheet(t,id){
     I.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();save()}});
     if(matchMedia('(pointer:fine)').matches)setTimeout(()=>{try{I.focus()}catch(e){}},60);
     $('#saveAmt').onclick=save;
-    $('#extraT').onclick=()=>{const x=$('#extra');x.hidden=!x.hidden;$('#extraT').textContent=x.hidden?'Add a note or change the date':'Hide note and date'};
+
     sh.querySelectorAll('[data-del]').forEach(b=>b.onclick=()=>{closeSheet();delTx(b.dataset.del)});
     $('#penBtn').onclick=()=>{$('#pview').hidden=true;$('#penF').hidden=false;$('#penHint').hidden=false;$('#penIn').focus()};
     $('#penF').onsubmit=e=>{e.preventDefault();const v=num($('#penIn').value);if(v<0)return;const f=isInc?'amt':'planned';
@@ -1702,6 +1880,26 @@ function moveSheet(to,amt,from){
       closeSheet();persist('plan',mv(1));toast(`Moved ${money(a)}`,()=>persist('plan',mv(-1)))};
   });
 }
+
+/* ---- edit an entry ---- */
+function editTx(id){
+  const t=S&&S.txns.find(x=>x.id===id);if(!t)return;
+  const isInc=t.cat.startsWith('inc:'),line=isInc?S.plan.income.find(i=>i.id===t.cat.slice(4)):catOf(t.cat);
+  openSheet(head(`Edit entry · ${esc(line?line.name:'')}`)+`
+   <div class="f"><label for="eAmt">Amount</label><input id="eAmt" inputmode="decimal" value="${t.amt}" autocomplete="off"></div>
+   <div class="f"><label for="eNote">Note</label><input id="eNote" maxlength="120" value="${esc(t.note||'')}" placeholder="Note (optional)"></div>
+   <div class="f"><label for="eDt">Date</label><input id="eDt" type="date" value="${t.date}" min="${key}-01" max="${key}-${pad(dim(key))}"></div>
+   <p class="muted" id="eErr"></p>
+   <button type="button" class="btn full" id="eSave">Save changes</button>
+   <button type="button" class="btn line full" id="eDel" style="margin-top:8px">Delete this entry</button>
+   ${t.by?`<p class="muted" style="margin-top:10px">Added by ${esc(t.by)}</p>`:''}`,()=>{
+    $('#eSave').onclick=()=>{const a=evalExpr($('#eAmt').value.trim());if(!(a>0)){$('#eErr').textContent='Enter an amount above zero.';return}
+      const note=$('#eNote').value.trim().slice(0,120),dt=$('#eDt').value&&$('#eDt').value.startsWith(key)?$('#eDt').value:t.date;
+      closeSheet();persist('tx',T=>{const x=T.find(y=>y.id===id);if(x){x.amt=a;x.note=note;x.date=dt}});toast('Entry updated')};
+    $('#eDel').onclick=()=>{closeSheet();delTx(id)};
+  });
+}
+document.addEventListener('click',e=>{const r=e.target.closest&&e.target.closest('[data-edit]');if(!r||e.target.closest('[data-del]'))return;editTx(r.dataset.edit)});
 function delTx(id){const t=S.txns.find(x=>x.id===id);if(!t)return;persist('tx',T=>{const i=T.findIndex(x=>x.id===id);if(i>-1)T.splice(i,1)});toast('Entry deleted',()=>persist('tx',T=>{if(!T.some(x=>x.id===t.id))T.push(t)}))}
 
 /* ---------------- events ---------------- */
@@ -1713,7 +1911,7 @@ function bind(){
   all('[data-done]',b=>b.onclick=()=>closeAsk(b.dataset.done));
   all('[data-del]',b=>b.onclick=()=>delTx(b.dataset.del));
   all('[data-move]',b=>b.onclick=()=>moveSheet(b.dataset.move,b.dataset.amt,b.dataset.from));
-  all('[data-sum]',b=>b.onclick=()=>{sumMode=b.dataset.sum;render()});
+  all('[data-asort]',b=>b.onclick=()=>{ls.set('mb-asort',b.dataset.asort);render()});
   all('[data-dm]',b=>b.onclick=()=>{donutMode=b.dataset.dm;donutSel=-1;render()});
   const upl=$('#rcUp');if(upl)upl.onchange=()=>{addPhotos(upl.files);upl.value=''};
   /* ---- Plan tab ---- */
@@ -1792,7 +1990,7 @@ function homeHTML(){
   const icon=t=>{if(t==='settings')return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>';
     const b=document.querySelector(`#tabs button[data-t="${t}"] svg`);return b?b.outerHTML:''};
   const T=[...TILES,['settings','Settings','#8a94a6']];
-  return `<div class="hero home"><small>${nm?'Hi '+esc(nm):'Hi there'}</small><div class="big hdate">${esc(day)}</div><p class="hd2">${esc(date)}</p>
+  return `<div class="hero home compact"><small>${nm?'Hi '+esc(nm):'Hi there'}</small><div class="big hdate">${esc(day)}</div><p class="hd2">${esc(date)}</p>
   <div class="hmeta">${ed?`<span>${ed}</span>`:''}<span class="hv">App version ${esc(APP_VERSION.split(' ')[0])}</span></div></div>
   <div class="tiles">${T.map(([t,n,c])=>`<button class="tile" data-tile="${t}" style="--hue1:${c};--hue2:${c}"><span class="pi">${icon(t)}</span><span class="tt"><b>${n}</b><small>${esc(sub[t]||'')}</small></span>${t==='receipts'?'<span class="badge" id="rcBadge" hidden></span>':t==='defaults'?'<span class="badge" id="dfBadge" hidden></span>':''}</button>`).join('')}</div>`;
 }
@@ -1822,6 +2020,7 @@ function bindHome(){
   const ed=$('#exitDemo');if(ed)ed.onclick=exitDemo;
   try{badge();badge2()}catch(e){}
 }
+$('#dockHome').onclick=()=>$('#homeBtn').click();
 $('#homeBtn').onclick=()=>{if(history.state&&history.state.t&&history.state.t!=='home')history.back();else go('home',true)};
 try{history.replaceState({t:'home'},'')}catch(e){}
 addEventListener('popstate',e=>{if($('#veil').classList.contains('open')){$('#veil').classList.remove('open')}tab=(e.state&&e.state.t)||'home';render();scrollTo(0,0)});
@@ -1869,12 +2068,24 @@ function pinHTML(){
   <div class="hero home lockhero"><small>${create?'One PIN for both of you':'Welcome back'}</small><div class="big hdate">${esc(new Date().toLocaleDateString(undefined,{weekday:'long'}))}</div><p class="hd2">${esc(new Date().toLocaleDateString(undefined,{month:'long',day:'numeric',year:'numeric'}))}</p></div>
   <p class="flab" style="margin:18px 4px 8px">You are</p>
   <div class="who2 big">${ppl.map(n=>`<label><input type="radio" name="lkWho" value="${esc(n)}" ${me===n?'checked':''}><span>${esc(n)}</span></label>`).join('')}</div>
-  <p class="flab" style="margin:18px 4px 4px">${title}</p>
+  <p class="flab" id="pinTitle" style="margin:18px 4px 4px">${title}</p>
   <div class="dots ${pinErr?'bad':''}" id="dots">${[0,1,2,3].map(i=>`<i class="${i<pinEntry.length?'on':''}"></i>`).join('')}</div>
   <p class="pinerr" id="pinErr">${esc(pinErr)}</p>
-  <div class="keys">${['1','2','3','4','5','6','7','8','9','','0','⌫'].map(k=>k?`<button type="button" data-k="${k}" aria-label="${k==='⌫'?'Delete':k}">${k}</button>`:'<span></span>').join('')}</div>
+  <div class="pinkeys">${['1','2','3','4','5','6','7','8','9','','0','⌫'].map(k=>k?`<button type="button" data-k="${k}" aria-label="${k==='⌫'?'Delete':k}">${k}</button>`:'<span></span>').join('')}</div>
   ${create?'<p class="muted" style="text-align:center">You can change it later in Settings.</p>':''}</div>`;
 }
+
+function pinDots(clearErr){const d=$('#dots');if(!d){render();return}
+  d.className='dots';d.querySelectorAll('i').forEach((el,i)=>el.className=i<pinEntry.length?'on':'');
+  if(clearErr){const e=$('#pinErr');if(e)e.textContent=''}}
+/* press feedback for every button */
+(()=>{let cur=null,t0=0;const MIN=140;
+  const off=()=>{const b=cur;if(!b)return;cur=null;const wait=Math.max(0,MIN-(Date.now()-t0));clearTimeout(b._pt);b._pt=setTimeout(()=>b.classList.remove('pressed'),wait)};
+  const on=e=>{const b=e.target.closest&&e.target.closest('button,.tile,[data-hb],.fitem');if(!b)return;if(cur&&cur!==b)off();clearTimeout(b._pt);b.classList.add('pressed');cur=b;t0=Date.now()};
+  document.addEventListener('pointerdown',on,{passive:true,capture:true});
+  ['pointerup','pointercancel','dragstart','blur'].forEach(ev=>(ev==='blur'?window:document).addEventListener(ev,off,{passive:true,capture:true}));
+  document.addEventListener('pointerleave',e=>{if(e.target===cur)off()},{passive:true,capture:true});
+  document.addEventListener('scroll',off,{passive:true,capture:true});})();
 function bindPin(){
   const rt=$('#pinRetry');if(rt)rt.onclick=async()=>{try{await ensureTemplate()}catch(e){}tplTried=true;render()};
   document.querySelectorAll('[name=lkWho]').forEach(r=>r.onchange=()=>{ls.set('mb-who',r.value);pinErr='';render()});
@@ -1883,9 +2094,10 @@ function bindPin(){
 async function pinKey(k){
   if(!/^\d$/.test(k)&&k!=='⌫')return;
   if(!who()||!people().includes(who())){pinErr='First choose who you are.';render();return}
-  pinErr='';
+  const hadErr=!!pinErr;pinErr='';
   if(k==='⌫')pinEntry=pinEntry.slice(0,-1);else if(pinEntry.length<4)pinEntry+=k;
-  render();if(pinEntry.length<4)return;
+  pinDots(hadErr);if(pinEntry.length<4)return;
+  await new Promise(r=>setTimeout(r,140));
   const pin=pinEntry,stored=pinStored();pinEntry='';
   if(!stored){if(!pinFirst){pinFirst=pin;render();return}
     if(pinFirst!==pin){pinFirst=null;pinErr='Those didn’t match. Start again.';render();return}
@@ -1898,7 +2110,7 @@ function lockNow(){if(!unlocked)return;unlocked=false;pinEntry='';pinErr='';$('#
 ['pointerdown','keydown','scroll','touchstart'].forEach(ev=>addEventListener(ev,()=>{if(unlocked&&Date.now()-lastAct>LOCK_MS)lockNow();else lastAct=Date.now()},{passive:true,capture:true}));
 setInterval(()=>{if(unlocked&&Date.now()-lastAct>LOCK_MS)lockNow()},10e3);
 document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&unlocked&&Date.now()-lastAct>LOCK_MS)lockNow()});
-addEventListener('keydown',e=>{if(!unlocked&&mode!=='setup'&&$('.keys')){if(/^\d$/.test(e.key))pinKey(e.key);else if(e.key==='Backspace')pinKey('⌫')}});
+addEventListener('keydown',e=>{if(!unlocked&&mode!=='setup'&&$('.pinkeys')){if(/^\d$/.test(e.key))pinKey(e.key);else if(e.key==='Backspace')pinKey('⌫')}});
 document.querySelector('.brand').addEventListener('click',e=>{if(e.target.closest('#homeBtn'))return;if(unlocked&&tab!=='home')$('#homeBtn').click()});
 async function boot(){try{await ensureTemplate()}catch(e){}tplTried=true;openMonth(todayKey);refreshBadge()}
 async function init(){
