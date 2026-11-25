@@ -825,6 +825,40 @@ body[data-tab=actual] .hero .big{font-size:clamp(28px,8vw,34px);margin:0 0 2px;l
 body[data-tab=actual] .hero p{font-size:13.5px;margin:0}
 body[data-tab=actual] .hero .hbar{margin-top:4px}
 body[data-tab=actual] .hero .hfoot{font-size:12.5px;margin-top:2px}
+
+/* v32: links & pictures */
+.pl.wclip{grid-template-columns:minmax(0,1fr) 5.8em 30px 40px}
+.attb{position:relative;width:34px;height:34px;border-radius:10px;border:0;background:none;color:var(--mute);display:grid;place-items:center;padding:0;opacity:.55}
+.attb .clip{width:19px;height:19px}
+.attb.has{opacity:1;color:var(--greenD);background:var(--soft)}
+.attb span{position:absolute;top:-4px;right:-4px;min-width:16px;height:16px;border-radius:8px;background:var(--green);color:#fff;font-size:10.5px;font-weight:800;display:grid;place-items:center;padding:0 3px}
+.hbl .clip{width:12px;height:12px;margin-left:5px;vertical-align:-1px;opacity:.9}
+.attstrip{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0 2px}
+.attstrip.none{margin:6px 0 0}
+.attstrip .linkb .clip,.attstrip .linkb svg{width:15px;height:15px;vertical-align:-2px;margin-right:2px}
+.lchip{display:inline-flex;align-items:center;gap:4px;max-width:100%;padding:6px 11px;border-radius:999px;background:var(--soft);color:var(--greenD);font-weight:700;font-size:13.5px;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pthumb{width:48px;height:48px;border-radius:10px;overflow:hidden;border:1px solid var(--line);padding:0;background:var(--track)}
+.pthumb img{width:100%;height:100%;object-fit:cover;display:block}
+.pthumb.big{width:100%;height:100%}
+.attedit{padding:4px 6px!important;min-height:0!important}
+.lrow{display:flex;align-items:center;gap:8px;padding:8px 4px 8px 14px;border-top:1px solid var(--line)}
+.lrow:first-child{border-top:0}
+.lrow a{flex:1;min-width:0;text-decoration:none;color:var(--ink)}
+.lrow a b{display:block;color:var(--greenD);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lrow a small{color:var(--mute);font-size:12px}
+.addl{display:grid;grid-template-columns:1fr auto;gap:8px;margin:10px 0 4px}
+.addl #lUrl{grid-column:1/-1}
+.addl .btn{min-height:46px}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:10px}
+.pcell{position:relative;aspect-ratio:1}
+.pcell .rmp{position:absolute;top:-6px;right:-6px;width:26px;height:26px;min-height:0;border-radius:50%;background:var(--card);border:1px solid var(--line);font-size:16px;display:grid;place-items:center;padding:0}
+.padd{aspect-ratio:1;border:2px dashed var(--line);border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--greenD);cursor:pointer}
+.padd input{display:none}
+.padd span{font-size:26px;line-height:1;font-weight:700}
+.padd small{font-size:12px;font-weight:700}
+.picview{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.88);display:grid;place-items:center;padding:20px}
+.picview img{max-width:100%;max-height:100%;border-radius:10px}
+.picview button{position:absolute;top:calc(12px + env(safe-area-inset-top));right:14px;width:40px;height:40px;border-radius:50%;border:0;background:rgba(255,255,255,.18);color:#fff;font-size:24px}
 </style>
 </head>
 <body>
@@ -855,7 +889,7 @@ body[data-tab=actual] .hero .hfoot{font-size:12.5px;margin-top:2px}
    (Or leave it empty and type it into the setup screen on each device.)
    ====================================================================== */
 const APP_KEY = '';
-const APP_VERSION = '31 · Nov 25, 2026';
+const APP_VERSION = '32 · Nov 25, 2026';
 
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -1343,10 +1377,10 @@ function incRowHTML(i,C){
 }
 
 function barVal(c,C){const s=C.by[c.id];return c.kind==='save'?Math.max(0,s.avail):s.spent}
-function abBar(v,p,cls,name,SC){const sc=Math.max(SC||0,v,p,0.01),blue=Math.min(v,p>0?p:v)/sc*100,f=v/sc*100,pl=p/sc*100,over=p>0&&v>p+0.004&&cls!=='sv';
-  return `<div class="hbt"><em class="${cls}" style="width:${blue}%"></em>${over?`<em class="ov" style="left:${pl}%;width:${f-pl}%"></em>`:''}${p>0?`<i style="left:${pl}%"></i>`:''}<span class="hbl" data-fill="${blue}">${esc(name)}</span></div>`}
+function abBar(v,p,cls,name,SC,att){const sc=Math.max(SC||0,v,p,0.01),blue=Math.min(v,p>0?p:v)/sc*100,f=v/sc*100,pl=p/sc*100,over=p>0&&v>p+0.004&&cls!=='sv';
+  return `<div class="hbt"><em class="${cls}" style="width:${blue}%"></em>${over?`<em class="ov" style="left:${pl}%;width:${f-pl}%"></em>`:''}${p>0?`<i style="left:${pl}%"></i>`:''}<span class="hbl" data-fill="${blue}">${esc(name)}${att?'<svg class="clip" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5l-8.6 8.6a5.5 5.5 0 0 1-7.8-7.8l8.6-8.6a3.7 3.7 0 0 1 5.2 5.2l-8.6 8.6a1.8 1.8 0 0 1-2.6-2.6l7.9-7.9"/></svg>':''}</span></div>`}
 function catBar(c,C,SC){
-  const s=C.by[c.id],save=c.kind==='save',v=barVal(c,C);
+  const s=C.by[c.id],save=c.kind==='save',v=barVal(c,C),hasAtt=attCount(c)>0;
   let sub;
   if(s.st==='closed')sub=s.short?`<span class="t-over">part paid</span>`:'done';
   else if(save)sub='saved';
@@ -1354,7 +1388,7 @@ function catBar(c,C,SC){
   else if(c.kind==='bill')sub=s.st==='paid'?'<span class="t-ok">paid ✓</span>':`${money(Math.max(0,s.avail),0)} to pay`;
   else sub=`${money(s.avail,0)} left`;
   const ck=save?'<span class="ck0"></span>':`<button class="ck${s.closed?' on':''}" data-done="${esc(c.id)}" aria-pressed="${s.closed}" aria-label="${s.closed?'Reopen':'Mark done for the month'}: ${esc(c.name)}"><svg viewBox="0 0 24 24" width="24" height="24"><circle cx="12" cy="12" r="10.5"/><path d="M7.5 12.4l3 3 6-6.4"/></svg></button>`;
-  return `<div class="rw ab"><button class="row abt" data-cat="${esc(c.id)}">${abBar(v,s.budget,s.st==='closed'?'cl':save?'sv':'',c.name,SC)}<span class="aba"><b>${money(v,0)}</b><small>${sub}</small></span></button>${ck}</div>`;
+  return `<div class="rw ab"><button class="row abt" data-cat="${esc(c.id)}">${abBar(v,s.budget,s.st==='closed'?'cl':save?'sv':'',c.name,SC,hasAtt)}<span class="aba"><b>${money(v,0)}</b><small>${sub}</small></span></button>${ck}</div>`;
 }
 function incBar(i,C,SC){
   const v=C.inc[i.id]||{exp:i.amt,got:0},done=v.exp>0&&v.got>=v.exp-0.004,extra=v.got-v.exp;
@@ -1621,9 +1655,10 @@ function planLine(t,l,def,GS,locked){
   if(!def&&l.owed)tag+=`<span class="tag owedtag">+${money(l.owed)} unpaid from ${esc(mName(l.owedFrom||addM(key,-1),'s'))}</span>`;
   if(!def){if(l.only||!d)tag+=`<span class="tag">Only in ${mo}</span>`;else if(dAmt!==amt)tag+=`<span class="tag">Changed for ${mo} · usually ${money(dAmt)}</span><button type="button" class="linkb rs" data-reset="${k}">Use ${money(dAmt)}</button>`}
   const opts=t==='inc'?`<button type="button" class="btn line sm rmb" data-rm="${k}">Remove</button>`
-    :`<select aria-label="Type" data-ln="${k}" data-f="kind">${KINDS.map(([v,x])=>`<option value="${v}" ${v===l.kind?'selected':''}>${x}</option>`).join('')}</select>${GS.length>1?`<select aria-label="Group" data-ln="${k}" data-f="group">${GS.map(g=>`<option ${g===gName(l)?'selected':''}>${esc(g)}</option>`).join('')}</select>`:''}<label><input type="checkbox" data-ln="${k}" data-f="roll" ${l.roll?'checked':''}> Roll leftover to next month</label>${!def&&l.carry?`<span>+${money(l.carry)} carried in</span>`:''}<button type="button" class="btn line sm rmb" data-rm="${k}">Remove</button>`;
+    :`<select aria-label="Type" data-ln="${k}" data-f="kind">${KINDS.map(([v,x])=>`<option value="${v}" ${v===l.kind?'selected':''}>${x}</option>`).join('')}</select>${GS.length>1?`<select aria-label="Group" data-ln="${k}" data-f="group">${GS.map(g=>`<option ${g===gName(l)?'selected':''}>${esc(g)}</option>`).join('')}</select>`:''}${def?'':`<button type="button" class="btn line sm" data-att="${esc(l.id)}">Links &amp; pictures</button>`}<label><input type="checkbox" data-ln="${k}" data-f="roll" ${l.roll?'checked':''}> Roll leftover to next month</label>${!def&&l.carry?`<span>+${money(l.carry)} carried in</span>`:''}<button type="button" class="btn line sm rmb" data-rm="${k}">Remove</button>`;
   const dis=locked?'disabled':'';
-  return `<div class="pl"><input aria-label="Name" data-ln="${k}" data-f="name" value="${esc(l.name)}" ${dis}><input aria-label="Planned amount" inputmode="decimal" data-ln="${k}" data-f="amt" value="${amt||''}" placeholder="0" ${dis}>${locked?'<span></span>':`<button type="button" class="x" data-more="${k}" aria-label="More options" aria-expanded="${openOpts.has(k)}">⋯</button>`}${tag?`<div class="tagrow">${tag}</div>`:''}<div class="opt" ${openOpts.has(k)?'':'hidden'}>${opts}</div></div>`;
+  const nAtt=attCount(l),clip=!def&&t!=='inc'&&nAtt?`<button type="button" class="attb${nAtt?' has':''}" data-att="${esc(l.id)}" aria-label="Links and pictures for ${esc(l.name)}"><svg class="clip" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5l-8.6 8.6a5.5 5.5 0 0 1-7.8-7.8l8.6-8.6a3.7 3.7 0 0 1 5.2 5.2l-8.6 8.6a1.8 1.8 0 0 1-2.6-2.6l7.9-7.9"/></svg>${nAtt?`<span>${nAtt}</span>`:''}</button>`:'';
+  return `<div class="pl${clip?' wclip':''}"><input aria-label="Name" data-ln="${k}" data-f="name" value="${esc(l.name)}" ${dis}><input aria-label="Planned amount" inputmode="decimal" data-ln="${k}" data-f="amt" value="${amt||''}" placeholder="0" ${dis}>${clip}${locked?'<span></span>':`<button type="button" class="x" data-more="${k}" aria-label="More options" aria-expanded="${openOpts.has(k)}">⋯</button>`}${tag?`<div class="tagrow">${tag}</div>`:''}<div class="opt" ${openOpts.has(k)?'':'hidden'}>${opts}</div></div>`;
 }
 function planHTML(C,def){
   def=!!def;const p=def?TPL.plan:S.plan,mo=esc(mName(key,'s')),lk=def?lockState():null,locked=def&&lk.st!=='open';
@@ -1837,6 +1872,45 @@ function incomePick(){
       persist('plan',p=>{p.income.push(o)});entrySheet('inc',o.id)};
   });
 }
+
+/* ---- links & pictures on a planned expense ---- */
+const attPath=(k,id)=>'/attach/'+k+'/'+id+'.jpg';
+function attCount(l){const a=l&&l.att;return a?(a.links||[]).length+(a.pics||[]).length:0}
+const hostOf=u=>{try{return new URL(u).hostname.replace(/^www\./,'')}catch(e){return u}};
+function normURL(u){u=u.trim();if(!u)return '';if(!/^[a-z]+:\/\//i.test(u))u='https://'+u;try{const x=new URL(u);return /^https?:$/.test(x.protocol)?x.href:''}catch(e){return ''}}
+async function attURL(k,id){if(imgCache[id])return imgCache[id];let u=null;
+  if(mode==='demo')u=ls.get('mb-demo-img:'+id);else{const b=await dlBlob(attPath(k,id));if(b)u=URL.createObjectURL(b)}return imgCache[id]=u}
+function fillThumbs(root){root.querySelectorAll('img[data-pic]').forEach(async im=>{const u=await attURL(im.dataset.mk,im.dataset.pic);if(u)im.src=u;else im.alt='Picture not found'})}
+function viewPic(k,id){attURL(k,id).then(u=>{if(!u)return;const v=document.createElement('div');v.className='picview';v.innerHTML=`<img src="${u}" alt=""><button type="button" aria-label="Close">×</button>`;v.onclick=()=>v.remove();document.body.appendChild(v)})}
+function attStrip(line){const a=line.att||{},L=a.links||[],P=a.pics||[];
+  if(!L.length&&!P.length)return `<div class="attstrip none"><button type="button" class="linkb" data-attedit="${esc(line.id)}"><svg class="clip" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5l-8.6 8.6a5.5 5.5 0 0 1-7.8-7.8l8.6-8.6a3.7 3.7 0 0 1 5.2 5.2l-8.6 8.6a1.8 1.8 0 0 1-2.6-2.6l7.9-7.9"/></svg> Add a link or picture</button></div>`;
+  return `<div class="attstrip">${L.map(x=>`<a class="lchip" href="${esc(x.u)}" target="_blank" rel="noopener noreferrer">↗ ${esc(x.t||hostOf(x.u))}</a>`).join('')}${P.map(x=>`<button type="button" class="pthumb" data-view="${esc(x.id)}" data-mk="${esc(x.k)}"><img data-pic="${esc(x.id)}" data-mk="${esc(x.k)}" alt="Picture"></button>`).join('')}<button type="button" class="linkb attedit" data-attedit="${esc(line.id)}">Edit</button></div>`}
+function bindAttStrip(line){const sh=$('#sheet');fillThumbs(sh);
+  sh.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>viewPic(b.dataset.mk,b.dataset.view));
+  sh.querySelectorAll('[data-attedit]').forEach(b=>b.onclick=()=>attSheet(b.dataset.attedit,()=>entrySheet('cat',line.id)))}
+function attSheet(id,back){
+  const c=S.plan.cats.find(x=>x.id===id);if(!c)return;const a=c.att||{},L=a.links||[],P=a.pics||[];
+  openSheet(head(`${esc(c.name)} · links &amp; pictures`)+`<p class="muted" style="margin-top:0">Links and pictures for what you plan to buy in ${esc(mName(key))}.</p>
+   <h3>Links</h3>${L.length?`<div class="card">${L.map((x,i)=>`<div class="lrow"><a href="${esc(x.u)}" target="_blank" rel="noopener noreferrer"><b>${esc(x.t||hostOf(x.u))}</b><small>${esc(hostOf(x.u))}</small></a><button type="button" class="x" data-rml="${i}" aria-label="Remove link">×</button></div>`).join('')}</div>`:''}
+   <form id="addL" class="addl"><input id="lUrl" inputmode="url" autocomplete="off" placeholder="Paste a web link" aria-label="Web link"><input id="lName" maxlength="40" placeholder="Name (optional)" aria-label="Link name"><button class="btn sm">Add link</button></form>
+   <h3>Pictures</h3><div class="pgrid">${P.map((x,i)=>`<div class="pcell"><button type="button" class="pthumb big" data-view="${esc(x.id)}" data-mk="${esc(x.k)}"><img data-pic="${esc(x.id)}" data-mk="${esc(x.k)}" alt="Picture"></button><button type="button" class="x rmp" data-rmp="${i}" aria-label="Remove picture">×</button></div>`).join('')}<label class="padd"><input type="file" accept="image/*" multiple id="pIn"><span>+</span><small>Add</small></label></div>
+   ${back?'<button type="button" class="btn line full" id="attBack" style="margin-top:14px">Done</button>':''}`,()=>{
+    const sh=$('#sheet');fillThumbs(sh);
+    sh.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>viewPic(b.dataset.mk,b.dataset.view));
+    const save=fn=>{persist('plan',p=>{const x=p.cats.find(y=>y.id===id);if(!x)return;x.att=x.att||{links:[],pics:[]};x.att.links=x.att.links||[];x.att.pics=x.att.pics||[];fn(x.att)});attSheet(id,back)};
+    $('#addL').onsubmit=e=>{e.preventDefault();const u=normURL($('#lUrl').value);if(!u){toast('That doesn’t look like a web link');return}const t=$('#lName').value.trim().slice(0,40);save(A=>A.links.push(t?{u,t}:{u}))};
+    sh.querySelectorAll('[data-rml]').forEach(b=>b.onclick=()=>save(A=>A.links.splice(+b.dataset.rml,1)));
+    sh.querySelectorAll('[data-rmp]').forEach(b=>b.onclick=()=>save(A=>A.pics.splice(+b.dataset.rmp,1)));
+    $('#pIn').onchange=async e=>{const fs=[...e.target.files];if(!fs.length)return;setSync('Saving picture…');const added=[];
+      for(const f of fs){try{const blob=await shrink(f,mode==='demo'?900:1600),pid='a'+Date.now().toString(36)+rid().slice(0,4);
+        if(mode==='demo')ls.set('mb-demo-img:'+pid,await blobToData(blob));
+        else{const r=await dbx('https://content.dropboxapi.com/2/files/upload',{arg:{path:attPath(key,pid),mode:{'.tag':'overwrite'},autorename:false,mute:true},body:blob});if(!r.ok)throw new Error(r.status===507?'Your Dropbox is full.':'Could not upload the picture.')}
+        imgCache[pid]=URL.createObjectURL(blob);added.push({id:pid,k:key})}catch(err){setSync(err.message||'Could not save the picture',true);break}}
+      if(added.length){setSync(mode==='demo'?'Demo mode · saved on this device':'Saved to Dropbox');save(A=>A.pics.push(...added))}};
+    const bk=$('#attBack');if(bk)bk.onclick=back;
+  });
+}
+document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('[data-att]');if(b&&S&&S.plan)attSheet(b.dataset.att)});
 function entrySheet(t,id){
   const isInc=t==='inc',line=isInc?S.plan.income.find(i=>i.id===id):catOf(id);if(!line)return;
   const C=calc(S.plan,S.txns,S.k),s=isInc?null:C.by[id],tid=isInc?'inc:'+id:id;
@@ -1854,8 +1928,9 @@ function entrySheet(t,id){
   <div class="pfoot"><div id="pview"><span class="muted">${isInc?'Expected':'Planned'} for ${mo}</span> <b>${money(planned)}</b><button type="button" class="pen" id="penBtn" aria-label="Change the ${isInc?'expected':'planned'} amount">✎</button></div>
   <form id="penF" hidden><input id="penIn" inputmode="decimal" value="${planned}" aria-label="${isInc?'Expected':'Planned'} amount"><button class="btn sm" style="min-height:46px">Save</button></form>
   <p class="muted penhint" id="penHint" hidden>Changes ${mo} only. To change every month, use Plan → Every month.</p>
+  ${isInc?'':attStrip(line)}
   ${isInc?'':`<div class="plinks"><button type="button" class="linkb" id="mvBtn">Move money</button>${line.kind!=='save'?`<button type="button" class="linkb" id="clBtn">${s.closed?'Reopen for '+mo:'Done for '+mo}</button>`:''}</div>`}</div>`,()=>{
-    const I=$('#amtIn'),R=$('#res'),sh=$('#sheet');
+    const I=$('#amtIn'),R=$('#res'),sh=$('#sheet');bindAttStrip(line);
     const hasOp=v=>/[÷×−+*\/xX]/.test(v)||/\d\s*-\s*\d/.test(v);
     const show=()=>{const v=I.value.trim(),val=evalExpr(v);R.className='';R.textContent=!v?'':isNaN(val)?(hasOp(v)?'…':''):hasOp(v)?'= '+money(val):''};
     const save=()=>{const raw=I.value.trim(),a=evalExpr(raw);
