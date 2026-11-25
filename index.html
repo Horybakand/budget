@@ -806,6 +806,25 @@ body:not([data-tab=home]):not([data-tab=""]):not([data-tab=lock]) #bname{letter-
 .hbe .n small{display:block;color:var(--mute);font-size:11.5px}
 .hbe b{white-space:nowrap;font-size:13.5px}
 .hb.open .hbt{box-shadow:0 0 0 2px var(--green)}
+
+/* v31: amount-scaled bars get more room; smaller top card on Actual */
+.abars{padding:6px 2px 6px 10px}
+.rw.ab .row.abt{grid-template-columns:minmax(0,1fr) 60px;gap:6px}
+.ab .hbt{height:26px;border-radius:8px}
+.ab .hbt em{border-radius:8px}
+.ab .hbl{line-height:26px;font-size:12.5px}
+.ab .hbl.tagl{top:3px;line-height:20px}
+.aba b{font-size:13.5px}
+.aba small{font-size:10.5px}
+.ab .ck{width:34px;height:34px}
+.ab .ck svg{width:22px;height:22px}
+.ck0{width:34px}
+body[data-tab=actual] .hero{padding:12px 16px 10px;border-radius:20px}
+body[data-tab=actual] .hero small{font-size:13px}
+body[data-tab=actual] .hero .big{font-size:clamp(28px,8vw,34px);margin:0 0 2px;line-height:1.1}
+body[data-tab=actual] .hero p{font-size:13.5px;margin:0}
+body[data-tab=actual] .hero .hbar{margin-top:4px}
+body[data-tab=actual] .hero .hfoot{font-size:12.5px;margin-top:2px}
 </style>
 </head>
 <body>
@@ -836,7 +855,7 @@ body:not([data-tab=home]):not([data-tab=""]):not([data-tab=lock]) #bname{letter-
    (Or leave it empty and type it into the setup screen on each device.)
    ====================================================================== */
 const APP_KEY = '';
-const APP_VERSION = '30 · Nov 25, 2026';
+const APP_VERSION = '31 · Nov 25, 2026';
 
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -1324,9 +1343,9 @@ function incRowHTML(i,C){
 }
 
 function barVal(c,C){const s=C.by[c.id];return c.kind==='save'?Math.max(0,s.avail):s.spent}
-function abBar(v,p,cls,name){const sc=Math.max(v,p,0.01)/0.82,blue=Math.min(v,p>0?p:v)/sc*100,f=v/sc*100,pl=p/sc*100,over=p>0&&v>p+0.004&&cls!=='sv';
+function abBar(v,p,cls,name,SC){const sc=Math.max(SC||0,v,p,0.01),blue=Math.min(v,p>0?p:v)/sc*100,f=v/sc*100,pl=p/sc*100,over=p>0&&v>p+0.004&&cls!=='sv';
   return `<div class="hbt"><em class="${cls}" style="width:${blue}%"></em>${over?`<em class="ov" style="left:${pl}%;width:${f-pl}%"></em>`:''}${p>0?`<i style="left:${pl}%"></i>`:''}<span class="hbl" data-fill="${blue}">${esc(name)}</span></div>`}
-function catBar(c,C){
+function catBar(c,C,SC){
   const s=C.by[c.id],save=c.kind==='save',v=barVal(c,C);
   let sub;
   if(s.st==='closed')sub=s.short?`<span class="t-over">part paid</span>`:'done';
@@ -1335,12 +1354,12 @@ function catBar(c,C){
   else if(c.kind==='bill')sub=s.st==='paid'?'<span class="t-ok">paid ✓</span>':`${money(Math.max(0,s.avail),0)} to pay`;
   else sub=`${money(s.avail,0)} left`;
   const ck=save?'<span class="ck0"></span>':`<button class="ck${s.closed?' on':''}" data-done="${esc(c.id)}" aria-pressed="${s.closed}" aria-label="${s.closed?'Reopen':'Mark done for the month'}: ${esc(c.name)}"><svg viewBox="0 0 24 24" width="24" height="24"><circle cx="12" cy="12" r="10.5"/><path d="M7.5 12.4l3 3 6-6.4"/></svg></button>`;
-  return `<div class="rw ab"><button class="row abt" data-cat="${esc(c.id)}">${abBar(v,s.budget,s.st==='closed'?'cl':save?'sv':'',c.name)}<span class="aba"><b>${money(v,0)}</b><small>${sub}</small></span></button>${ck}</div>`;
+  return `<div class="rw ab"><button class="row abt" data-cat="${esc(c.id)}">${abBar(v,s.budget,s.st==='closed'?'cl':save?'sv':'',c.name,SC)}<span class="aba"><b>${money(v,0)}</b><small>${sub}</small></span></button>${ck}</div>`;
 }
-function incBar(i,C){
+function incBar(i,C,SC){
   const v=C.inc[i.id]||{exp:i.amt,got:0},done=v.exp>0&&v.got>=v.exp-0.004,extra=v.got-v.exp;
   const sub=extra>0.004&&v.exp>0?`+${money(extra,0)} extra`:done?'<span class="t-ok">all in ✓</span>':v.exp>0?`${money(Math.max(0,v.exp-v.got),0)} to come`:'received';
-  return `<div class="rw ab"><button class="row abt" data-incopen="${esc(i.id)}">${abBar(v.got,v.exp,'',i.name)}<span class="aba"><b>${money(v.got,0)}</b><small>${sub}</small></span></button><span class="ck0"></span></div>`;
+  return `<div class="rw ab"><button class="row abt" data-incopen="${esc(i.id)}">${abBar(v.got,v.exp,'',i.name,SC)}<span class="aba"><b>${money(v.got,0)}</b><small>${sub}</small></span></button><span class="ck0"></span></div>`;
 }
 function donorFor(id,C,need){
   if(C.rta>=need)return {id:'rta',name:'Ready to assign',spare:C.rta};
@@ -1355,18 +1374,20 @@ function actualHTML(C){
   const perDay=C.daysLeft>0?C.flexAvail/C.daysLeft:0;
   let h=`<div class="hero"><small>Left to spend in ${mo}</small><div class="big">${money(left,0)}</div>
   <p>${key===todayKey?`About <b>${money(perDay,0)} a day</b> for everyday spending`:key<todayKey?'This month is finished':'This month hasn’t started'}</p>
-  <div class="hbar">${barHTML(sp,pl,'#fff','Planned')}</div><p class="hfoot">Spent <b>${money(sp,0)}</b> so far, bills and everyday spending together</p></div>`;
+  <div class="hbar">${barHTML(sp,pl,'#fff','Planned')}</div><p class="hfoot">Spent <b>${money(sp,0)}</b> so far</p></div>`;
   const src=p.income.filter(i=>i.amt>0||(C.inc[i.id]&&C.inc[i.id].got>0));
-  h+=`<h2 class="big2">Income <small>${money(C.received,0)} <i>of</i> ${money(C.expected,0)}</small></h2><div class="card abars">${src.map(i=>incBar(i,C)).join('')||'<p class="empty">No income planned yet.</p>'}<button type="button" class="linkb abadd" id="addIncA">+ Add income</button></div>`;
+  const incSC=Math.max(1,...src.map(i=>{const v=C.inc[i.id]||{exp:i.amt,got:0};return Math.max(v.got,v.exp)}));
+  h+=`<h2 class="big2">Income <small>${money(C.received,0)} <i>of</i> ${money(C.expected,0)}</small></h2><div class="card abars">${src.map(i=>incBar(i,C,incSC)).join('')||'<p class="empty">No income planned yet.</p>'}<button type="button" class="linkb abadd" id="addIncA">+ Add income</button></div>`;
   const vis=p.cats.filter(c=>!isUnused(c,C)),hid=p.cats.filter(c=>isUnused(c,C));
   const by=(ls.get('mb-asort')||'big');
+  const expSC=Math.max(1,...vis.map(c=>Math.max(barVal(c,C),C.by[c.id].budget)));
   const ord=cs=>[...cs].sort((a,b)=>(C.by[a.id].closed-C.by[b.id].closed)||(barVal(b,C)-barVal(a,C))||(b.planned-a.planned));
   h+=`<h2 class="big2">Expenses <small>${money(sp,0)} <i>of</i> ${money(pl,0)}</small></h2>
   <div class="seg mini asort"><button type="button" data-asort="big" aria-pressed="${by==='big'}">Biggest first</button><button type="button" data-asort="grp" aria-pressed="${by==='grp'}">By group</button></div>`;
-  if(by==='grp')h+=groupsOf(p.cats).map(l=>{const cs=ord(vis.filter(c=>gName(c)===l));const gt=groupTotal(p.cats.filter(c=>gName(c)===l),C);return cs.length?`<div class="card abars gcard"><div class="ghd in"><span>${esc(l)}</span><span>${money(gt.val,0)} <i>of</i> ${money(gt.bud,0)}</span></div>${cs.map(c=>catBar(c,C)).join('')}</div>`:''}).join('');
-  else h+=`<div class="card abars">${ord(vis).map(c=>catBar(c,C)).join('')}</div>`;
+  if(by==='grp')h+=groupsOf(p.cats).map(l=>{const cs=ord(vis.filter(c=>gName(c)===l));const gt=groupTotal(p.cats.filter(c=>gName(c)===l),C);return cs.length?`<div class="card abars gcard"><div class="ghd in"><span>${esc(l)}</span><span>${money(gt.val,0)} <i>of</i> ${money(gt.bud,0)}</span></div>${cs.map(c=>catBar(c,C,expSC)).join('')}</div>`:''}).join('');
+  else h+=`<div class="card abars">${ord(vis).map(c=>catBar(c,C,expSC)).join('')}</div>`;
   if(hid.length)h+=`<details class="others"><summary>${hid.length} more categor${hid.length>1?'ies':'y'} with nothing planned</summary><div class="card">${hid.map(c=>`<button class="row" data-cat="${esc(c.id)}"><span class="nm"><span class="dot" style="background:${colOf(c.id)}"></span>${esc(c.name)}</span><span class="av" style="font-size:13px;font-weight:600;color:var(--mute)">${esc(gName(c))}</span></button>`).join('')}</div></details>`;
-  h+=`<p class="muted" style="margin:12px 4px">Tap a bar to add or see entries. Pink mark: plan · gold: past the plan · lavender: savings · gray: done.</p>`;
+  h+=`<p class="muted" style="margin:12px 4px">Bar length shows the amount, so bigger spending means a longer bar. Tap a bar to add or see entries. Pink mark: plan · gold: past the plan · lavender: savings · gray: done.</p>`;
   return h;
 }
 function groupTotal(cs,C){let val=0,bud=0;for(const c of cs){const s=C.by[c.id];val+=c.kind==='save'?Math.max(0,s.avail):s.spent;bud+=s.budget}return {val,bud,save:cs.length&&cs.every(c=>c.kind==='save')}}
