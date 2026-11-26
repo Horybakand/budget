@@ -859,12 +859,72 @@ body[data-tab=actual] .hero .hfoot{font-size:12.5px;margin-top:2px}
 .picview{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.88);display:grid;place-items:center;padding:20px}
 .picview img{max-width:100%;max-height:100%;border-radius:10px}
 .picview button{position:absolute;top:calc(12px + env(safe-area-inset-top));right:14px;width:40px;height:40px;border-radius:50%;border:0;background:rgba(255,255,255,.18);color:#fff;font-size:24px}
+
+/* v33: taskbar, find in top bar, eye toggle, savings moved */
+body.in .brand{display:none!important}
+body.in .bar0 .wrap{justify-content:center;position:relative}
+.findtop{position:absolute;right:max(8px,env(safe-area-inset-right));top:50%;transform:translateY(-50%);width:42px;height:42px;border-radius:13px;border:1px solid var(--line);background:var(--card);color:var(--greenD);display:grid;place-items:center;padding:0}
+.findtop[hidden]{display:none}
+.tbar{position:fixed;left:0;right:0;bottom:0;z-index:30;display:grid;grid-template-columns:1fr 1fr 1fr;align-items:end;padding:6px max(12px,env(safe-area-inset-left)) calc(6px + env(safe-area-inset-bottom));background:color-mix(in srgb,var(--card) 94%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line)}
+.tbar[hidden]{display:none}
+.tbar button{border:0;background:none;display:flex;flex-direction:column;align-items:center;gap:2px;color:var(--mute);font-size:11.5px;font-weight:700;padding:4px 0;min-height:0}
+.tbar button .ti{width:44px;height:30px;border-radius:15px;display:grid;place-items:center}
+.tbar button .ti svg{width:22px;height:22px}
+.tbar button.on{color:var(--greenD)}
+.tbar button.on .ti{background:var(--soft)}
+.tbar .tbhome .ti{width:54px;height:54px;border-radius:50%;margin-top:-22px;color:#fff;background:linear-gradient(140deg,#4cc3ff,#1683dc);box-shadow:0 8px 20px -8px rgba(22,131,220,.85),0 0 0 4px var(--card)}
+.tbar .tbhome .ti svg{width:26px;height:26px}
+.tbar .tbhome.on .ti{background:linear-gradient(140deg,#4cc3ff,#1683dc)}
+.tbar button.pressed .ti{filter:brightness(1.12);transform:scale(.94)}
+body.in{padding-bottom:calc(96px + env(safe-area-inset-bottom))!important}
+body.in .toast{bottom:calc(84px + env(safe-area-inset-bottom))!important}
+.pl.weye{grid-template-columns:minmax(0,1fr) 5.8em 34px 40px}
+.pl.weye.wclip{grid-template-columns:minmax(0,1fr) 5.4em 30px 34px 40px}
+.eyeb{width:34px;height:34px;border-radius:10px;border:0;background:none;color:var(--mute);display:grid;place-items:center;padding:0;opacity:.6}
+.eyeb.on{opacity:1;color:var(--greenD);background:var(--soft)}
+.hero .big.neg{color:#ffe08a}
+
+/* v34: add up */
+.asrow{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 0 10px}
+.asrow .asort{margin:0}
+.addup{border:1px solid var(--line);background:var(--card);color:var(--greenD);border-radius:12px;padding:0 12px;min-height:36px;font-weight:800;font-size:13.5px;display:flex;align-items:center;gap:5px;white-space:nowrap}
+.addup b{font-size:16px}
+.addup.on{background:var(--green);color:#fff;border-color:var(--green)}
+body.summing .rw.ab{position:relative;cursor:pointer;padding-left:30px;transition:opacity .15s}
+body.summing .rw.ab .ck{pointer-events:none}
+body.summing .rw.ab.inel{opacity:.35}
+body.summing .rw.ab.elig::before{content:'';position:absolute;left:2px;top:50%;width:20px;height:20px;margin-top:-10px;border-radius:6px;border:2px solid var(--line);background:var(--card)}
+body.summing .rw.ab.elig.picked::before{background:var(--green) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4 8-8.5' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat;border-color:var(--green)}
+body.summing .rw.ab.elig.picked{background:var(--soft);border-radius:10px}
+body.summing .others,body.summing #addIncA{opacity:.4;pointer-events:none}
+.sumbar{position:fixed;left:8px;right:8px;z-index:29;bottom:calc(76px + env(safe-area-inset-bottom));max-width:560px;margin:0 auto;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:10px 14px 12px;box-shadow:0 14px 36px -14px rgba(10,40,80,.45)}
+.sbtop{display:flex;justify-content:space-between;align-items:center;font-size:13.5px;color:var(--mute)}
+.sbtop b{color:var(--ink)}
+.sbtop .linkb{padding:2px 4px!important;min-height:0!important;font-weight:800}
+.sbnums{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:6px 0 8px}
+.sbnums small{display:block;color:var(--mute);font-size:11.5px;font-weight:700}
+.sbnums b{font-size:17px}
+.sbchips{display:flex;gap:6px;flex-wrap:wrap}
+.sbchips button{border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:999px;padding:5px 12px;font-weight:700;font-size:12.5px;min-height:0}
+body.summing{padding-bottom:calc(250px + env(safe-area-inset-bottom))!important}
+
+/* v35: add-up panel */
+.sbtypes{display:flex;gap:4px;margin:8px 0 10px;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:3px}
+.sbtypes button{flex:1;border:0;background:none;border-radius:9px;padding:7px 0;font-weight:700;font-size:12.5px;color:var(--mute);min-height:0}
+.sbtypes button[aria-checked=true]{background:var(--green);color:#fff}
+.sbtotal{display:flex;flex-direction:column;align-items:flex-start}
+.sbtotal b{font-size:26px;line-height:1.1}
+.sbtotal span{color:var(--mute);font-size:12.5px;font-weight:600}
+.sbtotal .linkb{padding:0 0 0 6px!important;min-height:0!important;font-size:12.5px}
+body.summing{padding-bottom:calc(240px + env(safe-area-inset-bottom))!important}
+body.summing .toast{bottom:calc(250px + env(safe-area-inset-bottom))!important}
 </style>
 </head>
 <body>
 <header class="bar0"><div class="wrap">
   <div class="brand"><button class="homeb" id="homeBtn" aria-label="Home"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 11L12 4l8.5 7"/><path d="M6 9.5V20h4.5v-5.5h3V20H18V9.5"/></svg></button><span class="logo"><svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="5.5" fill="none" stroke="#fff" stroke-width="2.6" stroke-dasharray="24 11" transform="rotate(-90 8 8)"/></svg></span><span id="bname">Chikez Budget</span><span class="ver" id="verTag"></span></div>
   <div class="mnav" id="mnav"><button id="prev" aria-label="Previous month">‹</button><button id="mlabel" aria-label="Choose month">…</button><button id="next" aria-label="Next month">›</button></div>
+  <button class="findtop" id="findTop" aria-label="Find a line" hidden><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L20 20"/></svg></button>
 </div></header>
 <main class="wrap">
   <div class="sync" id="sync"></div>
@@ -878,6 +938,7 @@ body[data-tab=actual] .hero .hfoot{font-size:12.5px;margin-top:2px}
   <button data-t="defaults"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Defaults<span class="badge" id="dfBadge" hidden></span></button>
 </div></nav>
 <div class="veil" id="veil"><div class="sheet" id="sheet" role="dialog" aria-modal="true"></div></div>
+<nav class="tbar" id="tbar" hidden><button type="button" data-tb="plan"><span class="ti"></span><span>Plan</span></button><button type="button" class="tbhome" data-tb="home" aria-label="Home"><span class="ti"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 11L12 4l8.5 7"/><path d="M6 9.5V20h4.5v-5.5h3V20H18V9.5"/></svg></span><span>Home</span></button><button type="button" data-tb="actual"><span class="ti"></span><span>Actual</span></button></nav>
 <button class="dockhome" id="dockHome" aria-label="Home" hidden><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 11L12 4l8.5 7"/><path d="M6 9.5V20h4.5v-5.5h3V20H18V9.5"/></svg><span>Home</span></button>
 <button class="findb" id="findBtn" aria-label="Find a line" hidden><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L20 20"/></svg><span>Find</span></button>
 <div class="toast" id="toast"><span id="tmsg"></span><button id="tundo">Undo</button></div>
@@ -889,7 +950,7 @@ body[data-tab=actual] .hero .hfoot{font-size:12.5px;margin-top:2px}
    (Or leave it empty and type it into the setup screen on each device.)
    ====================================================================== */
 const APP_KEY = '';
-const APP_VERSION = '32 · Nov 25, 2026';
+const APP_VERSION = '35 · Nov 26, 2026';
 
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -1280,7 +1341,7 @@ function pageHead(){
 }
 function render(){
   const signed=mode!=='setup';
-  $('#tabs').hidden=true;$('#findBtn').hidden=$('#dockHome').hidden=!signed||tab==='home'||!unlocked;$('#mnav').style.visibility=signed?'visible':'hidden';
+  $('#tabs').hidden=true;$('#findBtn').hidden=$('#dockHome').hidden=true;$('#findTop').hidden=!signed||tab==='home'||!unlocked;$('#tbar').hidden=!signed||!unlocked||tab==='home';document.body.classList.toggle('in',!!(signed&&unlocked));document.querySelectorAll('#tbar [data-tb]').forEach(b=>b.classList.toggle('on',b.dataset.tb===tab));$('#mnav').style.visibility=signed?'visible':'hidden';
   if(tab==='week')tab='actual';if(tab==='charts')tab='summary';
   document.body.classList.remove('planmode');document.body.dataset.tab=signed?tab:'';
   $('#bname').innerHTML='Chikez Budget'+(mode==='demo'?'<span class="demo">Demo</span>':'');
@@ -1288,7 +1349,7 @@ function render(){
   for(const b of document.querySelectorAll('#tabs button'))b.setAttribute('aria-current',b.dataset.t===tab);
   const V=$('#view');
   if(!signed){V.innerHTML=setupHTML();bindSetup();return}
-  if(!unlocked){document.body.dataset.tab='lock';$('#findBtn').hidden=true;$('#mnav').style.visibility='hidden';$('#dockHome').hidden=true;V.innerHTML=pinHTML();bindPin();return}
+  if(!unlocked){document.body.dataset.tab='lock';$('#findBtn').hidden=true;$('#mnav').style.visibility='hidden';$('#dockHome').hidden=true;$('#tbar').hidden=true;$('#findTop').hidden=true;document.body.classList.remove('in');V.innerHTML=pinHTML();bindPin();return}
   if(tab==='home'){V.innerHTML=homeHTML();bindHome();return}
   if(!S){V.innerHTML='<p class="empty">Loading your budget…</p>';return}
   if(!S.plan&&tab==='receipts'&&!S.failed){V.innerHTML=pageHead()+receiptsHTML();bind();receiptsView();return}
@@ -1299,7 +1360,7 @@ function render(){
   planScope='month';if(tab==='defaults'&&!(TPL&&TPL.plan))tab='plan';
   const C=calc(S.plan,S.txns,S.k);
   V.innerHTML=pageHead()+(tab==='defaults'?planHTML(C,true):tab==='plan'?planHTML(C):tab==='summary'?summaryHTML(C):tab==='receipts'?receiptsHTML():actualHTML(C));
-  bind();badge2();if(tab==='actual')hbPlace();
+  bind();badge2();if(tab==='actual')hbPlace();if(tab!=='actual')addMode=false;if(addMode&&tab==='actual')markAdd(false);else sumPanel();
   if(tab==='summary')reportsView()
   if(tab==='receipts')receiptsView();
 }
@@ -1383,12 +1444,12 @@ function catBar(c,C,SC){
   const s=C.by[c.id],save=c.kind==='save',v=barVal(c,C),hasAtt=attCount(c)>0;
   let sub;
   if(s.st==='closed')sub=s.short?`<span class="t-over">part paid</span>`:'done';
-  else if(save)sub='saved';
+  else if(save)sub=c.moved?'<span class="t-ok">moved ✓</span>':'to move';
   else if(s.st==='over')sub=`<span class="t-over">over ${money(-s.rawAvail,0)}</span>`;
   else if(c.kind==='bill')sub=s.st==='paid'?'<span class="t-ok">paid ✓</span>':`${money(Math.max(0,s.avail),0)} to pay`;
   else sub=`${money(s.avail,0)} left`;
-  const ck=save?'<span class="ck0"></span>':`<button class="ck${s.closed?' on':''}" data-done="${esc(c.id)}" aria-pressed="${s.closed}" aria-label="${s.closed?'Reopen':'Mark done for the month'}: ${esc(c.name)}"><svg viewBox="0 0 24 24" width="24" height="24"><circle cx="12" cy="12" r="10.5"/><path d="M7.5 12.4l3 3 6-6.4"/></svg></button>`;
-  return `<div class="rw ab"><button class="row abt" data-cat="${esc(c.id)}">${abBar(v,s.budget,s.st==='closed'?'cl':save?'sv':'',c.name,SC,hasAtt)}<span class="aba"><b>${money(v,0)}</b><small>${sub}</small></span></button>${ck}</div>`;
+  const ck=save?`<button class="ck${c.moved?' on':''}" data-moved="${esc(c.id)}" aria-pressed="${!!c.moved}" aria-label="${c.moved?'Not moved yet':'Mark as moved to savings'}: ${esc(c.name)}"><svg viewBox="0 0 24 24" width="24" height="24"><circle cx="12" cy="12" r="10.5"/><path d="M7.5 12.4l3 3 6-6.4"/></svg></button>`:`<button class="ck${s.closed?' on':''}" data-done="${esc(c.id)}" aria-pressed="${s.closed}" aria-label="${s.closed?'Reopen':'Mark done for the month'}: ${esc(c.name)}"><svg viewBox="0 0 24 24" width="24" height="24"><circle cx="12" cy="12" r="10.5"/><path d="M7.5 12.4l3 3 6-6.4"/></svg></button>`;
+  return `<div class="rw ab${addMode&&sumSel.has(c.id)?' picked':''}" data-sid="${esc(c.id)}"><button class="row abt" data-cat="${esc(c.id)}">${abBar(v,s.budget,s.st==='closed'?'cl':save?'sv':'',c.name,SC,hasAtt)}<span class="aba"><b>${money(v,0)}</b><small>${sub}</small></span></button>${ck}</div>`;
 }
 function incBar(i,C,SC){
   const v=C.inc[i.id]||{exp:i.amt,got:0},done=v.exp>0&&v.got>=v.exp-0.004,extra=v.got-v.exp;
@@ -1404,11 +1465,10 @@ function donorFor(id,C,need){
 function actualHTML(C){
   const p=S.plan,mo=esc(mName(key,'s'));
   if(C.income===0&&C.planned===0)return `<div class="hero"><small>Let’s set up ${mo}</small><div class="big" style="font-size:36px">Start your plan</div><p>Add your income and what you plan to spend in the Plan tab. Your every-month plan repeats automatically.</p><div class="pill"><span>Your categories are ready</span><button data-go="plan">Open Plan</button></div></div>`;
-  let left=0,sp=0,pl=0;for(const c of p.cats){if(c.kind==='save')continue;const s=C.by[c.id];left+=s.avail;sp+=s.spent;pl+=s.eff}
-  const perDay=C.daysLeft>0?C.flexAvail/C.daysLeft:0;
-  let h=`<div class="hero"><small>Left to spend in ${mo}</small><div class="big">${money(left,0)}</div>
-  <p>${key===todayKey?`About <b>${money(perDay,0)} a day</b> for everyday spending`:key<todayKey?'This month is finished':'This month hasn’t started'}</p>
-  <div class="hbar">${barHTML(sp,pl,'#fff','Planned')}</div><p class="hfoot">Spent <b>${money(sp,0)}</b> so far</p></div>`;
+  let sp=0,moved=0,pl=0;for(const c of p.cats){if(c.kind==='save'){if(c.moved)moved+=+c.planned||0;continue}sp+=C.by[c.id].spent;pl+=C.by[c.id].eff}
+  const rec=C.received,left=rec-sp-moved;
+  let h=`<div class="hero"><small>Left to spend in ${mo}</small><div class="big${left<0?' neg':''}">${left<0?'−':''}${money(Math.abs(left),0)}</div>
+  <div class="hbar">${barHTML(sp+moved,rec,'#fff','Received')}</div><p class="hfoot">Spent <b>${money(sp,0)}</b>${moved>0?` · moved to savings <b>${money(moved,0)}</b>`:''}</p></div>`;
   const src=p.income.filter(i=>i.amt>0||(C.inc[i.id]&&C.inc[i.id].got>0));
   const incSC=Math.max(1,...src.map(i=>{const v=C.inc[i.id]||{exp:i.amt,got:0};return Math.max(v.got,v.exp)}));
   h+=`<h2 class="big2">Income <small>${money(C.received,0)} <i>of</i> ${money(C.expected,0)}</small></h2><div class="card abars">${src.map(i=>incBar(i,C,incSC)).join('')||'<p class="empty">No income planned yet.</p>'}<button type="button" class="linkb abadd" id="addIncA">+ Add income</button></div>`;
@@ -1417,7 +1477,7 @@ function actualHTML(C){
   const expSC=Math.max(1,...vis.map(c=>Math.max(barVal(c,C),C.by[c.id].budget)));
   const ord=cs=>[...cs].sort((a,b)=>(C.by[a.id].closed-C.by[b.id].closed)||(barVal(b,C)-barVal(a,C))||(b.planned-a.planned));
   h+=`<h2 class="big2">Expenses <small>${money(sp,0)} <i>of</i> ${money(pl,0)}</small></h2>
-  <div class="seg mini asort"><button type="button" data-asort="big" aria-pressed="${by==='big'}">Biggest first</button><button type="button" data-asort="grp" aria-pressed="${by==='grp'}">By group</button></div>`;
+  <div class="asrow"><div class="seg mini asort"><button type="button" data-asort="big" aria-pressed="${by==='big'}">Biggest first</button><button type="button" data-asort="grp" aria-pressed="${by==='grp'}">By group</button></div><button type="button" class="addup${addMode?' on':''}" id="addUp"><b>Σ</b> Add up</button></div>`;
   if(by==='grp')h+=groupsOf(p.cats).map(l=>{const cs=ord(vis.filter(c=>gName(c)===l));const gt=groupTotal(p.cats.filter(c=>gName(c)===l),C);return cs.length?`<div class="card abars gcard"><div class="ghd in"><span>${esc(l)}</span><span>${money(gt.val,0)} <i>of</i> ${money(gt.bud,0)}</span></div>${cs.map(c=>catBar(c,C,expSC)).join('')}</div>`:''}).join('');
   else h+=`<div class="card abars">${ord(vis).map(c=>catBar(c,C,expSC)).join('')}</div>`;
   if(hid.length)h+=`<details class="others"><summary>${hid.length} more categor${hid.length>1?'ies':'y'} with nothing planned</summary><div class="card">${hid.map(c=>`<button class="row" data-cat="${esc(c.id)}"><span class="nm"><span class="dot" style="background:${colOf(c.id)}"></span>${esc(c.name)}</span><span class="av" style="font-size:13px;font-weight:600;color:var(--mute)">${esc(gName(c))}</span></button>`).join('')}</div></details>`;
@@ -1451,7 +1511,7 @@ function weekData(C){
   return {W,curW};
 }
 /* ---- charts ---- */
-let sumMode='month',repSel=null;const repCache={};
+let sumModeOld='month',repSel=null;const repCache={};
 function summaryHTML(C){return `<div id="repBox"></div>`}
 const yr=k=>k.slice(0,4);
 function presetRange(p,ks){const first=ks[0]||todayKey,last=ks[ks.length-1]||todayKey,y=+todayKey.slice(0,4);
@@ -1648,6 +1708,9 @@ const ro=new ResizeObserver(()=>{clearTimeout(ro.t);ro.t=setTimeout(()=>{if(tab=
 ro.observe($('main'));
 
 /* ---- plan ---- */
+
+const EYE_ON='<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>';
+const EYE_OFF='<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.9 17.9A10.4 10.4 0 0 1 12 19c-6.4 0-10-7-10-7a18.6 18.6 0 0 1 5.1-5.9M9.9 5.2A9.8 9.8 0 0 1 12 5c6.4 0 10 7 10 7a18.7 18.7 0 0 1-2.2 3.2"/><path d="M14.1 14.2a3 3 0 0 1-4.2-4.2"/><path d="M2 2l20 20"/></svg>';
 function planLine(t,l,def,GS,locked){
   const k=t+':'+l.id,amt=t==='inc'?l.amt:l.planned,mo=esc(mName(key,'s'));
   const d=def?null:tplLine(t,l.id),dAmt=d?(t==='inc'?d.amt:d.planned):null;
@@ -1658,7 +1721,8 @@ function planLine(t,l,def,GS,locked){
     :`<select aria-label="Type" data-ln="${k}" data-f="kind">${KINDS.map(([v,x])=>`<option value="${v}" ${v===l.kind?'selected':''}>${x}</option>`).join('')}</select>${GS.length>1?`<select aria-label="Group" data-ln="${k}" data-f="group">${GS.map(g=>`<option ${g===gName(l)?'selected':''}>${esc(g)}</option>`).join('')}</select>`:''}${def?'':`<button type="button" class="btn line sm" data-att="${esc(l.id)}">Links &amp; pictures</button>`}<label><input type="checkbox" data-ln="${k}" data-f="roll" ${l.roll?'checked':''}> Roll leftover to next month</label>${!def&&l.carry?`<span>+${money(l.carry)} carried in</span>`:''}<button type="button" class="btn line sm rmb" data-rm="${k}">Remove</button>`;
   const dis=locked?'disabled':'';
   const nAtt=attCount(l),clip=!def&&t!=='inc'&&nAtt?`<button type="button" class="attb${nAtt?' has':''}" data-att="${esc(l.id)}" aria-label="Links and pictures for ${esc(l.name)}"><svg class="clip" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5l-8.6 8.6a5.5 5.5 0 0 1-7.8-7.8l8.6-8.6a3.7 3.7 0 0 1 5.2 5.2l-8.6 8.6a1.8 1.8 0 0 1-2.6-2.6l7.9-7.9"/></svg>${nAtt?`<span>${nAtt}</span>`:''}</button>`:'';
-  return `<div class="pl${clip?' wclip':''}"><input aria-label="Name" data-ln="${k}" data-f="name" value="${esc(l.name)}" ${dis}><input aria-label="Planned amount" inputmode="decimal" data-ln="${k}" data-f="amt" value="${amt||''}" placeholder="0" ${dis}>${clip}${locked?'<span></span>':`<button type="button" class="x" data-more="${k}" aria-label="More options" aria-expanded="${openOpts.has(k)}">⋯</button>`}${tag?`<div class="tagrow">${tag}</div>`:''}<div class="opt" ${openOpts.has(k)?'':'hidden'}>${opts}</div></div>`;
+  const eye=t!=='inc'&&!(+amt)?`<button type="button" class="eyeb${l.show?' on':''}" data-show="${k}" aria-pressed="${!!l.show}" aria-label="${l.show?'Shown in Actual':'Hidden in Actual'}: ${esc(l.name)}" title="${l.show?'Shown in Actual':'Show in Actual'}" ${dis}>${l.show?EYE_ON:EYE_OFF}</button>`:'';
+  return `<div class="pl${clip?' wclip':''}${eye?' weye':''}"><input aria-label="Name" data-ln="${k}" data-f="name" value="${esc(l.name)}" ${dis}><input aria-label="Planned amount" inputmode="decimal" data-ln="${k}" data-f="amt" value="${amt||''}" placeholder="0" ${dis}>${clip}${eye}${locked?'<span></span>':`<button type="button" class="x" data-more="${k}" aria-label="More options" aria-expanded="${openOpts.has(k)}">⋯</button>`}${tag?`<div class="tagrow">${tag}</div>`:''}<div class="opt" ${openOpts.has(k)?'':'hidden'}>${opts}</div></div>`;
 }
 function planHTML(C,def){
   def=!!def;const p=def?TPL.plan:S.plan,mo=esc(mName(key,'s')),lk=def?lockState():null,locked=def&&lk.st!=='open';
@@ -1860,7 +1924,7 @@ function evalExpr(src){
   function add(){let v=mul();while(peek()==='+'||peek()==='-'){const o=s[i++];const r=mul();v=o==='+'?v+r:v-r}return v}
   const v=add();return i===s.length&&isFinite(v)?Math.round(v*100)/100:NaN;
 }
-const isUnused=(c,C)=>c.planned===0&&!(C.by[c.id].carry>0)&&C.by[c.id].spent===0;
+const isUnused=(c,C)=>!c.show&&c.planned===0&&!(C.by[c.id].carry>0)&&C.by[c.id].spent===0;
 function incomePick(){
   const C=calc(S.plan,S.txns,S.k),shown=new Set(S.plan.income.filter(i=>i.amt>0||(C.inc[i.id]&&C.inc[i.id].got>0)).map(i=>i.id));
   const rest=S.plan.income.filter(i=>!shown.has(i.id));
@@ -1911,6 +1975,45 @@ function attSheet(id,back){
   });
 }
 document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('[data-att]');if(b&&S&&S.plan)attSheet(b.dataset.att)});
+
+/* ---- add up selected expense lines ---- */
+let addMode=false,sumSel=new Set(),addType='spent';
+const ADD_TYPES=[['spent','Spent'],['left','Left'],['planned','Planned'],['topay','To pay'],['done','Done']];
+function addVal(id,C){const c=catOf(id),st=C.by[id];if(!c||!st)return null;const save=c.kind==='save';
+  switch(addType){
+    case 'spent':return st.spent>0.004?st.spent:null;
+    case 'left':return !save&&!st.closed&&st.budget-st.spent>0.004?st.budget-st.spent:null;
+    case 'planned':return st.budget>0.004?st.budget:null;
+    case 'topay':return c.kind==='bill'&&!st.closed&&st.st!=='paid'&&st.budget-st.spent>0.004?st.budget-st.spent:null;
+    case 'done':return save?(c.moved?(+c.planned||0):null):(st.closed?st.spent:null);
+  }return null}
+function markAdd(reset){const C=calc(S.plan,S.txns,S.k);const rows=[...document.querySelectorAll('.rw.ab[data-sid]')];
+  if(reset)sumSel=new Set();
+  rows.forEach(r=>{const v=addVal(r.dataset.sid,C),ok=v!==null;r.classList.toggle('elig',ok);r.classList.toggle('inel',!ok);if(reset&&ok)sumSel.add(r.dataset.sid);if(!ok)sumSel.delete(r.dataset.sid);r.classList.toggle('picked',sumSel.has(r.dataset.sid))});
+  sumPanel()}
+function sumPanel(){let el=$('#sumBar');
+  if(!addMode||tab!=='actual'||!S||!S.plan){if(el)el.remove();document.body.classList.remove('summing');return}
+  document.body.classList.add('summing');
+  if(!el){el=document.createElement('div');el.id='sumBar';el.className='sumbar';document.body.appendChild(el)}
+  const C=calc(S.plan,S.txns,S.k);let tot=0,n=0;for(const id of sumSel){const v=addVal(id,C);if(v!==null){tot+=v;n++}}
+  const elig=document.querySelectorAll('.rw.ab.elig').length,lbl=ADD_TYPES.find(x=>x[0]===addType)[1];
+  el.innerHTML=`<div class="sbtop"><span>Add up</span><button type="button" class="linkb" data-sb="done">Done</button></div>
+   <div class="sbtypes" role="radiogroup" aria-label="What to add up">${ADD_TYPES.map(([k,l])=>`<button type="button" role="radio" aria-checked="${k===addType}" data-at="${k}">${l}</button>`).join('')}</div>
+   <div class="sbtotal"><b>${money(tot)}</b><span>${elig?`${lbl.toLowerCase()} · ${n} of ${elig} line${elig>1?'s':''} <button type="button" class="linkb" data-sb="${n===elig?'none':'all'}">${n===elig?'Uncheck all':'Check all'}</button>`:`No lines to add up for “${lbl}”`}</span></div>`;
+  el.querySelectorAll('[data-at]').forEach(b=>b.onclick=()=>{addType=b.dataset.at;markAdd(true)});
+  el.querySelectorAll('[data-sb]').forEach(b=>b.onclick=()=>{const a=b.dataset.sb;
+    if(a==='done'){addMode=false;sumSel=new Set();render();return}
+    if(a==='all')document.querySelectorAll('.rw.ab.elig').forEach(r=>sumSel.add(r.dataset.sid));
+    if(a==='none')sumSel=new Set();
+    document.querySelectorAll('.rw.ab[data-sid]').forEach(r=>r.classList.toggle('picked',sumSel.has(r.dataset.sid)));sumPanel()});
+}
+document.addEventListener('click',e=>{
+  const u=e.target.closest&&e.target.closest('#addUp');
+  if(u){e.stopPropagation();addMode=!addMode;sumSel=new Set();render();if(addMode)markAdd(true);return}
+  if(!addMode||tab!=='actual')return;
+  const r=e.target.closest&&e.target.closest('.rw.ab[data-sid]');if(!r)return;
+  e.stopPropagation();e.preventDefault();if(!r.classList.contains('elig'))return;
+  const id=r.dataset.sid;sumSel.has(id)?sumSel.delete(id):sumSel.add(id);r.classList.toggle('picked',sumSel.has(id));sumPanel()},true);
 function entrySheet(t,id){
   const isInc=t==='inc',line=isInc?S.plan.income.find(i=>i.id===id):catOf(id);if(!line)return;
   const C=calc(S.plan,S.txns,S.k),s=isInc?null:C.by[id],tid=isInc?'inc:'+id:id;
@@ -2005,6 +2108,7 @@ function bind(){
   all('[data-cat]',b=>b.onclick=()=>entrySheet('cat',b.dataset.cat));
   all('[data-incopen]',b=>b.onclick=()=>entrySheet('inc',b.dataset.incopen));
   all('[data-done]',b=>b.onclick=()=>closeAsk(b.dataset.done));
+  all('[data-moved]',b=>b.onclick=()=>{const c=catOf(b.dataset.moved);if(!c)return;const v=!c.moved;setMonth('cat',c.id,'moved',v);toast(v?`${c.name}: moved to savings`:`${c.name}: marked not moved`)});
   all('[data-del]',b=>b.onclick=()=>delTx(b.dataset.del));
   all('[data-move]',b=>b.onclick=()=>moveSheet(b.dataset.move,b.dataset.amt,b.dataset.from));
   all('[data-asort]',b=>b.onclick=()=>{ls.set('mb-asort',b.dataset.asort);render()});
@@ -2019,6 +2123,8 @@ function bind(){
     if(f==='amt'){f=t==='inc'?'amt':'planned';v=num(i.value)}else if(f==='roll')v=i.checked;else if(f==='name')v=i.value.trim().slice(0,40)||l.name;else v=i.value;
     if(l[f]===v)return;
     if(def)changeDefault({do:'set',t,id,f,v,old:l[f]});else setMonth(t,id,f,v)});
+  all('[data-show]',b=>b.onclick=()=>{const {t,id,l}=lineOf(b.dataset.show);if(!l)return;const v=!l.show;
+    if(def)changeDefault({do:'set',t,id,f:'show',v,old:l.show});else setMonth(t,id,'show',v);toast(v?`${l.name} will show in Actual`:`${l.name} hidden from Actual until it has an amount`)});
   all('[data-reset]',b=>b.onclick=()=>{const[t,id]=b.dataset.reset.split(':'),d=tplLine(t,id);if(!d)return;const f=t==='inc'?'amt':'planned';setMonth(t,id,f,d[f])});
   all('[data-more]',b=>b.onclick=()=>{const k=b.dataset.more;openOpts.has(k)?openOpts.delete(k):openOpts.add(k);b.parentNode.querySelector('.opt').hidden=!openOpts.has(k);b.setAttribute('aria-expanded',openOpts.has(k))});
   all('[data-rm]',b=>b.onclick=()=>{const {t,id,l}=lineOf(b.dataset.rm);if(!l)return;
@@ -2120,6 +2226,10 @@ $('#dockHome').onclick=()=>$('#homeBtn').click();
 $('#homeBtn').onclick=()=>{if(history.state&&history.state.t&&history.state.t!=='home')history.back();else go('home',true)};
 try{history.replaceState({t:'home'},'')}catch(e){}
 addEventListener('popstate',e=>{if($('#veil').classList.contains('open')){$('#veil').classList.remove('open')}tab=(e.state&&e.state.t)||'home';render();scrollTo(0,0)});
+
+document.querySelectorAll('#tbar [data-tb]').forEach(b=>{const t=b.dataset.tb;if(t!=='home'){const sv=document.querySelector(`#tabs button[data-t="${t}"] svg`);if(sv)b.querySelector('.ti').innerHTML=sv.outerHTML}
+  b.onclick=()=>{if(tab===t){scrollTo({top:0,behavior:'smooth'});return}if(t==='home'){go('home')}else go(t)}});
+$('#findTop').onclick=()=>$('#findBtn').click();
 /* ---------------- find ---------------- */
 $('#findBtn').onclick=()=>{
   if(!S||!S.plan){toast('Nothing planned for this month yet');return}
