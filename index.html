@@ -7,10 +7,11 @@
 <meta name="color-scheme" content="light dark">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Budget">
+<meta name="apple-mobile-web-app-title" content="Chikez">
 <title>Chikez Budget</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230f9d94'/%3E%3Ccircle cx='32' cy='32' r='16' fill='none' stroke='white' stroke-width='7' stroke-dasharray='70 31' transform='rotate(-90 32 32)'/%3E%3C/svg%3E">
-<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230f9d94'/%3E%3Ccircle cx='32' cy='32' r='16' fill='none' stroke='white' stroke-width='7' stroke-dasharray='70 31' transform='rotate(-90 32 32)'/%3E%3C/svg%3E">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -922,6 +923,73 @@ body.summing .toast{bottom:calc(250px + env(safe-area-inset-bottom))!important}
 .seg.three{display:flex;width:100%;margin:0 0 10px}
 .seg.three button{flex:1;white-space:nowrap;padding-left:4px;padding-right:4px}
 .seg.three #addUp b{font-size:15px;margin-right:2px}
+
+/* v37: bigger month arrows, swipe, copy */
+.mnav button#prev,.mnav button#next{width:48px!important;height:46px;font-size:30px;line-height:1;color:var(--greenD);font-weight:600}
+#view.swl{animation:swl .28s ease}
+#view.swr{animation:swr .28s ease}
+@keyframes swl{from{transform:translateX(36px);opacity:.3}to{transform:none;opacity:1}}
+@keyframes swr{from{transform:translateX(-36px);opacity:.3}to{transform:none;opacity:1}}
+.copyb{display:block;margin:-4px 2px 10px!important;padding:2px 0!important;min-height:0!important;font-size:13.5px}
+.cprow{display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap}
+.cprow label{display:flex;flex-direction:column;font-weight:700;font-size:13px;color:var(--mute);gap:4px;flex:1;min-width:150px}
+.cprow select{font-size:16px}
+.cprow .seg{margin:0}
+.cpnote{margin:10px 2px 6px;font-size:13px}
+.cpsel{display:flex;justify-content:flex-end}
+.cpsel .linkb{padding:2px 0!important;min-height:0!important}
+.cplist{max-height:46vh;overflow:auto;margin:4px 0 10px}
+.cpi{display:flex;align-items:center;gap:10px;padding:9px 12px;border-top:1px solid var(--line);cursor:pointer}
+.cpi:first-child{border-top:0}
+.cpi input{width:20px;height:20px;accent-color:var(--green);flex:none}
+.cpi .cn{flex:1;min-width:0;display:flex;flex-direction:column}
+.cpi .cn b{font-size:14.5px}
+.cpi .cn small{color:var(--mute);font-size:12px}
+.cpi .cv{white-space:nowrap}
+.cpi.off{opacity:.45}
+.cprep{margin:4px 0 12px}
+
+/* v38: five-slot taskbar with Log, start card, quick log */
+.tbar.five{grid-template-columns:repeat(5,1fr)}
+.tbar .tblog .ti{width:56px;height:56px;border-radius:50%;margin-top:-24px;color:#fff;background:linear-gradient(140deg,#4cc3ff,#1683dc);box-shadow:0 8px 20px -8px rgba(22,131,220,.85),0 0 0 4px var(--card)}
+.tbar .tblog{color:var(--greenD)}
+.qh{font-size:12.5px;font-weight:800;color:var(--mute);text-transform:uppercase;letter-spacing:.04em;margin:12px 2px 6px}
+.qchips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:10px}
+.qchip{border:1px solid var(--line);background:var(--soft);color:var(--greenD);border-radius:999px;padding:8px 13px;font-weight:700;font-size:14px;min-height:0}
+.qrow{display:flex;align-items:center;gap:10px;width:100%;border:0;background:none;text-align:left;padding:10px 8px;border-radius:12px;color:var(--ink)}
+.qrow .qn{flex:1;min-width:0;display:flex;flex-direction:column}
+.qrow .qn small{color:var(--mute);font-size:12px}
+.qrow .qa{color:var(--mute);font-size:13px;font-weight:700;white-space:nowrap}
+.startc .sfrom{display:flex;width:100%}
+.startc .sfrom button{flex:1}
+.akey{display:block;font-size:14px;padding:8px 10px;border-radius:10px;background:var(--bg);border:1px solid var(--line);user-select:all;-webkit-user-select:all;overflow-wrap:anywhere}
+
+/* v40: month slide, past amounts */
+html.sliding,html.sliding body{overflow-x:hidden}
+#view{will-change:auto}
+.pastb{display:block;margin:8px 0 2px!important;padding:2px 0!important;min-height:0!important;font-size:14px}
+.pastl{display:grid;gap:6px;margin:6px 0 8px;max-height:34vh;overflow:auto}
+.pastr{display:grid;grid-template-columns:5.6em 1fr 1fr;gap:6px;align-items:center}
+.pastr .pm{font-size:13px;font-weight:700;color:var(--mute)}
+.pchip{border:1px solid var(--line);background:var(--soft);color:var(--greenD);border-radius:10px;padding:7px 8px;font-weight:700;font-size:13px;min-height:0;text-align:center;white-space:nowrap}
+.pchip.pl{background:var(--card);color:var(--ink)}
+.pchip.none{background:none;color:var(--mute);border-style:dashed;font-weight:600}
+.ktype{display:flex;align-items:center;gap:10px;font-weight:700;font-size:14px;color:var(--mute)}
+.ktype select{flex:1;max-width:220px}
+
+/* v42: past amount picker */
+.pastpick{display:grid;gap:10px;margin:8px 0 10px}
+.cbf .flab{font-size:12.5px;margin:0 2px 4px}
+.combo{position:relative}
+.cbi{width:100%;padding-right:34px!important;font-weight:700}
+.cba{position:absolute;right:12px;top:50%;transform:translateY(-50%);color:var(--mute);font-size:12px;cursor:pointer}
+.cbl{position:absolute;left:0;right:0;top:calc(100% + 4px);z-index:20;max-height:240px;overflow:auto;background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:0 14px 30px -12px rgba(10,40,80,.4);padding:4px}
+.cbo{display:flex;justify-content:space-between;align-items:baseline;gap:8px;width:100%;border:0;background:none;text-align:left;padding:10px 10px;border-radius:9px;color:var(--ink);font-weight:600;min-height:0}
+.cbo small{color:var(--mute);font-size:12px;font-weight:600}
+.cbo.on{background:var(--soft);color:var(--greenD)}
+.cbo:hover{background:var(--soft)}
+.pwhat{display:flex;width:100%;margin:0}
+.pwhat button{flex:1}
 </style>
 </head>
 <body>
@@ -942,7 +1010,7 @@ body.summing .toast{bottom:calc(250px + env(safe-area-inset-bottom))!important}
   <button data-t="defaults"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Defaults<span class="badge" id="dfBadge" hidden></span></button>
 </div></nav>
 <div class="veil" id="veil"><div class="sheet" id="sheet" role="dialog" aria-modal="true"></div></div>
-<nav class="tbar" id="tbar" hidden><button type="button" data-tb="plan"><span class="ti"></span><span>Plan</span></button><button type="button" class="tbhome" data-tb="home" aria-label="Home"><span class="ti"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 11L12 4l8.5 7"/><path d="M6 9.5V20h4.5v-5.5h3V20H18V9.5"/></svg></span><span>Home</span></button><button type="button" data-tb="actual"><span class="ti"></span><span>Actual</span></button></nav>
+<nav class="tbar five" id="tbar" hidden><button type="button" data-tb="home"><span class="ti"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 11L12 4l8.5 7"/><path d="M6 9.5V20h4.5v-5.5h3V20H18V9.5"/></svg></span><span>Home</span></button><button type="button" data-tb="plan"><span class="ti"></span><span>Plan</span></button><button type="button" class="tblog" data-tb="log" aria-label="Log spending"><span class="ti"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span><span>Log</span></button><button type="button" data-tb="actual"><span class="ti"></span><span>Actual</span></button><button type="button" data-tb="find"><span class="ti"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L20 20"/></svg></span><span>Find</span></button></nav>
 <button class="dockhome" id="dockHome" aria-label="Home" hidden><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 11L12 4l8.5 7"/><path d="M6 9.5V20h4.5v-5.5h3V20H18V9.5"/></svg><span>Home</span></button>
 <button class="findb" id="findBtn" aria-label="Find a line" hidden><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L20 20"/></svg><span>Find</span></button>
 <div class="toast" id="toast"><span id="tmsg"></span><button id="tundo">Undo</button></div>
@@ -954,7 +1022,7 @@ body.summing .toast{bottom:calc(250px + env(safe-area-inset-bottom))!important}
    (Or leave it empty and type it into the setup screen on each device.)
    ====================================================================== */
 const APP_KEY = '';
-const APP_VERSION = '36 · Nov 26, 2026';
+const APP_VERSION = '42 · Nov 26, 2026';
 
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -965,7 +1033,7 @@ const r2=n=>Math.round(n*100)/100;
 const now=new Date();
 const todayKey=now.getFullYear()+'-'+pad(now.getMonth()+1);
 const todayStr=todayKey+'-'+pad(now.getDate());
-const KINDS=[['bill','Fixed bill'],['spend','Everyday'],['save','Set aside (rolls over)']];
+const KINDS=[['bill','Fixed'],['spend','Variable'],['save','Savings']];
 const gName=c=>c.group||({bill:'Bills',spend:'Everyday spending',save:'Savings goals'})[c.kind]||'Other';
 const groupsOf=cats=>[...new Set(cats.map(gName))];
 const PAL=['#0a8fd8','#7c83c9','#3f8fb5','#e8a05a','#d57a9a','#7fb86a','#d9b443','#6f7f86','#e08a72','#4fb3c9','#a6a35a','#a083c9'];
@@ -1294,6 +1362,7 @@ const colOf=id=>PAL[Math.max(0,S.plan.cats.findIndex(c=>c.id===id))%PAL.length];
 /* ---------------- month loading ---------------- */
 let loadId=0;
 async function openMonth(k){
+  if(S&&k!==key&&unlocked)slideMonth(k>key?1:-1);
   key=k;S=null;weekSel=null;donutSel=-1;paceDay=null;weekOpen=null;histSel=null;const my=++loadId;render();setSync('Loading…');
   try{
     let st=await loadMonth(k);if(my!==loadId)return;
@@ -1317,10 +1386,7 @@ async function planFor(k){
   p.needsRoll=addM(k,-1)>=todayKey;   /* last month isn't finished yet: settle carry-overs when it is */
   return p;
 }
-async function startThisMonth(){
-  setSync('Setting up '+mName(key)+'…');
-  S.plan=await planFor(key);persist('plan',()=>{});
-}
+
 async function refreshQuiet(){
   if(mode!=='dropbox'||!S||!S.plan||saving)return;
   try{const st=await loadMonth(S.k);if(saving||!S||st.k!==S.k||!st.plan)return;
@@ -1345,7 +1411,7 @@ function pageHead(){
 }
 function render(){
   const signed=mode!=='setup';
-  $('#tabs').hidden=true;$('#findBtn').hidden=$('#dockHome').hidden=true;$('#findTop').hidden=!signed||tab==='home'||!unlocked;$('#tbar').hidden=!signed||!unlocked||tab==='home';document.body.classList.toggle('in',!!(signed&&unlocked));document.querySelectorAll('#tbar [data-tb]').forEach(b=>b.classList.toggle('on',b.dataset.tb===tab));$('#mnav').style.visibility=signed?'visible':'hidden';
+  $('#tabs').hidden=true;$('#findBtn').hidden=$('#dockHome').hidden=true;$('#findTop').hidden=true;$('#tbar').hidden=!signed||!unlocked||tab==='home';document.body.classList.toggle('in',!!(signed&&unlocked));document.querySelectorAll('#tbar [data-tb]').forEach(b=>b.classList.toggle('on',b.dataset.tb===tab));$('#mnav').style.visibility=signed?'visible':'hidden';
   if(tab==='week')tab='actual';if(tab==='charts')tab='summary';
   document.body.classList.remove('planmode');document.body.dataset.tab=signed?tab:'';
   $('#bname').innerHTML='Chikez Budget'+(mode==='demo'?'<span class="demo">Demo</span>':'');
@@ -1358,8 +1424,9 @@ function render(){
   if(!S){V.innerHTML='<p class="empty">Loading your budget…</p>';return}
   if(!S.plan&&tab==='receipts'&&!S.failed){V.innerHTML=pageHead()+receiptsHTML();bind();receiptsView();return}
   if(!S.plan){V.innerHTML=S.failed?`<div class="card pad"><p>Couldn’t load ${esc(mName(key))}.</p><button class="btn" id="retry">Try again</button></div>`
-    :`<div class="card pad"><h2 style="margin-top:0">${esc(mName(key))}</h2><p class="muted">Nothing planned for this month yet. Start it from your every-month plan, then change anything that’s different this month.</p><button class="btn" id="startM">Start ${esc(mName(key,'s'))}</button></div>`;
-    const a=$('#retry');if(a)a.onclick=()=>openMonth(key);const b=$('#startM');if(b)b.onclick=startThisMonth;return}
+    :startCardHTML();
+    const a=$('#retry');if(a)a.onclick=()=>openMonth(key);const b=$('#startM');if(b)b.onclick=startThisMonth;
+    document.querySelectorAll('[data-sf]').forEach(x=>x.onclick=()=>{startFrom=x.dataset.sf;render()});const sc=$('#stCarry');if(sc)sc.onchange=()=>{startCarry=sc.checked};return}
   cur=S.plan.cur||'USD';
   planScope='month';if(tab==='defaults'&&!(TPL&&TPL.plan))tab='plan';
   const C=calc(S.plan,S.txns,S.k);
@@ -1370,7 +1437,7 @@ function render(){
 }
 
 /* ---- setup ---- */
-let codeMode=false;
+let codeMode=(navigator.standalone===true)||(/iP(hone|ad|od)/.test(navigator.userAgent)&&matchMedia('(display-mode: standalone)').matches);
 function setupHTML(){
   const k=appKey();
   return `<div class="setup"><div class="hero"><small>Your money, one glance</small><div class="big" style="font-size:44px">Budget</div><p>A simple envelope budget that lives in your own Dropbox.</p></div>
@@ -1481,7 +1548,7 @@ function actualHTML(C){
   const expSC=Math.max(1,...vis.map(c=>Math.max(barVal(c,C),C.by[c.id].budget)));
   const ord=cs=>[...cs].sort((a,b)=>(C.by[a.id].closed-C.by[b.id].closed)||(barVal(b,C)-barVal(a,C))||(b.planned-a.planned));
   h+=`<h2 class="big2">Expenses <small>${money(sp,0)} <i>of</i> ${money(pl,0)}</small></h2>
-  <div class="seg mini asort three"><button type="button" data-asort="big" aria-pressed="${!addMode&&by==='big'}">Biggest first</button><button type="button" data-asort="grp" aria-pressed="${!addMode&&by==='grp'}">By group</button><button type="button" id="addUp" aria-pressed="${addMode}"><b>Σ</b> Add up</button></div>`;
+  <button type="button" class="linkb copyb" data-copy="actual">⧉ Copy amounts from another month</button><div class="seg mini asort three"><button type="button" data-asort="big" aria-pressed="${!addMode&&by==='big'}">Biggest first</button><button type="button" data-asort="grp" aria-pressed="${!addMode&&by==='grp'}">By group</button><button type="button" id="addUp" aria-pressed="${addMode}"><b>Σ</b> Add up</button></div>`;
   if(by==='grp')h+=groupsOf(p.cats).map(l=>{const cs=ord(vis.filter(c=>gName(c)===l));const gt=groupTotal(p.cats.filter(c=>gName(c)===l),C);return cs.length?`<div class="card abars gcard"><div class="ghd in"><span>${esc(l)}</span><span>${money(gt.val,0)} <i>of</i> ${money(gt.bud,0)}</span></div>${cs.map(c=>catBar(c,C,expSC)).join('')}</div>`:''}).join('');
   else h+=`<div class="card abars">${ord(vis).map(c=>catBar(c,C,expSC)).join('')}</div>`;
   if(hid.length)h+=`<details class="others"><summary>${hid.length} more categor${hid.length>1?'ies':'y'} with nothing planned</summary><div class="card">${hid.map(c=>`<button class="row" data-cat="${esc(c.id)}"><span class="nm"><span class="dot" style="background:${colOf(c.id)}"></span>${esc(c.name)}</span><span class="av" style="font-size:13px;font-weight:600;color:var(--mute)">${esc(gName(c))}</span></button>`).join('')}</div></details>`;
@@ -1722,7 +1789,7 @@ function planLine(t,l,def,GS,locked){
   if(!def&&l.owed)tag+=`<span class="tag owedtag">+${money(l.owed)} unpaid from ${esc(mName(l.owedFrom||addM(key,-1),'s'))}</span>`;
   if(!def){if(l.only||!d)tag+=`<span class="tag">Only in ${mo}</span>`;else if(dAmt!==amt)tag+=`<span class="tag">Changed for ${mo} · usually ${money(dAmt)}</span><button type="button" class="linkb rs" data-reset="${k}">Use ${money(dAmt)}</button>`}
   const opts=t==='inc'?`<button type="button" class="btn line sm rmb" data-rm="${k}">Remove</button>`
-    :`<select aria-label="Type" data-ln="${k}" data-f="kind">${KINDS.map(([v,x])=>`<option value="${v}" ${v===l.kind?'selected':''}>${x}</option>`).join('')}</select>${GS.length>1?`<select aria-label="Group" data-ln="${k}" data-f="group">${GS.map(g=>`<option ${g===gName(l)?'selected':''}>${esc(g)}</option>`).join('')}</select>`:''}${def?'':`<button type="button" class="btn line sm" data-att="${esc(l.id)}">Links &amp; pictures</button>`}<label><input type="checkbox" data-ln="${k}" data-f="roll" ${l.roll?'checked':''}> Roll leftover to next month</label>${!def&&l.carry?`<span>+${money(l.carry)} carried in</span>`:''}<button type="button" class="btn line sm rmb" data-rm="${k}">Remove</button>`;
+    :`<label class="ktype"><span>Expense type</span><select data-ln="${k}" data-f="kind" ${locked?'disabled':''}>${KINDS.map(([v,x])=>`<option value="${v}" ${v===l.kind?'selected':''}>${x}</option>`).join('')}</select></label>${t!=='inc'&&!locked?`<button type="button" class="btn line sm" data-pastplan="${esc(l.id)}" data-def="${def?1:0}">↺ Use a past amount</button>`:''}${def?'':`<button type="button" class="btn line sm" data-att="${esc(l.id)}">Links &amp; pictures</button>`}<label><input type="checkbox" data-ln="${k}" data-f="roll" ${l.roll?'checked':''}> Roll leftover to next month</label>${!def&&l.carry?`<span>+${money(l.carry)} carried in</span>`:''}<button type="button" class="btn line sm rmb" data-rm="${k}">Remove</button>`;
   const dis=locked?'disabled':'';
   const nAtt=attCount(l),clip=!def&&t!=='inc'&&nAtt?`<button type="button" class="attb${nAtt?' has':''}" data-att="${esc(l.id)}" aria-label="Links and pictures for ${esc(l.name)}"><svg class="clip" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5l-8.6 8.6a5.5 5.5 0 0 1-7.8-7.8l8.6-8.6a3.7 3.7 0 0 1 5.2 5.2l-8.6 8.6a1.8 1.8 0 0 1-2.6-2.6l7.9-7.9"/></svg>${nAtt?`<span>${nAtt}</span>`:''}</button>`:'';
   const eye=t!=='inc'&&!(+amt)?`<button type="button" class="eyeb${l.show?' on':''}" data-show="${k}" aria-pressed="${!!l.show}" aria-label="${l.show?'Shown in Actual':'Hidden in Actual'}: ${esc(l.name)}" title="${l.show?'Shown in Actual':'Show in Actual'}" ${dis}>${l.show?EYE_ON:EYE_OFF}</button>`:'';
@@ -1738,7 +1805,7 @@ function planHTML(C,def){
   if(!def){const pk=addM(key,-1),carryTot=p.cats.reduce((a,c)=>a+(c.carry||0),0);
     h+=`<h3>Leftovers from ${esc(mName(pk,'s'))}</h3><div class="card pad"><label class="sw"><input type="checkbox" id="carrySw" ${p.carryOn!==false?'checked':''}><span><b>Bring ${esc(mName(pk,'s'))}’s leftovers into ${mo}</b><br><span class="muted">${carryTot>0.004||p.overPrev?`${carryTot>0.004?money(carryTot)+' of unspent savings':'No savings'} carried in${p.overPrev?' · '+money(p.overPrev)+' overspending to make up':''}.`:'Nothing to carry from last month.'}</span></span></label></div>`}
   const GS=groupsOf(p.cats);
-  h+=`<h2 class="big2">Expenses <small><b>${money(exp,0)}</b> <i>planned</i></small></h2>`+GS.map(l=>`<div class="card gcard"><div class="ghead in"><input class="gname" data-grp="${esc(l)}" value="${esc(l)}" maxlength="40" aria-label="Group name" ${locked?'disabled':''}><span>${money(p.cats.filter(c=>gName(c)===l).reduce((a,c)=>a+c.planned+(def?0:(c.owed||0)),0),0)}</span></div>${p.cats.filter(c=>gName(c)===l).map(c=>planLine('cat',c,def,GS,locked)).join('')}${locked?'':`<div class="pl"><button type="button" class="btn ghost sm" data-addcat="${esc(l)}" style="grid-column:1/-1;justify-self:start">+ Add to ${esc(l)}</button></div>`}</div>`).join('');
+  h+=`<h2 class="big2">Expenses <small><b>${money(exp,0)}</b> <i>planned</i></small></h2>${locked?'':`<button type="button" class="linkb copyb" data-copy="${def?'defaults':'plan'}">⧉ Copy amounts from a month</button>`}`+GS.map(l=>`<div class="card gcard"><div class="ghead in"><input class="gname" data-grp="${esc(l)}" value="${esc(l)}" maxlength="40" aria-label="Group name" ${locked?'disabled':''}><span>${money(p.cats.filter(c=>gName(c)===l).reduce((a,c)=>a+c.planned+(def?0:(c.owed||0)),0),0)}</span></div>${p.cats.filter(c=>gName(c)===l).map(c=>planLine('cat',c,def,GS,locked)).join('')}${locked?'':`<div class="pl"><button type="button" class="btn ghost sm" data-addcat="${esc(l)}" style="grid-column:1/-1;justify-self:start">+ Add to ${esc(l)}</button></div>`}</div>`).join('');
   if(!locked)h+=`<h3>New group</h3><div class="card"><form class="pl" id="grpF"><input id="grpIn" maxlength="40" placeholder="e.g. Pets" aria-label="New group name" style="grid-column:1/3"><button class="btn ghost sm" style="min-height:46px">Add</button></form></div>`;
   if(!def)h+=`<p class="muted" style="margin:14px 4px">Changes here are for ${esc(mName(key))} only. Your every-month list lives in the Defaults tab.</p>`;
   return h;
@@ -1747,7 +1814,7 @@ function settingsHTML(){
   return `<h2 class="big2">Settings</h2><div class="card pad"><div class="f"><span class="flab">Who’s using this phone</span><div class="who2">${people().map((n,i)=>`<label><input type="radio" name="whoR" value="${esc(n)}" ${who()===n?'checked':''}> ${esc(n)}</label>`).join('')}</div><span class="muted">Shown next to entries and changes. Needed to approve changes to the defaults.</span></div>
   <details class="sdet"><summary>Change names</summary><div class="f"><input id="pn0" maxlength="20" value="${esc(people()[0])}" aria-label="First name"><input id="pn1" maxlength="20" value="${esc(people()[1])}" aria-label="Second name" style="margin-top:8px"><button type="button" class="btn line sm" id="pnSave" style="margin-top:8px">Save names</button></div></details>
   <details class="sdet"><summary>Change PIN</summary><div class="f"><input id="pinOld" type="password" inputmode="numeric" maxlength="4" placeholder="Current PIN" autocomplete="off"><input id="pinNew" type="password" inputmode="numeric" maxlength="4" placeholder="New 4-digit PIN" autocomplete="off" style="margin-top:8px"><input id="pinNew2" type="password" inputmode="numeric" maxlength="4" placeholder="New PIN again" autocomplete="off" style="margin-top:8px"><button type="button" class="btn line sm" id="pinSave" style="margin-top:8px">Save new PIN</button><span class="muted" id="pinMsg"></span><span class="muted">One PIN for both of you. The change reaches the other phone through Dropbox.</span></div></details>
-  <div class="f"><label for="thSel">Appearance on this device</label><select id="thSel">${[['auto','Automatic (follow phone)'],['light','Light'],['dark','Dark']].map(([v,l])=>`<option value="${v}" ${(ls.get('mb-theme')||'auto')===v?'selected':''}>${l}</option>`).join('')}</select></div><div class="f"><label for="curSel">Currency</label><select id="curSel">${['USD','CAD','EUR','GBP','AUD','NZD','INR','NGN','GHS','KES','ZAR','MXN','JPY','CHF'].map(c=>`<option ${c===cur?'selected':''}>${c}</option>`).join('')}</select></div>
+  ${appKey()&&mode!=="demo"?`<div class="f"><span class="flab">Dropbox App key</span><code class="akey">${esc(appKey())}</code><span class="muted">Needed once if you install the app or use a new browser. It isn’t a password.</span></div>`:""}<div class="f"><label for="thSel">Appearance on this device</label><select id="thSel">${[['auto','Automatic (follow phone)'],['light','Light'],['dark','Dark']].map(([v,l])=>`<option value="${v}" ${(ls.get('mb-theme')||'auto')===v?'selected':''}>${l}</option>`).join('')}</select></div><div class="f"><label for="curSel">Currency</label><select id="curSel">${['USD','CAD','EUR','GBP','AUD','NZD','INR','NGN','GHS','KES','ZAR','MXN','JPY','CHF'].map(c=>`<option ${c===cur?'selected':''}>${c}</option>`).join('')}</select></div>
   <p class="muted">${mode==='demo'?'You’re looking at sample numbers saved only on this device.':'Saved in your Dropbox app folder: template.json (defaults), a plan file and a spending file per month, and your receipt photos.'}</p>
   <p class="muted">App version <b>${APP_VERSION}</b></p>
   <div class="stack">${mode==='demo'?'<button class="btn" id="exitDemo">Leave demo and set up mine</button>':'<button class="btn line" id="signout">Sign out of Dropbox on this device</button>'}</div></div>`;
@@ -1982,7 +2049,7 @@ document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest
 
 /* ---- add up selected expense lines ---- */
 let addMode=false,sumSel=new Set(),addType='spent';
-const ADD_TYPES=[['spent','Spent'],['left','Left'],['planned','Planned'],['topay','To pay'],['done','Done']];
+const ADD_TYPES=[['spent','Spent'],['left','Left'],['done','Done']];
 function addVal(id,C){const c=catOf(id),st=C.by[id];if(!c||!st)return null;const save=c.kind==='save';
   switch(addType){
     case 'spent':return st.spent>0.004?st.spent:null;
@@ -2018,6 +2085,191 @@ document.addEventListener('click',e=>{
   const r=e.target.closest&&e.target.closest('.rw.ab[data-sid]');if(!r)return;
   e.stopPropagation();e.preventDefault();if(!r.classList.contains('elig'))return;
   const id=r.dataset.sid;sumSel.has(id)?sumSel.delete(id):sumSel.add(id);r.classList.toggle('picked',sumSel.has(id));sumPanel()},true);
+
+/* ---- copy amounts from another month ---- */
+async function changeDefaultMany(ops,msg){
+  if(lockState().st!=='open'){toast('Defaults are locked. Ask to change them first.');render();return}
+  saveTemplate(p=>{ops.forEach(op=>applyOp(p,op,false));p.editedBy=who()||'';p.editedAt=Date.now()});
+  if(S&&S.plan&&S.k>=todayKey)persist('plan',p=>ops.forEach(op=>applyOp(p,op,true,S.txns)));else render();
+  if(msg)toast(msg);
+  let ks=[];try{ks=await listMonths()}catch(e){}
+  for(const k of ks){if(k<todayKey||(S&&k===S.k))continue;
+    try{const st=await loadMonth(k);if(!st.plan)continue;const fn=p=>ops.forEach(op=>applyOp(p,op,true,st.txns));fn(st.plan);await write(st,'plan',fn)}catch(e){}}
+  hist={};
+}
+let copyState=null;
+async function copySheet(target){
+  let ks=[];try{ks=await listMonths()}catch(e){}
+  ks=ks.filter(k=>target==='defaults'||k!==key);
+  if(!ks.length){toast('No other month to copy from yet');return}
+  const prev=addM(key,-1);
+  copyState={target,from:ks.includes(prev)?prev:ks.filter(k=>k<key).pop()||ks[ks.length-1],what:target==='actual'?'spent':'planned',replace:true,sel:null,ks};
+  drawCopy();
+}
+async function drawCopy(){
+  const cs=copyState,T=cs.target,dest=T==='defaults'?TPL.plan:S.plan;
+  const src=cs.from===key&&S?S:await loadMonth(cs.from);
+  const C=src.plan?calc(src.plan,src.txns,cs.from):null;
+  const byName=n=>dest.cats.find(c=>c.name.trim().toLowerCase()===n.trim().toLowerCase());
+  const rows=(src.plan?src.plan.cats:[]).map(c=>{const v=cs.what==='spent'?(C.by[c.id]?C.by[c.id].spent:0):(+c.planned||0);
+    const m=dest.cats.find(x=>x.id===c.id)||byName(c.name);const destSpent=T==='actual'&&m?S.txns.filter(t=>t.cat===m.id&&!t.rc).reduce((a,t)=>a+t.amt,0):0;
+    const now=m?(T==='actual'?destSpent:(+m.planned||0)):null;
+    return {c,v:Math.round(v*100)/100,m,now,ok:v>0.004&&(T!=='actual'||!!m)}}).filter(r=>r.v>0.004);
+  if(!cs.sel)cs.sel=new Set(rows.filter(r=>r.ok).map(r=>r.c.id));
+  const n=rows.filter(r=>r.ok&&cs.sel.has(r.c.id)).length,destName=T==='defaults'?'Defaults':mName(key,'s');
+  const title=T==='actual'?'Copy spent amounts':T==='plan'?'Copy planned amounts':'Copy into Defaults';
+  openSheet(head(title)+`
+   <div class="cprow"><label>From<select id="cpFrom">${cs.ks.map(k=>`<option value="${k}" ${k===cs.from?'selected':''}>${esc(mName(k,'sy'))}</option>`).join('')}</select></label>
+   ${T==='actual'?'':`<div class="seg mini" role="radiogroup"><button type="button" data-cw="planned" aria-pressed="${cs.what==='planned'}">Planned</button><button type="button" data-cw="spent" aria-pressed="${cs.what==='spent'}">Spent</button></div>`}</div>
+   <p class="muted cpnote">${T==='actual'?`Each ticked line gets one entry in ${esc(mName(key,'s'))} with ${esc(mName(cs.from,'s'))}’s spent amount.`:`Ticked lines get ${esc(mName(cs.from,'s'))}’s ${cs.what} amount as their ${T==='defaults'?'every-month':esc(mName(key,'s'))} plan.`}</p>
+   ${rows.length?`<div class="cpsel"><button type="button" class="linkb" id="cpAll">${n===rows.filter(r=>r.ok).length?'Uncheck all':'Check all'}</button></div>
+   <div class="card cplist">${rows.map(r=>`<label class="cpi${r.ok?'':' off'}"><input type="checkbox" data-cp="${esc(r.c.id)}" ${r.ok&&cs.sel.has(r.c.id)?'checked':''} ${r.ok?'':'disabled'}><span class="cn"><b>${esc(r.c.name)}</b><small>${r.m?(r.now>0.004?`now ${money(r.now)} in ${esc(destName)}`:`nothing yet in ${esc(destName)}`):T==='actual'?`not in ${esc(destName)}’s plan`:'new line, will be added'}</small></span><b class="cv">${money(r.v)}</b></label>`).join('')}</div>`:`<p class="empty">Nothing ${cs.what} in ${esc(mName(cs.from))}.</p>`}
+   ${T==='actual'?`<label class="sw cprep"><input type="checkbox" id="cpRep" ${cs.replace?'checked':''}><span><b>Replace amounts already entered</b><br><span class="muted">Off: add on top of what’s there.</span></span></label>`:''}
+   <button type="button" class="btn full" id="cpGo" ${n?'':'disabled'}>Copy ${n} amount${n===1?'':'s'}</button>`,()=>{
+    const sh=$('#sheet');
+    $('#cpFrom').onchange=e=>{cs.from=e.target.value;cs.sel=null;drawCopy()};
+    sh.querySelectorAll('[data-cw]').forEach(b=>b.onclick=()=>{cs.what=b.dataset.cw;cs.sel=null;drawCopy()});
+    sh.querySelectorAll('[data-cp]').forEach(i=>i.onchange=()=>{i.checked?cs.sel.add(i.dataset.cp):cs.sel.delete(i.dataset.cp);const k=rows.filter(r=>r.ok&&cs.sel.has(r.c.id)).length;$('#cpGo').textContent=`Copy ${k} amount${k===1?'':'s'}`;$('#cpGo').disabled=!k});
+    const al=$('#cpAll');if(al)al.onclick=()=>{const all=n===rows.filter(r=>r.ok).length;cs.sel=new Set(all?[]:rows.filter(r=>r.ok).map(r=>r.c.id));drawCopy()};
+    const rp=$('#cpRep');if(rp)rp.onchange=()=>{cs.replace=rp.checked};
+    $('#cpGo').onclick=()=>{const pick=rows.filter(r=>r.ok&&cs.sel.has(r.c.id));if(!pick.length)return;closeSheet();
+      const from=mName(cs.from,'s');
+      if(T==='actual'){const d=key===todayKey?todayStr:key+'-01';
+        persist('tx',TX=>{for(const r of pick){if(cs.replace){for(let i=TX.length-1;i>=0;i--)if(TX[i].cat===r.m.id&&!TX[i].rc)TX.splice(i,1)}
+          TX.push({id:rid(),date:d,cat:r.m.id,amt:r.v,note:'Copied from '+from,by:who()||''})}});
+        toast(`${pick.length} amount${pick.length>1?'s':''} copied from ${from}`)}
+      else if(T==='plan'){persist('plan',P=>{for(const r of pick){const m=P.cats.find(x=>x.id===(r.m&&r.m.id));if(m)m.planned=r.v;else{const n2=clone(r.c);n2.planned=r.v;n2.carry=0;n2.closed=false;delete n2.closeMode;delete n2.owed;delete n2.owedFrom;delete n2.att;delete n2.moved;let at=-1;P.cats.forEach((x,i)=>{if(gName(x)===gName(n2))at=i});at>-1?P.cats.splice(at+1,0,n2):P.cats.push(n2)}}});
+        toast(`${pick.length} planned amount${pick.length>1?'s':''} updated from ${from}`)}
+      else{const ops=pick.map(r=>{if(r.m)return {do:'set',t:'cat',id:r.m.id,f:'planned',v:r.v,old:r.m.planned};const n2=clone(r.c);n2.planned=r.v;['carry','closed','closeMode','owed','owedFrom','att','moved','only'].forEach(k=>delete n2[k]);return {do:'add',t:'cat',id:n2.id,line:n2}});
+        changeDefaultMany(ops,`Defaults updated from ${from}`)}
+    };
+  });
+}
+document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('[data-copy]');if(b)copySheet(b.dataset.copy)});
+/* ---- swipe left/right to change month ---- */
+(()=>{let x0=null,y0=0,t0=0;
+  document.addEventListener('touchstart',e=>{const t=e.target;if(e.touches.length!==1||!unlocked||mode==='setup'||$('#veil').classList.contains('open')||document.querySelector('.picview')||t.closest('input,select,textarea,.pchips,.sbtypes,.seg,.sumbar')){x0=null;return}
+    x0=e.touches[0].clientX;y0=e.touches[0].clientY;t0=Date.now()},{passive:true});
+  document.addEventListener('touchend',e=>{if(x0===null)return;const t=e.changedTouches[0],dx=t.clientX-x0,dy=t.clientY-y0;x0=null;
+    if(Date.now()-t0>700||Math.abs(dx)<70||Math.abs(dx)<Math.abs(dy)*1.8)return;
+    (dx<0?$('#next'):$('#prev')).click()},{passive:true});
+})();
+
+/* ---- quick log: + in the taskbar ---- */
+function quickLog(){
+  if(!S||!S.plan){toast(`Start ${mName(key,'s')} first, then log`);if(tab!=='actual')go('actual');return}
+  const C=calc(S.plan,S.txns,S.k),cnt={};for(const t of S.txns)cnt[t.cat]=(cnt[t.cat]||0)+1;
+  const cats=S.plan.cats.filter(c=>!c.closed||cnt[c.id]);
+  const top=[...cats].sort((a,b)=>(cnt[b.id]||0)-(cnt[a.id]||0)||(b.planned-a.planned)).slice(0,8);
+  const row=c=>{const st=C.by[c.id];return `<button type="button" class="qrow" data-ql="cat:${esc(c.id)}"><span class="dot" style="background:${colOf(c.id)}"></span><span class="qn"><b>${esc(c.name)}</b><small>${esc(gName(c))}</small></span><span class="qa">${c.kind==='save'?'savings':st.st==='over'?'over':money(Math.max(0,st.avail),0)+' left'}</span></button>`};
+  const list=q=>{q=q.trim().toLowerCase();const m=cats.filter(c=>!q||c.name.toLowerCase().includes(q)||gName(c).toLowerCase().includes(q));
+    const inc=S.plan.income.filter(i=>!q||i.name.toLowerCase().includes(q)||'income'.includes(q));
+    return (m.map(row).join('')||'')+(inc.length?`<p class="qh">Income</p>`+inc.map(i=>`<button type="button" class="qrow" data-ql="inc:${esc(i.id)}"><span class="dot" style="background:var(--green)"></span><span class="qn"><b>${esc(i.name)}</b><small>Income</small></span><span class="qa">received</span></button>`).join(''):'')||'<p class="empty">No line with that name.</p>'};
+  openSheet(head(`Log in ${esc(mName(key,'s'))}`)+`<p class="qh" style="margin-top:0">Used most</p><div class="qchips">${top.map(c=>`<button type="button" class="qchip" data-ql="cat:${esc(c.id)}">${esc(c.name)}</button>`).join('')}</div>
+    <input id="qIn" class="findin" type="search" placeholder="Or type a name…" autocomplete="off"><div id="qList" class="flist">${list('')}</div>`,()=>{
+    const wire=()=>$('#sheet').querySelectorAll('[data-ql]').forEach(b=>b.onclick=()=>{const [t,id]=b.dataset.ql.split(':');entrySheet(t,id)});
+    $('#qIn').oninput=e=>{$('#qList').innerHTML=list(e.target.value);wire()};wire()});
+}
+/* ---- start a new month in one step ---- */
+let startFrom='tpl',startCarry=true;
+async function startThisMonth(){
+  setSync('Setting up '+mName(key)+'…');
+  const p=await planFor(key);
+  if(startFrom==='prev'){const pv=await loadMonth(addM(key,-1));if(pv.plan){
+    for(const c of p.cats){const m=pv.plan.cats.find(x=>x.id===c.id);if(m)c.planned=+m.planned||0}
+    for(const i of p.income){const m=pv.plan.income.find(x=>x.id===i.id);if(m)i.amt=+m.amt||0}}}
+  p.carryOn=startCarry;
+  S.plan=p;persist('plan',()=>{});
+}
+function startCardHTML(){
+  const pk=mName(addM(key,-1),'s'),hasPrev=!!(hist&&true);
+  return `<div class="card pad startc"><h2 style="margin-top:0">Start ${esc(mName(key))}</h2>
+   <p class="flab">Plan amounts from</p>
+   <div class="seg mini sfrom"><button type="button" data-sf="tpl" aria-pressed="${startFrom==='tpl'}">Defaults</button><button type="button" data-sf="prev" aria-pressed="${startFrom==='prev'}">${esc(pk)}’s plan</button></div>
+   <label class="sw" style="margin:12px 0"><input type="checkbox" id="stCarry" ${startCarry?'checked':''}><span><b>Bring ${esc(pk)}’s leftovers</b><br><span class="muted">Unspent savings and anything still owed come along.</span></span></label>
+   <button class="btn full" id="startM">Start ${esc(mName(key,'s'))}</button>
+   <p class="muted" style="margin:10px 0 0">You can change any amount afterwards.</p></div>`;
+}
+/* ---- install as an app ---- */
+if('serviceWorker' in navigator&&(location.protocol==='https:'||location.hostname==='localhost')){addEventListener('load',()=>{navigator.serviceWorker.register('sw.js').then(r=>{try{r.update()}catch(e){}}).catch(()=>{})})}
+const isStandalone=()=>matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;
+const isIOS=()=>/iP(hone|ad|od)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+
+/* ---- slide one month into the next ---- */
+function slideMonth(dir){
+  const v=$('#view');if(!v||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  document.querySelectorAll('.ghostv').forEach(g=>g.remove());
+  const r=v.getBoundingClientRect(),g=v.cloneNode(true);g.removeAttribute('id');g.querySelectorAll('[id]').forEach(e=>e.removeAttribute('id'));
+  g.classList.add('ghostv');g.setAttribute('aria-hidden','true');
+  Object.assign(g.style,{position:'fixed',top:r.top+'px',left:r.left+'px',width:r.width+'px',margin:'0',pointerEvents:'none',zIndex:'4'});
+  document.body.appendChild(g);document.documentElement.classList.add('sliding');scrollTo(0,0);
+  const o={duration:340,easing:'cubic-bezier(.22,.8,.24,1)'};
+  g.animate([{transform:'translateX(0)'},{transform:`translateX(${-dir*104}%)`}],o).onfinish=()=>{g.remove();if(!document.querySelector('.ghostv'))document.documentElement.classList.remove('sliding')};
+  v.animate([{transform:`translateX(${dir*104}%)`},{transform:'translateX(0)'}],o);
+}
+
+/* ---- searchable dropdown ---- */
+function comboHTML(name,label,items,val){const cur=items.find(i=>i.v===val);
+  return `<div class="cbf"><span class="flab">${esc(label)}</span><div class="combo" data-cb="${name}"><input class="cbi" value="${esc(cur?cur.l:'')}" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="${esc(label)}" role="combobox" aria-expanded="false"><span class="cba" aria-hidden="true">▾</span><div class="cbl" role="listbox" hidden></div></div></div>`}
+function bindCombo(root,name,items,val,onPick){
+  const el=root.querySelector(`[data-cb="${name}"]`);if(!el)return;const inp=el.querySelector('.cbi'),L=el.querySelector('.cbl');let typed=false;
+  const cur=()=>{const c=items.find(i=>i.v===val);return c?c.l:''};
+  const draw=()=>{const q=typed?inp.value.trim().toLowerCase():'';const f=items.filter(i=>!q||i.l.toLowerCase().includes(q)||(i.s||'').toLowerCase().includes(q));
+    L.innerHTML=f.length?f.map(i=>`<button type="button" class="cbo${i.v===val?' on':''}" data-v="${esc(i.v)}" role="option"><span>${esc(i.l)}</span>${i.s?`<small>${esc(i.s)}</small>`:''}</button>`).join(''):'<p class="muted" style="margin:8px 10px">No match</p>';
+    L.querySelectorAll('.cbo').forEach(b=>{b.addEventListener('pointerdown',e=>e.preventDefault());b.onclick=()=>{L.hidden=true;inp.setAttribute('aria-expanded','false');inp.blur();onPick(b.dataset.v)}});
+    const on=L.querySelector('.cbo.on');if(on&&!typed)on.scrollIntoView({block:'nearest'})};
+  const open=()=>{typed=false;L.hidden=false;inp.setAttribute('aria-expanded','true');draw();try{inp.select()}catch(e){}};
+  inp.onfocus=open;inp.onclick=()=>{if(L.hidden)open()};el.querySelector('.cba').onclick=()=>inp.focus();
+  inp.oninput=()=>{typed=true;L.hidden=false;draw()};
+  inp.onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();const f=L.querySelector('.cbo');if(f)f.click()}if(e.key==='Escape'){inp.blur()}};
+  inp.onblur=()=>setTimeout(()=>{L.hidden=true;inp.setAttribute('aria-expanded','false');inp.value=cur()},150);
+}
+/* ---- past amount picker: month · expense · spent/planned ---- */
+async function pastPicker(box,line,onUse,useLabel){
+  box.innerHTML='<p class="muted" style="margin:6px 2px">Looking back…</p>';
+  let ks=[];try{ks=await listMonths()}catch(e){}
+  ks=ks.filter(k=>k<key).reverse();
+  if(!ks.length){box.innerHTML='<p class="muted" style="margin:6px 2px">No earlier months yet.</p>';return}
+  const st={k:ks[0],id:null,what:'spent'};
+  const draw=async()=>{
+    const m=(await loadRange([st.k]))[0]||{};const cats=(m.plan?m.plan.cats:[]);
+    if(!st.id||!cats.some(c=>c.id===st.id)){const nm=line.name.trim().toLowerCase();const x=cats.find(c=>c.id===line.id)||cats.find(c=>c.name.trim().toLowerCase()===nm);st.id=x?x.id:(cats[0]&&cats[0].id)}
+    const c=cats.find(x=>x.id===st.id),C=m.plan?calc(m.plan,m.txns,m.k):null;
+    const sp=c&&C&&C.by[c.id]?Math.round(C.by[c.id].spent*100)/100:0,pl=c?(+c.planned||0):0;
+    const v=st.what==='spent'?sp:pl;
+    box.innerHTML=`<div class="pastpick">${comboHTML('m','Month',ks.map(k=>({v:k,l:mName(k,'sy')})),st.k)}
+      ${cats.length?comboHTML('c','Expense',cats.map(x=>({v:x.id,l:x.name,s:gName(x)})),st.id):'<p class="muted">Nothing planned that month.</p>'}
+      ${c?`<div class="seg mini pwhat"><button type="button" data-pw="spent" aria-pressed="${st.what==='spent'}">Spent ${money(sp)}</button><button type="button" data-pw="planned" aria-pressed="${st.what==='planned'}">Planned ${money(pl)}</button></div>
+      <button type="button" class="btn ghost full" id="pastUse" ${v>0.004?'':'disabled'}>${v>0.004?`${esc(useLabel)} ${money(v)}`:'Nothing to use'}</button>`:''}</div>`;
+    bindCombo(box,'m',ks.map(k=>({v:k,l:mName(k,'sy')})),st.k,v2=>{st.k=v2;draw()});
+    bindCombo(box,'c',cats.map(x=>({v:x.id,l:x.name,s:gName(x)})),st.id,v2=>{st.id=v2;draw()});
+    box.querySelectorAll('[data-pw]').forEach(b=>b.onclick=()=>{st.what=b.dataset.pw;draw()});
+    const u=box.querySelector('#pastUse');if(u)u.onclick=()=>{if(v>0.004)onUse(v,`${c.name}, ${mName(st.k,'s')} ${st.what}`)};
+  };
+  draw();
+}
+/* ---- past amounts for one line ---- */
+async function pastFor(c){
+  let ks=[];try{ks=await listMonths()}catch(e){}
+  ks=ks.filter(k=>k<key).slice(-12).reverse();if(!ks.length)return [];
+  const data=(await loadRange(ks)).filter(m=>m&&m.plan).sort((a,b)=>b.k.localeCompare(a.k));
+  const nm=c.name.trim().toLowerCase(),out=[];
+  for(const m of data){const x=m.plan.cats.find(y=>y.id===c.id)||m.plan.cats.find(y=>y.name.trim().toLowerCase()===nm);if(!x)continue;
+    const C=calc(m.plan,m.txns,m.k),sp=C.by[x.id]?C.by[x.id].spent:0,pl=+x.planned||0;if(sp>0.004||pl>0.004)out.push({k:m.k,sp:Math.round(sp*100)/100,pl})}
+  return out;
+}
+function pastListHTML(rows){
+  if(!rows.length)return '<p class="muted" style="margin:6px 2px">No earlier months with this line yet.</p>';
+  return `<div class="pastl">${rows.map(r=>`<div class="pastr"><span class="pm">${esc(mName(r.k,'sy'))}</span>${r.sp>0.004?`<button type="button" class="pchip" data-pv="${r.sp}">Spent ${money(r.sp)}</button>`:'<span class="pchip none">Spent —</span>'}${r.pl>0.004?`<button type="button" class="pchip pl" data-pv="${r.pl}">Planned ${money(r.pl)}</button>`:'<span class="pchip none">Planned —</span>'}</div>`).join('')}</div>`;
+}
+async function pastPlanSheet(id,def){
+  const L=def?TPL.plan:S.plan,c=L.cats.find(x=>x.id===id);if(!c)return;
+  openSheet(head(`${esc(c.name)} · use a past amount`)+`<p class="muted" style="margin-top:0">Becomes the ${def?'every-month':esc(mName(key,'s'))} plan for ${esc(c.name)}. Now: <b>${money(+c.planned||0)}</b></p><div id="pastBox"></div>`,()=>{
+    pastPicker($('#pastBox'),c,v=>{closeSheet();
+      if(def)changeDefault({do:'set',t:'cat',id,f:'planned',v,old:c.planned});else setMonth('cat',id,'planned',v);
+      toast(`${c.name}: plan set to ${money(v)}`)},'Set plan to')});
+}
+document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('[data-pastplan]');if(b)pastPlanSheet(b.dataset.pastplan,b.dataset.def==='1')});
 function entrySheet(t,id){
   const isInc=t==='inc',line=isInc?S.plan.income.find(i=>i.id===id):catOf(id);if(!line)return;
   const C=calc(S.plan,S.txns,S.k),s=isInc?null:C.by[id],tid=isInc?'inc:'+id:id;
@@ -2029,7 +2281,7 @@ function entrySheet(t,id){
   <div class="amtbox"><span class="cur">${esc(curSym())}</span><input id="amtIn" inputmode="none" autocomplete="off" placeholder="0.00"></div>
   <div id="res"></div>
   <div class="keys" style="margin-top:8px">${keys.map(k=>`<button type="button" data-k="${k}" class="${/[÷×−+]/.test(k)?'op':k==='⌫'?'bk':''}" aria-label="${k==='⌫'?'Delete':k}">${k}</button>`).join('')}</div>
-  <div class="nd2"><input id="note" placeholder="Note (optional)" maxlength="120" aria-label="Note"><input id="dt" type="date" value="${def}" min="${key}-01" max="${key}-${pad(dim(key))}" aria-label="Date"></div>
+  ${isInc?'':`<button type="button" class="linkb pastb" id="pastT">↺ Use a past amount</button><div id="pastBox" hidden></div>`}<div class="nd2"><input id="note" placeholder="Note (optional)" maxlength="120" aria-label="Note"><input id="dt" type="date" value="${def}" min="${key}-01" max="${key}-${pad(dim(key))}" aria-label="Date"></div>
   <button type="button" class="btn full" id="saveAmt">Save</button>
   ${tx.length?`<h3>${isInc?'Received':'Spent'} in ${mo}</h3><div class="card">${tx.map(txHTML).join('')}</div>`:''}
   <div class="pfoot"><div id="pview"><span class="muted">${isInc?'Expected':'Planned'} for ${mo}</span> <b>${money(planned)}</b><button type="button" class="pen" id="penBtn" aria-label="Change the ${isInc?'expected':'planned'} amount">✎</button></div>
@@ -2060,6 +2312,9 @@ function entrySheet(t,id){
     I.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();save()}});
     if(matchMedia('(pointer:fine)').matches)setTimeout(()=>{try{I.focus()}catch(e){}},60);
     $('#saveAmt').onclick=save;
+    const pt=$('#pastT');if(pt)pt.onclick=async()=>{const bx=$('#pastBox');if(!bx.hidden){bx.hidden=true;pt.textContent='↺ Use a past amount';return}
+      bx.hidden=false;pt.textContent='Hide past amounts';
+      pastPicker(bx,line,v=>{I.value=String(v);show();bx.hidden=true;pt.textContent='↺ Use a past amount';toast('Amount filled in. Tap Save to add it.')},'Fill in')};
 
     sh.querySelectorAll('[data-del]').forEach(b=>b.onclick=()=>{closeSheet();delTx(b.dataset.del)});
     $('#penBtn').onclick=()=>{$('#pview').hidden=true;$('#penF').hidden=false;$('#penHint').hidden=false;$('#penIn').focus()};
@@ -2232,7 +2487,7 @@ try{history.replaceState({t:'home'},'')}catch(e){}
 addEventListener('popstate',e=>{if($('#veil').classList.contains('open')){$('#veil').classList.remove('open')}tab=(e.state&&e.state.t)||'home';render();scrollTo(0,0)});
 
 document.querySelectorAll('#tbar [data-tb]').forEach(b=>{const t=b.dataset.tb;if(t!=='home'){const sv=document.querySelector(`#tabs button[data-t="${t}"] svg`);if(sv)b.querySelector('.ti').innerHTML=sv.outerHTML}
-  b.onclick=()=>{if(tab===t){scrollTo({top:0,behavior:'smooth'});return}if(t==='home'){go('home')}else go(t)}});
+  b.onclick=()=>{if(t==='log'){quickLog();return}if(t==='find'){$('#findBtn').click();return}if(tab===t){scrollTo({top:0,behavior:'smooth'});return}go(t)}});
 $('#findTop').onclick=()=>$('#findBtn').click();
 /* ---------------- find ---------------- */
 $('#findBtn').onclick=()=>{
