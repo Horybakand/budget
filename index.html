@@ -918,6 +918,10 @@ body.summing{padding-bottom:calc(250px + env(safe-area-inset-bottom))!important}
 .sbtotal .linkb{padding:0 0 0 6px!important;min-height:0!important;font-size:12.5px}
 body.summing{padding-bottom:calc(240px + env(safe-area-inset-bottom))!important}
 body.summing .toast{bottom:calc(250px + env(safe-area-inset-bottom))!important}
+
+.seg.three{display:flex;width:100%;margin:0 0 10px}
+.seg.three button{flex:1;white-space:nowrap;padding-left:4px;padding-right:4px}
+.seg.three #addUp b{font-size:15px;margin-right:2px}
 </style>
 </head>
 <body>
@@ -950,7 +954,7 @@ body.summing .toast{bottom:calc(250px + env(safe-area-inset-bottom))!important}
    (Or leave it empty and type it into the setup screen on each device.)
    ====================================================================== */
 const APP_KEY = '';
-const APP_VERSION = '35 · Nov 26, 2026';
+const APP_VERSION = '36 · Nov 26, 2026';
 
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -1477,7 +1481,7 @@ function actualHTML(C){
   const expSC=Math.max(1,...vis.map(c=>Math.max(barVal(c,C),C.by[c.id].budget)));
   const ord=cs=>[...cs].sort((a,b)=>(C.by[a.id].closed-C.by[b.id].closed)||(barVal(b,C)-barVal(a,C))||(b.planned-a.planned));
   h+=`<h2 class="big2">Expenses <small>${money(sp,0)} <i>of</i> ${money(pl,0)}</small></h2>
-  <div class="asrow"><div class="seg mini asort"><button type="button" data-asort="big" aria-pressed="${by==='big'}">Biggest first</button><button type="button" data-asort="grp" aria-pressed="${by==='grp'}">By group</button></div><button type="button" class="addup${addMode?' on':''}" id="addUp"><b>Σ</b> Add up</button></div>`;
+  <div class="seg mini asort three"><button type="button" data-asort="big" aria-pressed="${!addMode&&by==='big'}">Biggest first</button><button type="button" data-asort="grp" aria-pressed="${!addMode&&by==='grp'}">By group</button><button type="button" id="addUp" aria-pressed="${addMode}"><b>Σ</b> Add up</button></div>`;
   if(by==='grp')h+=groupsOf(p.cats).map(l=>{const cs=ord(vis.filter(c=>gName(c)===l));const gt=groupTotal(p.cats.filter(c=>gName(c)===l),C);return cs.length?`<div class="card abars gcard"><div class="ghd in"><span>${esc(l)}</span><span>${money(gt.val,0)} <i>of</i> ${money(gt.bud,0)}</span></div>${cs.map(c=>catBar(c,C,expSC)).join('')}</div>`:''}).join('');
   else h+=`<div class="card abars">${ord(vis).map(c=>catBar(c,C,expSC)).join('')}</div>`;
   if(hid.length)h+=`<details class="others"><summary>${hid.length} more categor${hid.length>1?'ies':'y'} with nothing planned</summary><div class="card">${hid.map(c=>`<button class="row" data-cat="${esc(c.id)}"><span class="nm"><span class="dot" style="background:${colOf(c.id)}"></span>${esc(c.name)}</span><span class="av" style="font-size:13px;font-weight:600;color:var(--mute)">${esc(gName(c))}</span></button>`).join('')}</div></details>`;
@@ -2009,7 +2013,7 @@ function sumPanel(){let el=$('#sumBar');
 }
 document.addEventListener('click',e=>{
   const u=e.target.closest&&e.target.closest('#addUp');
-  if(u){e.stopPropagation();addMode=!addMode;sumSel=new Set();render();if(addMode)markAdd(true);return}
+  if(u){e.stopPropagation();if(addMode)return;addMode=true;sumSel=new Set();render();markAdd(true);return}
   if(!addMode||tab!=='actual')return;
   const r=e.target.closest&&e.target.closest('.rw.ab[data-sid]');if(!r)return;
   e.stopPropagation();e.preventDefault();if(!r.classList.contains('elig'))return;
@@ -2111,7 +2115,7 @@ function bind(){
   all('[data-moved]',b=>b.onclick=()=>{const c=catOf(b.dataset.moved);if(!c)return;const v=!c.moved;setMonth('cat',c.id,'moved',v);toast(v?`${c.name}: moved to savings`:`${c.name}: marked not moved`)});
   all('[data-del]',b=>b.onclick=()=>delTx(b.dataset.del));
   all('[data-move]',b=>b.onclick=()=>moveSheet(b.dataset.move,b.dataset.amt,b.dataset.from));
-  all('[data-asort]',b=>b.onclick=()=>{ls.set('mb-asort',b.dataset.asort);render()});
+  all('[data-asort]',b=>b.onclick=()=>{ls.set('mb-asort',b.dataset.asort);addMode=false;sumSel=new Set();render()});
   all('[data-dm]',b=>b.onclick=()=>{donutMode=b.dataset.dm;donutSel=-1;render()});
   const upl=$('#rcUp');if(upl)upl.onchange=()=>{addPhotos(upl.files);upl.value=''};
   /* ---- Plan tab ---- */
