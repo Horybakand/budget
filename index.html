@@ -990,6 +990,94 @@ html.sliding,html.sliding body{overflow-x:hidden}
 .cbo:hover{background:var(--soft)}
 .pwhat{display:flex;width:100%;margin:0}
 .pwhat button{flex:1}
+
+/* v43: locked past months */
+.pastlock{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 10px;background:color-mix(in srgb,#ffe08a 35%,var(--card));border:1px solid color-mix(in srgb,#e3b437 50%,var(--line));border-radius:14px;padding:10px 12px;margin:0 0 12px;font-size:13.5px}
+.pastlock .linkb{padding:0!important;min-height:0!important;font-weight:800}
+.pastlock.in{margin:4px 0 10px}
+#sheet.ro .amtbox,#sheet.ro .keys,#sheet.ro #saveAmt,#sheet.ro .nd2,#sheet.ro #pastT,#sheet.ro #pastBox,#sheet.ro #penBtn,#sheet.ro .pen2,#sheet.ro .plinks{display:none!important}
+#sheet.ro .tx.ed{pointer-events:none}
+/* v43: plan page bars */
+:root{--planc:#9fb0ee;--plang:linear-gradient(180deg,#dce3fc 0%,#bac7f5 48%,#a9b8f1 52%,#a6b5f0 100%);--planbg:rgba(140,160,235,.24);--planbd:rgba(120,140,225,.38)}
+@media (prefers-color-scheme: dark){:root:not([data-theme=light]){--planc:#8c9ce8;--plang:linear-gradient(180deg,#b9c4f7 0%,#8f9fe8 48%,#8090e0 52%,#7d8dde 100%);--planbg:rgba(150,165,250,.2);--planbd:rgba(150,165,250,.34)}}
+:root[data-theme=dark]{--planc:#8c9ce8;--plang:linear-gradient(180deg,#b9c4f7 0%,#8f9fe8 48%,#8090e0 52%,#7d8dde 100%);--planbg:rgba(150,165,250,.2);--planbd:rgba(150,165,250,.34)}
+.pbars{display:flex;flex-direction:column}
+.pbr{display:flex;flex-direction:column;gap:5px;width:100%;border:0;border-top:1px solid var(--line);background:none;text-align:left;padding:9px 14px 10px;color:var(--ink);min-height:0}
+.pbars .pbr:first-child{border-top:0}
+.pbh{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.pbn{font-weight:700;font-size:14.5px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pbn .clip{width:13px;height:13px;margin-left:5px;vertical-align:-1px;color:var(--greenD)}
+.pbm,.pbe{font-size:11.5px;font-weight:700;color:var(--mute);margin-left:6px}
+.pbe{color:var(--greenD)}
+.pbh b{font-size:14.5px;white-space:nowrap}
+.pbt{height:12px;border-radius:6px;background:var(--track);overflow:hidden}
+.pbt em{display:block;height:100%;border-radius:6px;background:var(--plang)}
+.pedit .pl{border-top:0;padding:4px 0}
+.pedit [data-more]{display:none!important}
+.pedit .opt{display:flex!important;flex-wrap:wrap;gap:10px;padding-top:8px}
+.pedit .pl.weye,.pedit .pl.wclip,.pedit .pl{grid-template-columns:minmax(0,1fr) 7em auto auto}
+.pehd{display:grid;grid-template-columns:minmax(0,1fr) 7em auto;gap:8px;font-size:12px;font-weight:700;color:var(--mute);margin:0 2px 2px}
+.logk{display:flex;width:100%;margin:0 0 12px}
+.logk button{flex:1}
+/* v43: Actual bullet bars */
+.rw.ab.ab2 .row.abt{display:flex!important;flex-direction:column!important;align-items:stretch!important;justify-content:flex-start!important;gap:5px;padding:7px 0 8px!important;text-align:left;width:100%;min-width:0}
+.rw.ab.ab2 .abh,.rw.ab.ab2 .bul{width:100%}
+.abh{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.abn{font-weight:700;font-size:14px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.abn .clip{width:12px;height:12px;margin-left:5px;vertical-align:-1px;color:var(--greenD)}
+.abv{display:flex;align-items:baseline;gap:6px;white-space:nowrap}
+.abv b{font-size:14px}
+.abv small{font-size:11.5px;color:var(--mute);font-weight:600}
+.bul{position:relative;display:block;height:18px}
+.bul .bp{position:absolute;left:0;top:0;bottom:0;border-radius:6px;background:var(--planbg);box-shadow:inset 0 0 0 1px var(--planbd)}
+.bul .ba{position:absolute;left:0;top:6px;height:6px;border-radius:3px;background:var(--fillgloss)}
+.bul .ba.sv{background:var(--savegloss)}
+.bul .ba.cl{background:linear-gradient(180deg,#c9d2dc,#aab6c3)}
+.bul .bo{position:absolute;top:6px;height:6px;border-radius:0 3px 3px 0;background:var(--goldgloss);box-shadow:0 0 0 1px var(--goldEdge)}
+.ab2 .ck{align-self:center}
+
+/* v44: amounts at the ends of the bars */
+.bul{overflow:visible}
+.bl{position:absolute;top:50%;transform:translateY(-50%);font-size:11.5px;line-height:1;white-space:nowrap;pointer-events:none;z-index:2}
+.bl[hidden]{display:none}
+.bls{font-weight:800;color:var(--ink)}
+.blp{font-weight:700;color:var(--mute)}
+.bl.in{background:color-mix(in srgb,var(--card) 88%,transparent);padding:2px 5px;border-radius:6px}
+.bls.in{box-shadow:0 0 0 1px var(--line)}
+.abv b:empty{display:none}
+
+/* v45: name on the bar, amounts in a column */
+.rw.ab.ab2 .row.abt{display:grid!important;grid-template-columns:minmax(0,1fr) 98px!important;flex-direction:initial!important;align-items:center!important;gap:8px!important;padding:5px 0!important}
+.bul2{position:relative;display:block;height:28px;border-radius:7px;background:none;min-width:0}
+.bul2 .bp{position:absolute;left:0;top:0;bottom:0;border-radius:7px;background:var(--planbg);box-shadow:inset 0 0 0 1px var(--planbd)}
+.bul2 .ba{position:absolute;left:0;bottom:3px;height:5px;border-radius:3px;background:var(--fillgloss)}
+.bul2 .ba.sv{background:var(--savegloss)}
+.bul2 .ba.cl{background:linear-gradient(180deg,#c9d2dc,#aab6c3)}
+.bul2 .bo{position:absolute;bottom:3px;height:5px;border-radius:0 3px 3px 0;background:var(--goldgloss);box-shadow:0 0 0 1px var(--goldEdge)}
+.bnm{position:absolute;left:8px;right:6px;top:3px;font-size:13px;font-weight:700;line-height:16px;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;z-index:2}
+.bnm .clip{width:11px;height:11px;margin-left:4px;vertical-align:-1px;color:var(--greenD)}
+.aba2{display:flex;flex-direction:column;align-items:flex-end;line-height:1.15;width:98px}
+.aba2 .a1{white-space:nowrap}
+.aba2 .av{font-size:15.5px;font-weight:800;color:var(--greenD)}
+.aba2 .av.ov{color:var(--overt)}
+.aba2 .av.sv{color:#6b66c9}
+.aba2 .av.cl{color:var(--mute)}
+.aba2 i{font-style:normal;font-size:11.5px;font-weight:600;color:var(--mute);margin-left:3px}
+.aba2 small{font-size:11px;color:var(--mute);font-weight:600;white-space:nowrap}
+@media (prefers-color-scheme: dark){:root:not([data-theme=light]) .aba2 .av.sv{color:#c0bcfb}}
+:root[data-theme=dark] .aba2 .av.sv{color:#c0bcfb}
+
+/* v45: plan bars with the name on the bar */
+.pbr.pbr2{display:grid;grid-template-columns:minmax(0,1fr) 92px;gap:8px;align-items:center;padding:6px 12px}
+.pbbar{position:relative;display:block;height:28px;min-width:0}
+.pbbar em{position:absolute;left:0;top:0;bottom:0;border-radius:7px;background:var(--plang)}
+.pbbar .pbn{position:absolute;left:8px;right:4px;top:0;line-height:28px;font-size:13px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--ink)}
+.pbamt{display:flex;flex-direction:column;align-items:flex-end;line-height:1.15}
+.pbamt b{font-size:15px;font-weight:800}
+.pbamt small{font-size:11px;color:var(--mute);font-weight:600;white-space:nowrap}
+.pbbar .pbe{display:none}
+@media (prefers-color-scheme: dark){:root:not([data-theme=light]){--plang:linear-gradient(180deg,#7d8be0 0%,#5f6fd0 48%,#5465c6 52%,#5163c4 100%)}}
+:root[data-theme=dark]{--plang:linear-gradient(180deg,#7d8be0 0%,#5f6fd0 48%,#5465c6 52%,#5163c4 100%)}
 </style>
 </head>
 <body>
@@ -1022,7 +1110,7 @@ html.sliding,html.sliding body{overflow-x:hidden}
    (Or leave it empty and type it into the setup screen on each device.)
    ====================================================================== */
 const APP_KEY = '';
-const APP_VERSION = '42 · Nov 26, 2026';
+const APP_VERSION = '45 · Nov 27, 2026';
 
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -1236,7 +1324,16 @@ function closeAsk(id){
 function setMonth(t,id,f,v){persist('plan',p=>{const l=(t==='inc'?p.income:p.cats).find(x=>x.id===id);if(l)l[f]=v})}
 let openOpts=new Set(),planScope='month';let S=null,key=todayKey,tab='home',weekSel=null,saving=0,queue=Promise.resolve(),hist={};
 function setSync(t,err){const e=$('#sync');e.textContent=t||'';e.className='sync'+(err?' err':'')}
-function persist(kind,fn0){
+
+/* ---- finished months are read-only unless unlocked ---- */
+let editPast=false;
+const pastLocked=()=>mode!=='setup'&&key<todayKey&&!editPast;
+const copyOn=()=>ls.get('mb-copy')!=='off';
+const pastMsg=()=>`${mName(key)} is finished and locked. Turn on “Edit past months” in Settings to change it.`;
+function pastBanner(){return pastLocked()?`<div class="pastlock"><span>🔒 <b>${esc(mName(key))}</b> is finished, so it’s locked.</span><button type="button" class="linkb" data-opensettings>Unlock in Settings</button></div>`:''}
+document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('[data-opensettings]');if(b)openSettings()});
+function persist(kind,fn0,sys){
+  if(!sys&&pastLocked()){toast(pastMsg());render();return Promise.resolve()}
   const fn=kind==='plan'?(p=>{fn0(p);p.editedBy=who()||'';p.editedAt=Date.now()}):fn0;
   const st=S;fn(kind==='plan'?st.plan:st.txns);hist[st.k]=null;render();saving++;setSync('Saving…');
   queue=queue.then(()=>write(st,kind,fn)).then(()=>{saving--;if(!saving)setSync(mode==='demo'?'Demo mode · saved on this device':'Saved to Dropbox')},e=>{saving--;setSync(e.message==='signed-out'?'Signed out of Dropbox':e.message||'Could not save',true)});
@@ -1368,12 +1465,12 @@ async function openMonth(k){
     let st=await loadMonth(k);if(my!==loadId)return;
     if(!st.plan&&k===todayKey){
       const p=await planFor(k);if(my!==loadId)return;
-      st.plan=p;S=st;persist('plan',()=>{});return;
+      st.plan=p;S=st;persist('plan',()=>{},true);return;
     }
     if(st.plan&&st.plan.needsRoll&&addM(k,-1)<todayKey){
       const prev=await loadMonth(addM(k,-1));if(my!==loadId)return;
       S=st;const r=prev.plan?rollPlan(prev):null;
-      persist('plan',p=>{if(r){p.cats.forEach(c=>{const m=r.cats.find(x=>x.id===c.id);c.carry=m?m.carry:0;c.owed=m?m.owed:0;c.owedFrom=m?m.owedFrom:undefined});p.overPrev=r.overPrev}p.needsRoll=false});return;
+      persist('plan',p=>{if(r){p.cats.forEach(c=>{const m=r.cats.find(x=>x.id===c.id);c.carry=m?m.carry:0;c.owed=m?m.owed:0;c.owedFrom=m?m.owedFrom:undefined});p.overPrev=r.overPrev}p.needsRoll=false},true);return;
     }
     S=st;cur=(S.plan&&S.plan.cur)||cur;setSync(mode==='demo'?'Demo mode · sample numbers':'Synced with Dropbox');render();
   }catch(e){if(my!==loadId)return;if(e.message==='signed-out'){mode='setup';render();return}setSync(e.message||'Could not load',true);S={k,plan:null,txns:[],failed:true};render()}
@@ -1509,8 +1606,36 @@ function incRowHTML(i,C){
 }
 
 function barVal(c,C){const s=C.by[c.id];return c.kind==='save'?Math.max(0,s.avail):s.spent}
-function abBar(v,p,cls,name,SC,att){const sc=Math.max(SC||0,v,p,0.01),blue=Math.min(v,p>0?p:v)/sc*100,f=v/sc*100,pl=p/sc*100,over=p>0&&v>p+0.004&&cls!=='sv';
-  return `<div class="hbt"><em class="${cls}" style="width:${blue}%"></em>${over?`<em class="ov" style="left:${pl}%;width:${f-pl}%"></em>`:''}${p>0?`<i style="left:${pl}%"></i>`:''}<span class="hbl" data-fill="${blue}">${esc(name)}${att?'<svg class="clip" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5l-8.6 8.6a5.5 5.5 0 0 1-7.8-7.8l8.6-8.6a3.7 3.7 0 0 1 5.2 5.2l-8.6 8.6a1.8 1.8 0 0 1-2.6-2.6l7.9-7.9"/></svg>':''}</span></div>`}
+function abBar(v,p,cls,name,SC,att){const sc=Math.max(SC||0,v,p,0.01),pw=p/sc*100,aw=Math.min(v,p>0?p:v)/sc*100,f=v/sc*100,over=p>0&&v>p+0.004&&cls!=='sv';
+  return `<span class="bul2"><span class="bp" style="width:${pw}%"></span><span class="ba ${cls}" style="width:${aw}%"></span>${over?`<span class="bo" style="left:${pw}%;width:${f-pw}%"></span>`:''}<span class="bnm">${esc(name)}${att?CLIP_S:''}</span></span>`}
+const CLIP_S='<svg class="clip" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5l-8.6 8.6a5.5 5.5 0 0 1-7.8-7.8l8.6-8.6a3.7 3.7 0 0 1 5.2 5.2l-8.6 8.6a1.8 1.8 0 0 1-2.6-2.6l7.9-7.9"/></svg>';
+function abAmt(v,p,cls,sub){const same=p>0.004&&Math.abs(v-p)<0.5,over=p>0.004&&v>p+0.004&&cls!=='sv';
+  return `<span class="aba2"><span class="a1"><b class="av ${over?'ov':cls}">${money(v,0)}</b>${p>0.004&&!same?`<i>/ ${money(p,0)}</i>`:''}</span><small>${sub}</small></span>`}
+/* put the spent and planned amounts at the ends of their bars, without overlapping */
+function bulPlace(){
+  document.querySelectorAll('.bul[data-v]').forEach(b=>{
+    const W=b.clientWidth;if(!W)return;const v=+b.dataset.v,p=+b.dataset.p,ae=W*b.dataset.ae/100,pe=W*b.dataset.pe/100;
+    const S=b.querySelector('.bls'),P=b.querySelector('.blp'),m=x=>money(x,0);
+    const put=(el,txt,x)=>{el.textContent=txt;el.hidden=false;el.classList.remove('in');const w=el.offsetWidth;
+      if(x+5+w<=W){el.style.left=(x+5)+'px'}else{el.classList.add('in');el.style.left=Math.max(2,x-5-w)+'px'}return w};
+    S.hidden=P.hidden=true;
+    const hasV=v>0.004,hasP=p>0.004;
+    if(!hasV&&!hasP)return;
+    if(!hasV){put(P,m(p),pe);return}
+    if(!hasP){put(S,m(v),ae);return}
+    if(Math.abs(v-p)<0.5){put(S,m(v),pe);return}
+    if(v>p){put(S,`${m(v)} of ${m(p)}`,ae);return}
+    // under plan: try both labels
+    S.textContent=m(v);P.textContent=m(p);S.hidden=P.hidden=false;S.classList.remove('in');P.classList.remove('in');
+    const ws=S.offsetWidth,wp=P.offsetWidth;
+    const sl=ae+5,sr=sl+ws;
+    let pl=pe+5,pIn=false;if(pl+wp>W){pl=pe-5-wp;pIn=true}
+    if(sr<=(pIn?pl-6:pe-4)&&pl>=0){S.style.left=sl+'px';P.style.left=pl+'px';P.classList.toggle('in',pIn);return}
+    P.hidden=true;put(S,`${m(v)} of ${m(p)}`,pe);
+  });
+}
+addEventListener('resize',()=>{if(document.querySelector('.bul[data-v]'))bulPlace()});
+function abHead(name,att,amt,sub){amt='';return `<span class="abh"><span class="abn">${esc(name)}${att?'<svg class="clip" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5l-8.6 8.6a5.5 5.5 0 0 1-7.8-7.8l8.6-8.6a3.7 3.7 0 0 1 5.2 5.2l-8.6 8.6a1.8 1.8 0 0 1-2.6-2.6l7.9-7.9"/></svg>':''}</span><span class="abv"><b>${amt}</b><small>${sub}</small></span></span>`}
 function catBar(c,C,SC){
   const s=C.by[c.id],save=c.kind==='save',v=barVal(c,C),hasAtt=attCount(c)>0;
   let sub;
@@ -1520,12 +1645,12 @@ function catBar(c,C,SC){
   else if(c.kind==='bill')sub=s.st==='paid'?'<span class="t-ok">paid ✓</span>':`${money(Math.max(0,s.avail),0)} to pay`;
   else sub=`${money(s.avail,0)} left`;
   const ck=save?`<button class="ck${c.moved?' on':''}" data-moved="${esc(c.id)}" aria-pressed="${!!c.moved}" aria-label="${c.moved?'Not moved yet':'Mark as moved to savings'}: ${esc(c.name)}"><svg viewBox="0 0 24 24" width="24" height="24"><circle cx="12" cy="12" r="10.5"/><path d="M7.5 12.4l3 3 6-6.4"/></svg></button>`:`<button class="ck${s.closed?' on':''}" data-done="${esc(c.id)}" aria-pressed="${s.closed}" aria-label="${s.closed?'Reopen':'Mark done for the month'}: ${esc(c.name)}"><svg viewBox="0 0 24 24" width="24" height="24"><circle cx="12" cy="12" r="10.5"/><path d="M7.5 12.4l3 3 6-6.4"/></svg></button>`;
-  return `<div class="rw ab${addMode&&sumSel.has(c.id)?' picked':''}" data-sid="${esc(c.id)}"><button class="row abt" data-cat="${esc(c.id)}">${abBar(v,s.budget,s.st==='closed'?'cl':save?'sv':'',c.name,SC,hasAtt)}<span class="aba"><b>${money(v,0)}</b><small>${sub}</small></span></button>${ck}</div>`;
+  return `<div class="rw ab ab2${addMode&&sumSel.has(c.id)?' picked':''}" data-sid="${esc(c.id)}"><button class="row abt" data-cat="${esc(c.id)}">${abBar(v,s.budget,s.st==='closed'?'cl':save?'sv':'',c.name,SC,hasAtt)}${abAmt(v,s.budget,s.st==='closed'?'cl':save?'sv':'',sub)}</button>${ck}</div>`;
 }
 function incBar(i,C,SC){
   const v=C.inc[i.id]||{exp:i.amt,got:0},done=v.exp>0&&v.got>=v.exp-0.004,extra=v.got-v.exp;
   const sub=extra>0.004&&v.exp>0?`+${money(extra,0)} extra`:done?'<span class="t-ok">all in ✓</span>':v.exp>0?`${money(Math.max(0,v.exp-v.got),0)} to come`:'received';
-  return `<div class="rw ab"><button class="row abt" data-incopen="${esc(i.id)}">${abBar(v.got,v.exp,'',i.name,SC)}<span class="aba"><b>${money(v.got,0)}</b><small>${sub}</small></span></button><span class="ck0"></span></div>`;
+  return `<div class="rw ab ab2"><button class="row abt" data-incopen="${esc(i.id)}">${abBar(v.got,v.exp,'',i.name,SC)}${abAmt(v.got,v.exp,'',sub)}</button><span class="ck0"></span></div>`;
 }
 function donorFor(id,C,need){
   if(C.rta>=need)return {id:'rta',name:'Ready to assign',spare:C.rta};
@@ -1538,7 +1663,7 @@ function actualHTML(C){
   if(C.income===0&&C.planned===0)return `<div class="hero"><small>Let’s set up ${mo}</small><div class="big" style="font-size:36px">Start your plan</div><p>Add your income and what you plan to spend in the Plan tab. Your every-month plan repeats automatically.</p><div class="pill"><span>Your categories are ready</span><button data-go="plan">Open Plan</button></div></div>`;
   let sp=0,moved=0,pl=0;for(const c of p.cats){if(c.kind==='save'){if(c.moved)moved+=+c.planned||0;continue}sp+=C.by[c.id].spent;pl+=C.by[c.id].eff}
   const rec=C.received,left=rec-sp-moved;
-  let h=`<div class="hero"><small>Left to spend in ${mo}</small><div class="big${left<0?' neg':''}">${left<0?'−':''}${money(Math.abs(left),0)}</div>
+  let h=pastBanner()+`<div class="hero"><small>Left to spend in ${mo}</small><div class="big${left<0?' neg':''}">${left<0?'−':''}${money(Math.abs(left),0)}</div>
   <div class="hbar">${barHTML(sp+moved,rec,'#fff','Received')}</div><p class="hfoot">Spent <b>${money(sp,0)}</b>${moved>0?` · moved to savings <b>${money(moved,0)}</b>`:''}</p></div>`;
   const src=p.income.filter(i=>i.amt>0||(C.inc[i.id]&&C.inc[i.id].got>0));
   const incSC=Math.max(1,...src.map(i=>{const v=C.inc[i.id]||{exp:i.amt,got:0};return Math.max(v.got,v.exp)}));
@@ -1548,11 +1673,11 @@ function actualHTML(C){
   const expSC=Math.max(1,...vis.map(c=>Math.max(barVal(c,C),C.by[c.id].budget)));
   const ord=cs=>[...cs].sort((a,b)=>(C.by[a.id].closed-C.by[b.id].closed)||(barVal(b,C)-barVal(a,C))||(b.planned-a.planned));
   h+=`<h2 class="big2">Expenses <small>${money(sp,0)} <i>of</i> ${money(pl,0)}</small></h2>
-  <button type="button" class="linkb copyb" data-copy="actual">⧉ Copy amounts from another month</button><div class="seg mini asort three"><button type="button" data-asort="big" aria-pressed="${!addMode&&by==='big'}">Biggest first</button><button type="button" data-asort="grp" aria-pressed="${!addMode&&by==='grp'}">By group</button><button type="button" id="addUp" aria-pressed="${addMode}"><b>Σ</b> Add up</button></div>`;
+  ${copyOn()&&key<=todayKey&&!pastLocked()?`<button type="button" class="linkb copyb" data-copy="actual">⧉ Copy amounts from another month</button>`:''}<div class="seg mini asort three"><button type="button" data-asort="big" aria-pressed="${!addMode&&by==='big'}">Biggest first</button><button type="button" data-asort="grp" aria-pressed="${!addMode&&by==='grp'}">By group</button><button type="button" id="addUp" aria-pressed="${addMode}"><b>Σ</b> Add up</button></div>`;
   if(by==='grp')h+=groupsOf(p.cats).map(l=>{const cs=ord(vis.filter(c=>gName(c)===l));const gt=groupTotal(p.cats.filter(c=>gName(c)===l),C);return cs.length?`<div class="card abars gcard"><div class="ghd in"><span>${esc(l)}</span><span>${money(gt.val,0)} <i>of</i> ${money(gt.bud,0)}</span></div>${cs.map(c=>catBar(c,C,expSC)).join('')}</div>`:''}).join('');
   else h+=`<div class="card abars">${ord(vis).map(c=>catBar(c,C,expSC)).join('')}</div>`;
   if(hid.length)h+=`<details class="others"><summary>${hid.length} more categor${hid.length>1?'ies':'y'} with nothing planned</summary><div class="card">${hid.map(c=>`<button class="row" data-cat="${esc(c.id)}"><span class="nm"><span class="dot" style="background:${colOf(c.id)}"></span>${esc(c.name)}</span><span class="av" style="font-size:13px;font-weight:600;color:var(--mute)">${esc(gName(c))}</span></button>`).join('')}</div></details>`;
-  h+=`<p class="muted" style="margin:12px 4px">Bar length shows the amount, so bigger spending means a longer bar. Tap a bar to add or see entries. Pink mark: plan · gold: past the plan · lavender: savings · gray: done.</p>`;
+  h+=`<p class="muted" style="margin:12px 4px">The pale bar is the plan; the thin line along its bottom is what’s been spent. Right side: spent / planned. Gold: past the plan · lavender: savings · gray: done. Tap a line to add or see entries.</p>`;
   return h;
 }
 function groupTotal(cs,C){let val=0,bud=0;for(const c of cs){const s=C.by[c.id];val+=c.kind==='save'?Math.max(0,s.avail):s.spent;bud+=s.budget}return {val,bud,save:cs.length&&cs.every(c=>c.kind==='save')}}
@@ -1795,17 +1920,34 @@ function planLine(t,l,def,GS,locked){
   const eye=t!=='inc'&&!(+amt)?`<button type="button" class="eyeb${l.show?' on':''}" data-show="${k}" aria-pressed="${!!l.show}" aria-label="${l.show?'Shown in Actual':'Hidden in Actual'}: ${esc(l.name)}" title="${l.show?'Shown in Actual':'Show in Actual'}" ${dis}>${l.show?EYE_ON:EYE_OFF}</button>`:'';
   return `<div class="pl${clip?' wclip':''}${eye?' weye':''}"><input aria-label="Name" data-ln="${k}" data-f="name" value="${esc(l.name)}" ${dis}><input aria-label="Planned amount" inputmode="decimal" data-ln="${k}" data-f="amt" value="${amt||''}" placeholder="0" ${dis}>${clip}${eye}${locked?'<span></span>':`<button type="button" class="x" data-more="${k}" aria-label="More options" aria-expanded="${openOpts.has(k)}">⋯</button>`}${tag?`<div class="tagrow">${tag}</div>`:''}<div class="opt" ${openOpts.has(k)?'':'hidden'}>${opts}</div></div>`;
 }
+
+/* ---- Plan page: soft bars, tap to edit ---- */
+function planBar(t,l,def,locked,SC){
+  const k=t+':'+l.id,amt=t==='inc'?(+l.amt||0):(+l.planned||0),d=def?null:tplLine(t,l.id),dAmt=d?(t==='inc'?d.amt:d.planned):null;
+  let mark='';if(!def){if(l.only||!d)mark=`only ${esc(mName(key,'s'))}`;else if(dAmt!==amt)mark=`usually ${money(dAmt,0)}`}
+  const att=!def&&t!=='inc'&&attCount(l)>0,shown=t!=='inc'&&!amt&&l.show;
+  const w=SC>0?Math.min(100,amt/SC*100):0;
+  return `<button type="button" class="pbr pbr2" data-pedit="${k}"><span class="pbbar"><em style="width:${w}%"></em><span class="pbn">${esc(l.name)}${att?'<svg class="clip" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5l-8.6 8.6a5.5 5.5 0 0 1-7.8-7.8l8.6-8.6a3.7 3.7 0 0 1 5.2 5.2l-8.6 8.6a1.8 1.8 0 0 1-2.6-2.6l7.9-7.9"/></svg>':''}${shown?'<span class="pbe">shown in Actual</span>':''}</span></span><span class="pbamt"><b>${amt?money(amt,0):'<span class="muted">—</span>'}</b>${mark?`<small>${mark}</small>`:''}</span></button>`;
+}
+function planEditSheet(k){
+  const def=tab==='defaults',P=def?TPL.plan:S.plan,[t,id]=k.split(':'),l=(t==='inc'?P.income:P.cats).find(x=>x.id===id);if(!l)return;
+  const lk=def?lockState():null,locked=def?lk.st!=='open':pastLocked();
+  openOpts.add(k);const inner=planLine(t,l,def,groupsOf(P.cats),locked);openOpts.delete(k);
+  openSheet(head(esc(l.name))+`${locked?`<p class="pastlock in">🔒 ${def?'Defaults are locked.':esc(mName(key,'s'))+' is finished.'} ${def?'':'<button type="button" class="linkb" data-opensettings>Unlock</button>'}</p>`:''}<div class="pedit"><div class="pehd"><span>Name</span><span>${t==='inc'?'Expected':'Planned'}</span></div>${inner}</div>${locked?'':'<button type="button" class="btn full" data-close style="margin-top:12px">Done</button>'}`,()=>bindPlan($('#sheet'),def,true));
+}
+document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('[data-pedit]');if(b)planEditSheet(b.dataset.pedit)});
 function planHTML(C,def){
-  def=!!def;const p=def?TPL.plan:S.plan,mo=esc(mName(key,'s')),lk=def?lockState():null,locked=def&&lk.st!=='open';
+  def=!!def;const p=def?TPL.plan:S.plan,mo=esc(mName(key,'s')),lk=def?lockState():null,locked=def?lk.st!=='open':pastLocked();
   const inc=p.income.reduce((a,i)=>a+i.amt,0),exp=p.cats.reduce((a,c)=>a+c.planned+(def?0:(c.owed||0)),0);
-  let h=`<div class="pbar"><div class="pcols two"><div><small>Total planned income</small><b>${money(inc,0)}</b></div><div class="${exp>inc+0.5?'neg':''}"><small>Total planned expenses</small><b>${money(exp,0)}</b></div></div></div>`;
+  const incSC=Math.max(1,...p.income.map(i=>+i.amt||0)),catSC=Math.max(1,...p.cats.map(c=>+c.planned||0));
+  let h=(def?'':pastBanner())+`<div class="pbar"><div class="pcols two"><div><small>Total planned income</small><b>${money(inc,0)}</b></div><div class="${exp>inc+0.5?'neg':''}"><small>Total planned expenses</small><b>${money(exp,0)}</b></div></div></div>`;
   if(def)h+=lockHTML(lk);
   else if(p.editedAt)h+=`<p class="ped" style="margin:-4px 4px 10px">Last change: <b>${esc(p.editedBy||'someone')}</b>, ${esc(fmtWhen(p.editedAt))}</p>`;
-  h+=`<h2 class="big2">Income <small><b>${money(inc,0)}</b> <i>planned</i></small></h2><div class="card">${p.income.map(i=>planLine('inc',i,def,[],locked)).join('')}${locked?'':`<div class="pl"><button type="button" class="btn ghost sm" id="addInc" style="grid-column:1/-1;justify-self:start">+ Income source</button></div>`}</div>`;
+  h+=`<h2 class="big2">Income <small><b>${money(inc,0)}</b> <i>planned</i></small></h2><div class="card pbars">${p.income.map(i=>planBar('inc',i,def,locked,incSC)).join('')}${locked?'':`<div class="pl"><button type="button" class="btn ghost sm" id="addInc" style="grid-column:1/-1;justify-self:start">+ Income source</button></div>`}</div>`;
   if(!def){const pk=addM(key,-1),carryTot=p.cats.reduce((a,c)=>a+(c.carry||0),0);
     h+=`<h3>Leftovers from ${esc(mName(pk,'s'))}</h3><div class="card pad"><label class="sw"><input type="checkbox" id="carrySw" ${p.carryOn!==false?'checked':''}><span><b>Bring ${esc(mName(pk,'s'))}’s leftovers into ${mo}</b><br><span class="muted">${carryTot>0.004||p.overPrev?`${carryTot>0.004?money(carryTot)+' of unspent savings':'No savings'} carried in${p.overPrev?' · '+money(p.overPrev)+' overspending to make up':''}.`:'Nothing to carry from last month.'}</span></span></label></div>`}
   const GS=groupsOf(p.cats);
-  h+=`<h2 class="big2">Expenses <small><b>${money(exp,0)}</b> <i>planned</i></small></h2>${locked?'':`<button type="button" class="linkb copyb" data-copy="${def?'defaults':'plan'}">⧉ Copy amounts from a month</button>`}`+GS.map(l=>`<div class="card gcard"><div class="ghead in"><input class="gname" data-grp="${esc(l)}" value="${esc(l)}" maxlength="40" aria-label="Group name" ${locked?'disabled':''}><span>${money(p.cats.filter(c=>gName(c)===l).reduce((a,c)=>a+c.planned+(def?0:(c.owed||0)),0),0)}</span></div>${p.cats.filter(c=>gName(c)===l).map(c=>planLine('cat',c,def,GS,locked)).join('')}${locked?'':`<div class="pl"><button type="button" class="btn ghost sm" data-addcat="${esc(l)}" style="grid-column:1/-1;justify-self:start">+ Add to ${esc(l)}</button></div>`}</div>`).join('');
+  h+=`<h2 class="big2">Expenses <small><b>${money(exp,0)}</b> <i>planned</i></small></h2>${locked||!copyOn()?'':`<button type="button" class="linkb copyb" data-copy="${def?'defaults':'plan'}">⧉ Copy amounts from a month</button>`}`+GS.map(l=>`<div class="card gcard"><div class="ghead in"><input class="gname" data-grp="${esc(l)}" value="${esc(l)}" maxlength="40" aria-label="Group name" ${locked?'disabled':''}><span>${money(p.cats.filter(c=>gName(c)===l).reduce((a,c)=>a+c.planned+(def?0:(c.owed||0)),0),0)}</span></div><div class="pbars">${p.cats.filter(c=>gName(c)===l).map(c=>planBar('cat',c,def,locked,catSC)).join('')}</div>${locked?'':`<div class="pl"><button type="button" class="btn ghost sm" data-addcat="${esc(l)}" style="grid-column:1/-1;justify-self:start">+ Add to ${esc(l)}</button></div>`}</div>`).join('');
   if(!locked)h+=`<h3>New group</h3><div class="card"><form class="pl" id="grpF"><input id="grpIn" maxlength="40" placeholder="e.g. Pets" aria-label="New group name" style="grid-column:1/3"><button class="btn ghost sm" style="min-height:46px">Add</button></form></div>`;
   if(!def)h+=`<p class="muted" style="margin:14px 4px">Changes here are for ${esc(mName(key))} only. Your every-month list lives in the Defaults tab.</p>`;
   return h;
@@ -1814,7 +1956,7 @@ function settingsHTML(){
   return `<h2 class="big2">Settings</h2><div class="card pad"><div class="f"><span class="flab">Who’s using this phone</span><div class="who2">${people().map((n,i)=>`<label><input type="radio" name="whoR" value="${esc(n)}" ${who()===n?'checked':''}> ${esc(n)}</label>`).join('')}</div><span class="muted">Shown next to entries and changes. Needed to approve changes to the defaults.</span></div>
   <details class="sdet"><summary>Change names</summary><div class="f"><input id="pn0" maxlength="20" value="${esc(people()[0])}" aria-label="First name"><input id="pn1" maxlength="20" value="${esc(people()[1])}" aria-label="Second name" style="margin-top:8px"><button type="button" class="btn line sm" id="pnSave" style="margin-top:8px">Save names</button></div></details>
   <details class="sdet"><summary>Change PIN</summary><div class="f"><input id="pinOld" type="password" inputmode="numeric" maxlength="4" placeholder="Current PIN" autocomplete="off"><input id="pinNew" type="password" inputmode="numeric" maxlength="4" placeholder="New 4-digit PIN" autocomplete="off" style="margin-top:8px"><input id="pinNew2" type="password" inputmode="numeric" maxlength="4" placeholder="New PIN again" autocomplete="off" style="margin-top:8px"><button type="button" class="btn line sm" id="pinSave" style="margin-top:8px">Save new PIN</button><span class="muted" id="pinMsg"></span><span class="muted">One PIN for both of you. The change reaches the other phone through Dropbox.</span></div></details>
-  ${appKey()&&mode!=="demo"?`<div class="f"><span class="flab">Dropbox App key</span><code class="akey">${esc(appKey())}</code><span class="muted">Needed once if you install the app or use a new browser. It isn’t a password.</span></div>`:""}<div class="f"><label for="thSel">Appearance on this device</label><select id="thSel">${[['auto','Automatic (follow phone)'],['light','Light'],['dark','Dark']].map(([v,l])=>`<option value="${v}" ${(ls.get('mb-theme')||'auto')===v?'selected':''}>${l}</option>`).join('')}</select></div><div class="f"><label for="curSel">Currency</label><select id="curSel">${['USD','CAD','EUR','GBP','AUD','NZD','INR','NGN','GHS','KES','ZAR','MXN','JPY','CHF'].map(c=>`<option ${c===cur?'selected':''}>${c}</option>`).join('')}</select></div>
+  <div class="f"><label class="sw"><input type="checkbox" id="copySw" ${copyOn()?"checked":""}><span><b>Show “Copy amounts” buttons</b><br><span class="muted">Copying into Actual only works once a month has begun.</span></span></label></div><div class="f"><label class="sw"><input type="checkbox" id="pastSw" ${editPast?"checked":""}><span><b>Edit past months</b><br><span class="muted">Finished months are locked so they can’t change by accident. This turns itself off when the app locks.</span></span></label></div>${appKey()&&mode!=="demo"?`<div class="f"><span class="flab">Dropbox App key</span><code class="akey">${esc(appKey())}</code><span class="muted">Needed once if you install the app or use a new browser. It isn’t a password.</span></div>`:""}<div class="f"><label for="thSel">Appearance on this device</label><select id="thSel">${[['auto','Automatic (follow phone)'],['light','Light'],['dark','Dark']].map(([v,l])=>`<option value="${v}" ${(ls.get('mb-theme')||'auto')===v?'selected':''}>${l}</option>`).join('')}</select></div><div class="f"><label for="curSel">Currency</label><select id="curSel">${['USD','CAD','EUR','GBP','AUD','NZD','INR','NGN','GHS','KES','ZAR','MXN','JPY','CHF'].map(c=>`<option ${c===cur?'selected':''}>${c}</option>`).join('')}</select></div>
   <p class="muted">${mode==='demo'?'You’re looking at sample numbers saved only on this device.':'Saved in your Dropbox app folder: template.json (defaults), a plan file and a spending file per month, and your receipt photos.'}</p>
   <p class="muted">App version <b>${APP_VERSION}</b></p>
   <div class="stack">${mode==='demo'?'<button class="btn" id="exitDemo">Leave demo and set up mine</button>':'<button class="btn line" id="signout">Sign out of Dropbox on this device</button>'}</div></div>`;
@@ -2156,7 +2298,9 @@ document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest
 })();
 
 /* ---- quick log: + in the taskbar ---- */
+let logKind='exp';
 function quickLog(){
+  if(pastLocked()){toast(pastMsg());return}
   if(!S||!S.plan){toast(`Start ${mName(key,'s')} first, then log`);if(tab!=='actual')go('actual');return}
   const C=calc(S.plan,S.txns,S.k),cnt={};for(const t of S.txns)cnt[t.cat]=(cnt[t.cat]||0)+1;
   const cats=S.plan.cats.filter(c=>!c.closed||cnt[c.id]);
@@ -2164,11 +2308,14 @@ function quickLog(){
   const row=c=>{const st=C.by[c.id];return `<button type="button" class="qrow" data-ql="cat:${esc(c.id)}"><span class="dot" style="background:${colOf(c.id)}"></span><span class="qn"><b>${esc(c.name)}</b><small>${esc(gName(c))}</small></span><span class="qa">${c.kind==='save'?'savings':st.st==='over'?'over':money(Math.max(0,st.avail),0)+' left'}</span></button>`};
   const list=q=>{q=q.trim().toLowerCase();const m=cats.filter(c=>!q||c.name.toLowerCase().includes(q)||gName(c).toLowerCase().includes(q));
     const inc=S.plan.income.filter(i=>!q||i.name.toLowerCase().includes(q)||'income'.includes(q));
-    return (m.map(row).join('')||'')+(inc.length?`<p class="qh">Income</p>`+inc.map(i=>`<button type="button" class="qrow" data-ql="inc:${esc(i.id)}"><span class="dot" style="background:var(--green)"></span><span class="qn"><b>${esc(i.name)}</b><small>Income</small></span><span class="qa">received</span></button>`).join(''):'')||'<p class="empty">No line with that name.</p>'};
-  openSheet(head(`Log in ${esc(mName(key,'s'))}`)+`<p class="qh" style="margin-top:0">Used most</p><div class="qchips">${top.map(c=>`<button type="button" class="qchip" data-ql="cat:${esc(c.id)}">${esc(c.name)}</button>`).join('')}</div>
-    <input id="qIn" class="findin" type="search" placeholder="Or type a name…" autocomplete="off"><div id="qList" class="flist">${list('')}</div>`,()=>{
+    return m.map(row).join('')||'<p class="empty">No line with that name.</p>'};
+  const incL=S.plan.income,incRows=incL.map(i=>{const v=C.inc[i.id]||{exp:i.amt,got:0};return `<button type="button" class="qrow" data-ql="inc:${esc(i.id)}"><span class="dot" style="background:var(--green)"></span><span class="qn"><b>${esc(i.name)}</b><small>${money(v.got,0)} of ${money(v.exp,0)} received</small></span><span class="qa">+</span></button>`}).join('');
+  openSheet(head(`Log in ${esc(mName(key,'s'))}`)+`<div class="seg mini logk"><button type="button" data-lk="exp" aria-pressed="${logKind==='exp'}">Expense</button><button type="button" data-lk="inc" aria-pressed="${logKind==='inc'}">Income</button></div>
+    ${logKind==='inc'?`<div class="flist">${incRows||'<p class="empty">No income sources planned yet.</p>'}</div>`:`<p class="qh" style="margin-top:0">Used most</p><div class="qchips">${top.map(c=>`<button type="button" class="qchip" data-ql="cat:${esc(c.id)}">${esc(c.name)}</button>`).join('')}</div>
+    <input id="qIn" class="findin" type="search" placeholder="Or type a name…" autocomplete="off"><div id="qList" class="flist">${list('')}</div>`}`,()=>{
+    $('#sheet').querySelectorAll('[data-lk]').forEach(b=>b.onclick=()=>{logKind=b.dataset.lk;quickLog()});
     const wire=()=>$('#sheet').querySelectorAll('[data-ql]').forEach(b=>b.onclick=()=>{const [t,id]=b.dataset.ql.split(':');entrySheet(t,id)});
-    $('#qIn').oninput=e=>{$('#qList').innerHTML=list(e.target.value);wire()};wire()});
+    const qi=$('#qIn');if(qi)qi.oninput=e=>{$('#qList').innerHTML=list(e.target.value);wire()};wire()});
 }
 /* ---- start a new month in one step ---- */
 let startFrom='tpl',startCarry=true;
@@ -2270,7 +2417,7 @@ async function pastPlanSheet(id,def){
       toast(`${c.name}: plan set to ${money(v)}`)},'Set plan to')});
 }
 document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('[data-pastplan]');if(b)pastPlanSheet(b.dataset.pastplan,b.dataset.def==='1')});
-function entrySheet(t,id){
+function entrySheet(t,id){setTimeout(()=>{const sh=$('#sheet');if(sh)sh.classList.toggle('ro',pastLocked())},0);
   const isInc=t==='inc',line=isInc?S.plan.income.find(i=>i.id===id):catOf(id);if(!line)return;
   const C=calc(S.plan,S.txns,S.k),s=isInc?null:C.by[id],tid=isInc?'inc:'+id:id;
   const planned=isInc?line.amt:line.planned,mo=esc(mName(key,'s')),def=key===todayKey?todayStr:key+'-01';
@@ -2278,6 +2425,7 @@ function entrySheet(t,id){
   const keys=['7','8','9','÷','4','5','6','×','1','2','3','−','.','0','⌫','+'];
   openSheet(head(`<span class="nm"><span class="dot" style="background:${isInc?'var(--green)':colOf(id)}"></span>${esc(line.name)}</span>`)+`
   <label class="alab" for="amtIn">${isInc?'Received':'Actual'} · ${mo}</label>
+  ${pastLocked()?`<p class="pastlock in">🔒 ${esc(mName(key,'s'))} is finished. You can look, but not change it. <button type="button" class="linkb" data-opensettings>Unlock</button></p>`:''}
   <div class="amtbox"><span class="cur">${esc(curSym())}</span><input id="amtIn" inputmode="none" autocomplete="off" placeholder="0.00"></div>
   <div id="res"></div>
   <div class="keys" style="margin-top:8px">${keys.map(k=>`<button type="button" data-k="${k}" class="${/[÷×−+]/.test(k)?'op':k==='⌫'?'bk':''}" aria-label="${k==='⌫'?'Delete':k}">${k}</button>`).join('')}</div>
@@ -2361,20 +2509,8 @@ document.addEventListener('click',e=>{const r=e.target.closest&&e.target.closest
 function delTx(id){const t=S.txns.find(x=>x.id===id);if(!t)return;persist('tx',T=>{const i=T.findIndex(x=>x.id===id);if(i>-1)T.splice(i,1)});toast('Entry deleted',()=>persist('tx',T=>{if(!T.some(x=>x.id===t.id))T.push(t)}))}
 
 /* ---------------- events ---------------- */
-function bind(){
-  const V=$('#view'),all=(q,f)=>V.querySelectorAll(q).forEach(f);
-  all('[data-go]',b=>b.onclick=()=>go(b.dataset.go));
-  all('[data-cat]',b=>b.onclick=()=>entrySheet('cat',b.dataset.cat));
-  all('[data-incopen]',b=>b.onclick=()=>entrySheet('inc',b.dataset.incopen));
-  all('[data-done]',b=>b.onclick=()=>closeAsk(b.dataset.done));
-  all('[data-moved]',b=>b.onclick=()=>{const c=catOf(b.dataset.moved);if(!c)return;const v=!c.moved;setMonth('cat',c.id,'moved',v);toast(v?`${c.name}: moved to savings`:`${c.name}: marked not moved`)});
-  all('[data-del]',b=>b.onclick=()=>delTx(b.dataset.del));
-  all('[data-move]',b=>b.onclick=()=>moveSheet(b.dataset.move,b.dataset.amt,b.dataset.from));
-  all('[data-asort]',b=>b.onclick=()=>{ls.set('mb-asort',b.dataset.asort);addMode=false;sumSel=new Set();render()});
-  all('[data-dm]',b=>b.onclick=()=>{donutMode=b.dataset.dm;donutSel=-1;render()});
-  const upl=$('#rcUp');if(upl)upl.onchange=()=>{addPhotos(upl.files);upl.value=''};
-  /* ---- Plan tab ---- */
-  const def=tab==='defaults';if(def&&lockState().st!=='open'){all('[data-lock]',b=>b.onclick=()=>lockAct(b.dataset.lock))}
+function bindPlan(R,def,inSheet){
+  const all=(q,f)=>R.querySelectorAll(q).forEach(f);if(def&&lockState().st!=='open'){all('[data-lock]',b=>b.onclick=()=>lockAct(b.dataset.lock))}
   all('[data-lock]',b=>b.onclick=()=>lockAct(b.dataset.lock));
   const P=()=>def?TPL.plan:S.plan;
   const lineOf=k=>{const[t,id]=k.split(':');return {t,id,l:(t==='inc'?P().income:P().cats).find(x=>x.id===id)}};
@@ -2387,17 +2523,32 @@ function bind(){
   all('[data-reset]',b=>b.onclick=()=>{const[t,id]=b.dataset.reset.split(':'),d=tplLine(t,id);if(!d)return;const f=t==='inc'?'amt':'planned';setMonth(t,id,f,d[f])});
   all('[data-more]',b=>b.onclick=()=>{const k=b.dataset.more;openOpts.has(k)?openOpts.delete(k):openOpts.add(k);b.parentNode.querySelector('.opt').hidden=!openOpts.has(k);b.setAttribute('aria-expanded',openOpts.has(k))});
   all('[data-rm]',b=>b.onclick=()=>{const {t,id,l}=lineOf(b.dataset.rm);if(!l)return;
-    if(def){changeDefault({do:'rm',t,id},`${l.name} removed from every month`);return}
+    if(def){if(inSheet)closeSheet();changeDefault({do:'rm',t,id},`${l.name} removed from every month`);return}
     const L=t==='inc'?'income':'cats',ix=S.plan[L].indexOf(l),copy=clone(l);
-    persist('plan',p=>{p[L]=p[L].filter(x=>x.id!==id)});toast(`${l.name} removed from ${mName(key,'s')}`,()=>persist('plan',p=>{if(!p[L].some(x=>x.id===id))p[L].splice(ix,0,copy)}))});
-  const aiA=$('#addIncA');if(aiA)aiA.onclick=incomePick;
-  const ai=$('#addInc');if(ai)ai.onclick=()=>{const o={id:rid(),name:'New income',amt:0};
-    if(def)changeDefault({do:'add',t:'inc',id:o.id,line:o});else{o.only=true;persist('plan',p=>{p.income.push(o)})}};
+    if(inSheet)closeSheet();persist('plan',p=>{p[L]=p[L].filter(x=>x.id!==id)});toast(`${l.name} removed from ${mName(key,'s')}`,()=>persist('plan',p=>{if(!p[L].some(x=>x.id===id))p[L].splice(ix,0,copy)}))});
+  const aiA=R.querySelector('#addIncA');if(aiA)aiA.onclick=incomePick;
+  const ai=R.querySelector('#addInc');if(ai)ai.onclick=()=>{const o={id:rid(),name:'New income',amt:0};
+    if(def)changeDefault({do:'add',t:'inc',id:o.id,line:o});else{o.only=true;persist('plan',p=>{p.income.push(o)})}setTimeout(()=>planEditSheet('inc:'+o.id),60)};
   const addCat=g=>{const peers=P().cats.filter(c=>gName(c)===g),k=(peers[peers.length-1]||{}).kind||'spend',c=cat(rid(),'New item',k,0,{group:g});openOpts.add('cat:'+c.id);
     if(def){const {carry,closed,...ln}=c;changeDefault({do:'add',t:'cat',id:c.id,line:ln})}
-    else{c.only=true;persist('plan',p=>{let at=-1;p.cats.forEach((x,i)=>{if(gName(x)===g)at=i});at>-1?p.cats.splice(at+1,0,c):p.cats.push(c)})}};
+    else{c.only=true;persist('plan',p=>{let at=-1;p.cats.forEach((x,i)=>{if(gName(x)===g)at=i});at>-1?p.cats.splice(at+1,0,c):p.cats.push(c)})}setTimeout(()=>planEditSheet('cat:'+c.id),60)};
   all('[data-addcat]',b=>b.onclick=()=>addCat(b.dataset.addcat));
-  const gf=$('#grpF');if(gf)gf.onsubmit=e=>{e.preventDefault();const g=$('#grpIn').value.trim().slice(0,40);if(g)addCat(g)};
+  const gf=R.querySelector('#grpF');if(gf)gf.onsubmit=e=>{e.preventDefault();const g=$('#grpIn').value.trim().slice(0,40);if(g)addCat(g)};
+}
+function bind(){
+  const V=$('#view'),all=(q,f)=>V.querySelectorAll(q).forEach(f);
+  all('[data-go]',b=>b.onclick=()=>go(b.dataset.go));
+  all('[data-cat]',b=>b.onclick=()=>entrySheet('cat',b.dataset.cat));
+  all('[data-incopen]',b=>b.onclick=()=>entrySheet('inc',b.dataset.incopen));
+  all('[data-done]',b=>b.onclick=()=>{if(pastLocked()){toast(pastMsg());return}closeAsk(b.dataset.done)});
+  all('[data-moved]',b=>b.onclick=()=>{if(pastLocked()){toast(pastMsg());return}const c=catOf(b.dataset.moved);if(!c)return;const v=!c.moved;setMonth('cat',c.id,'moved',v);toast(v?`${c.name}: moved to savings`:`${c.name}: marked not moved`)});
+  all('[data-del]',b=>b.onclick=()=>delTx(b.dataset.del));
+  all('[data-move]',b=>b.onclick=()=>moveSheet(b.dataset.move,b.dataset.amt,b.dataset.from));
+  all('[data-asort]',b=>b.onclick=()=>{ls.set('mb-asort',b.dataset.asort);addMode=false;sumSel=new Set();render()});
+  all('[data-dm]',b=>b.onclick=()=>{donutMode=b.dataset.dm;donutSel=-1;render()});
+  const upl=$('#rcUp');if(upl)upl.onchange=()=>{addPhotos(upl.files);upl.value=''};
+  /* ---- Plan tab ---- */
+  bindPlan(V,tab==='defaults');
   all('[data-grp]',i=>i.onchange=()=>{const old=i.dataset.grp,nw=i.value.trim().slice(0,40);if(!nw||nw===old){i.value=old;return}
     if(def)changeDefault({do:'grp',old,v:nw},`Renamed to ${nw}`);
     else{persist('plan',p=>{p.cats.forEach(c=>{if(gName(c)===old)c.group=nw})});toast(`Renamed to ${nw} for ${mName(key,'s')}`,()=>persist('plan',p=>{p.cats.forEach(c=>{if(c.group===nw)c.group=old})}))}});
@@ -2468,6 +2619,8 @@ function openSettings(){
       if(!/^\d{4}$/.test(n)){m.textContent='The new PIN must be 4 digits.';return}
       if(n!==n2){m.textContent='The two new PINs don’t match.';return}
       await setPin(n);m.textContent='';$('#pinOld').value=$('#pinNew').value=$('#pinNew2').value='';toast('PIN changed for both of you')};
+    const cps=$('#copySw');if(cps)cps.onchange=()=>{ls.set('mb-copy',cps.checked?'on':'off');render()};
+    const pss=$('#pastSw');if(pss)pss.onchange=()=>{editPast=pss.checked;toast(editPast?'Past months can be changed until the app locks':'Past months are locked again');render()};
     const so=$('#signout');if(so)so.onclick=()=>{$('#veil').classList.remove('open');signOut()};
     const ed=$('#exitDemo');if(ed)ed.onclick=()=>{$('#veil').classList.remove('open');exitDemo()};
   });
@@ -2571,7 +2724,7 @@ async function pinKey(k){
   pinErr='Wrong PIN. Try again.';render();
 }
 function unlockNow(){unlocked=true;lastAct=Date.now();tab='home';try{history.replaceState({t:'home'},'')}catch(e){}render();scrollTo(0,0)}
-function lockNow(){if(!unlocked)return;unlocked=false;pinEntry='';pinErr='';$('#veil').classList.remove('open');render();scrollTo(0,0)}
+function lockNow(){if(!unlocked)return;unlocked=false;editPast=false;pinEntry='';pinErr='';$('#veil').classList.remove('open');render();scrollTo(0,0)}
 ['pointerdown','keydown','scroll','touchstart'].forEach(ev=>addEventListener(ev,()=>{if(unlocked&&Date.now()-lastAct>LOCK_MS)lockNow();else lastAct=Date.now()},{passive:true,capture:true}));
 setInterval(()=>{if(unlocked&&Date.now()-lastAct>LOCK_MS)lockNow()},10e3);
 document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&unlocked&&Date.now()-lastAct>LOCK_MS)lockNow()});
