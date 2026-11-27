@@ -1078,6 +1078,107 @@ html.sliding,html.sliding body{overflow-x:hidden}
 .pbbar .pbe{display:none}
 @media (prefers-color-scheme: dark){:root:not([data-theme=light]){--plang:linear-gradient(180deg,#7d8be0 0%,#5f6fd0 48%,#5465c6 52%,#5163c4 100%)}}
 :root[data-theme=dark]{--plang:linear-gradient(180deg,#7d8be0 0%,#5f6fd0 48%,#5465c6 52%,#5163c4 100%)}
+
+/* v46: one color for spent; plan add-up */
+.bul2 .ba.sv,.bul2 .ba.cl{background:var(--fillgloss)!important}
+.aba2 .av.sv,.aba2 .av.cl{color:var(--greenD)!important}
+body.psumming{padding-bottom:calc(240px + env(safe-area-inset-bottom))!important}
+body.psumming .pbr2[data-pid]{position:relative;padding-left:38px}
+body.psumming .pbr2[data-pid]::before{content:'';position:absolute;left:10px;top:50%;width:20px;height:20px;margin-top:-10px;border-radius:6px;border:2px solid var(--line);background:var(--card)}
+body.psumming .pbr2[data-pid].picked::before{background:var(--green) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4 8-8.5' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat;border-color:var(--green)}
+body.psumming .pbr2[data-pid].picked{background:var(--soft)}
+body.psumming [data-addcat],body.psumming #grpF,body.psumming .copyb{opacity:.4;pointer-events:none}
+body.psumming .toast{bottom:calc(250px + env(safe-area-inset-bottom))!important}
+
+/* v47: PIN screen fits on one screen, no top bar */
+body[data-tab=lock] .bar0{display:none!important}
+body[data-tab=lock] main,body[data-tab=lock] #view{padding-top:max(10px,env(safe-area-inset-top))}
+body[data-tab=lock]{padding-bottom:0!important}
+.lockpg{display:flex;flex-direction:column;min-height:calc(100svh - 24px - env(safe-area-inset-top))}
+.lockhero{padding:12px 16px 12px!important;margin:0!important}
+.lockhero .lkbrand{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.lockhero .lkbrand span{font-weight:800;font-size:14px;letter-spacing:.02em;opacity:.95}
+.lockhero .lkbrand small{font-size:12.5px}
+.lockhero .hdate{font-size:clamp(24px,7vw,30px)!important;margin-top:2px!important}
+.lockhero .hd2{font-size:14px!important;margin:0!important}
+.lkl{margin:clamp(8px,1.8svh,16px) 4px 6px!important}
+.who2.big label{padding:9px 12px!important;font-size:16px!important;border-radius:12px}
+.dots{margin:6px 0 2px!important}
+.pinerr{min-height:18px!important;margin:2px 0 4px!important;font-size:13px!important}
+.pinkeys{gap:clamp(6px,1.2svh,10px)!important;max-width:280px!important;margin:0 auto 8px!important}
+.pinkeys button{height:clamp(44px,7.2svh,56px)!important;font-size:21px!important;border-radius:14px!important}
+.lockpg{min-height:0!important;display:block!important}
+.pinkeys{width:100%!important}
+.who2.big label{min-height:0!important}
+body[data-tab=lock] main,body[data-tab=lock] #view{padding-bottom:0!important;margin-bottom:0!important}
+
+/* v48: plan top box (periwinkle), page name inside the boxes */
+.hero .hlab{font-weight:800;letter-spacing:.02em}
+.hero.phero{background:radial-gradient(circle at 92% 8%,rgba(255,255,255,.24) 0 46px,transparent 47px),radial-gradient(circle at 92% 8%,transparent 0 70px,rgba(255,255,255,.13) 71px 96px,transparent 97px),radial-gradient(circle at 4% 104%,rgba(255,255,255,.15) 0 58px,transparent 59px),linear-gradient(150deg,#8f9cf0,#5a67cf)!important;box-shadow:0 12px 34px -12px rgba(90,103,207,.55)!important;padding:12px 16px 10px;border-radius:20px}
+.hero.phero .big{font-size:clamp(28px,8vw,34px);margin:0 0 2px;line-height:1.1}
+.hero.phero .psub{font-size:13.5px;margin:0}
+.hero.phero .hbar{margin-top:4px}
+.hero.phero .hfoot{font-size:12.5px;margin-top:2px}
+.hero.phero .meter em:not(.ov){background:linear-gradient(180deg,#ffffff 0%,#eef0ff 48%,#d9ddfb 52%,#d4d9fa 100%)!important}
+.hero .big.neg{color:#ffe08a}
+.hero .psub{font-size:13.5px;margin:0;opacity:.95}
+body[data-tab=actual] .hero .psub{margin:0}
+.hero .plab{display:none}
+
+/* v50: planned items */
+.itbox{margin-top:14px;border-top:1px solid var(--line);padding-top:12px}
+.ithd{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:6px}
+.ithd>b{font-size:15px}
+.ithd span{font-size:13px;color:var(--mute)}
+.ithd span b{color:var(--ink)}
+.itnote{font-size:13px;margin:2px 0 8px}
+.itlist{border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:8px}
+.itrow{display:flex;align-items:center;border-top:1px solid var(--line)}
+.itrow:first-child{border-top:0}
+.itrow.on{background:var(--soft)}
+.itmain{flex:1;display:grid;grid-template-columns:3.6em minmax(0,1fr) auto;gap:8px;align-items:center;border:0;background:none;text-align:left;padding:9px 10px;color:var(--ink);min-height:0}
+.itmain .d{font-size:12.5px;color:var(--mute);font-weight:700;white-space:nowrap}
+.itmain .n{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:14px}
+.itmain .n i{color:var(--mute)}
+.itmain b{white-space:nowrap}
+.itform{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.itform #itNote{grid-column:1/-1;order:-1}
+.itform .btn{min-height:44px}
+.itform .linkb{grid-column:1/-1;justify-self:center;padding:2px!important;min-height:0!important}
+.pedit input.ro{background:var(--soft);color:var(--mute)}
+
+/* v51: reminders */
+.itbell{width:32px;height:32px;border:0;background:none;color:var(--mute);display:grid;place-items:center;padding:0;opacity:.45;flex:none}
+.itbell svg{width:18px;height:18px}
+.itbell.on{opacity:1;color:#e0457b}
+.itremsw{grid-column:1/-1;display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600}
+.itremsw input{width:18px;height:18px;accent-color:var(--green)}
+.remc{padding:0}
+.remr{padding:11px 14px;border-top:1px solid var(--line)}
+.remr:first-child{border-top:0}
+.rtop{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.rn{display:flex;flex-direction:column;min-width:0}
+.rn b{font-size:15px}
+.rn small{color:var(--mute);font-size:12.5px}
+.ra{font-size:16px;white-space:nowrap}
+.ra.inc{color:var(--greenD)}
+.rmid{display:flex;justify-content:space-between;font-size:13px;color:var(--mute);margin:2px 0 8px}
+.rsoon{color:#e0457b}
+.rdone{font-weight:700;color:var(--greenD)}
+.ract{display:flex;gap:8px;flex-wrap:wrap}
+.ract .btn{min-height:36px;padding:0 12px;font-size:13.5px}
+.ract .linkb{padding:0!important;min-height:0!important}
+.remr.done{opacity:.75}
+.rover small{color:var(--overt)}
+.remtools .sw{margin:10px 0 12px}
+.remtools>b{font-size:15px}
+
+/* v52: lighter plan bar, stronger actual line on Actual */
+.bul2 .bp{background:rgba(140,160,235,.12)!important;box-shadow:inset 0 0 0 1px rgba(120,140,225,.28)!important}
+.bul2 .ba,.bul2 .bo{height:7px!important;bottom:2px!important;border-radius:4px}
+.bul2 .ba{box-shadow:0 1px 3px rgba(22,131,220,.35)}
+@media (prefers-color-scheme: dark){:root:not([data-theme=light]) .bul2 .bp{background:rgba(150,165,250,.10)!important;box-shadow:inset 0 0 0 1px rgba(150,165,250,.24)!important}}
+:root[data-theme=dark] .bul2 .bp{background:rgba(150,165,250,.10)!important;box-shadow:inset 0 0 0 1px rgba(150,165,250,.24)!important}
 </style>
 </head>
 <body>
@@ -1110,7 +1211,7 @@ html.sliding,html.sliding body{overflow-x:hidden}
    (Or leave it empty and type it into the setup screen on each device.)
    ====================================================================== */
 const APP_KEY = '';
-const APP_VERSION = '45 · Nov 27, 2026';
+const APP_VERSION = '52 · Nov 27, 2026';
 
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -1321,7 +1422,7 @@ function closeAsk(id){
     $('#sheet').querySelectorAll('[data-cm]').forEach(b=>b.onclick=()=>{closeSheet();setClose(id,b.dataset.cm)});
   });
 }
-function setMonth(t,id,f,v){persist('plan',p=>{const l=(t==='inc'?p.income:p.cats).find(x=>x.id===id);if(l)l[f]=v})}
+function setMonth(t,id,f,v){persist('plan',p=>{const l=(t==='inc'?p.income:p.cats).find(x=>x.id===id);if(l){l[f]=v;if((f==='planned'||f==='amt')&&l.items)delete l.items}})}
 let openOpts=new Set(),planScope='month';let S=null,key=todayKey,tab='home',weekSel=null,saving=0,queue=Promise.resolve(),hist={};
 function setSync(t,err){const e=$('#sync');e.textContent=t||'';e.className='sync'+(err?' err':'')}
 
@@ -1421,7 +1522,8 @@ function startDemo(){
 function exitDemo(){unlocked=false;for(let i=-14;i<14;i++)ls.del('mb-demo-'+addM(todayKey,i));ls.del('mb-demo');ls.del('mb-demo-tpl');for(let i=localStorage.length-1;i>=0;i--){const kk=localStorage.key(i);if(kk&&(kk.startsWith('mb-demo:')||kk.startsWith('mb-demo-img:')))ls.del(kk)}TPL=null;mode='setup';S=null;hist={};render()}
 
 /* ---------------- maths ---------------- */
-function calc(plan,txns,k){
+function syncItems(plan){if(!plan)return;for(const c of plan.cats||[])if(c.items&&c.items.length)c.planned=Math.round(c.items.reduce((a,x)=>a+(+x.amt||0),0)*100)/100;for(const i of plan.income||[])if(i.items&&i.items.length)i.amt=Math.round(i.items.reduce((a,x)=>a+(+x.amt||0),0)*100)/100}
+function calc(plan,txns,k){syncItems(plan);
   const useCarry=plan.carryOn!==false;
   const D=dim(k),day=k<todayKey?D:k>todayKey?0:now.getDate(),frac=day/D;
   const by={};let planned=0,spent=0,avail=0,flexAvail=0,flexBudget=0,budgetAll=0,freed=0;
@@ -1517,7 +1619,8 @@ function render(){
   const V=$('#view');
   if(!signed){V.innerHTML=setupHTML();bindSetup();return}
   if(!unlocked){document.body.dataset.tab='lock';$('#findBtn').hidden=true;$('#mnav').style.visibility='hidden';$('#dockHome').hidden=true;$('#tbar').hidden=true;$('#findTop').hidden=true;document.body.classList.remove('in');V.innerHTML=pinHTML();bindPin();return}
-  if(tab==='home'){V.innerHTML=homeHTML();bindHome();return}
+  if(tab==='home'){V.innerHTML=homeHTML();bindHome();remScan();return}
+  if(tab==='reminders'){V.innerHTML=`<div class="pagehead"><span class="pi" style="--hue1:#e0457b;--hue2:#e0457b">${BELL_SVG}</span><b>Reminders</b><span class="m">· 48 hours ahead</span></div><div id="remBox"><p class="empty">Looking ahead…</p></div>`;remView();return}
   if(!S){V.innerHTML='<p class="empty">Loading your budget…</p>';return}
   if(!S.plan&&tab==='receipts'&&!S.failed){V.innerHTML=pageHead()+receiptsHTML();bind();receiptsView();return}
   if(!S.plan){V.innerHTML=S.failed?`<div class="card pad"><p>Couldn’t load ${esc(mName(key))}.</p><button class="btn" id="retry">Try again</button></div>`
@@ -1527,8 +1630,8 @@ function render(){
   cur=S.plan.cur||'USD';
   planScope='month';if(tab==='defaults'&&!(TPL&&TPL.plan))tab='plan';
   const C=calc(S.plan,S.txns,S.k);
-  V.innerHTML=pageHead()+(tab==='defaults'?planHTML(C,true):tab==='plan'?planHTML(C):tab==='summary'?summaryHTML(C):tab==='receipts'?receiptsHTML():actualHTML(C));
-  bind();badge2();if(tab==='actual')hbPlace();if(tab!=='actual')addMode=false;if(addMode&&tab==='actual')markAdd(false);else sumPanel();
+  V.innerHTML=(['plan','actual','defaults'].includes(tab)?'':pageHead())+(tab==='defaults'?planHTML(C,true):tab==='plan'?planHTML(C):tab==='summary'?summaryHTML(C):tab==='receipts'?receiptsHTML():actualHTML(C));
+  bind();badge2();if(tab==='actual')hbPlace();if(tab!=='actual')addMode=false;if(!['plan','defaults'].includes(tab))planAdd=false;if(planAdd)planMark();else planPanel();if(addMode&&tab==='actual')markAdd(false);else sumPanel();
   if(tab==='summary')reportsView()
   if(tab==='receipts')receiptsView();
 }
@@ -1645,7 +1748,7 @@ function catBar(c,C,SC){
   else if(c.kind==='bill')sub=s.st==='paid'?'<span class="t-ok">paid ✓</span>':`${money(Math.max(0,s.avail),0)} to pay`;
   else sub=`${money(s.avail,0)} left`;
   const ck=save?`<button class="ck${c.moved?' on':''}" data-moved="${esc(c.id)}" aria-pressed="${!!c.moved}" aria-label="${c.moved?'Not moved yet':'Mark as moved to savings'}: ${esc(c.name)}"><svg viewBox="0 0 24 24" width="24" height="24"><circle cx="12" cy="12" r="10.5"/><path d="M7.5 12.4l3 3 6-6.4"/></svg></button>`:`<button class="ck${s.closed?' on':''}" data-done="${esc(c.id)}" aria-pressed="${s.closed}" aria-label="${s.closed?'Reopen':'Mark done for the month'}: ${esc(c.name)}"><svg viewBox="0 0 24 24" width="24" height="24"><circle cx="12" cy="12" r="10.5"/><path d="M7.5 12.4l3 3 6-6.4"/></svg></button>`;
-  return `<div class="rw ab ab2${addMode&&sumSel.has(c.id)?' picked':''}" data-sid="${esc(c.id)}"><button class="row abt" data-cat="${esc(c.id)}">${abBar(v,s.budget,s.st==='closed'?'cl':save?'sv':'',c.name,SC,hasAtt)}${abAmt(v,s.budget,s.st==='closed'?'cl':save?'sv':'',sub)}</button>${ck}</div>`;
+  return `<div class="rw ab ab2${addMode&&sumSel.has(c.id)?' picked':''}" data-sid="${esc(c.id)}"><button class="row abt" data-cat="${esc(c.id)}">${abBar(v,s.budget,save?'sv':'',c.name,SC,hasAtt)}${abAmt(v,s.budget,save?'sv':'',sub)}</button>${ck}</div>`;
 }
 function incBar(i,C,SC){
   const v=C.inc[i.id]||{exp:i.amt,got:0},done=v.exp>0&&v.got>=v.exp-0.004,extra=v.got-v.exp;
@@ -1663,8 +1766,8 @@ function actualHTML(C){
   if(C.income===0&&C.planned===0)return `<div class="hero"><small>Let’s set up ${mo}</small><div class="big" style="font-size:36px">Start your plan</div><p>Add your income and what you plan to spend in the Plan tab. Your every-month plan repeats automatically.</p><div class="pill"><span>Your categories are ready</span><button data-go="plan">Open Plan</button></div></div>`;
   let sp=0,moved=0,pl=0;for(const c of p.cats){if(c.kind==='save'){if(c.moved)moved+=+c.planned||0;continue}sp+=C.by[c.id].spent;pl+=C.by[c.id].eff}
   const rec=C.received,left=rec-sp-moved;
-  let h=pastBanner()+`<div class="hero"><small>Left to spend in ${mo}</small><div class="big${left<0?' neg':''}">${left<0?'−':''}${money(Math.abs(left),0)}</div>
-  <div class="hbar">${barHTML(sp+moved,rec,'#fff','Received')}</div><p class="hfoot">Spent <b>${money(sp,0)}</b>${moved>0?` · moved to savings <b>${money(moved,0)}</b>`:''}</p></div>`;
+  let h=pastBanner()+`<div class="hero"><small><b class="hlab">Actual</b> · ${esc(mName(key))}</small><div class="big${left<0?' neg':''}">${left<0?'−':''}${money(Math.abs(left),0)}</div><p class="psub">${left<0?'Spent more than received':'Left: income received minus spent'}</p>
+  <div class="hbar">${barHTML(sp+moved,rec,'#fff','')}</div><p class="hfoot">Received <b>${money(rec,0)}</b> · spent <b>${money(sp,0)}</b>${moved>0?` · saved <b>${money(moved,0)}</b>`:''}</p></div>`;
   const src=p.income.filter(i=>i.amt>0||(C.inc[i.id]&&C.inc[i.id].got>0));
   const incSC=Math.max(1,...src.map(i=>{const v=C.inc[i.id]||{exp:i.amt,got:0};return Math.max(v.got,v.exp)}));
   h+=`<h2 class="big2">Income <small>${money(C.received,0)} <i>of</i> ${money(C.expected,0)}</small></h2><div class="card abars">${src.map(i=>incBar(i,C,incSC)).join('')||'<p class="empty">No income planned yet.</p>'}<button type="button" class="linkb abadd" id="addIncA">+ Add income</button></div>`;
@@ -1921,34 +2024,177 @@ function planLine(t,l,def,GS,locked){
   return `<div class="pl${clip?' wclip':''}${eye?' weye':''}"><input aria-label="Name" data-ln="${k}" data-f="name" value="${esc(l.name)}" ${dis}><input aria-label="Planned amount" inputmode="decimal" data-ln="${k}" data-f="amt" value="${amt||''}" placeholder="0" ${dis}>${clip}${eye}${locked?'<span></span>':`<button type="button" class="x" data-more="${k}" aria-label="More options" aria-expanded="${openOpts.has(k)}">⋯</button>`}${tag?`<div class="tagrow">${tag}</div>`:''}<div class="opt" ${openOpts.has(k)?'':'hidden'}>${opts}</div></div>`;
 }
 
+
+/* ---- Plan: add up planned amounts ---- */
+let planAdd=false,planSel=new Set(),planPick='all';
+const PLAN_PICKS=[['all','All'],['bill','Fixed'],['spend','Variable'],['save','Savings']];
+function planPanel(){let el=$('#psumBar');
+  if(!planAdd||!['plan','defaults'].includes(tab)){if(el)el.remove();document.body.classList.remove('psumming');return}
+  document.body.classList.add('psumming');
+  if(!el){el=document.createElement('div');el.id='psumBar';el.className='sumbar';document.body.appendChild(el)}
+  const P=tab==='defaults'?TPL.plan:S&&S.plan;if(!P)return;let tot=0,n=0;for(const id of planSel){const c=P.cats.find(x=>x.id===id);if(c){tot+=+c.planned||0;n++}}
+  el.innerHTML=`<div class="sbtop"><span>Add up planned</span><button type="button" class="linkb" data-psb="done">Done</button></div>
+   <div class="sbtypes" role="radiogroup" aria-label="Quick pick">${PLAN_PICKS.map(([k,l])=>`<button type="button" role="radio" aria-checked="${k===planPick}" data-pp="${k}">${l}</button>`).join('')}</div>
+   <div class="sbtotal"><b>${money(tot)}</b><span>planned · ${n} of ${P.cats.length} line${P.cats.length>1?'s':''} <button type="button" class="linkb" data-psb="${n?'none':'all'}">${n?'Uncheck all':'Check all'}</button></span></div>`;
+  el.querySelectorAll('[data-pp]').forEach(b=>b.onclick=()=>{planPick=b.dataset.pp;planSel=new Set(P.cats.filter(c=>planPick==='all'||c.kind===planPick).map(c=>c.id));planMark()});
+  el.querySelectorAll('[data-psb]').forEach(b=>b.onclick=()=>{const a=b.dataset.psb;if(a==='done'){planAdd=false;planSel=new Set();render();return}
+    if(a==='all')planSel=new Set(P.cats.map(c=>c.id));if(a==='none')planSel=new Set();planMark()});
+}
+function planMark(){document.querySelectorAll('.pbr2[data-pid]').forEach(r=>r.classList.toggle('picked',planSel.has(r.dataset.pid)));planPanel()}
+document.addEventListener('click',e=>{
+  const u=e.target.closest&&e.target.closest('#planAddUp');
+  if(u){e.stopPropagation();if(planAdd)return;planAdd=true;planPick='all';const P=tab==='defaults'?TPL.plan:S.plan;planSel=new Set(P.cats.map(c=>c.id));render();planMark();return}
+  const ps=e.target.closest&&e.target.closest('[data-psort]');
+  if(ps){e.stopPropagation();ls.set('mb-psort',ps.dataset.psort);planAdd=false;planSel=new Set();render();return}
+  if(!planAdd||!['plan','defaults'].includes(tab))return;
+  const r=e.target.closest&&e.target.closest('.pbr2');if(!r)return;
+  e.stopPropagation();e.preventDefault();if(!r.dataset.pid)return;
+  const id=r.dataset.pid;planSel.has(id)?planSel.delete(id):planSel.add(id);r.classList.toggle('picked',planSel.has(id));planPanel()},true);
 /* ---- Plan page: soft bars, tap to edit ---- */
 function planBar(t,l,def,locked,SC){
   const k=t+':'+l.id,amt=t==='inc'?(+l.amt||0):(+l.planned||0),d=def?null:tplLine(t,l.id),dAmt=d?(t==='inc'?d.amt:d.planned):null;
-  let mark='';if(!def){if(l.only||!d)mark=`only ${esc(mName(key,'s'))}`;else if(dAmt!==amt)mark=`usually ${money(dAmt,0)}`}
+  let mark='';if(!def){if(l.only||!d)mark=`only ${esc(mName(key,'s'))}`;else if(dAmt!==amt)mark=`usually ${money(dAmt,0)}`;if(l.items&&l.items.length)mark=`${l.items.length} item${l.items.length>1?'s':''}`+(mark?' · '+mark:'')}
   const att=!def&&t!=='inc'&&attCount(l)>0,shown=t!=='inc'&&!amt&&l.show;
   const w=SC>0?Math.min(100,amt/SC*100):0;
-  return `<button type="button" class="pbr pbr2" data-pedit="${k}"><span class="pbbar"><em style="width:${w}%"></em><span class="pbn">${esc(l.name)}${att?'<svg class="clip" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5l-8.6 8.6a5.5 5.5 0 0 1-7.8-7.8l8.6-8.6a3.7 3.7 0 0 1 5.2 5.2l-8.6 8.6a1.8 1.8 0 0 1-2.6-2.6l7.9-7.9"/></svg>':''}${shown?'<span class="pbe">shown in Actual</span>':''}</span></span><span class="pbamt"><b>${amt?money(amt,0):'<span class="muted">—</span>'}</b>${mark?`<small>${mark}</small>`:''}</span></button>`;
+  return `<button type="button" class="pbr pbr2${t==='cat'&&planAdd&&planSel.has(l.id)?' picked':''}" data-pedit="${k}" ${t==='cat'?`data-pk="${esc(l.kind)}" data-pid="${esc(l.id)}"`:''}><span class="pbbar"><em style="width:${w}%"></em><span class="pbn">${esc(l.name)}${att?'<svg class="clip" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5l-8.6 8.6a5.5 5.5 0 0 1-7.8-7.8l8.6-8.6a3.7 3.7 0 0 1 5.2 5.2l-8.6 8.6a1.8 1.8 0 0 1-2.6-2.6l7.9-7.9"/></svg>':''}${shown?'<span class="pbe">shown in Actual</span>':''}</span></span><span class="pbamt"><b>${amt?money(amt,0):'<span class="muted">—</span>'}</b>${mark?`<small>${mark}</small>`:''}</span></button>`;
 }
-function planEditSheet(k){
+
+
+/* ---------------- reminders ---------------- */
+const BELL_SVG='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/></svg>';
+let remDue=0,remRows=null;
+const dayAdd=(iso,n)=>{const d=new Date(iso+'T12:00:00');d.setDate(d.getDate()+n);return d.toISOString().slice(0,10)};
+const fmtDay=iso=>new Date(iso+'T12:00:00').toLocaleDateString(undefined,{weekday:'short',month:'short',day:'numeric'});
+async function mutMonth(k,kind,fn){
+  if(S&&S.k===k){await persist(kind,fn,true);return}
+  const st=await loadMonth(k);if(!st.plan)return;fn(kind==='plan'?st.plan:st.txns);await write(st,kind,fn);repCache[k]=null;hist={};
+}
+async function remCollect(){
+  let ks=[];try{ks=await listMonths()}catch(e){}
+  const lo=addM(todayKey,-3),hi=addM(todayKey,12);ks=ks.filter(k=>k>=lo&&k<=hi);if(S&&S.plan&&!ks.includes(S.k)&&S.k>=lo&&S.k<=hi)ks.push(S.k);
+  ks.forEach(k=>{if(!(S&&S.k===k))repCache[k]=null});
+  const data=await loadRange(ks),rows=[];
+  for(const m of data){if(!m||!m.plan)continue;
+    for(const [t,L] of [['cat',m.plan.cats],['inc',m.plan.income]])for(const l of L||[])for(const it of l.items||[])if(it.remind)
+      rows.push({k:m.k,t,line:l,it,eff:it.snooze&&!it.done?it.snooze:it.date})}
+  return rows.sort((a,b)=>a.eff.localeCompare(b.eff));
+}
+function remStatus(r){if(r.it.done)return 'done';if(r.eff<todayStr)return 'over';if(r.eff<=dayAdd(todayStr,2))return 'soon';return 'later'}
+async function remScan(){
+  try{remRows=await remCollect()}catch(e){return}
+  const due=remRows.filter(r=>['over','soon'].includes(remStatus(r)));remDue=due.length;
+  const b=$('#remBadge');if(b){b.textContent=remDue||'';b.hidden=!remDue}
+  try{if(navigator.setAppBadge)remDue?navigator.setAppBadge(remDue):navigator.clearAppBadge()}catch(e){}
+  remNotify(due);
+}
+async function remNotify(due){
+  if(!('Notification' in window)||Notification.permission!=='granted'||ls.get('mb-notif')!=='on')return;
+  let sent={};try{sent=JSON.parse(ls.get('mb-notified')||'{}')}catch(e){}
+  const fresh=due.filter(r=>sent[r.it.id]!==r.eff);if(!fresh.length)return;
+  const body=fresh.slice(0,4).map(r=>`${r.line.name}${r.it.note?' ('+r.it.note+')':''}: ${money(r.it.amt)} · ${fmtDay(r.eff)}`).join('\n')+(fresh.length>4?`\n+${fresh.length-4} more`:'');
+  const title=fresh.length===1?`Coming up: ${fresh[0].line.name}`:`${fresh.length} payments coming up`;
+  try{const reg=navigator.serviceWorker&&await navigator.serviceWorker.getRegistration();
+    if(reg&&reg.showNotification)await reg.showNotification(title,{body,icon:'icon-192.png',badge:'icon-192.png',tag:'chikez-rem'});else new Notification(title,{body,icon:'icon-192.png'})}catch(e){}
+  fresh.forEach(r=>sent[r.it.id]=r.eff);ls.set('mb-notified',JSON.stringify(sent));
+}
+function remRowHTML(r,i){const st=remStatus(r),inc=r.t==='inc',it=r.it;
+  const when=st==='over'?`<span class="t-over">${fmtDay(r.eff)} · overdue</span>`:st==='soon'?`<b class="rsoon">${r.eff===todayStr?'Today':r.eff===dayAdd(todayStr,1)?'Tomorrow':fmtDay(r.eff)}</b>`:fmtDay(r.eff);
+  return `<div class="remr ${st}"><div class="rtop"><span class="rn"><b>${esc(r.line.name)}</b>${it.note?`<small>${esc(it.note)}</small>`:''}</span><b class="ra${inc?' inc':''}">${inc?'+':''}${money(it.amt)}</b></div>
+   <div class="rmid"><span class="rw2">${when}${it.snooze&&!it.done?' · snoozed':''}</span>${it.done?`<span class="rdone">${it.done==='paid'?(inc?'Received ✓':'Paid ✓'):'Skipped'}</span>`:''}</div>
+   <div class="ract">${it.done?`<button type="button" class="linkb" data-ra="undo" data-ri="${i}">Undo</button>`:`<button type="button" class="btn sm" data-ra="paid" data-ri="${i}">${inc?'Received':'Paid'}</button><button type="button" class="btn line sm" data-ra="snooze" data-ri="${i}">Snooze 1 day</button><button type="button" class="btn line sm" data-ra="skip" data-ri="${i}">Skip</button>`}</div></div>`}
+async function remView(){
+  const box=$('#remBox');if(!box)return;
+  let rows;try{rows=await remCollect()}catch(e){box.innerHTML='<p class="empty">Couldn’t load reminders.</p>';return}
+  remRows=rows;if(!$('#remBox'))return;
+  const g={over:[],soon:[],later:[],done:[]};rows.forEach((r,i)=>g[remStatus(r)].push([r,i]));
+  remDue=g.over.length+g.soon.length;try{if(navigator.setAppBadge)remDue?navigator.setAppBadge(remDue):navigator.clearAppBadge()}catch(e){}
+  const sec=(t,a,cls)=>a.length?`<h2 class="big2 ${cls||''}">${t} <small>${a.length}</small></h2><div class="card remc">${a.map(([r,i])=>remRowHTML(r,i)).join('')}</div>`:'';
+  const notifOK='Notification' in window,np=notifOK?Notification.permission:'denied';
+  box.innerHTML=(rows.length?'':`<div class="card pad"><p style="margin-top:0"><b>No reminders yet.</b></p><p class="muted">On the Plan page, tap a line, add a dated item under <b>Break it down</b> and tick <b>🔔 Remind me 48 h before</b>, or tap the bell on an existing item.</p></div>`)
+    +sec('Overdue',g.over,'rover')+sec('Next 48 hours',g.soon,'rsoonh')+sec('Coming up',g.later)
+    +(g.done.length?`<details class="others"><summary>Handled · ${g.done.length}</summary><div class="card remc">${g.done.slice().reverse().slice(0,30).map(([r,i])=>remRowHTML(r,i)).join('')}</div></details>`:'')
+    +`<div class="card pad remtools"><b>Get alerts</b>
+      ${notifOK&&np!=='denied'?`<label class="sw"><input type="checkbox" id="notifSw" ${ls.get('mb-notif')==='on'&&np==='granted'?'checked':''}><span><b>Notify me when I open the app</b><br><span class="muted">Shows a phone notification for anything due within 48 hours.</span></span></label>`:'<p class="muted" style="margin:6px 0">Phone notifications aren’t available in this browser. Use the calendar below.</p>'}
+      <button type="button" class="btn ghost full" id="icsBtn" ${g.over.length+g.soon.length+g.later.length?'':'disabled'}>📅 Add upcoming reminders to my calendar</button>
+      <p class="muted" style="margin:8px 0 0">Your calendar alerts you 48 hours before, even when this app is closed.</p></div>`;
+  box.querySelectorAll('[data-ra]').forEach(b=>b.onclick=()=>remAct(b.dataset.ra,rows[+b.dataset.ri]));
+  const ns=$('#notifSw');if(ns)ns.onchange=async()=>{if(ns.checked){const r=await Notification.requestPermission();if(r!=='granted'){ns.checked=false;toast('Notifications were not allowed');return}ls.set('mb-notif','on');ls.set('mb-notified','{}');toast('You’ll be notified when you open the app');remNotify(rows.filter(r=>['over','soon'].includes(remStatus(r))))}else{ls.set('mb-notif','off')}};
+  const ib=$('#icsBtn');if(ib)ib.onclick=()=>remICS(rows.filter(r=>!r.it.done));
+}
+async function remAct(a,r){
+  if(!r)return;const id=r.it.id,inc=r.t==='inc';
+  const findIt=P=>{const l=(r.t==='inc'?P.income:P.cats).find(x=>x.id===r.line.id);return l&&(l.items||[]).find(x=>x.id===id)};
+  if(a==='paid'){const tid=rid(),dt=r.k===todayKey&&r.it.date>todayStr?todayStr:r.it.date;
+    await mutMonth(r.k,'tx',T=>T.push({id:tid,date:dt,cat:inc?'inc:'+r.line.id:r.line.id,amt:+r.it.amt,note:r.it.note||r.line.name,by:who()||''}));
+    await mutMonth(r.k,'plan',P=>{const x=findIt(P);if(x){x.done='paid';x.txId=tid;x.doneAt=Date.now()}});
+    toast(`${r.line.name}: ${money(r.it.amt)} logged in ${mName(r.k,'s')} Actual`)}
+  else if(a==='skip'){await mutMonth(r.k,'plan',P=>{const x=findIt(P);if(x){x.done='skip';x.doneAt=Date.now()}});toast('Marked as handled')}
+  else if(a==='snooze'){const base=r.eff>todayStr?r.eff:todayStr;await mutMonth(r.k,'plan',P=>{const x=findIt(P);if(x)x.snooze=dayAdd(base,1)});toast('Snoozed one day')}
+  else if(a==='undo'){const tx=r.it.txId;if(tx)await mutMonth(r.k,'tx',T=>{const i=T.findIndex(x=>x.id===tx);if(i>-1)T.splice(i,1)});
+    await mutMonth(r.k,'plan',P=>{const x=findIt(P);if(x){delete x.done;delete x.txId;delete x.doneAt}});toast('Back on the list')}
+  remView();
+}
+function remICS(rows){
+  const esc2=t=>String(t||'').replace(/\\/g,'\\\\').replace(/[,;]/g,m=>'\\'+m).replace(/\n/g,'\\n');
+  const stamp=new Date().toISOString().replace(/[-:]/g,'').slice(0,15)+'Z';
+  const ev=rows.map(r=>{const d=r.eff.replace(/-/g,''),d2=dayAdd(r.eff,1).replace(/-/g,''),inc=r.t==='inc';
+    const sum=`${inc?'Expect':'Pay'} ${r.line.name} ${money(r.it.amt)}${r.it.note?' ('+r.it.note+')':''}`;
+    return ['BEGIN:VEVENT',`UID:${r.it.id}@chikez-budget`,`DTSTAMP:${stamp}`,`DTSTART;VALUE=DATE:${d}`,`DTEND;VALUE=DATE:${d2}`,`SUMMARY:${esc2(sum)}`,`DESCRIPTION:${esc2('From Chikez Budget, '+mName(r.k))}`,
+      'BEGIN:VALARM','ACTION:DISPLAY',`DESCRIPTION:${esc2(sum)}`,'TRIGGER:-PT48H','END:VALARM','END:VEVENT'].join('\r\n')});
+  const ics=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Chikez Budget//EN','CALSCALE:GREGORIAN',...ev,'END:VCALENDAR'].join('\r\n');
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([ics],{type:'text/calendar'}));a.download='chikez-reminders.ics';document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1500);
+  toast(`${rows.length} reminder${rows.length>1?'s':''} saved. Open the file to add ${rows.length>1?'them':'it'} to your calendar.`);
+}
+/* ---- break a planned line into dated items ---- */
+let itemEdit=null;
+function itemsHTML(t,l,locked){const its=[...(l.items||[])].sort((a,b)=>(a.date||'').localeCompare(b.date||''));
+  const word=t==='inc'?'payments':'items',ed=itemEdit&&itemEdit.line===l.id?its.find(x=>x.id===itemEdit.id):null;
+  const dd=ed?ed.date:(key===todayKey?todayStr:key+'-01');
+  return `<div class="itbox"><div class="ithd"><b>Break it down</b>${its.length?`<span>${its.length} ${word} = <b>${money(its.reduce((a,x)=>a+(+x.amt||0),0))}</b></span>`:`<span class="muted">optional</span>`}</div>
+   ${its.length?`<div class="itlist">${its.map(x=>`<div class="itrow${ed&&ed.id===x.id?' on':''}"><button type="button" class="itmain" data-ited="${esc(x.id)}" ${locked?'disabled':''}><span class="d">${esc(mName((x.date||key).slice(0,7),'s'))} ${+(x.date||'').slice(8)||''}</span><span class="n">${x.note?esc(x.note):`<i>${t==='inc'?'Payment':'Item'}</i>`}</span><b>${money(+x.amt||0)}</b></button>${locked?(x.remind?`<span class="itbell on">${BELL_SVG}</span>`:''):`<button type="button" class="itbell${x.remind?' on':''}" data-itrem="${esc(x.id)}" aria-pressed="${!!x.remind}" aria-label="Remind me 48 hours before">${BELL_SVG}</button><button type="button" class="x" data-itdel="${esc(x.id)}" aria-label="Remove">×</button>`}</div>`).join('')}</div>`:`<p class="muted itnote">Add ${word} with their own amount, note and date. The ${t==='inc'?'expected':'planned'} amount becomes their total.</p>`}
+   ${locked?'':`<form class="itform" id="itF"><input id="itAmt" inputmode="decimal" placeholder="Amount" autocomplete="off" value="${ed?ed.amt:''}" aria-label="Amount"><input id="itNote" maxlength="80" placeholder="Note" value="${ed?esc(ed.note||''):''}" aria-label="Note"><input id="itDt" type="date" value="${dd}" min="${key}-01" max="${key}-${pad(dim(key))}" aria-label="Date"><label class="itremsw"><input type="checkbox" id="itRem" ${ed?(ed.remind?'checked':''):(ls.get('mb-itrem')==='1'?'checked':'')}> 🔔 Remind me 48 h before</label><button class="btn sm">${ed?'Save':'Add'}</button>${ed?'<button type="button" class="linkb" id="itCancel">Cancel</button>':''}</form>`}</div>`}
+function bindItems(k,t,l,locked){
+  const sh=$('#sheet');const f=t==='inc'?'amt':'planned';
+  const amtIn=sh.querySelector(`.pedit [data-f=amt]`);if(amtIn&&l.items&&l.items.length){amtIn.readOnly=true;amtIn.classList.add('ro');amtIn.title='Total of the items below'}
+  const redo=()=>planEditSheet(k);
+  const save=fn=>{persist('plan',P=>{const x=(t==='inc'?P.income:P.cats).find(y=>y.id===l.id);if(!x)return;x.items=x.items||[];
+    if(!x.items.length&&(+x[f]||0)>0.004&&!x._seeded){}fn(x.items);if(!x.items.length)delete x.items;syncItems(P)});setTimeout(redo,30)};
+  sh.querySelectorAll('[data-ited]').forEach(b=>b.onclick=()=>{itemEdit={line:l.id,id:b.dataset.ited};redo()});
+  sh.querySelectorAll('[data-itrem]').forEach(b=>b.onclick=()=>{const id=b.dataset.itrem;save(A=>{const x=A.find(y=>y.id===id);if(x){x.remind=!x.remind;if(!x.remind){delete x.done;delete x.snooze}}});toast('Reminder '+(b.getAttribute('aria-pressed')==='true'?'off':'on: 48 hours before'))});
+  sh.querySelectorAll('[data-itdel]').forEach(b=>b.onclick=()=>{const id=b.dataset.itdel;if(itemEdit&&itemEdit.id===id)itemEdit=null;save(A=>{const i=A.findIndex(x=>x.id===id);if(i>-1)A.splice(i,1)})});
+  const c=sh.querySelector('#itCancel');if(c)c.onclick=()=>{itemEdit=null;redo()};
+  const F=sh.querySelector('#itF');if(F)F.onsubmit=e=>{e.preventDefault();const a=evalExpr($('#itAmt').value.trim());if(!(a>0)){toast('Enter an amount above zero');return}
+    const rm=$('#itRem').checked;ls.set('mb-itrem',rm?'1':'0');
+    const it={amt:Math.round(a*100)/100,note:$('#itNote').value.trim().slice(0,80),date:($('#itDt').value||'').startsWith(key)?$('#itDt').value:(key+'-01'),remind:rm};
+    const edId=itemEdit&&itemEdit.line===l.id?itemEdit.id:null;itemEdit=null;
+    save(A=>{if(edId){const x=A.find(y=>y.id===edId);if(x)Object.assign(x,it)}else A.push({id:rid(),...it})})};
+}
+function planEditSheet(k){if(itemEdit&&!k.endsWith(':'+itemEdit.line))itemEdit=null;
   const def=tab==='defaults',P=def?TPL.plan:S.plan,[t,id]=k.split(':'),l=(t==='inc'?P.income:P.cats).find(x=>x.id===id);if(!l)return;
   const lk=def?lockState():null,locked=def?lk.st!=='open':pastLocked();
   openOpts.add(k);const inner=planLine(t,l,def,groupsOf(P.cats),locked);openOpts.delete(k);
-  openSheet(head(esc(l.name))+`${locked?`<p class="pastlock in">🔒 ${def?'Defaults are locked.':esc(mName(key,'s'))+' is finished.'} ${def?'':'<button type="button" class="linkb" data-opensettings>Unlock</button>'}</p>`:''}<div class="pedit"><div class="pehd"><span>Name</span><span>${t==='inc'?'Expected':'Planned'}</span></div>${inner}</div>${locked?'':'<button type="button" class="btn full" data-close style="margin-top:12px">Done</button>'}`,()=>bindPlan($('#sheet'),def,true));
+  openSheet(head(esc(l.name))+`${locked?`<p class="pastlock in">🔒 ${def?'Defaults are locked.':esc(mName(key,'s'))+' is finished.'} ${def?'':'<button type="button" class="linkb" data-opensettings>Unlock</button>'}</p>`:''}<div class="pedit"><div class="pehd"><span>Name</span><span>${t==='inc'?'Expected':'Planned'}</span></div>${inner}</div>${def?'':itemsHTML(t,l,locked)}${locked?'':'<button type="button" class="btn full" data-close style="margin-top:12px">Done</button>'}`,()=>{bindPlan($('#sheet'),def,true);if(!def)bindItems(k,t,l,locked)});
 }
 document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('[data-pedit]');if(b)planEditSheet(b.dataset.pedit)});
 function planHTML(C,def){
   def=!!def;const p=def?TPL.plan:S.plan,mo=esc(mName(key,'s')),lk=def?lockState():null,locked=def?lk.st!=='open':pastLocked();
   const inc=p.income.reduce((a,i)=>a+i.amt,0),exp=p.cats.reduce((a,c)=>a+c.planned+(def?0:(c.owed||0)),0);
   const incSC=Math.max(1,...p.income.map(i=>+i.amt||0)),catSC=Math.max(1,...p.cats.map(c=>+c.planned||0));
-  let h=(def?'':pastBanner())+`<div class="pbar"><div class="pcols two"><div><small>Total planned income</small><b>${money(inc,0)}</b></div><div class="${exp>inc+0.5?'neg':''}"><small>Total planned expenses</small><b>${money(exp,0)}</b></div></div></div>`;
+  const gap=inc-exp,over=gap<-0.5;
+  let h=(def?'':pastBanner())+`<div class="hero phero"><small><b class="hlab">${def?'Defaults':'Plan'}</b> · ${def?'every month':esc(mName(key))}</small><div class="big${over?' neg':''}">${over?'−':''}${money(Math.abs(gap),0)}</div><p class="psub">${over?'Planned expenses exceed planned income':gap>0.5?'Left: planned income minus planned expenses':'Planned income fully assigned ✓'}</p>
+  <div class="hbar">${barHTML(exp,inc,'#fff','')}</div><p class="hfoot">Income <b>${money(inc,0)}</b> · expenses <b>${money(exp,0)}</b></p></div>`;
   if(def)h+=lockHTML(lk);
   else if(p.editedAt)h+=`<p class="ped" style="margin:-4px 4px 10px">Last change: <b>${esc(p.editedBy||'someone')}</b>, ${esc(fmtWhen(p.editedAt))}</p>`;
   h+=`<h2 class="big2">Income <small><b>${money(inc,0)}</b> <i>planned</i></small></h2><div class="card pbars">${p.income.map(i=>planBar('inc',i,def,locked,incSC)).join('')}${locked?'':`<div class="pl"><button type="button" class="btn ghost sm" id="addInc" style="grid-column:1/-1;justify-self:start">+ Income source</button></div>`}</div>`;
   if(!def){const pk=addM(key,-1),carryTot=p.cats.reduce((a,c)=>a+(c.carry||0),0);
     h+=`<h3>Leftovers from ${esc(mName(pk,'s'))}</h3><div class="card pad"><label class="sw"><input type="checkbox" id="carrySw" ${p.carryOn!==false?'checked':''}><span><b>Bring ${esc(mName(pk,'s'))}’s leftovers into ${mo}</b><br><span class="muted">${carryTot>0.004||p.overPrev?`${carryTot>0.004?money(carryTot)+' of unspent savings':'No savings'} carried in${p.overPrev?' · '+money(p.overPrev)+' overspending to make up':''}.`:'Nothing to carry from last month.'}</span></span></label></div>`}
   const GS=groupsOf(p.cats);
-  h+=`<h2 class="big2">Expenses <small><b>${money(exp,0)}</b> <i>planned</i></small></h2>${locked||!copyOn()?'':`<button type="button" class="linkb copyb" data-copy="${def?'defaults':'plan'}">⧉ Copy amounts from a month</button>`}`+GS.map(l=>`<div class="card gcard"><div class="ghead in"><input class="gname" data-grp="${esc(l)}" value="${esc(l)}" maxlength="40" aria-label="Group name" ${locked?'disabled':''}><span>${money(p.cats.filter(c=>gName(c)===l).reduce((a,c)=>a+c.planned+(def?0:(c.owed||0)),0),0)}</span></div><div class="pbars">${p.cats.filter(c=>gName(c)===l).map(c=>planBar('cat',c,def,locked,catSC)).join('')}</div>${locked?'':`<div class="pl"><button type="button" class="btn ghost sm" data-addcat="${esc(l)}" style="grid-column:1/-1;justify-self:start">+ Add to ${esc(l)}</button></div>`}</div>`).join('');
-  if(!locked)h+=`<h3>New group</h3><div class="card"><form class="pl" id="grpF"><input id="grpIn" maxlength="40" placeholder="e.g. Pets" aria-label="New group name" style="grid-column:1/3"><button class="btn ghost sm" style="min-height:46px">Add</button></form></div>`;
+  const psort=ls.get('mb-psort')||'grp';
+  h+=`<h2 class="big2">Expenses <small><b>${money(exp,0)}</b> <i>planned</i></small></h2>${locked||!copyOn()?'':`<button type="button" class="linkb copyb" data-copy="${def?'defaults':'plan'}">⧉ Copy amounts from a month</button>`}
+  <div class="seg mini asort three"><button type="button" data-psort="big" aria-pressed="${!planAdd&&psort==='big'}">Biggest first</button><button type="button" data-psort="grp" aria-pressed="${!planAdd&&psort==='grp'}">By group</button><button type="button" id="planAddUp" aria-pressed="${planAdd}"><b>Σ</b> Add up</button></div>`;
+  if(psort==='big'){h+=`<div class="card pbars">${[...p.cats].sort((a,b)=>(b.planned-a.planned)||a.name.localeCompare(b.name)).map(c=>planBar('cat',c,def,locked,catSC)).join('')}</div><p class="muted" style="margin:8px 4px">To add a line, switch to By group.</p>`}
+  else h+=GS.map(l=>`<div class="card gcard"><div class="ghead in"><input class="gname" data-grp="${esc(l)}" value="${esc(l)}" maxlength="40" aria-label="Group name" ${locked?'disabled':''}><span>${money(p.cats.filter(c=>gName(c)===l).reduce((a,c)=>a+c.planned+(def?0:(c.owed||0)),0),0)}</span></div><div class="pbars">${p.cats.filter(c=>gName(c)===l).map(c=>planBar('cat',c,def,locked,catSC)).join('')}</div>${locked?'':`<div class="pl"><button type="button" class="btn ghost sm" data-addcat="${esc(l)}" style="grid-column:1/-1;justify-self:start">+ Add to ${esc(l)}</button></div>`}</div>`).join('');
+  if(!locked&&psort!=='big')h+=`<h3>New group</h3><div class="card"><form class="pl" id="grpF"><input id="grpIn" maxlength="40" placeholder="e.g. Pets" aria-label="New group name" style="grid-column:1/3"><button class="btn ghost sm" style="min-height:46px">Add</button></form></div>`;
   if(!def)h+=`<p class="muted" style="margin:14px 4px">Changes here are for ${esc(mName(key))} only. Your every-month list lives in the Defaults tab.</p>`;
   return h;
 }
@@ -2280,7 +2526,7 @@ async function drawCopy(){
         persist('tx',TX=>{for(const r of pick){if(cs.replace){for(let i=TX.length-1;i>=0;i--)if(TX[i].cat===r.m.id&&!TX[i].rc)TX.splice(i,1)}
           TX.push({id:rid(),date:d,cat:r.m.id,amt:r.v,note:'Copied from '+from,by:who()||''})}});
         toast(`${pick.length} amount${pick.length>1?'s':''} copied from ${from}`)}
-      else if(T==='plan'){persist('plan',P=>{for(const r of pick){const m=P.cats.find(x=>x.id===(r.m&&r.m.id));if(m)m.planned=r.v;else{const n2=clone(r.c);n2.planned=r.v;n2.carry=0;n2.closed=false;delete n2.closeMode;delete n2.owed;delete n2.owedFrom;delete n2.att;delete n2.moved;let at=-1;P.cats.forEach((x,i)=>{if(gName(x)===gName(n2))at=i});at>-1?P.cats.splice(at+1,0,n2):P.cats.push(n2)}}});
+      else if(T==='plan'){persist('plan',P=>{for(const r of pick){const m=P.cats.find(x=>x.id===(r.m&&r.m.id));if(m){m.planned=r.v;delete m.items}else{const n2=clone(r.c);n2.planned=r.v;n2.carry=0;n2.closed=false;delete n2.closeMode;delete n2.owed;delete n2.owedFrom;delete n2.att;delete n2.moved;let at=-1;P.cats.forEach((x,i)=>{if(gName(x)===gName(n2))at=i});at>-1?P.cats.splice(at+1,0,n2):P.cats.push(n2)}}});
         toast(`${pick.length} planned amount${pick.length>1?'s':''} updated from ${from}`)}
       else{const ops=pick.map(r=>{if(r.m)return {do:'set',t:'cat',id:r.m.id,f:'planned',v:r.v,old:r.m.planned};const n2=clone(r.c);n2.planned=r.v;['carry','closed','closeMode','owed','owedFrom','att','moved','only'].forEach(k=>delete n2[k]);return {do:'add',t:'cat',id:n2.id,line:n2}});
         changeDefaultMany(ops,`Defaults updated from ${from}`)}
@@ -2586,7 +2832,7 @@ document.addEventListener('visibilitychange',()=>{if(document.visibilityState===
 /* ---------------- start ---------------- */
 
 /* ---------------- home ---------------- */
-const TILES=[['plan','Plan','#7c83c9'],['actual','Actual','#1b9ce6'],['receipts','Receipts','#3f8fb5'],['summary','Summary','#c08a4e'],['defaults','Defaults','#6f7f86']];
+const TILES=[['plan','Plan','#7c83c9'],['actual','Actual','#1b9ce6'],['reminders','Reminders','#e0457b'],['receipts','Receipts','#3f8fb5'],['summary','Summary','#c08a4e'],['defaults','Defaults','#6f7f86']];
 function homeHTML(){
   const nm=who(),now=new Date(),sub={};
   const day=now.toLocaleDateString(undefined,{weekday:'long'}),date=now.toLocaleDateString(undefined,{month:'long',day:'numeric',year:'numeric'});
@@ -2599,12 +2845,12 @@ function homeHTML(){
   sub.settings='Names, PIN, appearance';
   sub.plan=sub.plan||'Set the budget for the month';sub.actual=sub.actual||'Log what you spend';
   const ed=S&&S.plan&&S.plan.editedAt?`Last change: <b>${esc(S.plan.editedBy||'someone')}</b>, ${esc(fmtWhen(S.plan.editedAt))}`:'';
-  const icon=t=>{if(t==='settings')return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>';
+  const icon=t=>{if(t==='reminders')return BELL_SVG;if(t==='settings')return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>';
     const b=document.querySelector(`#tabs button[data-t="${t}"] svg`);return b?b.outerHTML:''};
   const T=[...TILES,['settings','Settings','#8a94a6']];
   return `<div class="hero home compact"><small>${nm?'Hi '+esc(nm):'Hi there'}</small><div class="big hdate">${esc(day)}</div><p class="hd2">${esc(date)}</p>
   <div class="hmeta">${ed?`<span>${ed}</span>`:''}<span class="hv">App version ${esc(APP_VERSION.split(' ')[0])}</span></div></div>
-  <div class="tiles">${T.map(([t,n,c])=>`<button class="tile" data-tile="${t}" style="--hue1:${c};--hue2:${c}"><span class="pi">${icon(t)}</span><span class="tt"><b>${n}</b><small>${esc(sub[t]||'')}</small></span>${t==='receipts'?'<span class="badge" id="rcBadge" hidden></span>':t==='defaults'?'<span class="badge" id="dfBadge" hidden></span>':''}</button>`).join('')}</div>`;
+  <div class="tiles">${T.map(([t,n,c])=>`<button class="tile" data-tile="${t}" style="--hue1:${c};--hue2:${c}"><span class="pi">${icon(t)}</span><span class="tt"><b>${n}</b><small>${esc(sub[t]||'')}</small></span>${t==='reminders'?`<span class="badge" id="remBadge" ${remDue?'':'hidden'}>${remDue||''}</span>`:t==='receipts'?'<span class="badge" id="rcBadge" hidden></span>':t==='defaults'?'<span class="badge" id="dfBadge" hidden></span>':''}</button>`).join('')}</div>`;
 }
 function openSettings(){
   openSheet(head('Settings')+settingsHTML().replace('<h2 class="big2">Settings</h2>',''),()=>{
@@ -2683,10 +2929,10 @@ function pinHTML(){
   if(!stored&&!(TPL&&TPL.plan))return `<div class="lockpg"><div class="card pad"><p>Couldn’t reach Dropbox to check your PIN.</p><button class="btn" id="pinRetry">Try again</button></div></div>`;
   const create=!stored,title=create?(pinFirst?'Type the same PIN again':'Create a 4-digit PIN'):'Enter your PIN';
   return `<div class="lockpg">
-  <div class="hero home lockhero"><small>${create?'One PIN for both of you':'Welcome back'}</small><div class="big hdate">${esc(new Date().toLocaleDateString(undefined,{weekday:'long'}))}</div><p class="hd2">${esc(new Date().toLocaleDateString(undefined,{month:'long',day:'numeric',year:'numeric'}))}</p></div>
-  <p class="flab" style="margin:18px 4px 8px">You are</p>
+  <div class="hero home lockhero"><div class="lkbrand"><span>Chikez Budget</span><small>${create?'One PIN for both of you':'Welcome back'}</small></div><div class="big hdate">${esc(new Date().toLocaleDateString(undefined,{weekday:'long'}))}</div><p class="hd2">${esc(new Date().toLocaleDateString(undefined,{month:'long',day:'numeric',year:'numeric'}))}</p></div>
+  <p class="flab lkl">You are</p>
   <div class="who2 big">${ppl.map(n=>`<label><input type="radio" name="lkWho" value="${esc(n)}" ${me===n?'checked':''}><span>${esc(n)}</span></label>`).join('')}</div>
-  <p class="flab" id="pinTitle" style="margin:18px 4px 4px">${title}</p>
+  <p class="flab lkl" id="pinTitle">${title}</p>
   <div class="dots ${pinErr?'bad':''}" id="dots">${[0,1,2,3].map(i=>`<i class="${i<pinEntry.length?'on':''}"></i>`).join('')}</div>
   <p class="pinerr" id="pinErr">${esc(pinErr)}</p>
   <div class="pinkeys">${['1','2','3','4','5','6','7','8','9','','0','⌫'].map(k=>k?`<button type="button" data-k="${k}" aria-label="${k==='⌫'?'Delete':k}">${k}</button>`:'<span></span>').join('')}</div>
@@ -2723,7 +2969,7 @@ async function pinKey(k){
   if(await pinHash(pin)===stored)return unlockNow();
   pinErr='Wrong PIN. Try again.';render();
 }
-function unlockNow(){unlocked=true;lastAct=Date.now();tab='home';try{history.replaceState({t:'home'},'')}catch(e){}render();scrollTo(0,0)}
+function unlockNow(){unlocked=true;setTimeout(remScan,1500);lastAct=Date.now();tab='home';try{history.replaceState({t:'home'},'')}catch(e){}render();scrollTo(0,0)}
 function lockNow(){if(!unlocked)return;unlocked=false;editPast=false;pinEntry='';pinErr='';$('#veil').classList.remove('open');render();scrollTo(0,0)}
 ['pointerdown','keydown','scroll','touchstart'].forEach(ev=>addEventListener(ev,()=>{if(unlocked&&Date.now()-lastAct>LOCK_MS)lockNow();else lastAct=Date.now()},{passive:true,capture:true}));
 setInterval(()=>{if(unlocked&&Date.now()-lastAct>LOCK_MS)lockNow()},10e3);
