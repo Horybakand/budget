@@ -1,7 +1,7 @@
 /* Chikez Budget: keeps the app itself available offline.
    It only stores the app's own files (this page and its icons).
    Budget data always comes from your Dropbox and is never stored here. */
-const CACHE = 'chikez-app-v53';
+const CACHE = 'chikez-app-v54';
 const FILES = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png', './apple-touch-icon.png'];
 
 self.addEventListener('install', e => {
