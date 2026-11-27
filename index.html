@@ -1179,6 +1179,38 @@ body[data-tab=actual] .hero .psub{margin:0}
 .bul2 .ba{box-shadow:0 1px 3px rgba(22,131,220,.35)}
 @media (prefers-color-scheme: dark){:root:not([data-theme=light]) .bul2 .bp{background:rgba(150,165,250,.10)!important;box-shadow:inset 0 0 0 1px rgba(150,165,250,.24)!important}}
 :root[data-theme=dark] .bul2 .bp{background:rgba(150,165,250,.10)!important;box-shadow:inset 0 0 0 1px rgba(150,165,250,.24)!important}
+
+/* v53 */
+.addexp{display:block;width:100%;margin:10px 0 0;min-height:44px}
+.copyb.bottom{margin:12px 2px 0!important;display:block}
+.cbo.new span{color:var(--greenD);font-weight:800}
+.hero.phero{position:relative}
+.findgap{position:absolute;top:10px;right:12px;z-index:5;border:0;border-radius:999px;background:#ffe08a;color:#5a4300;font-weight:800;font-size:13.5px;padding:7px 12px;min-height:0;box-shadow:0 4px 12px -6px rgba(0,0,0,.4)}
+.needbox{margin-top:14px;border-top:1px solid var(--line);padding-top:12px}
+.needs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.need{border:1.5px solid var(--line);background:var(--card);border-radius:12px;padding:8px 6px;text-align:left;display:flex;flex-direction:column;gap:2px;color:var(--ink);min-height:0}
+.need b{font-size:13.5px}
+.need small{font-size:11px;color:var(--mute);line-height:1.25}
+.need[aria-pressed=true].must{border-color:#d9506e;background:color-mix(in srgb,#d9506e 12%,var(--card))}
+.need[aria-pressed=true].trim{border-color:#e3b437;background:color-mix(in srgb,#e3b437 16%,var(--card))}
+.need[aria-pressed=true].pause{border-color:#2db4f5;background:color-mix(in srgb,#2db4f5 14%,var(--card))}
+.need.mini{padding:4px 8px;border-radius:999px;font-size:12px;font-weight:700;display:inline-block}
+.tq{display:flex;gap:4px}
+.tgap{padding:10px 12px;border-radius:12px;margin:0 0 6px;font-size:14px}
+.tgap.over{background:color-mix(in srgb,#ffe08a 40%,var(--card));border:1px solid #e3b437}
+.tgap.ok{background:var(--soft)}
+.th{display:flex;justify-content:space-between;align-items:baseline;margin:14px 2px 6px;font-size:15px}
+.th small{font-size:12px;color:var(--mute);font-weight:600}
+.th.pause{color:var(--greenD)}.th.trim{color:#b0820e}.th.must{color:#c2415f}
+.trow{display:flex;align-items:center;gap:10px;padding:9px 12px;border-top:1px solid var(--line)}
+.trow:first-child{border-top:0}
+.trow .tn{flex:1;min-width:0;display:flex;flex-direction:column}
+.trow .tn b{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.trow .tn small{color:var(--mute);font-size:12px}
+.trow .ta{white-space:nowrap}
+.trow .btn{min-height:34px;padding:0 12px}
+@media (prefers-color-scheme: dark){:root:not([data-theme=light]) .th.trim{color:#ffd76a}:root:not([data-theme=light]) .th.must{color:#ff8fa8}}
+:root[data-theme=dark] .th.trim{color:#ffd76a}:root[data-theme=dark] .th.must{color:#ff8fa8}
 </style>
 </head>
 <body>
@@ -1211,7 +1243,7 @@ body[data-tab=actual] .hero .psub{margin:0}
    (Or leave it empty and type it into the setup screen on each device.)
    ====================================================================== */
 const APP_KEY = '';
-const APP_VERSION = '52 · Nov 27, 2026';
+const APP_VERSION = '53 · Nov 27, 2026';
 
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -1582,6 +1614,7 @@ async function planFor(k){
   const p=clone(TPL.plan);p.cats.forEach(c=>{c.carry=0;c.closed=false});p.overPrev=0;p.starter=false;
   const prev=await loadMonth(addM(k,-1));
   if(prev.plan){const r=rollPlan(prev);p.cats.forEach(c=>{const m=r.cats.find(x=>x.id===c.id);c.carry=m?m.carry:0;c.owed=m?m.owed:0;c.owedFrom=m?m.owedFrom:undefined});p.overPrev=r.overPrev;p.carryOn=r.carryOn;p.cur=prev.plan.cur||p.cur}
+  if(prev.plan)p.cats.forEach(c=>{if(!c.need){const m=prev.plan.cats.find(x=>x.id===c.id);if(m&&m.need)c.need=m.need}});
   p.needsRoll=addM(k,-1)>=todayKey;   /* last month isn't finished yet: settle carry-overs when it is */
   return p;
 }
@@ -1776,10 +1809,12 @@ function actualHTML(C){
   const expSC=Math.max(1,...vis.map(c=>Math.max(barVal(c,C),C.by[c.id].budget)));
   const ord=cs=>[...cs].sort((a,b)=>(C.by[a.id].closed-C.by[b.id].closed)||(barVal(b,C)-barVal(a,C))||(b.planned-a.planned));
   h+=`<h2 class="big2">Expenses <small>${money(sp,0)} <i>of</i> ${money(pl,0)}</small></h2>
-  ${copyOn()&&key<=todayKey&&!pastLocked()?`<button type="button" class="linkb copyb" data-copy="actual">⧉ Copy amounts from another month</button>`:''}<div class="seg mini asort three"><button type="button" data-asort="big" aria-pressed="${!addMode&&by==='big'}">Biggest first</button><button type="button" data-asort="grp" aria-pressed="${!addMode&&by==='grp'}">By group</button><button type="button" id="addUp" aria-pressed="${addMode}"><b>Σ</b> Add up</button></div>`;
+<div class="seg mini asort three"><button type="button" data-asort="big" aria-pressed="${!addMode&&by==='big'}">Biggest first</button><button type="button" data-asort="grp" aria-pressed="${!addMode&&by==='grp'}">By group</button><button type="button" id="addUp" aria-pressed="${addMode}"><b>Σ</b> Add up</button></div>`;
   if(by==='grp')h+=groupsOf(p.cats).map(l=>{const cs=ord(vis.filter(c=>gName(c)===l));const gt=groupTotal(p.cats.filter(c=>gName(c)===l),C);return cs.length?`<div class="card abars gcard"><div class="ghd in"><span>${esc(l)}</span><span>${money(gt.val,0)} <i>of</i> ${money(gt.bud,0)}</span></div>${cs.map(c=>catBar(c,C,expSC)).join('')}</div>`:''}).join('');
   else h+=`<div class="card abars">${ord(vis).map(c=>catBar(c,C,expSC)).join('')}</div>`;
   if(hid.length)h+=`<details class="others"><summary>${hid.length} more categor${hid.length>1?'ies':'y'} with nothing planned</summary><div class="card">${hid.map(c=>`<button class="row" data-cat="${esc(c.id)}"><span class="nm"><span class="dot" style="background:${colOf(c.id)}"></span>${esc(c.name)}</span><span class="av" style="font-size:13px;font-weight:600;color:var(--mute)">${esc(gName(c))}</span></button>`).join('')}</div></details>`;
+  if(!pastLocked())h+=`<button type="button" class="btn ghost addexp" data-newline="actual">+ Add expense</button>`;
+  if(copyOn()&&key<=todayKey&&!pastLocked())h+=`<button type="button" class="linkb copyb bottom" data-copy="actual">⧉ Copy amounts from another month</button>`;
   h+=`<p class="muted" style="margin:12px 4px">The pale bar is the plan; the thin line along its bottom is what’s been spent. Right side: spent / planned. Gold: past the plan · lavender: savings · gray: done. Tap a line to add or see entries.</p>`;
   return h;
 }
@@ -2025,6 +2060,69 @@ function planLine(t,l,def,GS,locked){
 }
 
 
+
+/* ---- new expense line from anywhere ---- */
+let planSort='big';
+function newLineSheet(where,preName){
+  const def=where==='defaults',P=def?TPL.plan:S&&S.plan;if(!P){toast(`Start ${mName(key,'s')} first`);return}
+  if(!def&&pastLocked()){toast(pastMsg());return}
+  if(def&&lockState().st!=='open'){toast('Defaults are locked. Ask to change them first.');return}
+  const GS=groupsOf(P.cats),gi=GS.map(g=>({v:g,l:g}));let grp=GS[0]||'Other';
+  openSheet(head('New expense line')+`<div class="f"><label for="nlName">Name</label><input id="nlName" maxlength="40" placeholder="e.g. Dog food" value="${esc(preName||'')}" autocomplete="off"></div>
+   <div class="f"><span class="flab">Group</span><div class="combo" data-cb="g"><input class="cbi" id="nlGrp" value="${esc(grp)}" autocomplete="off" placeholder="Pick or type a new group" aria-label="Group"><span class="cba" aria-hidden="true">▾</span><div class="cbl" role="listbox" hidden></div></div><span class="muted" id="nlGnote">Type a new name to create a new group.</span></div>
+   <div class="f"><label for="nlKind">Expense type</label><select id="nlKind">${KINDS.map(([v,x])=>`<option value="${v}" ${v==='spend'?'selected':''}>${x}</option>`).join('')}</select></div>
+   <div class="f"><label for="nlAmt">${where==='log'||where==='actual'?'Planned amount (optional)':'Planned amount'}</label><input id="nlAmt" inputmode="decimal" placeholder="0" autocomplete="off"></div>
+   <button type="button" class="btn full" id="nlGo">${where==='log'||where==='actual'?'Create and log spending':'Add line'}</button>`,()=>{
+    const sh=$('#sheet'),gIn=$('#nlGrp');
+    const el=sh.querySelector('[data-cb=g]'),L=el.querySelector('.cbl');
+    const draw=()=>{const q=gIn.value.trim().toLowerCase(),f=GS.filter(g=>!q||g.toLowerCase().includes(q)),exact=GS.some(g=>g.toLowerCase()===q);
+      L.innerHTML=f.map(g=>`<button type="button" class="cbo" data-v="${esc(g)}"><span>${esc(g)}</span></button>`).join('')+(q&&!exact?`<button type="button" class="cbo new" data-v="${esc(gIn.value.trim())}"><span>+ New group “${esc(gIn.value.trim())}”</span></button>`:'');
+      L.querySelectorAll('.cbo').forEach(b=>{b.addEventListener('pointerdown',e=>e.preventDefault());b.onclick=()=>{gIn.value=b.dataset.v;L.hidden=true;gIn.blur()}})};
+    gIn.onfocus=()=>{L.hidden=false;draw();try{gIn.select()}catch(e){}};gIn.oninput=()=>{L.hidden=false;draw()};gIn.onblur=()=>setTimeout(()=>{L.hidden=true},150);
+    el.querySelector('.cba').onclick=()=>gIn.focus();
+    setTimeout(()=>$('#nlName').focus(),80);
+    $('#nlGo').onclick=()=>{const name=$('#nlName').value.trim().slice(0,40);if(!name){toast('Give the line a name');return}
+      const g=(gIn.value.trim()||'Other').slice(0,40),kind=$('#nlKind').value,a=$('#nlAmt').value.trim()?evalExpr($('#nlAmt').value.trim()):0;
+      const c=cat(rid(),name,kind,a>0?Math.round(a*100)/100:0,{group:GS.find(x=>x.toLowerCase()===g.toLowerCase())||g});
+      if(def){closeSheet();changeDefault({do:'add',t:'cat',id:c.id,line:c},`${name} added to every month`);return}
+      c.only=true;if(!(c.planned>0))c.show=true;
+      persist('plan',p=>{let at=-1;p.cats.forEach((x,i)=>{if(gName(x)===gName(c))at=i});at>-1?p.cats.splice(at+1,0,c):p.cats.push(c)});
+      if(where==='log'||where==='actual'){setTimeout(()=>entrySheet('cat',c.id),80)}else{closeSheet();toast(`${name} added to ${mName(key,'s')}`)}};
+  });
+}
+document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('[data-newline]');if(b){e.stopPropagation();const q=$('#qIn');newLineSheet(b.dataset.newline,q?q.value.trim():'')}});
+/* ---- "if we skipped it for a month?" ---- */
+const NEEDS=[['must','Must pay','Real harm: fees, losing it'],['trim','Can trim','Worse, but manageable'],['pause','Can pause','Just uncomfortable']];
+function needHTML(l,locked){return `<div class="needbox"><div class="ithd"><b>If we skipped it for a month?</b></div><div class="needs">${NEEDS.map(([v,n,d])=>`<button type="button" class="need ${v}" data-need="${v}" aria-pressed="${l.need===v}" ${locked?'disabled':''}><b>${n}</b><small>${d}</small></button>`).join('')}</div></div>`}
+function bindNeed(k,l,def){$('#sheet').querySelectorAll('[data-need]').forEach(b=>b.onclick=()=>{const v=l.need===b.dataset.need?null:b.dataset.need;
+  if(def)changeDefault({do:'set',t:'cat',id:l.id,f:'need',v,old:l.need});
+  else{setMonth('cat',l.id,'need',v);if(TPL&&TPL.plan&&TPL.plan.cats.some(c=>c.id===l.id))saveTemplate(p=>{const c=p.cats.find(x=>x.id===l.id);if(c){if(v)c.need=v;else delete c.need}})}
+  setTimeout(()=>planEditSheet(k),40)})}
+function triageSheet(){
+  const def=tab==='defaults',P=def?TPL.plan:S.plan;if(!P)return;
+  const inc=P.income.reduce((a,i)=>a+(+i.amt||0),0),exp=P.cats.reduce((a,c)=>a+(+c.planned||0)+(def?0:(c.owed||0)),0),gap=exp-inc;
+  const lines=P.cats.filter(c=>c.kind!=='save'||true).filter(c=>(+c.planned||0)>0.004);
+  const by=v=>lines.filter(c=>(c.need||'')===v).sort((a,b)=>b.planned-a.planned);
+  const tot=a=>a.reduce((x,c)=>x+(+c.planned||0),0);
+  const row=(c,acts)=>`<div class="trow"><span class="tn"><b>${esc(c.name)}</b><small>${esc(gName(c))}</small></span><b class="ta">${money(c.planned,0)}</b>${acts}</div>`;
+  const pause=by('pause'),trim=by('trim'),must=by('must'),none=by('');
+  openSheet(head(gap>0.5?`Find ${money(gap,0)}`:'What can give?')+`
+   <div class="tgap ${gap>0.5?'over':'ok'}">${gap>0.5?`Planned expenses are <b>${money(gap,0)}</b> over planned income.`:`Balanced ✓ <span class="muted">${money(-gap,0)} still unassigned</span>`}</div>
+   ${pause.length?`<h3 class="th pause">Can pause <small>up to ${money(tot(pause),0)}</small></h3><div class="card">${pause.map(c=>row(c,`<button type="button" class="btn sm" data-tri="0" data-tid="${esc(c.id)}">Pause</button>`)).join('')}</div>`:''}
+   ${trim.length?`<h3 class="th trim">Can trim <small>25% would free ${money(tot(trim)*.25,0)}</small></h3><div class="card">${trim.map(c=>row(c,`<button type="button" class="btn line sm" data-tri=".75" data-tid="${esc(c.id)}">−25%</button>`)).join('')}</div>`:''}
+   ${must.length?`<h3 class="th must">Must pay <small>${money(tot(must),0)} · leave as is</small></h3><div class="card">${must.map(c=>row(c,'')).join('')}</div>`:''}
+   ${none.length?`<h3 class="th">Not sorted yet <small>tap one to sort it</small></h3><div class="card">${none.map(c=>row(c,`<span class="tq">${NEEDS.map(([v,n])=>`<button type="button" class="need mini ${v}" data-tq="${v}" data-tid="${esc(c.id)}">${({must:'Must',trim:'Trim',pause:'Pause'})[v]}</button>`).join('')}</span>`)).join('')}</div>`:''}
+   <p class="muted" style="margin-top:12px">Pausing or trimming changes ${def?'the every-month plan':esc(mName(key,'s'))+'’s plan only'}. Undo from the message that appears.</p>`,()=>{
+    const sh=$('#sheet');
+    sh.querySelectorAll('[data-tri]').forEach(b=>b.onclick=()=>{const c=P.cats.find(x=>x.id===b.dataset.tid);if(!c)return;const old=+c.planned||0,v=Math.round(old*+b.dataset.tri);
+      const set=x=>{if(def)changeDefault({do:'set',t:'cat',id:c.id,f:'planned',v:x,old:c.planned});else setMonth('cat',c.id,'planned',x)};
+      set(v);setTimeout(()=>{triageSheet();toast(`${c.name}: ${money(old,0)} → ${money(v,0)}`,()=>{set(old);setTimeout(triageSheet,60)})},60)});
+    sh.querySelectorAll('[data-tq]').forEach(b=>b.onclick=()=>{const c=P.cats.find(x=>x.id===b.dataset.tid);if(!c)return;const v=b.dataset.tq;
+      if(def)changeDefault({do:'set',t:'cat',id:c.id,f:'need',v,old:c.need});else{setMonth('cat',c.id,'need',v);if(TPL&&TPL.plan&&TPL.plan.cats.some(x=>x.id===c.id))saveTemplate(p=>{const x=p.cats.find(y=>y.id===c.id);if(x)x.need=v})}
+      setTimeout(triageSheet,60)});
+  });
+}
+document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('[data-triage]');if(b){e.stopPropagation();triageSheet()}});
 /* ---- Plan: add up planned amounts ---- */
 let planAdd=false,planSel=new Set(),planPick='all';
 const PLAN_PICKS=[['all','All'],['bill','Fixed'],['spend','Variable'],['save','Savings']];
@@ -2045,7 +2143,7 @@ document.addEventListener('click',e=>{
   const u=e.target.closest&&e.target.closest('#planAddUp');
   if(u){e.stopPropagation();if(planAdd)return;planAdd=true;planPick='all';const P=tab==='defaults'?TPL.plan:S.plan;planSel=new Set(P.cats.map(c=>c.id));render();planMark();return}
   const ps=e.target.closest&&e.target.closest('[data-psort]');
-  if(ps){e.stopPropagation();ls.set('mb-psort',ps.dataset.psort);planAdd=false;planSel=new Set();render();return}
+  if(ps){e.stopPropagation();planSort=ps.dataset.psort;planAdd=false;planSel=new Set();render();return}
   if(!planAdd||!['plan','defaults'].includes(tab))return;
   const r=e.target.closest&&e.target.closest('.pbr2');if(!r)return;
   e.stopPropagation();e.preventDefault();if(!r.dataset.pid)return;
@@ -2173,7 +2271,7 @@ function planEditSheet(k){if(itemEdit&&!k.endsWith(':'+itemEdit.line))itemEdit=n
   const def=tab==='defaults',P=def?TPL.plan:S.plan,[t,id]=k.split(':'),l=(t==='inc'?P.income:P.cats).find(x=>x.id===id);if(!l)return;
   const lk=def?lockState():null,locked=def?lk.st!=='open':pastLocked();
   openOpts.add(k);const inner=planLine(t,l,def,groupsOf(P.cats),locked);openOpts.delete(k);
-  openSheet(head(esc(l.name))+`${locked?`<p class="pastlock in">🔒 ${def?'Defaults are locked.':esc(mName(key,'s'))+' is finished.'} ${def?'':'<button type="button" class="linkb" data-opensettings>Unlock</button>'}</p>`:''}<div class="pedit"><div class="pehd"><span>Name</span><span>${t==='inc'?'Expected':'Planned'}</span></div>${inner}</div>${def?'':itemsHTML(t,l,locked)}${locked?'':'<button type="button" class="btn full" data-close style="margin-top:12px">Done</button>'}`,()=>{bindPlan($('#sheet'),def,true);if(!def)bindItems(k,t,l,locked)});
+  openSheet(head(esc(l.name))+`${locked?`<p class="pastlock in">🔒 ${def?'Defaults are locked.':esc(mName(key,'s'))+' is finished.'} ${def?'':'<button type="button" class="linkb" data-opensettings>Unlock</button>'}</p>`:''}<div class="pedit"><div class="pehd"><span>Name</span><span>${t==='inc'?'Expected':'Planned'}</span></div>${inner}</div>${t==='cat'&&l.kind!=='save'?needHTML(l,locked):''}${def?'':itemsHTML(t,l,locked)}${locked?'':'<button type="button" class="btn full" data-close style="margin-top:12px">Done</button>'}`,()=>{bindPlan($('#sheet'),def,true);if(!def)bindItems(k,t,l,locked);bindNeed(k,l,def)});
 }
 document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('[data-pedit]');if(b)planEditSheet(b.dataset.pedit)});
 function planHTML(C,def){
@@ -2181,20 +2279,22 @@ function planHTML(C,def){
   const inc=p.income.reduce((a,i)=>a+i.amt,0),exp=p.cats.reduce((a,c)=>a+c.planned+(def?0:(c.owed||0)),0);
   const incSC=Math.max(1,...p.income.map(i=>+i.amt||0)),catSC=Math.max(1,...p.cats.map(c=>+c.planned||0));
   const gap=inc-exp,over=gap<-0.5;
-  let h=(def?'':pastBanner())+`<div class="hero phero"><small><b class="hlab">${def?'Defaults':'Plan'}</b> · ${def?'every month':esc(mName(key))}</small><div class="big${over?' neg':''}">${over?'−':''}${money(Math.abs(gap),0)}</div><p class="psub">${over?'Planned expenses exceed planned income':gap>0.5?'Left: planned income minus planned expenses':'Planned income fully assigned ✓'}</p>
+  let h=(def?'':pastBanner())+`<div class="hero phero"><small><b class="hlab">${def?'Defaults':'Plan'}</b> · ${def?'every month':esc(mName(key))}</small><div class="big${over?' neg':''}">${over?'−':''}${money(Math.abs(gap),0)}</div>${over&&!locked?`<button type="button" class="findgap" data-triage>Find ${money(-gap,0)} →</button>`:''}<p class="psub">${over?'Planned expenses exceed planned income':gap>0.5?'Left: planned income minus planned expenses':'Planned income fully assigned ✓'}</p>
   <div class="hbar">${barHTML(exp,inc,'#fff','')}</div><p class="hfoot">Income <b>${money(inc,0)}</b> · expenses <b>${money(exp,0)}</b></p></div>`;
   if(def)h+=lockHTML(lk);
   else if(p.editedAt)h+=`<p class="ped" style="margin:-4px 4px 10px">Last change: <b>${esc(p.editedBy||'someone')}</b>, ${esc(fmtWhen(p.editedAt))}</p>`;
   h+=`<h2 class="big2">Income <small><b>${money(inc,0)}</b> <i>planned</i></small></h2><div class="card pbars">${p.income.map(i=>planBar('inc',i,def,locked,incSC)).join('')}${locked?'':`<div class="pl"><button type="button" class="btn ghost sm" id="addInc" style="grid-column:1/-1;justify-self:start">+ Income source</button></div>`}</div>`;
-  if(!def){const pk=addM(key,-1),carryTot=p.cats.reduce((a,c)=>a+(c.carry||0),0);
-    h+=`<h3>Leftovers from ${esc(mName(pk,'s'))}</h3><div class="card pad"><label class="sw"><input type="checkbox" id="carrySw" ${p.carryOn!==false?'checked':''}><span><b>Bring ${esc(mName(pk,'s'))}’s leftovers into ${mo}</b><br><span class="muted">${carryTot>0.004||p.overPrev?`${carryTot>0.004?money(carryTot)+' of unspent savings':'No savings'} carried in${p.overPrev?' · '+money(p.overPrev)+' overspending to make up':''}.`:'Nothing to carry from last month.'}</span></span></label></div>`}
   const GS=groupsOf(p.cats);
-  const psort=ls.get('mb-psort')||'grp';
-  h+=`<h2 class="big2">Expenses <small><b>${money(exp,0)}</b> <i>planned</i></small></h2>${locked||!copyOn()?'':`<button type="button" class="linkb copyb" data-copy="${def?'defaults':'plan'}">⧉ Copy amounts from a month</button>`}
+  const psort=planSort;
+  h+=`<h2 class="big2">Expenses <small><b>${money(exp,0)}</b> <i>planned</i></small></h2>
   <div class="seg mini asort three"><button type="button" data-psort="big" aria-pressed="${!planAdd&&psort==='big'}">Biggest first</button><button type="button" data-psort="grp" aria-pressed="${!planAdd&&psort==='grp'}">By group</button><button type="button" id="planAddUp" aria-pressed="${planAdd}"><b>Σ</b> Add up</button></div>`;
-  if(psort==='big'){h+=`<div class="card pbars">${[...p.cats].sort((a,b)=>(b.planned-a.planned)||a.name.localeCompare(b.name)).map(c=>planBar('cat',c,def,locked,catSC)).join('')}</div><p class="muted" style="margin:8px 4px">To add a line, switch to By group.</p>`}
+  if(!over&&!locked)h+=`<button type="button" class="linkb copyb" data-triage>If money gets tight: what can give?</button>`;
+  if(psort==='big'){h+=`<div class="card pbars">${[...p.cats].sort((a,b)=>(b.planned-a.planned)||a.name.localeCompare(b.name)).map(c=>planBar('cat',c,def,locked,catSC)).join('')}</div>`;if(!locked)h+=`<button type="button" class="btn ghost addexp" data-newline="${def?'defaults':'plan'}">+ Add expense</button>`}
   else h+=GS.map(l=>`<div class="card gcard"><div class="ghead in"><input class="gname" data-grp="${esc(l)}" value="${esc(l)}" maxlength="40" aria-label="Group name" ${locked?'disabled':''}><span>${money(p.cats.filter(c=>gName(c)===l).reduce((a,c)=>a+c.planned+(def?0:(c.owed||0)),0),0)}</span></div><div class="pbars">${p.cats.filter(c=>gName(c)===l).map(c=>planBar('cat',c,def,locked,catSC)).join('')}</div>${locked?'':`<div class="pl"><button type="button" class="btn ghost sm" data-addcat="${esc(l)}" style="grid-column:1/-1;justify-self:start">+ Add to ${esc(l)}</button></div>`}</div>`).join('');
   if(!locked&&psort!=='big')h+=`<h3>New group</h3><div class="card"><form class="pl" id="grpF"><input id="grpIn" maxlength="40" placeholder="e.g. Pets" aria-label="New group name" style="grid-column:1/3"><button class="btn ghost sm" style="min-height:46px">Add</button></form></div>`;
+  if(!locked&&copyOn())h+=`<button type="button" class="linkb copyb bottom" data-copy="${def?'defaults':'plan'}">⧉ Copy amounts from a month</button>`;
+  if(!def){const pk=addM(key,-1),carryTot=p.cats.reduce((a,c)=>a+(c.carry||0),0);
+    h+=`<h3>Leftovers from ${esc(mName(pk,'s'))}</h3><div class="card pad"><label class="sw"><input type="checkbox" id="carrySw" ${p.carryOn!==false?'checked':''}><span><b>Bring ${esc(mName(pk,'s'))}’s leftovers into ${mo}</b><br><span class="muted">${carryTot>0.004||p.overPrev?`${carryTot>0.004?money(carryTot)+' of unspent savings':'No savings'} carried in${p.overPrev?' · '+money(p.overPrev)+' overspending to make up':''}.`:'Nothing to carry from last month.'}</span></span></label></div>`}
   if(!def)h+=`<p class="muted" style="margin:14px 4px">Changes here are for ${esc(mName(key))} only. Your every-month list lives in the Defaults tab.</p>`;
   return h;
 }
@@ -2558,7 +2658,7 @@ function quickLog(){
   const incL=S.plan.income,incRows=incL.map(i=>{const v=C.inc[i.id]||{exp:i.amt,got:0};return `<button type="button" class="qrow" data-ql="inc:${esc(i.id)}"><span class="dot" style="background:var(--green)"></span><span class="qn"><b>${esc(i.name)}</b><small>${money(v.got,0)} of ${money(v.exp,0)} received</small></span><span class="qa">+</span></button>`}).join('');
   openSheet(head(`Log in ${esc(mName(key,'s'))}`)+`<div class="seg mini logk"><button type="button" data-lk="exp" aria-pressed="${logKind==='exp'}">Expense</button><button type="button" data-lk="inc" aria-pressed="${logKind==='inc'}">Income</button></div>
     ${logKind==='inc'?`<div class="flist">${incRows||'<p class="empty">No income sources planned yet.</p>'}</div>`:`<p class="qh" style="margin-top:0">Used most</p><div class="qchips">${top.map(c=>`<button type="button" class="qchip" data-ql="cat:${esc(c.id)}">${esc(c.name)}</button>`).join('')}</div>
-    <input id="qIn" class="findin" type="search" placeholder="Or type a name…" autocomplete="off"><div id="qList" class="flist">${list('')}</div>`}`,()=>{
+    <input id="qIn" class="findin" type="search" placeholder="Or type a name…" autocomplete="off"><div id="qList" class="flist">${list('')}</div><button type="button" class="btn line full" data-newline="log" style="margin-top:8px">+ New expense line</button>`}`,()=>{
     $('#sheet').querySelectorAll('[data-lk]').forEach(b=>b.onclick=()=>{logKind=b.dataset.lk;quickLog()});
     const wire=()=>$('#sheet').querySelectorAll('[data-ql]').forEach(b=>b.onclick=()=>{const [t,id]=b.dataset.ql.split(':');entrySheet(t,id)});
     const qi=$('#qIn');if(qi)qi.oninput=e=>{$('#qList').innerHTML=list(e.target.value);wire()};wire()});
@@ -2806,7 +2906,7 @@ function bind(){
   const ed=$('#exitDemo');if(ed)ed.onclick=exitDemo;
 }
 document.querySelectorAll('#tabs button').forEach(b=>b.onclick=()=>go(b.dataset.t));
-async function go(t,noPush){tab=t;if(!noPush)try{history.pushState({t},'')}catch(e){}render();scrollTo(0,0);if(tab==='defaults'&&mode!=='setup'){try{const t=await loadTemplate();if(t.plan&&JSON.stringify(t.plan)!==JSON.stringify(TPL.plan)){TPL=t;render()}}catch(e){}}}
+async function go(t,noPush){if(t!==tab&&(t==='plan'||t==='defaults'))planSort='big';tab=t;if(!noPush)try{history.pushState({t},'')}catch(e){}render();scrollTo(0,0);if(tab==='defaults'&&mode!=='setup'){try{const t=await loadTemplate();if(t.plan&&JSON.stringify(t.plan)!==JSON.stringify(TPL.plan)){TPL=t;render()}}catch(e){}}}
 let pickYear=null,monthsCache=null;
 function monthPicker(){
   pickYear=pickYear||+key.slice(0,4);
