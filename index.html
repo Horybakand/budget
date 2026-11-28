@@ -1209,6 +1209,90 @@ body[data-tab=actual] .hero .psub{margin:0}
 .trow .tn small{color:var(--mute);font-size:12px}
 .trow .ta{white-space:nowrap}
 .trow .btn{min-height:34px;padding:0 12px}
+/* v55: shopping list */
+.wknav{display:flex;align-items:center;justify-content:space-between;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:2px;margin:0 0 10px}
+.wknav button{border:0;background:none;width:48px;height:44px;min-height:0;font-size:30px;line-height:1;color:var(--greenD);border-radius:11px;padding:0}
+.wknav b{font-size:15px;font-weight:800;text-align:center}
+.wknav b small{color:var(--mute);font-weight:600;font-size:13px}
+.shsum{padding:11px 14px;margin-bottom:10px;display:grid;gap:4px;font-size:14px}
+.shsum .r{display:flex;justify-content:space-between;gap:8px}
+.shsum .sub,.shsum .shleft{color:var(--mute);font-size:12.5px}
+.shsum .shleft b{color:var(--ink)}
+.shseg{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:3px;background:var(--track);border-radius:14px;padding:4px;margin:0 0 6px}
+.shseg button{min-height:38px;border:0;border-radius:11px;background:none;font-weight:700;font-size:13.5px;color:var(--mute);padding:0 2px}
+.shseg button[aria-pressed=true]{background:var(--card);color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.1)}
+.shst{display:flex;justify-content:space-between;align-items:baseline;margin:14px 4px 6px;font-size:15px}
+.shst small{color:var(--mute);font-weight:600;font-size:12.5px}
+.shrow{display:flex;align-items:center;gap:10px;padding:8px 12px;border-top:1px solid var(--line);cursor:pointer}
+.card>.shrow:first-child{border-top:0}
+.shchk{flex:none;width:30px;height:30px;min-height:0;border-radius:50%;border:2px solid color-mix(in srgb,var(--mute) 45%,transparent);background:var(--card);color:#fff;font-weight:900;padding:0;font-size:16px;line-height:1;display:grid;place-items:center}
+.shchk.sm{width:24px;height:24px;font-size:13px}
+.shchk[aria-pressed=true]{background:#2fae7a;border-color:#2fae7a}
+.shn{flex:1;min-width:0;display:flex;flex-direction:column}
+.shn b{font-size:15px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.shn small{font-size:12.5px;color:var(--mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.shrow.got .shn b{color:var(--mute);font-weight:600}
+.sha{white-space:nowrap;font-weight:800;font-size:14px}
+.sha .addp{font-size:12.5px;font-weight:700;color:var(--greenD)}
+.shlater{padding:7px 12px 3px;border-top:1px solid var(--line);font-size:12px;font-weight:700;color:var(--mute);text-transform:uppercase;letter-spacing:.04em}
+.shlater~.shrow{opacity:.62}
+.shform{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;margin:6px 0 12px}
+.shform label{font-size:13px;font-weight:700;color:var(--mute);display:grid;gap:4px;align-content:start}
+.shform .wide{grid-column:1/-1}
+.qty{display:grid;grid-template-columns:40px minmax(0,1fr) 40px;gap:4px}
+.qty button{min-height:46px;border:1px solid var(--line);background:var(--card);border-radius:12px;font-size:22px;color:var(--ink);padding:0}
+.qty input{text-align:center;min-width:0;padding:0 4px}
+.shbuy{display:grid;grid-template-columns:minmax(0,1fr) 6.4em 38px;gap:8px;align-items:center;padding:8px 12px;border-top:1px solid var(--line)}
+.shbuy:first-child{border-top:0}
+.shbuy span{display:flex;flex-direction:column;min-width:0}
+.shbuy small{color:var(--mute);font-size:12px}
+.shbuy input{min-height:40px}
+.shh{font-size:15px;margin:14px 2px 6px;display:flex;justify-content:space-between;align-items:baseline}
+.shh small{color:var(--mute);font-weight:600;font-size:12px}
+.shtip{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 2px}
+.shtip button{min-height:36px;padding:0 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:13.5px;font-weight:600}
+.shphoto{display:flex;gap:10px;align-items:center;margin:2px 0 4px;flex-wrap:wrap}
+.shphoto img{width:56px;height:56px;object-fit:cover;border-radius:12px}
+.shphoto label.btn{display:inline-flex;align-items:center;cursor:pointer}
+.shrest{text-align:right;font-size:16px}
+.bigin{font-size:22px!important;font-weight:800}
+/* v56 */
+.shtools{display:flex;justify-content:space-between;gap:8px;margin:2px 0 4px}
+.shtools button{border:0;background:none;color:var(--greenD);font-weight:700;font-size:14px;min-height:38px;padding:0 4px}
+.shtools button[aria-pressed=true]{color:#fff;background:var(--greenD);border-radius:999px;padding:0 14px}
+.shedhint{margin:0 4px 4px;font-size:13px}
+.shdel{flex:none;width:30px;height:30px;min-height:0;border-radius:50%;border:0;background:#d9506e;color:#fff;font-weight:900;font-size:22px;line-height:1;padding:0;display:grid;place-items:center}
+.shnote{font-style:normal;font-size:12.5px;color:var(--ink);opacity:.75;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.shnote::before{content:"✎ ";opacity:.6}
+.shnotebox{background:var(--soft);border-radius:12px;padding:9px 12px;font-size:14px;margin:-4px 0 6px;white-space:pre-wrap}
+textarea{font:inherit;font-size:16px;border:1px solid var(--line);border-radius:14px;padding:10px 14px;background:var(--card);color:var(--ink);width:100%;resize:vertical}
+.shchips{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 8px}
+.shchips button{min-height:34px;padding:0 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--mute);font-size:13px;font-weight:700}
+.shchips button[aria-pressed=true]{background:var(--greenD);border-color:var(--greenD);color:#fff}
+.shchips.sm{margin:0;gap:4px}.shchips.sm button{min-height:28px;padding:0 9px;font-size:12px}
+.shh .shchips{justify-content:flex-end}
+.rprow{display:flex;align-items:center;gap:10px;padding:9px 12px;border-top:1px solid var(--line)}
+.card>.rprow:first-child{border-top:0}
+.rprow .shn small{white-space:normal}
+.rpa{text-align:right;font-weight:800;white-space:nowrap;display:flex;flex-direction:column;font-size:14px}
+.rpa small{font-weight:600;color:var(--mute);font-size:11.5px}
+.rpnever{font-size:13.5px;color:var(--mute);line-height:1.5}
+
+/* v55: trim / pause with your own % */
+.trow2{border-top:1px solid var(--line)}.trow2:first-child{border-top:0}
+.trow2 .trow{border-top:0;padding-bottom:3px}
+.tact{display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:0 12px 10px}
+.tact .btn{min-height:32px;padding:0 12px;font-size:13.5px}
+.tact .gap{flex:1}
+.ta s{color:var(--mute);font-weight:600;font-size:12.5px;margin-right:3px}
+.pctin{display:inline-flex;align-items:center;gap:3px;font-weight:800;font-size:14px}
+.pctin button{width:30px;height:32px;min-height:0;padding:0;border:1px solid var(--line);background:var(--card);border-radius:9px;color:var(--ink);font-size:18px;line-height:1}
+.pctin input{width:3.1em;min-height:32px;height:32px;padding:0 4px;text-align:center;font-weight:800;border-radius:9px}
+.tprev{font-size:12.5px;color:var(--mute);font-weight:700}
+.btn.rst{background:var(--card)!important;color:var(--greenD)!important;border:1px solid var(--line)!important;box-shadow:none!important}
+.cutnote{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:8px;padding:6px 6px 6px 12px;border-radius:12px;background:var(--soft);font-size:13.5px}
+.cutnote .btn{min-height:34px}
+
 @media (prefers-color-scheme: dark){:root:not([data-theme=light]) .th.trim{color:#ffd76a}:root:not([data-theme=light]) .th.must{color:#ff8fa8}}
 :root[data-theme=dark] .th.trim{color:#ffd76a}:root[data-theme=dark] .th.must{color:#ff8fa8}
 
@@ -1266,7 +1350,7 @@ body.selecting .toast{bottom:calc(210px + env(safe-area-inset-bottom))!important
    (Or leave it empty and type it into the setup screen on each device.)
    ====================================================================== */
 const APP_KEY = '';
-const APP_VERSION = '54 · Nov 27, 2026';
+const APP_VERSION = '56 · Nov 27, 2026';
 
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -1477,7 +1561,7 @@ function closeAsk(id){
     $('#sheet').querySelectorAll('[data-cm]').forEach(b=>b.onclick=()=>{closeSheet();setClose(id,b.dataset.cm)});
   });
 }
-function setMonth(t,id,f,v){persist('plan',p=>{const l=(t==='inc'?p.income:p.cats).find(x=>x.id===id);if(l){l[f]=v;if((f==='planned'||f==='amt')&&l.items)delete l.items}})}
+function setMonth(t,id,f,v){persist('plan',p=>{const l=(t==='inc'?p.income:p.cats).find(x=>x.id===id);if(l){l[f]=v;if((f==='planned'||f==='amt')&&l.items)delete l.items;if(f==='planned')delete l.cut}})}
 let openOpts=new Set(),planScope='month';let S=null,key=todayKey,tab='home',weekSel=null,saving=0,queue=Promise.resolve(),hist={};
 function setSync(t,err){const e=$('#sync');e.textContent=t||'';e.className='sync'+(err?' err':'')}
 
@@ -1676,6 +1760,8 @@ function render(){
   if(!signed){V.innerHTML=setupHTML();bindSetup();return}
   if(!unlocked){document.body.dataset.tab='lock';$('#findBtn').hidden=true;$('#mnav').style.visibility='hidden';$('#dockHome').hidden=true;$('#tbar').hidden=true;$('#findTop').hidden=true;document.body.classList.remove('in');V.innerHTML=pinHTML();bindPin();return}
   if(tab==='home'){V.innerHTML=homeHTML();bindHome();remScan();return}
+  $('#tbar .tblog span:last-child').textContent=tab==='shop'?'Add':'Log';
+  if(tab==='shop'){$('#mnav').style.visibility='hidden';V.innerHTML=shopHTML();bindShop();if(!SH)shOpen();return}
   if(tab==='reminders'){V.innerHTML=`<div class="pagehead"><span class="pi" style="--hue1:#e0457b;--hue2:#e0457b">${BELL_SVG}</span><b>Reminders</b><span class="m">· 48 hours ahead</span></div><div id="remBox"><p class="empty">Looking ahead…</p></div>`;remView();return}
   if(!S){V.innerHTML='<p class="empty">Loading your budget…</p>';return}
   if(!S.plan&&tab==='receipts'&&!S.failed){V.innerHTML=pageHead()+receiptsHTML();bind();receiptsView();return}
@@ -2202,33 +2288,69 @@ function newLineSheet(where,preName){
 document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('[data-newline]');if(b){e.stopPropagation();const q=$('#qIn');newLineSheet(b.dataset.newline,q?q.value.trim():'')}});
 /* ---- "if we skipped it for a month?" ---- */
 const NEEDS=[['must','Must pay','Real harm: fees, losing it'],['trim','Can trim','Worse, but manageable'],['pause','Can pause','Just uncomfortable']];
-function needHTML(l,locked){return `<div class="needbox"><div class="ithd"><b>If we skipped it for a month?</b></div><div class="needs">${NEEDS.map(([v,n,d])=>`<button type="button" class="need ${v}" data-need="${v}" aria-pressed="${l.need===v}" ${locked?'disabled':''}><b>${n}</b><small>${d}</small></button>`).join('')}</div></div>`}
-function bindNeed(k,l,def){$('#sheet').querySelectorAll('[data-need]').forEach(b=>b.onclick=()=>{const v=l.need===b.dataset.need?null:b.dataset.need;
+function needHTML(l,locked){return `<div class="needbox"><div class="ithd"><b>If we skipped it for a month?</b></div><div class="needs">${NEEDS.map(([v,n,d])=>`<button type="button" class="need ${v}" data-need="${v}" aria-pressed="${l.need===v}" ${locked?'disabled':''}><b>${n}</b><small>${d}</small></button>`).join('')}</div>${l.cut?`<div class="cutnote"><span>${l.cut.pct>=100?'Paused':'Trimmed '+l.cut.pct+'%'} from <b>${money(l.cut.from,0)}</b></span>${locked?'':`<button type="button" class="btn sm rst" data-uncut>↩ Back to ${money(l.cut.from,0)}</button>`}</div>`:''}</div>`}
+function bindNeed(k,l,def){const uc=$('#sheet').querySelector('[data-uncut]');if(uc)uc.onclick=()=>{const before=cutTo(l,null,def);setTimeout(()=>planEditSheet(k),60);toast(`${l.name} back to ${money(before.cut.from,0)}`,()=>{cutSet(l.id,before,def);setTimeout(()=>planEditSheet(k),60)})};$('#sheet').querySelectorAll('[data-need]').forEach(b=>b.onclick=()=>{const v=l.need===b.dataset.need?null:b.dataset.need;
   if(def)changeDefault({do:'set',t:'cat',id:l.id,f:'need',v,old:l.need});
   else{setMonth('cat',l.id,'need',v);if(TPL&&TPL.plan&&TPL.plan.cats.some(c=>c.id===l.id))saveTemplate(p=>{const c=p.cats.find(x=>x.id===l.id);if(c){if(v)c.need=v;else delete c.need}})}
   setTimeout(()=>planEditSheet(k),40)})}
+/* trimming or pausing a line remembers the amount before (c.cut.from), so it can be changed or undone any time */
+const trimPct={};
+const defPct=()=>{const v=+ls.get('mb-trimpct');return v>0&&v<100?v:25};
+const cutFrom=c=>c.cut?+c.cut.from||0:(+c.planned||0);
+const cutState=c=>({planned:+c.planned||0,cut:c.cut?clone(c.cut):null,items:c.items?clone(c.items):null});
+function cutSet(id,st,def){
+  if(def){const t=tplLine('cat',id);changeDefault({do:'set',t:'cat',id,f:'planned',v:st.planned,old:t?t.planned:undefined});
+    saveTemplate(p=>{const x=p.cats.find(q=>q.id===id);if(x){if(st.cut)x.cut=st.cut;else delete x.cut}});return}
+  persist('plan',p=>{const x=p.cats.find(q=>q.id===id);if(!x)return;x.planned=st.planned;if(st.cut)x.cut=st.cut;else delete x.cut;if(st.items)x.items=st.items;else delete x.items});
+}
+function cutTo(c,pct,def){ /* pct: 1–99 trim, 100 pause, null back to the amount before */
+  const before=cutState(c),from=cutFrom(c),items=c.cut?(c.cut.items||null):before.items;
+  const st=pct==null?{planned:from,cut:null,items}:{planned:Math.round(from*(100-pct)/100),cut:Object.assign({from,pct},items?{items}:{}),items:null};
+  cutSet(c.id,st,def);return before;
+}
 function triageSheet(){
   const def=tab==='defaults',P=def?TPL.plan:S.plan;if(!P)return;
   const inc=P.income.reduce((a,i)=>a+(+i.amt||0),0),exp=P.cats.reduce((a,c)=>a+(+c.planned||0)+(def?0:(c.owed||0)),0),gap=exp-inc;
-  const lines=P.cats.filter(c=>c.kind!=='save'||true).filter(c=>(+c.planned||0)>0.004);
-  const by=v=>lines.filter(c=>(c.need||'')===v).sort((a,b)=>b.planned-a.planned);
-  const tot=a=>a.reduce((x,c)=>x+(+c.planned||0),0);
-  const row=(c,acts)=>`<div class="trow"><span class="tn"><b>${esc(c.name)}</b><small>${esc(gName(c))}</small></span><b class="ta">${money(c.planned,0)}</b>${acts}</div>`;
+  const lines=P.cats.filter(c=>cutFrom(c)>0.004);
+  const by=v=>lines.filter(c=>(c.need||'')===v).sort((a,b)=>cutFrom(b)-cutFrom(a));
+  const tot=a=>a.reduce((x,c)=>x+cutFrom(c),0);
+  const pctOf=c=>trimPct[c.id]??(c.cut&&c.cut.pct<100?c.cut.pct:defPct());
+  const freed=lines.reduce((a,c)=>a+(c.cut?cutFrom(c)-(+c.planned||0):0),0);
+  const chips=c=>`<span class="tq">${NEEDS.map(([v])=>`<button type="button" class="need mini ${v}" data-tq="${v}" data-tid="${esc(c.id)}" aria-pressed="${(c.need||'')===v}">${({must:'Must',trim:'Trim',pause:'Pause'})[v]}</button>`).join('')}</span>`;
+  const amt=c=>c.cut?`<span class="ta"><s>${money(c.cut.from,0)}</s><b>${money(c.planned,0)}</b></span>`:`<b class="ta">${money(c.planned,0)}</b>`;
+  const rst=c=>c.cut?`<button type="button" class="btn sm rst" data-tr="${esc(c.id)}">↩ Back to ${money(c.cut.from,0)}</button>`:'';
+  const row=(c,acts)=>`<div class="trow2"><div class="trow"><span class="tn"><b>${esc(c.name)}</b><small>${esc(gName(c))}${c.cut?` · ${c.cut.pct>=100?'paused':'trimmed '+c.cut.pct+'%'}`:''}</small></span>${amt(c)}</div><div class="tact">${chips(c)}<span class="gap"></span>${acts||''}</div></div>`;
+  const pauseAct=c=>c.cut&&c.cut.pct>=100?rst(c):`<button type="button" class="btn sm" data-tp="${esc(c.id)}">Pause</button>${rst(c)}`;
+  const trimAct=c=>{const p=pctOf(c),same=c.cut&&c.cut.pct===p;return `<span class="pctin"><button type="button" data-pm="-5" data-tid="${esc(c.id)}" aria-label="Less">−</button><input data-pct="${esc(c.id)}" inputmode="numeric" maxlength="2" value="${p}" aria-label="Percent to trim">%<button type="button" data-pm="5" data-tid="${esc(c.id)}" aria-label="More">+</button></span><span class="tprev" data-tpv="${esc(c.id)}">→ ${money(Math.round(cutFrom(c)*(100-p)/100),0)}</span>${same?'':`<button type="button" class="btn sm line" data-tt="${esc(c.id)}">${c.cut?'Update':'Trim'}</button>`}${rst(c)}`};
   const pause=by('pause'),trim=by('trim'),must=by('must'),none=by('');
+  const trimFree=()=>trim.reduce((a,c)=>a+cutFrom(c)*pctOf(c)/100,0);
+  const y=$('#sheet').scrollTop;
   openSheet(head(gap>0.5?`Find ${money(gap,0)}`:'What can give?')+`
-   <div class="tgap ${gap>0.5?'over':'ok'}">${gap>0.5?`Planned expenses are <b>${money(gap,0)}</b> over planned income.`:`Balanced ✓ <span class="muted">${money(-gap,0)} still unassigned</span>`}</div>
-   ${pause.length?`<h3 class="th pause">Can pause <small>up to ${money(tot(pause),0)}</small></h3><div class="card">${pause.map(c=>row(c,`<button type="button" class="btn sm" data-tri="0" data-tid="${esc(c.id)}">Pause</button>`)).join('')}</div>`:''}
-   ${trim.length?`<h3 class="th trim">Can trim <small>25% would free ${money(tot(trim)*.25,0)}</small></h3><div class="card">${trim.map(c=>row(c,`<button type="button" class="btn line sm" data-tri=".75" data-tid="${esc(c.id)}">−25%</button>`)).join('')}</div>`:''}
-   ${must.length?`<h3 class="th must">Must pay <small>${money(tot(must),0)} · leave as is</small></h3><div class="card">${must.map(c=>row(c,'')).join('')}</div>`:''}
-   ${none.length?`<h3 class="th">Not sorted yet <small>tap one to sort it</small></h3><div class="card">${none.map(c=>row(c,`<span class="tq">${NEEDS.map(([v,n])=>`<button type="button" class="need mini ${v}" data-tq="${v}" data-tid="${esc(c.id)}">${({must:'Must',trim:'Trim',pause:'Pause'})[v]}</button>`).join('')}</span>`)).join('')}</div>`:''}
-   <p class="muted" style="margin-top:12px">Pausing or trimming changes ${def?'the every-month plan':esc(mName(key,'s'))+'’s plan only'}. Undo from the message that appears.</p>`,()=>{
-    const sh=$('#sheet');
-    sh.querySelectorAll('[data-tri]').forEach(b=>b.onclick=()=>{const c=P.cats.find(x=>x.id===b.dataset.tid);if(!c)return;const old=+c.planned||0,v=Math.round(old*+b.dataset.tri);
-      const set=x=>{if(def)changeDefault({do:'set',t:'cat',id:c.id,f:'planned',v:x,old:c.planned});else setMonth('cat',c.id,'planned',x)};
-      set(v);setTimeout(()=>{triageSheet();toast(`${c.name}: ${money(old,0)} → ${money(v,0)}`,()=>{set(old);setTimeout(triageSheet,60)})},60)});
-    sh.querySelectorAll('[data-tq]').forEach(b=>b.onclick=()=>{const c=P.cats.find(x=>x.id===b.dataset.tid);if(!c)return;const v=b.dataset.tq;
-      if(def)changeDefault({do:'set',t:'cat',id:c.id,f:'need',v,old:c.need});else{setMonth('cat',c.id,'need',v);if(TPL&&TPL.plan&&TPL.plan.cats.some(x=>x.id===c.id))saveTemplate(p=>{const x=p.cats.find(y=>y.id===c.id);if(x)x.need=v})}
-      setTimeout(triageSheet,60)});
+   <div class="tgap ${gap>0.5?'over':'ok'}">${gap>0.5?`Planned expenses are <b>${money(gap,0)}</b> over planned income.`:`Balanced ✓ <span class="muted">${money(-gap,0)} still unassigned</span>`}${freed>0.5?` <span class="muted">· ${money(freed,0)} freed so far</span>`:''}</div>
+   <p class="muted" style="margin:4px 2px 0">Tap Must, Trim or Pause on any line to move it. Every change can be undone with ↩.</p>
+   ${pause.length?`<h3 class="th pause">Can pause <small>up to ${money(tot(pause),0)}</small></h3><div class="card">${pause.map(c=>row(c,pauseAct(c))).join('')}</div>`:''}
+   ${trim.length?`<h3 class="th trim">Can trim <small id="trimFree">at your % frees ${money(trimFree(),0)}</small></h3><div class="card">${trim.map(c=>row(c,trimAct(c))).join('')}</div>`:''}
+   ${must.length?`<h3 class="th must">Must pay <small>${money(tot(must),0)} · leave as is</small></h3><div class="card">${must.map(c=>row(c,rst(c))).join('')}</div>`:''}
+   ${none.length?`<h3 class="th">Not sorted yet <small>tap one to sort it</small></h3><div class="card">${none.map(c=>row(c,rst(c))).join('')}</div>`:''}
+   <p class="muted" style="margin-top:12px">Changes ${def?'the every-month plan':esc(mName(key,'s'))+'’s plan only'}.</p>`,()=>{
+    const sh=$('#sheet');sh.scrollTop=y;
+    const again=()=>setTimeout(triageSheet,60);
+    const line=id=>P.cats.find(x=>x.id===id);
+    const act=(c,pct,msg)=>{const before=cutTo(c,pct,def);again();toast(msg,()=>{cutSet(c.id,before,def);again()})};
+    sh.querySelectorAll('[data-tp]').forEach(b=>b.onclick=()=>{const c=line(b.dataset.tp);if(c)act(c,100,`${c.name} paused · ${money(cutFrom(c),0)} freed`)});
+    sh.querySelectorAll('[data-tr]').forEach(b=>b.onclick=()=>{const c=line(b.dataset.tr);if(c){delete trimPct[c.id];act(c,null,`${c.name} back to ${money(cutFrom(c),0)}`)}});
+    sh.querySelectorAll('[data-tt]').forEach(b=>b.onclick=()=>{const c=line(b.dataset.tt);if(!c)return;const p=pctOf(c);ls.set('mb-trimpct',String(p));const from=cutFrom(c);act(c,p,`${c.name}: ${money(from,0)} → ${money(Math.round(from*(100-p)/100),0)} (−${p}%)`)});
+    const setP=(c,p)=>{p=Math.max(1,Math.min(99,Math.round(p)||0));trimPct[c.id]=p;const i=sh.querySelector(`[data-pct="${c.id}"]`);if(i&&document.activeElement!==i)i.value=p;
+      const pv=sh.querySelector(`[data-tpv="${c.id}"]`);if(pv)pv.textContent='→ '+money(Math.round(cutFrom(c)*(100-p)/100),0);
+      const tf=$('#trimFree');if(tf)tf.textContent='at your % frees '+money(trimFree(),0);
+      const tact=i&&i.closest('.tact'),ex=tact&&tact.querySelector('[data-tt]'),same=c.cut&&c.cut.pct===p;
+      if(tact&&!ex&&!same){const nb=document.createElement('button');nb.type='button';nb.className='btn sm line';nb.dataset.tt=c.id;nb.textContent=c.cut?'Update':'Trim';pv.after(nb);nb.onclick=()=>{const p2=pctOf(c);ls.set('mb-trimpct',String(p2));const from=cutFrom(c);act(c,p2,`${c.name}: ${money(from,0)} → ${money(Math.round(from*(100-p2)/100),0)} (−${p2}%)`)}}
+      else if(ex&&same)ex.remove()};
+    sh.querySelectorAll('[data-pm]').forEach(b=>b.onclick=()=>{const c=line(b.dataset.tid);if(c)setP(c,pctOf(c)+ +b.dataset.pm)});
+    sh.querySelectorAll('[data-pct]').forEach(i=>{i.oninput=()=>{const c=line(i.dataset.pct),v=parseInt(i.value,10);if(c&&v>0)setP(c,v)};i.onblur=()=>{const c=line(i.dataset.pct);if(c)i.value=pctOf(c)}});
+    sh.querySelectorAll('[data-tq]').forEach(b=>b.onclick=()=>{const c=line(b.dataset.tid);if(!c)return;const v=c.need===b.dataset.tq?null:b.dataset.tq,old=c.need;
+      const put=x=>{if(def)changeDefault({do:'set',t:'cat',id:c.id,f:'need',v:x,old:c.need});else{setMonth('cat',c.id,'need',x);if(TPL&&TPL.plan&&TPL.plan.cats.some(q=>q.id===c.id))saveTemplate(p=>{const q=p.cats.find(z=>z.id===c.id);if(q){if(x)q.need=x;else delete q.need}})}};
+      put(v);again();toast(`${c.name}: ${v?({must:'Must pay',trim:'Can trim',pause:'Can pause'})[v]:'not sorted'}`,()=>{put(old);again()})});
   });
 }
 document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('[data-triage]');if(b){e.stopPropagation();triageSheet()}});
@@ -2469,7 +2591,7 @@ async function storeImage(k,id,blob){
   if(!r.ok)throw new Error(r.status===507?'Your Dropbox is full.':'Could not upload the photo.');
 }
 async function imageURL(rec){
-  if(imgCache[rec.id])return imgCache[rec.id];
+  if(imgCache[rec.id])return imgCache[rec.id];if(rec.noimg)return null;
   let u=null;if(mode==='demo')u=ls.get('mb-demo-img:'+rec.id);else{const b=await dlBlob(imgPath(rec.img||rec.date.slice(0,7),rec.id));if(b)u=URL.createObjectURL(b)}
   return imgCache[rec.id]=u;
 }
@@ -2749,6 +2871,7 @@ document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest
     x0=e.touches[0].clientX;y0=e.touches[0].clientY;t0=Date.now()},{passive:true});
   document.addEventListener('touchend',e=>{if(x0===null)return;const t=e.changedTouches[0],dx=t.clientX-x0,dy=t.clientY-y0;x0=null;
     if(Date.now()-t0>700||Math.abs(dx)<70||Math.abs(dx)<Math.abs(dy)*1.8)return;
+    if(tab==='shop'){shShift(dx<0?1:-1);return}
     (dx<0?$('#next'):$('#prev')).click()},{passive:true});
 })();
 
@@ -3016,7 +3139,7 @@ function bind(){
   const ed=$('#exitDemo');if(ed)ed.onclick=exitDemo;
 }
 document.querySelectorAll('#tabs button').forEach(b=>b.onclick=()=>go(b.dataset.t));
-async function go(t,noPush){if(t!==tab&&(t==='plan'||t==='defaults'))planSort='big';tab=t;if(!noPush)try{history.pushState({t},'')}catch(e){}render();scrollTo(0,0);if(tab==='defaults'&&mode!=='setup'){try{const t=await loadTemplate();if(t.plan&&JSON.stringify(t.plan)!==JSON.stringify(TPL.plan)){TPL=t;render()}}catch(e){}}}
+async function go(t,noPush){if(t==='shop'&&t!==tab){shSec=shSec||'food';shOpen()}if(t!==tab&&(t==='plan'||t==='defaults'))planSort='big';tab=t;if(!noPush)try{history.pushState({t},'')}catch(e){}render();scrollTo(0,0);if(tab==='defaults'&&mode!=='setup'){try{const t=await loadTemplate();if(t.plan&&JSON.stringify(t.plan)!==JSON.stringify(TPL.plan)){TPL=t;render()}}catch(e){}}}
 let pickYear=null,monthsCache=null;
 function monthPicker(){
   pickYear=pickYear||+key.slice(0,4);
@@ -3041,8 +3164,346 @@ document.addEventListener('visibilitychange',()=>{if(document.visibilityState===
 
 /* ---------------- start ---------------- */
 
+/* ---------------- shopping list ----------------
+   /shopping.json keeps the list of things you buy again and again (items), your stores, and what was
+   bought each week (weeks["YYYY-MM-DD" of the Sunday].buys). Bills are saved as receipts tagged with
+   the week, so they also show in Receipts and count in Actual. */
+const SHP='/shopping.json';
+const CART_SVG='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="9.5" cy="20" r="1.4"/><circle cx="17.5" cy="20" r="1.4"/><path d="M2.5 3.5h2.8l2.5 11.3a1.5 1.5 0 0 0 1.5 1.2h8.1a1.5 1.5 0 0 0 1.5-1.1l1.7-6.9H6.3"/></svg>';
+const SH_SECS=[['food','Groceries'],['toil','Toiletries'],['clean','Cleaning']];
+const SH_UNITS=['each','lb','oz','kg','g','gallon','half gallon','quart','pint','fl oz','liter','dozen','bag','box','pack','bunch','head','bottle','jar','can','carton','loaf','tub','block','roll'];
+const SH_EVERY=[[1,'Every week'],[2,'Every 2 weeks'],[3,'Every 3 weeks'],[4,'About monthly'],[6,'Every 6 weeks'],[8,'Every 2 months'],[12,'Every 3 months'],[0,'Only when needed']];
+const SH_TIPS={food:['Milk','Bread','Eggs','Rice','Bananas','Chicken'],toil:['Toothpaste','Shampoo','Body wash','Deodorant','Toilet paper','Baby wipes','Lotion','Hand soap'],clean:['Dish soap','Laundry detergent','Paper towels','Trash bags','Surface cleaner','Dishwasher pods','Sponges']};
+let shEditing=false,shRep={range:'4w',sec:'all',sort:'often'};
+let SH=null,shWk=null,shSec='food',shLoading=false,shQueue=Promise.resolve(),shBillsC={};
+const shEmpty=()=>({v:1,stores:[],items:[],weeks:{},map:{}});
+const shDs=d=>d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());
+const shAdd=(ds,n)=>{const d=new Date(ds+'T12:00:00');d.setDate(d.getDate()+n);return shDs(d)};
+const shWeekOf=ds=>{const d=new Date(ds+'T12:00:00');d.setDate(d.getDate()-d.getDay());return shDs(d)};
+const shFmt=(ds,o)=>new Date(ds+'T12:00:00').toLocaleDateString(undefined,o||{month:'short',day:'numeric'});
+const shToday=()=>shDs(new Date());
+function shWeekLabel(w){const e=shAdd(w,6);return shFmt(w)+' – '+(w.slice(5,7)===e.slice(5,7)?String(+e.slice(8)):shFmt(e))}
+const shDay=()=>{const t=shToday(),e=shAdd(shWk,6);return t<shWk?shWk:t>e?e:t};
+const shUnitTxt=(q,u)=>{const n=+q;if(u==='each'||!u)return '×'+(n||1);const pl=n===1?u:u==='box'?'boxes':u==='bunch'?'bunches':u==='loaf'?'loaves':/^(lb|oz|kg|g|fl oz|dozen)$/.test(u)?u:u+'s';return (n||'')+' '+pl};
+const shEvery=n=>(SH_EVERY.find(x=>x[0]===n)||[0,'Every '+n+' weeks'])[1];
+const shWeekData=(d,w)=>d.weeks[w]||(d.weeks[w]={buys:[]});
+const shBuys=w=>((SH&&SH.weeks[w])||{buys:[]}).buys;
+function shSeed(){
+  const H='Hy-Vee',F='Fareway',W='Walmart',Q='Wheatsfield';
+  const L=[ // section, store, name, qty, unit, every (weeks), usual price (estimate)
+   ['food',H,'Chicken winglets',2,'lb',1,12.92],['food',H,'Thin-cut pork shoulder blade',2,'lb',1,8.98],['food',H,'Salmon',1.5,'lb',1,19.49],['food',H,'Wild Pacific cod',1.5,'lb',1,19.49],
+   ['food',H,'Organic spinach',1,'bag',1,3.99],['food',H,'Organic broccoli',2,'head',1,8.98],['food',H,'Organic zucchini',3,'each',1,4.49],['food',H,'Organic carrots',1,'lb',1,1.79],
+   ['food',H,'Onions',4,'each',1,2.98],['food',H,'Organic cauliflower',1,'head',1,4.99],['food',H,'Organic cilantro',1,'bunch',1,1.79],['food',H,'Coleslaw mix',1,'bag',1,2.49],
+   ['food',H,'Organic limes',3,'each',1,2.37],['food',H,'Organic cherry tomatoes',1,'box',1,4.49],['food',H,'Organic cucumbers',2,'each',1,2.98],['food',H,'Organic green peppers',2,'each',1,3.98],
+   ['food',H,'Organic red peppers',2,'each',1,5.98],['food',H,'Organic lemons',3,'each',1,2.97],['food',H,'Idaho potatoes (5 lb)',2,'bag',1,8.98],['food',H,'White sweet potatoes',2,'each',1,2.99],
+   ['food',H,'Plantains',8,'each',1,6.32],['food',H,'Fresh rosemary',1,'pack',1,2.99],['food',H,'Fresh thyme',1,'pack',1,2.99],['food',H,'Fresh mint',1,'pack',1,2.99],['food',H,'Maize flour',1,'kg',1,3.49],
+   ['food',H,'Kalamata olives',1,'jar',4,5.99],['food',H,'Whipping cream',1,'carton',2,4.29],['food',H,'Parmesan',1,'pack',4,5.99],['food',H,'Coca-Cola',12,'can',2,8.49],
+   ['food',H,'Organic black pepper',1,'jar',12,4.99],['food',H,'Paprika',1,'jar',12,4.49],['food',H,'Turmeric',1,'jar',12,4.49],['food',H,'Cumin',1,'jar',12,4.49],
+   ['food',F,'Beef stew meat',2,'lb',1,15.98],['food',F,'Chicken breast',2,'lb',1,7.98],
+   ['food',W,'Organic blueberries',2,'box',1,13.92],['food',W,'Organic strawberries',1,'box',1,4.98],['food',W,'Organic blackberries',1,'box',1,3.96],['food',W,'Organic bananas',1,'bunch',1,1.71],
+   ['food',W,'Organic avocados',4,'each',1,4.37],['food',W,'Organic kiwi',8,'each',1,7.96],['food',W,'Organic apples (3 lb)',1,'bag',1,4.97],['food',W,'Organic Roma tomatoes',1,'lb',1,2.98],
+   ['food',W,'Organic garlic',2,'head',1,1.98],['food',W,'Organic ginger',1,'each',1,1.75],['food',W,'Organic eggs',2,'dozen',1,8.92],['food',W,'Organic cheddar (GV)',1,'block',1,3.47],
+   ['food',W,'Organic Mexican shredded cheese',1,'bag',1,3.97],['food',W,'Organic Greek yogurt',1,'tub',1,6.48],
+   ['food',W,'Organic olive oil',1,'bottle',4,10.76],['food',W,'Organic avocado oil',1,'bottle',6,11.98],['food',W,'Organic mayonnaise',1,'jar',6,7.98],['food',W,'Jasmine rice',10,'lb',6,12.48],
+   ['food',W,'Flour',5,'lb',8,2.92],['food',W,'Butter',1,'lb',2,4.47],
+   ['food',Q,'Milk',2,'gallon',1,23.96],['food',Q,'Feta',1,'pack',1,5.49],['food',Q,'Artisan bread',1,'loaf',1,6.49],['food',Q,'Organic orange juice',1,'bottle',1,5.99],
+   ['food',Q,'Organic pasta',1,'box',1,2.79],['food',Q,'Red kidney beans',2,'can',1,4.58],
+   ['food',Q,'Organic peanut butter',1,'jar',3,5.99],['food',Q,'Organic oats',2,'lb',2,4.38],['food',Q,'Honey',1,'jar',6,9.99],['food',Q,'Organic chia seeds',8,'oz',6,5.99],
+   ['food',Q,'Organic sunflower seeds',8,'oz',6,3.49],['food',Q,'Organic sesame seeds',8,'oz',8,4.49],['food',Q,'Organic flax seeds',8,'oz',6,3.49]];
+  return {v:1,stores:[H,F,W,Q],items:L.map(([sec,store,name,qty,unit,every,price])=>({id:rid(),sec,store,name,qty,unit,every,price})),weeks:{},map:{}};
+}
+async function shOpen(){
+  if(!shWk)shWk=shWeekOf(shToday());
+  if(shLoading)return;shLoading=true;
+  try{const r=await readJSON(SHP);
+    if(r.data&&r.data.items){SH=r.data}
+    else{const seed=shSeed();SH=seed;shSave(d=>{if(!d.items.length){d.stores=seed.stores;d.items=seed.items}})}
+  }catch(e){if(!SH)SH={failed:true}}
+  shLoading=false;if(tab==='shop'&&!$('#veil').classList.contains('open'))render();
+}
+function shSave(fn){
+  if(!SH||SH.failed)return;fn(SH);if(tab==='shop'&&!$('#veil').classList.contains('open'))render();setSync('Saving…');
+  shQueue=shQueue.then(()=>updateJSON(SHP,d=>{if(!d.items)Object.assign(d,shEmpty());fn(d)},shEmpty)).then(d=>{SH=d;setSync(mode==='demo'?'Demo mode · saved on this device':'Saved to Dropbox')},e=>setSync(e.message||'Could not save',true));
+  return shQueue;
+}
+function shStores(){const s=[...(SH.stores||[])];for(const it of SH.items)if(it.store&&!s.includes(it.store))s.push(it.store);return s}
+const shLast=(id,w)=>{let best=null;for(const [k,v] of Object.entries(SH.weeks))if(k<w)for(const b of v.buys||[])if(b.item===id&&(!best||b.d>best))best=b.d;return best};
+function shDue(it,w){if(it.every===1)return true;if(!it.every)return false;const l=shLast(it.id,w);if(!l)return true;return (new Date(w)-new Date(shWeekOf(l)))/6048e5>=it.every-0.01}
+function shCat(sec){const P=(S&&S.plan)||(TPL&&TPL.plan);if(!P)return null;const m=SH&&SH.map&&SH.map[sec];
+  if(m){const c=P.cats.find(x=>x.id===m);if(c)return c}
+  const re={food:/^(food|grocer)/i,toil:/toilet/i,clean:/clean/i}[sec];return P.cats.find(c=>re.test(c.name))||null}
+function shopHTML(){
+  const ph=`<div class="pagehead"><span class="pi" style="--hue1:#2fae7a;--hue2:#2fae7a">${CART_SVG}</span><b>Shopping</b><span class="m">· weekly list</span></div>`;
+  if(!SH)return ph+'<p class="empty">Loading your shopping list…</p>';
+  if(SH.failed)return ph+'<div class="card pad"><p>Couldn’t load the shopping list.</p><button class="btn" id="shRetry">Try again</button></div>';
+  const w=shWk,bs=shBuys(w),thisW=shWeekOf(shToday());
+  const listed=SH.items.filter(it=>shDue(it,w)||bs.some(b=>b.item===it.id));
+  const got=listed.filter(it=>bs.some(b=>b.item===it.id)).length;
+  const priced=bs.reduce((a,b)=>a+(+b.price||0),0),est=listed.reduce((a,it)=>a+(+it.price||0),0);
+  let left='';
+  if(S&&S.plan&&S.k===(w>thisW?w:shDay()).slice(0,7)){const C=calc(S.plan,S.txns,S.k);
+    left=SH_SECS.map(([s])=>{const c=shCat(s);if(!c||!C.by[c.id])return '';return `${esc(c.name)} <b>${money(C.by[c.id].avail,0)}</b>`}).filter(Boolean).join(' · ');
+    if(left)left=`<div class="shleft">Left in ${esc(mName(S.k,'s'))}: ${left}</div>`}
+  let h=ph+`<div class="wknav"><button type="button" data-shw="-7" aria-label="Previous week">‹</button><b>${esc(shWeekLabel(w))}${w===thisW?' <small>· this week</small>':''}</b><button type="button" data-shw="7" aria-label="Next week">›</button></div>
+  <div class="card shsum"><div class="r"><span>Got <b>${got}</b> of ${listed.length} on the list</span><span>Bills <b id="shBillTot">…</b></span></div>
+   <div class="r sub"><span>Prices entered ${money(priced)}</span><span>List estimate ~${money(est,0)}</span></div>${left}</div>
+  <div class="shseg" role="tablist">${[...SH_SECS,['bills','Bills']].map(([s,n])=>`<button type="button" data-shsec="${s}" aria-pressed="${shSec===s}">${n}</button>`).join('')}</div>`;
+  h+=`<div class="shtools"><button type="button" data-shrep>📊 What we buy</button>${shSec==='bills'?'':`<button type="button" data-shedit aria-pressed="${shEditing}">${shEditing?'Done editing':'✎ Edit list'}</button>`}</div>`;
+  if(shEditing&&shSec!=='bills')h+=`<p class="muted shedhint">Tap ⊖ to remove an item, or tap an item to change it.</p>`;
+  if(shSec==='bills')return h+`<div class="card" id="shBills"><p class="empty">Loading bills…</p></div><button type="button" class="btn full" data-shbill style="margin-top:12px">+ Enter a bill</button>
+   <p class="muted" style="margin:10px 4px">A bill goes into Actual under the category you choose, with its photo kept in Receipts.</p>`;
+  const items=SH.items.filter(it=>it.sec===shSec);
+  if(!items.length)return h+`<div class="card pad"><p style="margin-top:0">No ${esc(SH_SECS.find(x=>x[0]===shSec)[1].toLowerCase())} on your list yet. Tap one to add it:</p><div class="shtip">${SH_TIPS[shSec].map(t=>`<button type="button" data-shnew="${esc(t)}">+ ${esc(t)}</button>`).join('')}</div></div><button type="button" class="btn line full2" data-shnew="" style="margin-top:12px">+ Add another item</button>`;
+  for(const st of shStores()){
+    const its=items.filter(it=>(it.store||'')===st);if(!its.length)continue;
+    const due=its.filter(it=>shDue(it,w)||bs.some(b=>b.item===it.id)),later=its.filter(it=>!due.includes(it));
+    const sb=bs.filter(b=>its.some(it=>it.id===b.item)),sp=sb.reduce((a,b)=>a+(+b.price||0),0);
+    h+=`<h3 class="shst">${esc(st)}<small>${due.filter(it=>bs.some(b=>b.item===it.id)).length}/${due.length} got${sp?' · '+money(sp):''}</small></h3><div class="card">${due.map(shRow).join('')}${later.length?`<div class="shlater">Not due this week</div>${later.map(shRow).join('')}`:''}</div>`;
+  }
+  const none=items.filter(it=>!it.store);if(none.length)h+=`<h3 class="shst">No store yet</h3><div class="card">${none.map(shRow).join('')}</div>`;
+  return h+`<button type="button" class="btn line full2" data-shnew="" style="margin-top:14px">+ Add item</button><button type="button" class="linkb" data-shstores>Stores…</button>`;
+}
+function shRow(it){
+  const bs=shBuys(shWk).filter(b=>b.item===it.id),got=bs.length>0,sp=bs.reduce((a,b)=>a+(+b.price||0),0);
+  let sub;
+  if(got){const sts=[...new Set(bs.map(b=>b.store))].filter(s=>s!==it.store);sub='Got '+bs.map(b=>shUnitTxt(b.qty,b.unit)).join(' + ')+(sts.length?' at '+sts.join(', '):'')}
+  else{const l=it.every!==1?shLast(it.id,shWk):null;sub=shUnitTxt(it.qty,it.unit)+(it.every!==1?' · '+shEvery(it.every).toLowerCase()+(l?' · last '+shFmt(l):''):'')}
+  const lead=shEditing?`<button type="button" class="shdel" data-shdel="${esc(it.id)}" aria-label="Remove ${esc(it.name)}">−</button>`:`<button type="button" class="shchk" data-shk="${esc(it.id)}" aria-pressed="${got}" aria-label="${got?'Bought':'Mark as bought'}">${got?'✓':''}</button>`;
+  return `<div class="shrow${got?' got':''}" data-shi="${esc(it.id)}">${lead}<span class="shn"><b>${esc(it.name)}</b><small>${esc(sub)}</small>${it.note?`<i class="shnote">${esc(it.note)}</i>`:''}</span><span class="sha">${sp?money(sp):got?'<span class="addp">+ price</span>':''}</span></div>`;
+}
+function bindShop(){
+  const V=$('#view');
+  const rt=$('#shRetry');if(rt)rt.onclick=()=>{SH=null;render();shOpen()};
+  V.querySelectorAll('[data-shw]').forEach(b=>b.onclick=()=>shShift(+b.dataset.shw/7));
+  V.querySelectorAll('[data-shsec]').forEach(b=>b.onclick=()=>{shSec=b.dataset.shsec;render()});
+  V.querySelectorAll('[data-shk]').forEach(b=>b.onclick=e=>{e.stopPropagation();const it=SH.items.find(x=>x.id===b.dataset.shk);if(!it)return;
+    if(shBuys(shWk).some(x=>x.item===it.id)){shItemSheet(it.id);return}
+    const w=shWk,buy={id:rid(),item:it.id,name:it.name,sec:it.sec,d:shDay(),qty:it.qty,unit:it.unit,store:it.store,price:null,by:who()};
+    shSave(d=>shWeekData(d,w).buys.push(buy));
+    toast(`Got ${it.name}`,()=>shSave(d=>{const W=d.weeks[w];if(W)W.buys=W.buys.filter(x=>x.id!==buy.id)}))});
+  V.querySelectorAll('[data-shi]').forEach(r=>r.onclick=()=>shEditing?shItemEdit(r.dataset.shi):shItemSheet(r.dataset.shi));
+  V.querySelectorAll('[data-shdel]').forEach(b=>b.onclick=e=>{e.stopPropagation();shRemove(b.dataset.shdel)});
+  const ed=V.querySelector('[data-shedit]');if(ed)ed.onclick=()=>{shEditing=!shEditing;render()};
+  const rp=V.querySelector('[data-shrep]');if(rp)rp.onclick=shReportSheet;
+  V.querySelectorAll('[data-shnew]').forEach(b=>b.onclick=()=>shItemEdit(null,b.dataset.shnew));
+  const ss=V.querySelector('[data-shstores]');if(ss)ss.onclick=shStoresSheet;
+  shBillsView();
+}
+function shShift(n){shWk=shAdd(shWk,7*n);const v=$('#view');v.classList.remove('slideL','slideR');void v.offsetWidth;render();scrollTo(0,0)}
+const shUnitOpts=u=>[...new Set([...SH_UNITS,u].filter(Boolean))].map(x=>`<option ${x===u?'selected':''}>${esc(x)}</option>`).join('');
+const shStoreOpts=s=>[...new Set([...shStores(),s].filter(Boolean))].map(x=>`<option ${x===s?'selected':''}>${esc(x)}</option>`).join('')+'<option value="__new">+ Another store…</option>';
+function shStorePick(sel,inp){sel.onchange=()=>{inp.hidden=sel.value!=='__new';if(!inp.hidden)inp.focus()}}
+const shStoreVal=(sel,inp)=>sel.value==='__new'?inp.value.trim().slice(0,30):sel.value;
+function shQtyBind(sh){sh.querySelectorAll('[data-q]').forEach(b=>b.onclick=()=>{const i=b.parentNode.querySelector('input');let v=evalExpr(i.value);if(!(v>=0))v=0;const st=v<1||(v%1)?0.5:1;v=b.dataset.q==='+'?v+st:Math.max(0,v-st);i.value=Math.round(v*100)/100})}
+function shRemove(id){const at=SH.items.findIndex(x=>x.id===id);if(at<0)return;const old=clone(SH.items[at]);
+  shSave(d=>{d.items=d.items.filter(x=>x.id!==id)});if($('#veil').classList.contains('open'))closeSheet();
+  toast(`${old.name} removed from the list`,()=>shSave(d=>{if(!d.items.some(x=>x.id===id))d.items.splice(Math.min(at,d.items.length),0,old)}))}
+function shItemSheet(id){
+  const it=SH.items.find(x=>x.id===id);if(!it)return;const w=shWk,bs=shBuys(w).filter(b=>b.item===id);
+  openSheet(head(esc(it.name))+`<p class="muted" style="margin-top:0">${esc(SH_SECS.find(x=>x[0]===it.sec)[1])} · usually ${esc(shUnitTxt(it.qty,it.unit))}${it.store?' at '+esc(it.store):''}${it.price?' · about '+money(it.price):''} · ${esc(shEvery(it.every).toLowerCase())}</p>${it.note?`<div class="shnotebox">${esc(it.note)}</div>`:''}
+   <h3 class="shh">Bought this week <small>${esc(shWeekLabel(w))}</small></h3>
+   <div class="card">${bs.length?bs.map(b=>`<div class="shbuy"><span><b>${esc(shUnitTxt(b.qty,b.unit))}</b><small>${esc(shFmt(b.d,{weekday:'short',month:'short',day:'numeric'}))} · ${esc(b.store||'')}</small></span><input data-bp="${esc(b.id)}" inputmode="decimal" placeholder="Price $" value="${b.price!=null?b.price:''}" aria-label="Price"><button type="button" class="x" data-bx="${esc(b.id)}" aria-label="Remove">×</button></div>`).join(''):'<p class="empty">Not bought yet this week.</p>'}</div>
+   <h3 class="shh">${bs.length?'Bought more?':'Add what you bought'}</h3>
+   <div class="shform"><label>Amount<div class="qty"><button type="button" data-q="-">−</button><input id="shQty" inputmode="decimal" value="${it.qty}"><button type="button" data-q="+">+</button></div></label>
+    <label>Unit<select id="shUnit">${shUnitOpts(it.unit)}</select></label>
+    <label>Store<select id="shStore">${shStoreOpts(it.store)}</select><input id="shStoreN" hidden placeholder="Store name" maxlength="30"></label>
+    <label>Price (optional)<input id="shPrice" inputmode="decimal" placeholder="$"></label>
+    <label class="wide">Day<input type="date" id="shDay" value="${shDay()}" min="${w}" max="${shAdd(w,6)}"></label></div>
+   <p class="muted" id="shErr" style="margin:0 0 8px"></p>
+   <button type="button" class="btn full" id="shAddBuy">Add to this week</button>
+   <button type="button" class="btn line full2" id="shEditIt" style="margin-top:10px">Edit item (name, note, store, how often)</button>
+   <button type="button" class="linkb rmb" id="shRmIt" style="margin-top:4px">Remove from the list</button>`,()=>{
+    let rmArm=false;$('#shRmIt').onclick=()=>{if(!rmArm){rmArm=true;$('#shRmIt').textContent='Tap again to remove it (past weeks keep their record)';return}shRemove(id)};
+    const sh=$('#sheet');shQtyBind(sh);shStorePick($('#shStore'),$('#shStoreN'));
+    sh.querySelectorAll('[data-bp]').forEach(i=>i.onchange=()=>{const v=evalExpr(i.value),p=v>0?v:null,bid=i.dataset.bp;
+      shSave(d=>{const W=d.weeks[w];const b=W&&W.buys.find(x=>x.id===bid);if(b){b.price=p;const t=d.items.find(x=>x.id===id);if(t&&p&&+b.qty===+t.qty&&b.unit===t.unit)t.price=p}});toast(p?`${it.name}: ${money(p)}`:'Price cleared')});
+    sh.querySelectorAll('[data-bx]').forEach(b=>b.onclick=()=>{const bid=b.dataset.bx,old=bs.find(x=>x.id===bid);shSave(d=>{const W=d.weeks[w];if(W)W.buys=W.buys.filter(x=>x.id!==bid)});setTimeout(()=>shItemSheet(id),30);
+      toast('Removed from this week',()=>{shSave(d=>shWeekData(d,w).buys.push(old));setTimeout(()=>shItemSheet(id),30)})});
+    $('#shAddBuy').onclick=()=>{const q=evalExpr($('#shQty').value),pr=$('#shPrice').value.trim(),p=pr?evalExpr(pr):null,st=shStoreVal($('#shStore'),$('#shStoreN'));
+      if(!(q>0)){$('#shErr').textContent='Enter how much you bought.';return}if(pr&&!(p>0)){$('#shErr').textContent='Check the price.';return}
+      const buy={id:rid(),item:id,name:it.name,sec:it.sec,d:$('#shDay').value||shDay(),qty:q,unit:$('#shUnit').value,store:st,price:p,by:who()};
+      shSave(d=>{shWeekData(d,w).buys.push(buy);if(st&&!(d.stores||[]).includes(st))(d.stores=d.stores||[]).push(st)});closeSheet();toast(`Got ${it.name} (${shUnitTxt(q,buy.unit)})`)};
+    $('#shEditIt').onclick=()=>shItemEdit(id);
+  });
+}
+function shItemEdit(id,name){
+  const it=id?SH.items.find(x=>x.id===id):{sec:shSec==='bills'?'food':shSec,name:name||'',qty:1,unit:'each',store:(shStores()[0]||''),every:1,price:null};if(!it)return;
+  let arm=false;
+  openSheet(head(id?'Change item':'New item')+`<div class="shform">
+   <label class="wide">Name<input id="ieName" value="${esc(it.name)}" maxlength="40" placeholder="e.g. Toothpaste"></label>
+   <label>List<select id="ieSec">${SH_SECS.map(([s,n])=>`<option value="${s}" ${s===it.sec?'selected':''}>${n}</option>`).join('')}</select></label>
+   <label>Usual store<select id="ieStore">${shStoreOpts(it.store)}</select><input id="ieStoreN" hidden placeholder="Store name" maxlength="30"></label>
+   <label>Usual amount<div class="qty"><button type="button" data-q="-">−</button><input id="ieQty" inputmode="decimal" value="${it.qty}"><button type="button" data-q="+">+</button></div></label>
+   <label>Unit<select id="ieUnit">${shUnitOpts(it.unit)}</select></label>
+   <label>How often<select id="ieEvery">${SH_EVERY.map(([n,t])=>`<option value="${n}" ${n===it.every?'selected':''}>${t}</option>`).join('')}</select></label>
+   <label>Usual price (optional)<input id="iePrice" inputmode="decimal" placeholder="$" value="${it.price||''}"></label>
+   <label class="wide">Note (optional)<textarea id="ieNote" rows="2" maxlength="300" placeholder="Brand, size, flavor… e.g. Kerrygold unsalted, the gold foil one">${esc(it.note||'')}</textarea></label></div>
+   <p class="muted" style="margin:-4px 2px 10px">Items you don’t buy every week still show each week, under “Not due this week” until it’s time.</p>
+   <p class="muted" id="ieErr" style="margin:0 0 8px"></p>
+   <button type="button" class="btn full" id="ieSave">${id?'Save':'Add to the list'}</button>
+   ${id?'<button type="button" class="linkb rmb" id="ieDel" style="margin-top:6px">Remove from the list</button>':''}`,()=>{
+    const sh=$('#sheet');shQtyBind(sh);shStorePick($('#ieStore'),$('#ieStoreN'));if(!id&&!it.name)setTimeout(()=>$('#ieName').focus(),50);
+    $('#ieSave').onclick=()=>{const n=$('#ieName').value.trim().slice(0,40),q=evalExpr($('#ieQty').value),pr=$('#iePrice').value.trim(),p=pr?evalExpr(pr):null,st=shStoreVal($('#ieStore'),$('#ieStoreN'));
+      if(!n){$('#ieErr').textContent='Give it a name.';return}if(!(q>0)){$('#ieErr').textContent='Enter the usual amount.';return}
+      const v={name:n,note:$('#ieNote').value.trim().slice(0,300),sec:$('#ieSec').value,store:st,qty:q,unit:$('#ieUnit').value,every:+$('#ieEvery').value,price:p>0?p:null};
+      const nid=id||rid();
+      shSave(d=>{if(st&&!(d.stores||[]).includes(st))(d.stores=d.stores||[]).push(st);const x=d.items.find(y=>y.id===nid);if(x)Object.assign(x,v);else d.items.push(Object.assign({id:nid},v))});
+      shSec=v.sec;closeSheet();toast(id?'Item updated':`${n} added to ${SH_SECS.find(x=>x[0]===v.sec)[1]}`)};
+    const dl=$('#ieDel');if(dl)dl.onclick=()=>{if(!arm){arm=true;dl.textContent='Tap again to remove it (past weeks keep their record)';return}shRemove(id)};
+  });
+}
+function shStoresSheet(){
+  const list=shStores(),cnt=s=>SH.items.filter(i=>i.store===s).length;
+  openSheet(head('Stores')+`<p class="muted" style="margin-top:0">Rename a store and its items follow. Order here is the order on the list.</p>
+   <div class="card">${list.map((s,i)=>`<div class="shbuy"><input data-sn="${i}" value="${esc(s)}" maxlength="30" aria-label="Store name"><span class="muted" style="text-align:right">${cnt(s)} item${cnt(s)===1?'':'s'}</span><button type="button" class="x" data-sup="${i}" aria-label="Move up" ${i?'':'disabled'}>↑</button></div>`).join('')}</div>
+   <div class="split" style="margin-top:12px"><input id="snNew" placeholder="Add a store, e.g. Aldi" maxlength="30"><button type="button" class="btn sm" id="snAdd">Add</button></div>`,()=>{
+    const sh=$('#sheet');
+    sh.querySelectorAll('[data-sn]').forEach(i=>i.onchange=()=>{const old=list[+i.dataset.sn],v=i.value.trim().slice(0,30);if(!v||v===old){i.value=old;return}
+      shSave(d=>{d.stores=shStoresOf(d).map(s=>s===old?v:s);d.items.forEach(x=>{if(x.store===old)x.store=v})});toast(`${old} renamed to ${v}`);setTimeout(shStoresSheet,30)});
+    sh.querySelectorAll('[data-sup]').forEach(b=>b.onclick=()=>{const i=+b.dataset.sup;shSave(d=>{const a=shStoresOf(d);if(i>0)[a[i-1],a[i]]=[a[i],a[i-1]];d.stores=a});setTimeout(shStoresSheet,30)});
+    $('#snAdd').onclick=()=>{const v=$('#snNew').value.trim().slice(0,30);if(!v)return;shSave(d=>{const a=shStoresOf(d);if(!a.includes(v))a.push(v);d.stores=a});setTimeout(shStoresSheet,30)};
+  });
+}
+function shStoresOf(d){const s=[...(d.stores||[])];for(const it of d.items)if(it.store&&!s.includes(it.store))s.push(it.store);return s}
+async function shBills(w){
+  const ks=[...new Set([w.slice(0,7),shAdd(w,6).slice(0,7)])];let out=[];
+  for(const k of ks)out=out.concat((await loadReceipts(k)).filter(r=>r.week===w));
+  return out.sort((a,b)=>a.date.localeCompare(b.date));
+}
+async function shBillsView(){
+  const w=shWk;let L;try{L=await shBills(w)}catch(e){const b=$('#shBills');if(b)b.innerHTML='<p class="empty">Couldn’t load bills right now.</p>';return}
+  if(w!==shWk||tab!=='shop')return;shBillsC[w]=L;
+  const t=$('#shBillTot');if(t)t.textContent=money(L.reduce((a,r)=>a+(+r.total||0),0));
+  const box=$('#shBills');if(!box)return;
+  const P=(S&&S.plan)||(TPL&&TPL.plan),cn=id=>{const c=P&&P.cats.find(x=>x.id===id);return c?c.name:''};
+  box.innerHTML=L.length?L.map(r=>`<button class="rc" data-shrc="${esc(r.id)}"><span class="th" data-th="${esc(r.id)}">🧾</span><span class="w">${esc(r.store||'Bill')}<small>${esc(shFmt(r.date,{weekday:'short',month:'short',day:'numeric'}))}${(r.splits||[]).length?' · '+esc(r.splits.map(x=>cn(x.cat)).filter(Boolean).join(', ')):''}${r.by?' · '+esc(r.by):''}</small></span><span class="a">${money(r.total||0)}</span></button>`).join(''):'<p class="empty">No bills entered for this week yet.</p>';
+  box.querySelectorAll('[data-shrc]').forEach(b=>b.onclick=()=>{const r=L.find(x=>x.id===b.dataset.shrc);if(r)rcSheet(r)});
+  for(const r of L)imageURL(r).then(u=>{const e=box.querySelector(`[data-th="${r.id}"]`);if(u&&e){e.style.backgroundImage=`url("${u}")`;e.textContent=''}}).catch(()=>{});
+}
+function shBillSheet(){
+  if(!S||!(S.plan||(TPL&&TPL.plan))){toast('Start this month’s plan first, then enter bills');return}
+  const w=shWk,P=()=>{const k=bill.d.slice(0,7);return (S&&S.k===k&&S.plan)?S.plan:(TPL&&TPL.plan)||S.plan};
+  const bill={store:shStores()[0]||'',d:shDay(),total:'',main:'',parts:null,photo:null,url:null};
+  const sumSec=(sec,st)=>shBuys(w).filter(b=>b.store===st&&b.price>0&&(SH.items.find(i=>i.id===b.item)||{}).sec===sec).reduce((a,b)=>a+b.price,0);
+  const prefill=()=>{bill.parts=[];for(const s of ['toil','clean']){const v=r2(sumSec(s,bill.store)),c=shCat(s);if(v>0&&c)bill.parts.push({cat:c.id,amt:String(v),auto:true})}};
+  const catOpts=sel=>{const p=P();return groupsOf(p.cats).map(g=>`<optgroup label="${esc(g)}">${p.cats.filter(c=>gName(c)===g).map(c=>`<option value="${esc(c.id)}" ${c.id===sel?'selected':''}>${esc(c.name)}</option>`).join('')}</optgroup>`).join('')};
+  { const f=shCat('food');bill.main=f?f.id:(P().cats.find(c=>c.kind==='spend')||P().cats[0]||{}).id||''; }
+  prefill();
+  const rest=()=>{const t=evalExpr(bill.total);return (t>0?t:0)-bill.parts.reduce((a,x)=>{const v=evalExpr(x.amt);return a+(v>0?v:0)},0)};
+  const draw=()=>{
+    openSheet(head('Enter a bill')+`<div class="shform">
+     <label>Store<select id="bStore">${shStoreOpts(bill.store)}</select><input id="bStoreN" hidden placeholder="Store name" maxlength="30"></label>
+     <label>Day<input type="date" id="bDay" value="${bill.d}"></label>
+     <label class="wide">Total on the bill<input id="bTot" class="bigin" inputmode="decimal" placeholder="$0.00" value="${esc(bill.total)}"></label></div>
+     <div class="shphoto"><label class="btn line sm"><input type="file" accept="image/*" id="bPic" hidden>${bill.photo?'Change photo':'📷 Add photo of the bill'}</label>${bill.url?`<img src="${bill.url}" alt="Bill photo"><button type="button" class="linkb" id="bPicX">Remove</button>`:'<span class="muted">optional</span>'}</div>
+     <h3 class="shh">Counts in your budget as</h3>
+     <div class="split shmain"><select id="bMain" aria-label="Main category">${catOpts(bill.main)}</select><b id="bRest" class="shrest">${money(rest())}</b><span></span></div>
+     ${bill.parts.map((x,i)=>`<div class="split"><select data-pc="${i}" aria-label="Category">${catOpts(x.cat)}</select><input data-pa="${i}" inputmode="decimal" placeholder="Amount" value="${esc(x.amt)}"><button type="button" class="x" data-px="${i}" aria-label="Remove">×</button></div>`).join('')}
+     <button type="button" class="linkb" id="bSplit">+ Put part of it in another category</button>
+     ${bill.parts.some(x=>x.auto)?'<p class="muted" style="margin:0 2px 8px">Filled in from prices you entered for toiletries and cleaning at this store this week.</p>':''}
+     <p class="muted" id="bErr" style="margin:0 0 8px"></p>
+     <button type="button" class="btn full" id="bSave">Save bill</button>`,()=>{
+      const keep=()=>{bill.total=$('#bTot').value;bill.d=$('#bDay').value||bill.d;bill.main=$('#bMain').value;const st=shStoreVal($('#bStore'),$('#bStoreN'));if($('#bStore').value!=='__new')bill.store=st;else bill.storeNew=st};
+      const upd=()=>{$('#bRest').textContent=money(rest())};
+      shStorePick($('#bStore'),$('#bStoreN'));
+      $('#bStore').addEventListener('change',()=>{if($('#bStore').value==='__new')return;keep();if(bill.parts.every(x=>x.auto))prefill();draw()});
+      $('#bTot').oninput=()=>{bill.total=$('#bTot').value;upd()};
+      $('#sheet').querySelectorAll('[data-pa]').forEach(i=>i.oninput=()=>{const p=bill.parts[+i.dataset.pa];p.amt=i.value;p.auto=false;upd()});
+      $('#sheet').querySelectorAll('[data-pc]').forEach(s=>s.onchange=()=>{const p=bill.parts[+s.dataset.pc];p.cat=s.value;p.auto=false});
+      $('#sheet').querySelectorAll('[data-px]').forEach(b=>b.onclick=()=>{keep();bill.parts.splice(+b.dataset.px,1);draw()});
+      $('#bSplit').onclick=()=>{keep();const t=shCat('toil');bill.parts.push({cat:(t&&t.id)||bill.main,amt:''});draw()};
+      $('#bPic').onchange=()=>{const f=$('#bPic').files[0];if(!f)return;keep();bill.photo=f;if(bill.url)URL.revokeObjectURL(bill.url);bill.url=URL.createObjectURL(f);draw()};
+      const px=$('#bPicX');if(px)px.onclick=()=>{keep();bill.photo=null;bill.url=null;draw()};
+      $('#bSave').onclick=async()=>{keep();const err=t=>{$('#bErr').textContent=t};
+        const store=bill.storeNew||bill.store,total=evalExpr(bill.total);
+        if(!(total>0))return err('Enter the total on the bill.');
+        for(const x of bill.parts)if(!(evalExpr(x.amt)>0))return err('Each extra category needs an amount, or remove it with ×.');
+        const rs=r2(rest());if(rs<-0.004)return err('The extra categories add up to more than the bill.');
+        const splits=[...(rs>0.004?[{cat:bill.main,amt:rs}]:[]),...bill.parts.map(x=>({cat:x.cat,amt:evalExpr(x.amt)}))];
+        const id='r'+Date.now().toString(36)+rid().slice(0,4),k=bill.d.slice(0,7),me=who();
+        closeSheet();setSync('Saving…');
+        try{
+          if(bill.photo){const blob=await shrink(bill.photo,mode==='demo'?900:1600);await storeImage(k,id,blob);imgCache[id]=URL.createObjectURL(blob)}
+          const rec={id,date:bill.d,img:k,store,status:'done',splits,total:r2(total),by:me,week:w};if(!bill.photo)rec.noimg=true;
+          await saveReceipt(rec);
+          await monthTx(k,T=>{splits.forEach((x,i)=>T.push({id:id+'-'+i,date:bill.d,cat:x.cat,amt:x.amt,note:store||'Shopping',by:me,rc:id}))});
+          if(store&&!(SH.stores||[]).includes(store))shSave(d=>{const a=shStoresOf(d);if(!a.includes(store))a.push(store);d.stores=a});
+          if((SH.map||{}).food!==bill.main)shSave(d=>{d.map=d.map||{};d.map.food=bill.main});
+          setSync(mode==='demo'?'Demo mode · saved on this device':'Saved to Dropbox');
+          toast(`${money(total)} ${store} bill saved · in Actual`);
+        }catch(e){setSync(e.message||'Could not save the bill',true)}
+        hist={};repCache[k]=null;shSec='bills';render()};
+    });
+  };
+  draw();
+}
+
+/* ---- shopping report: what we buy, how much, where ---- */
+function shRange(r){const tw=shWeekOf(shToday()),ks=Object.keys(SH.weeks).sort();
+  const first=ks[0]||tw;let from;
+  if(r==='4w')from=shAdd(tw,-21);else if(r==='3m')from=shAdd(tw,-12*7);else if(r==='yr')from=shWeekOf(tw.slice(0,4)+'-01-01');else from=first<tw?first:tw;
+  const nW=Math.max(1,Math.round((new Date(tw)-new Date(from))/6048e5)+1);return {from,to:tw,nW}}
+function shStats(r,sec){
+  const {from,to,nW}=shRange(r),by={},stores={};
+  for(const [w,v] of Object.entries(SH.weeks)){if(w<from||w>to)continue;
+    for(const b of v.buys||[]){const it=SH.items.find(x=>x.id===b.item);const s2=(it&&it.sec)||b.sec||'food';if(sec!=='all'&&s2!==sec)continue;
+      const k=b.item,o=by[k]||(by[k]={id:k,name:(it&&it.name)||b.name||'Removed item',sec:s2,gone:!it,n:0,weeks:new Set(),qty:{},stores:{},paid:0,pq:{},pp:{}});
+      o.n++;o.weeks.add(w);o.qty[b.unit]=(o.qty[b.unit]||0)+(+b.qty||0);const st=b.store||'—';o.stores[st]=(o.stores[st]||0)+1;
+      if(b.price>0){o.paid+=b.price;o.pq[b.unit]=(o.pq[b.unit]||0)+(+b.qty||0);o.pp[b.unit]=(o.pp[b.unit]||0)+b.price}
+      const so=stores[st]||(stores[st]={name:st,items:new Set(),buys:0,priced:0});so.items.add(k);so.buys++;if(b.price>0)so.priced+=b.price}}
+  const rows=Object.values(by);
+  for(const o of rows){const u=Object.entries(o.qty).sort((a,b)=>b[1]-a[1]);o.main=u[0]?u[0][0]:'each';
+    o.qtyTxt=u.map(([un,q])=>shUnitTxt(r2(q),un)).join(' + ');o.perWk=r2((o.qty[o.main]||0)/nW);
+    o.unitPrice=o.pq[o.main]>0?o.pp[o.main]/o.pq[o.main]:null;o.storeTxt=Object.entries(o.stores).sort((a,b)=>b[1]-a[1]).map(([s,n])=>s+(Object.keys(o.stores).length>1?' '+n+'×':'')).join(', ')}
+  const never=SH.items.filter(it=>(sec==='all'||it.sec===sec)&&it.every!==0&&!by[it.id]);
+  return {rows,stores,never,nW,from,to}}
+function shReportSheet(){
+  if(!SH||SH.failed)return;
+  const R=shRep,st=shStats(R.range,R.sec);
+  const sorts={often:(a,b)=>b.weeks.size-a.weeks.size||b.n-a.n||a.name.localeCompare(b.name),spent:(a,b)=>b.paid-a.paid||b.n-a.n,az:(a,b)=>a.name.localeCompare(b.name)};
+  const rows=st.rows.sort(sorts[R.sort]);
+  const chip=(k,v,t)=>`<button type="button" data-rk="${k}" data-rv="${v}" aria-pressed="${R[k]===v}">${t}</button>`;
+  const per=st.nW===1?'this week':`${st.nW} weeks`;
+  const storeRows=Object.values(st.stores).sort((a,b)=>b.buys-a.buys);
+  openSheet(head('What we buy')+`
+   <div class="shchips">${chip('range','4w','4 weeks')}${chip('range','3m','3 months')}${chip('range','yr','This year')}${chip('range','all','All')}</div>
+   <div class="shchips">${chip('sec','all','Everything')}${SH_SECS.map(([s,n])=>chip('sec',s,n)).join('')}</div>
+   <div class="card shsum"><div class="r"><span><b>${rows.length}</b> different items · <b>${rows.reduce((a,o)=>a+o.n,0)}</b> purchases</span><span class="sub">${esc(per)}</span></div>
+    <div class="r"><span>Bills <b id="rpBills">…</b></span><span>per week <b id="rpWeek">…</b></span></div>
+    <div class="r sub"><span>Prices entered on items ${money(rows.reduce((a,o)=>a+o.paid,0))}</span></div></div>
+   <h3 class="shh">Where we shop</h3>
+   <div class="card" id="rpStores">${storeRows.length?storeRows.map(s=>`<div class="rprow"><span class="shn"><b>${esc(s.name)}</b><small>${s.items.size} item${s.items.size===1?'':'s'} · ${s.buys} purchase${s.buys===1?'':'s'}</small></span><span class="rpa" data-rps="${esc(s.name)}">${s.priced?money(s.priced):''}</span></div>`).join(''):'<p class="empty">Nothing bought in this period yet.</p>'}</div>
+   <h3 class="shh">What and how much</h3><div class="shchips sm" style="margin-bottom:8px">${chip('sort','often','Most often')}${chip('sort','spent','Most spent')}${chip('sort','az','A–Z')}</div>
+   <div class="card">${rows.length?rows.map(o=>`<div class="rprow"><span class="shn"><b>${esc(o.name)}${o.gone?' <small>(removed)</small>':''}</b><small>${o.weeks.size} of ${st.nW} wk · ${esc(o.qtyTxt)} total${st.nW>1?' · ~'+esc(shUnitTxt(o.perWk,o.main))+'/wk':''}</small><small>${esc(o.storeTxt)}</small></span><span class="rpa">${o.paid?money(o.paid):'—'}${o.unitPrice?`<small>${money(o.unitPrice)}/${esc(o.main==='each'?'each':o.main)}</small>`:''}</span></div>`).join(''):'<p class="empty">Nothing bought in this period yet.</p>'}</div>
+   ${st.never.length?`<h3 class="shh">On the list, not bought <small>${st.never.length}</small></h3><div class="card pad rpnever">${st.never.map(it=>esc(it.name)).join(' · ')}</div>`:''}
+   <button type="button" class="btn line full2" id="rpCsv" style="margin-top:14px">⬇ Download as a spreadsheet (CSV)</button>`,()=>{
+    const sh=$('#sheet');
+    sh.querySelectorAll('[data-rk]').forEach(b=>b.onclick=()=>{shRep[b.dataset.rk]=b.dataset.rv;const y=sh.scrollTop;shReportSheet();$('#sheet').scrollTop=y});
+    $('#rpCsv').onclick=()=>{const L=[['Item','List','Weeks bought','Times bought','Total quantity','Per week','Unit','Stores','Total paid','Avg price per unit']];
+      for(const o of rows)L.push([o.name,(SH_SECS.find(x=>x[0]===o.sec)||['',''])[1],o.weeks.size+' of '+st.nW,o.n,o.qtyTxt,o.perWk,o.main,o.storeTxt,o.paid?r2(o.paid):'',o.unitPrice?r2(o.unitPrice):'']);
+      const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([L.map(r=>r.map(csvCell).join(',')).join('\n')+'\n'],{type:'text/csv'}));a.download=`shopping-${st.from}-to-${shAdd(st.to,6)}.csv`;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1000)};
+    (async()=>{let all=[];try{const ms=[];for(let m=st.from.slice(0,7);m<=shAdd(st.to,6).slice(0,7);m=addM(m,1))ms.push(m);
+        for(const m of ms)all=all.concat((await loadReceipts(m)).filter(r=>r.week&&r.week>=st.from&&r.week<=st.to))}catch(e){}
+      if(!$('#rpBills'))return;const tot=all.reduce((a,r)=>a+(+r.total||0),0);$('#rpBills').textContent=money(tot)+' · '+all.length+' trip'+(all.length===1?'':'s');$('#rpWeek').textContent=money(tot/st.nW,0);
+      const bs={};for(const r of all){const k=r.store||'—';bs[k]=(bs[k]||0)+(+r.total||0)}
+      sh.querySelectorAll('[data-rps]').forEach(e=>{const v=bs[e.dataset.rps];if(v)e.innerHTML=`${money(v)}<small>in bills</small>`})})();
+  });
+}
+function shAddSheet(find){
+  const w=shWk;
+  const list=q=>{q=q.trim().toLowerCase();const r=SH.items.filter(it=>!q||it.name.toLowerCase().includes(q)||(it.store||'').toLowerCase().includes(q)||(it.note||'').toLowerCase().includes(q)).slice(0,60);
+    return (r.length?r.map(it=>{const got=shBuys(w).some(b=>b.item===it.id);return `<button class="fitem" data-sf="${esc(it.id)}"><span class="shchk sm" aria-pressed="${got}">${got?'✓':''}</span><span class="fn"><b>${esc(it.name)}</b><small>${esc(SH_SECS.find(x=>x[0]===it.sec)[1])} · ${esc(it.store||'no store')}</small></span><span class="fi">${esc(shUnitTxt(it.qty,it.unit))}</span></button>`}).join(''):'<p class="empty">Not on your list yet.</p>')
+      +(q&&!SH.items.some(it=>it.name.toLowerCase()===q)?`<button class="fitem" data-sfnew><span class="fn"><b>+ Add “${esc(q)}” as a new item</b></span></button>`:'')};
+  openSheet(head(find?'Find an item':'Add to '+esc(shWeekLabel(w)))+`${find?'':`<button type="button" class="choice" data-shbill><b>🧾 Enter a bill</b><span>Store, total and an optional photo. It counts in Actual.</span></button>`}
+   <input id="sfIn" class="findin" type="search" placeholder="Find an item, e.g. eggs" autocomplete="off"><div id="sfList" class="flist">${list('')}</div>`,()=>{
+    const bindL=()=>{$('#sheet').querySelectorAll('[data-sf]').forEach(b=>b.onclick=()=>shItemSheet(b.dataset.sf));const n=$('#sheet').querySelector('[data-sfnew]');if(n)n.onclick=()=>{const v=$('#sfIn').value.trim();shItemEdit(null,v.charAt(0).toUpperCase()+v.slice(1))}};
+    const i=$('#sfIn');i.oninput=()=>{$('#sfList').innerHTML=list(i.value);bindL()};bindL();if(find)setTimeout(()=>i.focus(),50);
+  });
+}
+document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('[data-shbill]');if(b){e.stopPropagation();shBillSheet()}});
+
 /* ---------------- home ---------------- */
-const TILES=[['plan','Plan','#7c83c9'],['actual','Actual','#1b9ce6'],['reminders','Reminders','#e0457b'],['receipts','Receipts','#3f8fb5'],['summary','Summary','#c08a4e'],['defaults','Defaults','#6f7f86']];
+const TILES=[['plan','Plan','#7c83c9'],['actual','Actual','#1b9ce6'],['shop','Shopping','#2fae7a'],['reminders','Reminders','#e0457b'],['receipts','Receipts','#3f8fb5'],['summary','Summary','#c08a4e'],['defaults','Defaults','#6f7f86']];
 function homeHTML(){
   const nm=who(),now=new Date(),sub={};
   const day=now.toLocaleDateString(undefined,{weekday:'long'}),date=now.toLocaleDateString(undefined,{month:'long',day:'numeric',year:'numeric'});
@@ -3055,7 +3516,8 @@ function homeHTML(){
   sub.settings='Names, PIN, appearance';
   sub.plan=sub.plan||'Set the budget for the month';sub.actual=sub.actual||'Log what you spend';
   const ed=S&&S.plan&&S.plan.editedAt?`Last change: <b>${esc(S.plan.editedBy||'someone')}</b>, ${esc(fmtWhen(S.plan.editedAt))}`:'';
-  const icon=t=>{if(t==='reminders')return BELL_SVG;if(t==='settings')return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>';
+  sub.shop='Weekly list and bills';
+  const icon=t=>{if(t==='reminders')return BELL_SVG;if(t==='shop')return CART_SVG;if(t==='settings')return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>';
     const b=document.querySelector(`#tabs button[data-t="${t}"] svg`);return b?b.outerHTML:''};
   const T=[...TILES,['settings','Settings','#8a94a6']];
   return `<div class="hero home compact"><small>${nm?'Hi '+esc(nm):'Hi there'}</small><div class="big hdate">${esc(day)}</div><p class="hd2">${esc(date)}</p>
@@ -3096,7 +3558,7 @@ try{history.replaceState({t:'home'},'')}catch(e){}
 addEventListener('popstate',e=>{if($('#veil').classList.contains('open')){$('#veil').classList.remove('open')}tab=(e.state&&e.state.t)||'home';render();scrollTo(0,0)});
 
 document.querySelectorAll('#tbar [data-tb]').forEach(b=>{const t=b.dataset.tb;if(t!=='home'){const sv=document.querySelector(`#tabs button[data-t="${t}"] svg`);if(sv)b.querySelector('.ti').innerHTML=sv.outerHTML}
-  b.onclick=()=>{if(t==='log'){quickLog();return}if(t==='find'){$('#findBtn').click();return}if(tab===t){scrollTo({top:0,behavior:'smooth'});return}go(t)}});
+  b.onclick=()=>{if(tab==='shop'&&(t==='log'||t==='find')){if(SH&&!SH.failed)shAddSheet(t==='find');return}if(t==='log'){quickLog();return}if(t==='find'){$('#findBtn').click();return}if(tab===t){scrollTo({top:0,behavior:'smooth'});return}go(t)}});
 $('#findTop').onclick=()=>$('#findBtn').click();
 /* ---------------- find ---------------- */
 $('#findBtn').onclick=()=>{
