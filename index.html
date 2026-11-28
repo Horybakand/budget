@@ -1307,6 +1307,17 @@ button.shst small{color:var(--mute);font-weight:600;font-size:12.5px}
 .rpst{display:flex;justify-content:space-between;align-items:baseline;padding:9px 12px 3px;font-weight:800;font-size:13px;color:var(--greenD);text-transform:uppercase;letter-spacing:.03em;border-top:1px solid var(--line)}
 .card>.rpst:first-child{border-top:0}.rpst small{text-transform:none;letter-spacing:0;color:var(--mute);font-weight:600}
 .shh.big{font-size:17px;margin-top:14px}
+.clrlist{display:grid;gap:8px}
+.clrlist .choice{text-align:left}
+.clrlist .choice.armed,.danger2.armed{border-color:#c2415f!important;background:color-mix(in srgb,#c2415f 12%,var(--card))!important;color:#a3304c!important}
+.clropts{display:grid;gap:8px;margin:10px 0 14px}
+.clropt{display:flex;gap:12px;align-items:flex-start;background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:11px 12px;cursor:pointer}
+.clropt:has(input:checked){border-color:var(--green);box-shadow:0 0 0 3px color-mix(in srgb,var(--green) 20%,transparent)}
+.clropt input:focus,.clropt input:focus-visible{outline:none;box-shadow:none}
+.clropt input{margin-top:3px;width:20px;height:20px;flex:none;accent-color:var(--green)}
+.clropt span{display:flex;flex-direction:column;gap:2px}.clropt small{color:var(--mute);font-size:13px}
+.btn.danger2{background:#c2415f}.btn.danger2:disabled{background:var(--track);color:var(--mute)}
+.btn.danger2.armed{background:#9e2442!important;color:#fff!important}
 .shmore{margin:4px 0 0;border:1px solid var(--line);border-radius:14px;padding:2px 12px;background:var(--card)}
 .shmore summary{font-weight:700;padding:10px 0;cursor:pointer;color:var(--greenD);font-size:14px}
 .shform .opt{font-weight:500}
@@ -1404,7 +1415,7 @@ body.selecting .toast{bottom:calc(210px + env(safe-area-inset-bottom))!important
    (Or leave it empty and type it into the setup screen on each device.)
    ====================================================================== */
 const APP_KEY = '';
-const APP_VERSION = '58 · Nov 28, 2026';
+const APP_VERSION = '59 · Nov 28, 2026';
 
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -1792,7 +1803,7 @@ setInterval(()=>{if(document.visibilityState==='visible')refreshQuiet()},60000);
 
 /* ---------------- toast ---------------- */
 let toastT=null,undoFn=null;
-function toast(msg,undo){$('#tmsg').textContent=msg;undoFn=undo||null;$('#tundo').hidden=!undo;$('#toast').classList.add('on');clearTimeout(toastT);toastT=setTimeout(()=>{$('#toast').classList.remove('on');undoFn=null},5000)}
+function toast(msg,undo,ms){$('#tmsg').textContent=msg;undoFn=undo||null;$('#tundo').hidden=!undo;$('#toast').classList.add('on');clearTimeout(toastT);toastT=setTimeout(()=>{$('#toast').classList.remove('on');undoFn=null},ms||5000)}
 $('#tundo').onclick=()=>{const f=undoFn;undoFn=null;$('#toast').classList.remove('on');if(f)f()};
 
 /* ---------------- render ---------------- */
@@ -2654,9 +2665,110 @@ function settingsHTML(){
   <details class="sdet"><summary>Change PIN</summary><div class="f"><input id="pinOld" type="password" inputmode="numeric" maxlength="4" placeholder="Current PIN" autocomplete="off"><input id="pinNew" type="password" inputmode="numeric" maxlength="4" placeholder="New 4-digit PIN" autocomplete="off" style="margin-top:8px"><input id="pinNew2" type="password" inputmode="numeric" maxlength="4" placeholder="New PIN again" autocomplete="off" style="margin-top:8px"><button type="button" class="btn line sm" id="pinSave" style="margin-top:8px">Save new PIN</button><span class="muted" id="pinMsg"></span><span class="muted">One PIN for both of you. The change reaches the other phone through Dropbox.</span></div></details>
   <div class="f"><label class="sw"><input type="checkbox" id="copySw" ${copyOn()?"checked":""}><span><b>Show “Copy amounts” buttons</b><br><span class="muted">Copying into Actual only works once a month has begun.</span></span></label></div><div class="f"><label class="sw"><input type="checkbox" id="pastSw" ${editPast?"checked":""}><span><b>Edit past months</b><br><span class="muted">Finished months are locked so they can’t change by accident. This turns itself off when the app locks.</span></span></label></div>${appKey()&&mode!=="demo"?`<div class="f"><span class="flab">Dropbox App key</span><code class="akey">${esc(appKey())}</code><span class="muted">Needed once if you install the app or use a new browser. It isn’t a password.</span></div>`:""}<div class="f"><label for="thSel">Appearance on this device</label><select id="thSel">${[['auto','Automatic (follow phone)'],['light','Light'],['dark','Dark']].map(([v,l])=>`<option value="${v}" ${(ls.get('mb-theme')||'auto')===v?'selected':''}>${l}</option>`).join('')}</select></div><div class="f"><label for="curSel">Currency</label><select id="curSel">${['USD','CAD','EUR','GBP','AUD','NZD','INR','NGN','GHS','KES','ZAR','MXN','JPY','CHF'].map(c=>`<option ${c===cur?'selected':''}>${c}</option>`).join('')}</select></div>
   <p class="muted">${mode==='demo'?'You’re looking at sample numbers saved only on this device.':'Saved in your Dropbox app folder: template.json (defaults), a plan file and a spending file per month, and your receipt photos.'}</p>
-  <p class="muted">App version <b>${APP_VERSION}</b></p>
+  ${clrHTML()}
+  <p class="muted" style="margin-top:18px">App version <b>${APP_VERSION}</b></p>
   <div class="stack">${mode==='demo'?'<button class="btn" id="exitDemo">Leave demo and set up mine</button>':'<button class="btn line" id="signout">Sign out of Dropbox on this device</button>'}</div></div>`;
 }
+/* ---------------- Settings: clear & reset ----------------
+   Every clear asks for a second tap, then shows a toast with Undo for a while. */
+function clrArm(btn,label,go){ /* first tap arms, second tap runs */
+  if(btn.dataset.armed){clearTimeout(btn._t);delete btn.dataset.armed;go();return}
+  btn.dataset.armed='1';const old=btn.innerHTML;btn.classList.add('armed');btn.innerHTML=label;
+  btn._t=setTimeout(()=>{delete btn.dataset.armed;btn.classList.remove('armed');btn.innerHTML=old},4000);
+}
+const CLR_MONTH=[['actual','Actual entries','Removes every spending and income entry and the done ✓ marks. The plan stays.'],
+  ['zero','Planned amounts to $0','Keeps every line and sets each planned amount to $0.'],
+  ['defaults','Plan back to Defaults','Lines and amounts become your every-month Defaults again. Entries stay.'],
+  ['all','Everything','Clears Actual and puts the plan back to Defaults.']];
+async function clrMonthSheet(){
+  let ks=[];try{ks=await listMonths()}catch(e){}
+  if(!ks.length){toast('No months to clear yet');return}
+  let k=ks.includes(key)?key:ks[ks.length-1],what=null,info=null;
+  const opts=[...ks].reverse().map(m=>({v:m,l:mName(m,'sy')}));
+  openSheet(head('Clear a month')+`<div class="pastpick">${comboHTML('m','Month',opts,k)}</div>
+   <div class="card shsum" id="clrInfo"><span class="muted">Looking at the month…</span></div>
+   <div class="clropts">${CLR_MONTH.map(([v,t,d])=>`<label class="clropt"><input type="radio" name="clrW" value="${v}"><span><b>${t}</b><small>${d}</small></span></label>`).join('')}</div>
+   <button type="button" class="btn full danger2" id="clrGo" disabled>Choose what to clear</button>
+   <p class="muted" style="margin:10px 2px 0">You can undo right after. Receipt photos stay in Receipts.</p>`,()=>{
+    const btnTxt=()=>{const b=$('#clrGo');b.disabled=!what;b.textContent=what?`Clear ${CLR_MONTH.find(x=>x[0]===what)[1].toLowerCase()} · ${mName(k,'sy')}`:'Choose what to clear'};
+    const look=async()=>{const box=$('#clrInfo');box.innerHTML='<span class="muted">Looking at the month…</span>';
+      info=(S&&S.k===k&&S.plan)?S:await loadMonth(k);if(!$('#clrInfo'))return;
+      const T=info.txns||[],sp=T.filter(t=>!String(t.cat).startsWith('inc:')).reduce((a,t)=>a+(+t.amt||0),0),inc=T.filter(t=>String(t.cat).startsWith('inc:')).reduce((a,t)=>a+(+t.amt||0),0);
+      const P=info.plan,pl=P?P.cats.reduce((a,c)=>a+(+c.planned||0),0):0;
+      box.innerHTML=`<div class="r"><span><b>${esc(mName(k,'sy'))}</b></span><span class="sub">${P?P.cats.length+' lines':'no plan'}</span></div>
+        <div class="r"><span>Actual: <b>${T.length}</b> entr${T.length===1?'y':'ies'}</span><span>spent <b>${money(sp,0)}</b> · in <b>${money(inc,0)}</b></span></div>
+        <div class="r"><span>Planned expenses</span><span><b>${money(pl,0)}</b></span></div>`};
+    bindCombo($('#sheet'),'m',opts,k,v=>{k=v;$('#sheet [data-cb=m] .cbi').value=mName(v,'sy');btnTxt();look()});
+    $('#sheet').querySelectorAll('[name=clrW]').forEach(r=>r.onchange=()=>{what=r.value;btnTxt()});
+    look();
+    $('#clrGo').onclick=()=>clrArm($('#clrGo'),'Tap again to clear it',()=>clrMonth(k,what));
+  });
+}
+async function clrMonth(k,what){
+  closeSheet();setSync('Clearing…');
+  try{
+    const st=(S&&S.k===k&&S.plan)?S:await loadMonth(k);if(!st.plan&&what!=='actual'){toast('That month has no plan to change');return}
+    const snap={plan:st.plan?clone(st.plan):null,txns:clone(st.txns||[])};
+    if(what==='actual'||what==='all'){
+      await mutMonth(k,'tx',T=>{T.splice(0,T.length)});
+      if(st.plan)await mutMonth(k,'plan',P=>{P.cats.forEach(c=>{c.closed=false;delete c.closeMode;if(c.moved)c.moved=false})})}
+    if(what==='zero')await mutMonth(k,'plan',P=>{P.cats.forEach(c=>{c.planned=0;delete c.items;delete c.cut});P.income.forEach(i=>{i.amt=0})});
+    if(what==='defaults'||what==='all'){const np=await planFor(k);
+      await mutMonth(k,'plan',P=>{const keep=id=>P.cats.find(x=>x.id===id)||{};
+        P.income=clone(np.income);P.cats=np.cats.map(c=>{const o=keep(c.id);return Object.assign(c,{closed:what==='all'?false:!!o.closed,moved:what==='all'?false:!!o.moved,att:o.att})})})}
+    hist={};repCache[k]=null;
+    const label={actual:'Actual entries cleared',zero:'Planned amounts set to $0',defaults:'Plan is back to Defaults',all:'Month cleared'}[what];
+    toast(`${mName(k,'s')}: ${label}`,async()=>{
+      if(snap.plan)await mutMonth(k,'plan',P=>{for(const f of Object.keys(P))delete P[f];Object.assign(P,clone(snap.plan))});
+      await mutMonth(k,'tx',T=>{T.splice(0,T.length,...clone(snap.txns))});hist={};repCache[k]=null;toast(`${mName(k,'s')} is back as it was`)},15000);
+    if(S&&S.k===k)render();
+  }catch(e){setSync(e.message||'Could not clear',true)}
+}
+async function clrShopSheet(){
+  if(!SH||SH.failed)await shOpen();if(!SH||SH.failed){toast('Couldn’t load the shopping list');return}
+  const ks=Object.keys(SH.weeks).sort().reverse();if(!ks.length){toast('No shopping weeks yet');return}
+  let k=SH.cur&&ks.includes(SH.cur)?SH.cur:ks[0],day='';
+  const days=k=>{const m={};for(const b of SH.weeks[k].buys||[])m[b.d]=(m[b.d]||0)+1;return Object.entries(m).sort()};
+  const draw=()=>{const bs=SH.weeks[k].buys||[],dd=days(k);
+    openSheet(head('Clear shopping purchases')+`<label class="f"><span class="flab">Week</span><select id="cwWk">${ks.map(x=>`<option value="${esc(x)}" ${x===k?'selected':''}>${esc(shPerLabel(x))}${x===SH.cur?' (this week)':''} · ${(SH.weeks[x].buys||[]).length} purchases</option>`).join('')}</select></label>
+     <div class="clropts"><label class="clropt"><input type="radio" name="cwW" value="" ${day?'':'checked'}><span><b>The whole week</b><small>${bs.length} purchase${bs.length===1?'':'s'} on ${dd.length} day${dd.length===1?'':'s'}</small></span></label>
+     ${dd.map(([d,n])=>`<label class="clropt"><input type="radio" name="cwW" value="${d}" ${day===d?'checked':''}><span><b>Only ${esc(shFmt(d,{weekday:'long',month:'short',day:'numeric'}))}</b><small>${n} purchase${n===1?'':'s'}</small></span></label>`).join('')}</div>
+     <button type="button" class="btn full danger2" id="cwGo" ${bs.length?'':'disabled'}>${bs.length?'Clear these purchases':'Nothing bought this week'}</button>
+     <p class="muted" style="margin:10px 2px 0">Your list of items stays. Only what was checked as bought goes.</p>`,()=>{
+      $('#cwWk').onchange=()=>{k=$('#cwWk').value;day='';draw()};
+      $('#sheet').querySelectorAll('[name=cwW]').forEach(r=>r.onchange=()=>{day=r.value});
+      const g=$('#cwGo');if(g)g.onclick=()=>clrArm(g,'Tap again to clear them',()=>{
+        const gone=(SH.weeks[k].buys||[]).filter(b=>!day||b.d===day);
+        shSave(d=>{const W=d.weeks[k];if(W)W.buys=W.buys.filter(b=>!(day?b.d===day:true))});closeSheet();
+        toast(`${gone.length} purchase${gone.length===1?'':'s'} cleared`,()=>shSave(d=>{const W=shWeekData(d,k);for(const b of gone)if(!W.buys.some(x=>x.id===b.id))W.buys.push(b)}),15000)});
+    })};
+  draw();
+}
+async function clrShopHistory(){
+  if(!SH||SH.failed)await shOpen();if(!SH||SH.failed)return;
+  const old=Object.keys(SH.weeks).filter(k=>k!==SH.cur);if(!old.length){toast('There are no past shopping weeks');return}
+  const snap={};for(const k of old)snap[k]=clone(SH.weeks[k]);
+  shSave(d=>{for(const k of old)delete d.weeks[k]});
+  toast(`${old.length} past week${old.length===1?'':'s'} deleted`,()=>shSave(d=>{for(const k of old)if(!d.weeks[k])d.weeks[k]=snap[k]}),15000);
+}
+async function clrShopList(){
+  if(!SH||SH.failed)await shOpen();if(!SH||SH.failed)return;
+  const snap={items:clone(SH.items),stores:clone(SH.stores||[])},seed=shSeed();
+  shSave(d=>{d.items=seed.items;d.stores=seed.stores});
+  toast('Shopping list is back to the starter list',()=>shSave(d=>{d.items=snap.items;d.stores=snap.stores}),15000);
+}
+function clrHTML(){return `<h3 class="shh big" style="margin-top:20px">Clear &amp; reset</h3>
+  <div class="clrlist">
+   <button type="button" class="choice" data-clr="month"><b>🧹 Clear a month…</b><span>Actual entries, planned amounts, or back to Defaults</span></button>
+   <button type="button" class="choice" data-clr="shop"><b>🛒 Clear shopping purchases…</b><span>For a whole week or a single day</span></button>
+   <button type="button" class="choice" data-clr="hist"><b>🗂 Delete past shopping weeks</b><span>Your list and this week stay</span></button>
+   <button type="button" class="choice" data-clr="list"><b>↺ Start the shopping list over</b><span>Back to the starter grocery list. Your purchase history stays.</span></button>
+  </div>`}
+function bindClr(){const sh=$('#sheet');
+  sh.querySelectorAll('[data-clr]').forEach(b=>b.onclick=()=>{const a=b.dataset.clr;
+    if(a==='month')clrMonthSheet();else if(a==='shop')clrShopSheet();
+    else clrArm(b,`<b>Tap again to confirm</b><span>${a==='hist'?'Deletes every past shopping week':'Replaces your items with the starter list'}</span>`,()=>{closeSheet();a==='hist'?clrShopHistory():clrShopList()})})}
+
 /* ---- Defaults are locked; changing them needs both of you ---- */
 const UNLOCK_HRS=24;
 function lockState(){const L=(TPL&&TPL.plan&&TPL.plan.lock)||{},now=Date.now();
@@ -3763,6 +3875,7 @@ function openSettings(){
     const pss=$('#pastSw');if(pss)pss.onchange=()=>{editPast=pss.checked;toast(editPast?'Past months can be changed until the app locks':'Past months are locked again');render()};
     const so=$('#signout');if(so)so.onclick=()=>{$('#veil').classList.remove('open');signOut()};
     const ed=$('#exitDemo');if(ed)ed.onclick=()=>{$('#veil').classList.remove('open');exitDemo()};
+    bindClr();
   });
 }
 function bindHome(){
