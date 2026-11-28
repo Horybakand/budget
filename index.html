@@ -1257,6 +1257,60 @@ body[data-tab=actual] .hero .psub{margin:0}
 .shrest{text-align:right;font-size:16px}
 .bigin{font-size:22px!important;font-weight:800}
 /* v56 */
+
+/* v57: windows stand apart from the page */
+:root{--sheetbg:color-mix(in srgb,var(--green) 11%,var(--bg))}
+.veil{background:rgba(6,16,30,.6);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
+.sheet{background:var(--sheetbg);border-top:4px solid var(--green);box-shadow:0 -12px 40px rgba(0,0,0,.35);padding-top:0}
+@media(min-width:760px){.sheet{border:2px solid var(--green)}}
+.sheet .grab{margin:8px auto 0;background:color-mix(in srgb,var(--green) 40%,var(--line))}
+.shead{position:sticky;top:0;z-index:6;background:var(--sheetbg);margin:0 calc(-1*max(18px,env(safe-area-inset-left)));padding:6px max(18px,env(safe-area-inset-left)) 8px;transition:box-shadow .2s}
+.shead.stuck{box-shadow:0 1px 0 var(--line),0 8px 14px -10px rgba(0,0,0,.35)}
+.shead .x{width:46px;height:46px;border-radius:50%;background:var(--card);border:1.5px solid color-mix(in srgb,var(--green) 35%,var(--line));color:var(--ink);font-size:30px;line-height:1;font-weight:400;box-shadow:0 2px 8px rgba(0,0,0,.14);display:grid;place-items:center;padding:0 0 3px}
+/* a soft light while a finger is on any button */
+button.pressed:not(.shchk):not(.shdel):not(.btn),.shrow.pressed{background-color:color-mix(in srgb,var(--green) 18%,var(--card))!important}
+button.pressed,.tile.pressed,.fitem.pressed{box-shadow:0 0 0 4px color-mix(in srgb,var(--green) 30%,transparent)!important}
+.btn.pressed{filter:brightness(1.15)}
+.shead .x.pressed{background:color-mix(in srgb,var(--green) 26%,var(--card))!important;transform:scale(.93)}
+/* v57: Actual long-press selection */
+.rw.ab2.sel{background:color-mix(in srgb,var(--green) 14%,var(--card));border-radius:14px;box-shadow:inset 0 0 0 2px var(--green)}
+.aselecting #tbar{display:none}
+/* v57: shopping list */
+.shseg.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+button.shst{display:flex;align-items:center;gap:8px;width:100%;border:0;background:none;padding:14px 4px 6px;margin:0;color:var(--ink);text-align:left;font:inherit;font-size:15.5px;font-weight:800;min-height:0}
+button.shst .stn{flex:1}
+button.shst .car{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--track);color:var(--greenD);font-size:15px;transition:transform .22s;transform:rotate(90deg)}
+button.shst[aria-expanded=false] .car{transform:rotate(0deg)}
+button.shst small{color:var(--mute);font-weight:600;font-size:12.5px}
+.shrow{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;background:var(--card);position:relative;padding:6px 8px 6px 12px;gap:8px}
+.shrow .shn{border:0;background:none;padding:6px 0;text-align:left;font:inherit;color:inherit;min-height:0;cursor:pointer}
+.shq{flex:none;border:1px solid var(--line);background:var(--track);color:var(--ink);font-weight:800;font-size:13.5px;border-radius:999px;padding:0 11px;min-height:34px;max-width:42%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.shrow.got{background:color-mix(in srgb,#2fae7a 11%,var(--card))}
+.shrow.got .shn b{text-decoration:line-through;text-decoration-thickness:2px;text-decoration-color:color-mix(in srgb,#2fae7a 70%,transparent);color:var(--mute)}
+.shrow.got .shn small{color:#1f8a5e;font-weight:700}
+.shrow.got .shq{background:color-mix(in srgb,#2fae7a 18%,var(--card));border-color:color-mix(in srgb,#2fae7a 40%,var(--line));color:#1f8a5e}
+.shrow.later .shn,.shrow.later .shq{opacity:.55}
+.shrow.dragging{z-index:20;box-shadow:0 14px 30px -6px rgba(0,0,0,.35);border-radius:14px;transition:none!important;background:var(--card)}
+.shdragging{overflow-anchor:none}
+.shdragging .shrow{cursor:grabbing}
+.shcard>.shrow:first-child{border-top-left-radius:inherit;border-top-right-radius:inherit}
+.shcard>.shrow:last-child{border-bottom-left-radius:inherit;border-bottom-right-radius:inherit}
+.wkbar{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 12px 10px 14px;margin:0 0 10px}
+.wkbar span{display:flex;flex-direction:column}.wkbar b{font-size:16px}.wkbar small{color:var(--mute);font-size:12.5px;font-weight:600}
+.wkbar.due{border-color:color-mix(in srgb,var(--green) 55%,var(--line));background:color-mix(in srgb,var(--green) 8%,var(--card))}
+.wkbar .btn{min-height:38px;padding:0 14px}
+.shrow .stamp{color:#1f8a5e;font-weight:700;white-space:normal}
+.shrow.had{box-shadow:inset 4px 0 0 #2fae7a}
+.shaddrow{display:block;width:100%;text-align:left;border:0;border-top:1px solid var(--line);background:none;color:var(--greenD);font-weight:700;font-size:14px;padding:11px 14px;min-height:0}
+.shcard>.shaddrow:first-child{border-top:0}
+.wknav.sm{margin-bottom:8px}.wknav.sm b{font-size:14px}.wknav button:disabled{opacity:.3}
+.rpst{display:flex;justify-content:space-between;align-items:baseline;padding:9px 12px 3px;font-weight:800;font-size:13px;color:var(--greenD);text-transform:uppercase;letter-spacing:.03em;border-top:1px solid var(--line)}
+.card>.rpst:first-child{border-top:0}.rpst small{text-transform:none;letter-spacing:0;color:var(--mute);font-weight:600}
+.shh.big{font-size:17px;margin-top:14px}
+.shmore{margin:4px 0 0;border:1px solid var(--line);border-radius:14px;padding:2px 12px;background:var(--card)}
+.shmore summary{font-weight:700;padding:10px 0;cursor:pointer;color:var(--greenD);font-size:14px}
+.shform .opt{font-weight:500}
+
 .shtools{display:flex;justify-content:space-between;gap:8px;margin:2px 0 4px}
 .shtools button{border:0;background:none;color:var(--greenD);font-weight:700;font-size:14px;min-height:38px;padding:0 4px}
 .shtools button[aria-pressed=true]{color:#fff;background:var(--greenD);border-radius:999px;padding:0 14px}
@@ -1350,7 +1404,7 @@ body.selecting .toast{bottom:calc(210px + env(safe-area-inset-bottom))!important
    (Or leave it empty and type it into the setup screen on each device.)
    ====================================================================== */
 const APP_KEY = '';
-const APP_VERSION = '56 · Nov 27, 2026';
+const APP_VERSION = '58 · Nov 28, 2026';
 
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -1748,7 +1802,19 @@ function pageHead(){
   if(!TAB_ICONS[tab]){const b=document.querySelector(`#tabs button[data-t="${tab}"] svg`);TAB_ICONS[tab]=b?b.outerHTML:''}
   return `<div class="pagehead"><span class="pi">${TAB_ICONS[tab]}</span><b>${names[tab]||''}</b><span class="m">· ${tab==='defaults'?'every month':esc(mName(key))}</span></div>`;
 }
-function render(){
+
+/* things that change place slide there instead of jumping (FLIP) */
+const noMotion=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
+function flipSnap(root){const m=new Map();if(noMotion()||!root)return m;root.querySelectorAll('[data-flip]').forEach(e=>{if(e.offsetParent)m.set(e.dataset.flip,e.getBoundingClientRect().top)});return m}
+function flipPlay(m,root){if(!m||!m.size||!root)return;
+  root.querySelectorAll('[data-flip]').forEach(e=>{if(!e.offsetParent)return;const t=m.get(e.dataset.flip);
+    if(t==null){e.animate([{opacity:0,transform:'scale(.97)'},{opacity:1,transform:'none'}],{duration:260,easing:'ease-out'});return}
+    const d=t-e.getBoundingClientRect().top;if(Math.abs(d)<1||Math.abs(d)>2500)return;
+    e.animate([{transform:`translateY(${d}px)`},{transform:'translateY(0)'}],{duration:420,easing:'cubic-bezier(.2,.8,.2,1)'})})}
+let flipKey='';
+function render(){const k=tab+'|'+key+'|'+(tab==='shop'?shWk+shSec+shEditing:''),V=$('#view'),snap=k===flipKey&&V.children.length?flipSnap(V):null;
+  render0();flipKey=k;if(snap)flipPlay(snap,V);if(tab==='actual'&&aSel)aMark();else aPanel()}
+function render0(){
   const signed=mode!=='setup';
   $('#tabs').hidden=true;$('#findBtn').hidden=$('#dockHome').hidden=true;$('#findTop').hidden=true;$('#tbar').hidden=!signed||!unlocked||tab==='home';document.body.classList.toggle('in',!!(signed&&unlocked));document.querySelectorAll('#tbar [data-tb]').forEach(b=>b.classList.toggle('on',b.dataset.tb===tab));$('#mnav').style.visibility=signed?'visible':'hidden';
   if(tab==='week')tab='actual';if(tab==='charts')tab='summary';
@@ -1889,13 +1955,14 @@ function catBar(c,C,SC){
   else if(s.st==='over')sub=`<span class="t-over">over ${money(-s.rawAvail,0)}</span>`;
   else if(c.kind==='bill')sub=s.st==='paid'?'<span class="t-ok">paid ✓</span>':`${money(Math.max(0,s.avail),0)} to pay`;
   else sub=`${money(s.avail,0)} left`;
+  if(c.cut&&c.cut.pct>=100&&!s.spent)sub='⏸ paused';
   const ck=save?`<button class="ck${c.moved?' on':''}" data-moved="${esc(c.id)}" aria-pressed="${!!c.moved}" aria-label="${c.moved?'Not moved yet':'Mark as moved to savings'}: ${esc(c.name)}"><svg viewBox="0 0 24 24" width="24" height="24"><circle cx="12" cy="12" r="10.5"/><path d="M7.5 12.4l3 3 6-6.4"/></svg></button>`:`<button class="ck${s.closed?' on':''}" data-done="${esc(c.id)}" aria-pressed="${s.closed}" aria-label="${s.closed?'Reopen':'Mark done for the month'}: ${esc(c.name)}"><svg viewBox="0 0 24 24" width="24" height="24"><circle cx="12" cy="12" r="10.5"/><path d="M7.5 12.4l3 3 6-6.4"/></svg></button>`;
-  return `<div class="rw ab ab2${addMode&&sumSel.has(c.id)?' picked':''}" data-sid="${esc(c.id)}"><button class="row abt" data-cat="${esc(c.id)}">${abBar(v,s.budget,save?'sv':'',c.name,SC,hasAtt)}${abAmt(v,s.budget,save?'sv':'',sub)}</button>${ck}</div>`;
+  return `<div class="rw ab ab2${addMode&&sumSel.has(c.id)?' picked':''}" data-sid="${esc(c.id)}" data-flip="a${esc(c.id)}" data-ak="cat:${esc(c.id)}"><button class="row abt" data-cat="${esc(c.id)}">${abBar(v,s.budget,save?'sv':'',c.name,SC,hasAtt)}${abAmt(v,s.budget,save?'sv':'',sub)}</button>${ck}</div>`;
 }
 function incBar(i,C,SC){
   const v=C.inc[i.id]||{exp:i.amt,got:0},done=v.exp>0&&v.got>=v.exp-0.004,extra=v.got-v.exp;
   const sub=extra>0.004&&v.exp>0?`+${money(extra,0)} extra`:done?'<span class="t-ok">all in ✓</span>':v.exp>0?`${money(Math.max(0,v.exp-v.got),0)} to come`:'received';
-  return `<div class="rw ab ab2"><button class="row abt" data-incopen="${esc(i.id)}">${abBar(v.got,v.exp,'',i.name,SC)}${abAmt(v.got,v.exp,'',sub)}</button><span class="ck0"></span></div>`;
+  return `<div class="rw ab ab2" data-flip="ai${esc(i.id)}" data-ak="inc:${esc(i.id)}"><button class="row abt" data-incopen="${esc(i.id)}">${abBar(v.got,v.exp,'',i.name,SC)}${abAmt(v.got,v.exp,'',sub)}</button><span class="ck0"></span></div>`;
 }
 function donorFor(id,C,need){
   if(C.rta>=need)return {id:'rta',name:'Ready to assign',spare:C.rta};
@@ -2256,6 +2323,57 @@ async function selAct(a){
     });
   }
 }
+
+/* ---- Actual: long-press to select lines. Copy their actual amounts; never delete here ---- */
+let aSel=false,aSet=new Set(),alpT=null,alpXY=null,alpFired=false;
+const aSelOK=()=>tab==='actual'&&S&&S.plan&&!addMode;
+document.addEventListener('pointerdown',e=>{const r=e.target.closest&&e.target.closest('.rw.ab2[data-ak] .row.abt');if(!r||!aSelOK())return;const k=r.parentNode.dataset.ak;
+  alpXY=[e.clientX,e.clientY];alpFired=false;clearTimeout(alpT);alpT=setTimeout(()=>{alpFired=true;if(!aSel){aSel=true;aSet=new Set()}aSet.add(k);try{navigator.vibrate&&navigator.vibrate(15)}catch(x){}aMark()},480)},{passive:true});
+document.addEventListener('pointermove',e=>{if(alpXY&&Math.hypot(e.clientX-alpXY[0],e.clientY-alpXY[1])>10){clearTimeout(alpT);alpXY=null}},{passive:true});
+['pointerup','pointercancel','scroll'].forEach(ev=>document.addEventListener(ev,()=>{clearTimeout(alpT);alpXY=null},{passive:true,capture:true}));
+document.addEventListener('contextmenu',e=>{if(e.target.closest&&e.target.closest('.rw.ab2'))e.preventDefault()});
+document.addEventListener('click',e=>{const r=e.target.closest&&e.target.closest('.rw.ab2[data-ak]');
+  if(alpFired&&r){alpFired=false;e.stopPropagation();e.preventDefault();return}
+  if(!aSel||!r||tab!=='actual')return;e.stopPropagation();e.preventDefault();const k=r.dataset.ak;aSet.has(k)?aSet.delete(k):aSet.add(k);if(!aSet.size){aEnd();return}aMark()},true);
+function aEnd(){aSel=false;aSet=new Set();document.querySelectorAll('.rw.ab2.sel').forEach(r=>r.classList.remove('sel'));aPanel()}
+function aMark(){document.querySelectorAll('.rw.ab2[data-ak]').forEach(r=>r.classList.toggle('sel',aSet.has(r.dataset.ak)));aPanel()}
+function aLines(){const C=calc(S.plan,S.txns,key);return [...aSet].map(k=>{const [t,id]=k.split(':');const l=(t==='inc'?S.plan.income:S.plan.cats).find(x=>x.id===id);if(!l)return null;
+  const act=t==='inc'?((C.inc[id]||{}).got||0):barVal(l,C),pl=t==='inc'?(+l.amt||0):C.by[id].budget;return {t,id,l,act:r2(act),pl}}).filter(Boolean)}
+function aPanel(){let el=$('#aselBar');
+  if(!aSel||tab!=='actual'||!S||!S.plan){if(el)el.remove();document.body.classList.remove('aselecting');if(tab!=='actual'){aSel=false;aSet=new Set()}return}
+  document.body.classList.add('aselecting');
+  if(!el){el=document.createElement('div');el.id='aselBar';el.className='sumbar selbar';document.body.appendChild(el)}
+  const L=aLines(),act=L.reduce((a,x)=>a+x.act,0),pl=L.reduce((a,x)=>a+x.pl,0),allN=document.querySelectorAll('.rw.ab2[data-ak]').length;
+  el.innerHTML=`<div class="sbtop"><span><b>${L.length}</b> selected · actual <b>${money(act,0)}</b> <span class="muted">of ${money(pl,0)} planned</span></span><span><button type="button" class="linkb" data-as="all">${aSet.size>=allN?'':'Select all'}</button> <button type="button" class="linkb" data-as="cancel">Cancel</button></span></div>
+   <div class="selacts"><button type="button" class="btn line sm" data-as="copy">Copy actual to a plan…</button><button type="button" class="btn line sm" data-as="def">Actual → Defaults</button></div>`;
+  el.querySelectorAll('[data-as]').forEach(b=>b.onclick=()=>aAct(b.dataset.as));
+}
+async function aAct(a){
+  const L=aLines();
+  if(a==='cancel'){aEnd();return}
+  if(a==='all'){document.querySelectorAll('.rw.ab2[data-ak]').forEach(r=>aSet.add(r.dataset.ak));aMark();return}
+  if(a==='def'){if(!TPL||!TPL.plan)return;if(lockState().st!=='open'){toast('Defaults are locked. Ask to change them first, then try again.');return}
+    const ops=L.map(x=>{const f=x.t==='inc'?'amt':'planned',ex=(x.t==='inc'?TPL.plan.income:TPL.plan.cats).find(y=>y.id===x.id);
+      if(ex)return {do:'set',t:x.t,id:x.id,f,v:x.act,old:ex[f]};const n=cleanCopy(x.l);delete n.only;n[f]=x.act;return {do:'add',t:x.t,id:n.id,line:n}});
+    aEnd();changeDefaultMany(ops,`Defaults now use the actual amounts of ${L.length} line${L.length>1?'s':''}`);return}
+  if(a==='copy'){
+    let ks=[];try{ks=await listMonths()}catch(e){}
+    ks=ks.filter(k=>(editPast||k>=todayKey)&&!(k===key&&pastLocked()));
+    if(!ks.length){toast('No month open for changes. Start the month first.');return}
+    let to=ks.includes(addM(key,1))?addM(key,1):ks.includes(key)?key:ks[0];
+    const opts=ks.map(k=>({v:k,l:mName(k,'sy')+(k===key?' (this month)':'')}));
+    openSheet(head(`Copy ${L.length} actual amount${L.length>1?'s':''}`)+`<p class="muted" style="margin-top:0">The plan of the month you pick gets these lines with their actual amounts (${money(L.reduce((a,x)=>a+x.act,0),0)} in all).</p><div class="pastpick">${comboHTML('m','Into the plan of',opts,to)}</div>
+      <label class="sw" style="margin:10px 0"><input type="checkbox" id="acRep" checked><span><b>Replace planned amounts of lines already there</b><br><span class="muted">Off: only add lines that are missing.</span></span></label>
+      <button type="button" class="btn full" id="acGo">Copy</button>`,()=>{
+      bindCombo($('#sheet'),'m',opts,to,v=>{to=v;$('#sheet [data-cb=m] .cbi').value=(opts.find(o=>o.v===v)||{}).l||v});
+      $('#acGo').onclick=async()=>{const rp=$('#acRep').checked;closeSheet();const src=L.map(x=>{const n=cleanCopy(x.l);n[x.t==='inc'?'amt':'planned']=x.act;delete n.cut;return {t:x.t,l:n}});
+        await mutMonth(to,'plan',P=>{for(const {t,l} of src){const A=t==='inc'?P.income:P.cats,f=t==='inc'?'amt':'planned',ex=A.find(y=>y.id===l.id);
+          if(ex){if(rp){ex[f]=+l[f]||0;delete ex.items;delete ex.cut}continue}
+          l.only=true;if(t==='inc'){A.push(l);continue}let at=-1;A.forEach((y,i)=>{if(gName(y)===gName(l))at=i});at>-1?A.splice(at+1,0,l):A.push(l)}});
+        aEnd();toast(`${src.length} actual amount${src.length>1?'s':''} copied to ${mName(to,'s')}’s plan`)};
+    });
+  }
+}
 /* ---- new expense line from anywhere ---- */
 let planSort='big';
 function newLineSheet(where,preName){
@@ -2287,8 +2405,8 @@ function newLineSheet(where,preName){
 }
 document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('[data-newline]');if(b){e.stopPropagation();const q=$('#qIn');newLineSheet(b.dataset.newline,q?q.value.trim():'')}});
 /* ---- "if we skipped it for a month?" ---- */
-const NEEDS=[['must','Must pay','Real harm: fees, losing it'],['trim','Can trim','Worse, but manageable'],['pause','Can pause','Just uncomfortable']];
-function needHTML(l,locked){return `<div class="needbox"><div class="ithd"><b>If we skipped it for a month?</b></div><div class="needs">${NEEDS.map(([v,n,d])=>`<button type="button" class="need ${v}" data-need="${v}" aria-pressed="${l.need===v}" ${locked?'disabled':''}><b>${n}</b><small>${d}</small></button>`).join('')}</div>${l.cut?`<div class="cutnote"><span>${l.cut.pct>=100?'Paused':'Trimmed '+l.cut.pct+'%'} from <b>${money(l.cut.from,0)}</b></span>${locked?'':`<button type="button" class="btn sm rst" data-uncut>↩ Back to ${money(l.cut.from,0)}</button>`}</div>`:''}</div>`}
+const NEEDS=[['must','Keep','Pay in full: skipping it does real harm'],['trim','Trim','Spend less: worse, but manageable'],['pause','Pause','Skip it this month: just uncomfortable']];
+function needHTML(l,locked){return `<div class="needbox"><div class="ithd"><b>If money is tight this month</b></div><div class="needs">${NEEDS.map(([v,n,d])=>`<button type="button" class="need ${v}" data-need="${v}" aria-pressed="${l.need===v}" ${locked?'disabled':''}><b>${n}</b><small>${d}</small></button>`).join('')}</div>${l.cut?`<div class="cutnote"><span>${l.cut.pct>=100?'Paused':'Trimmed '+l.cut.pct+'%'} from <b>${money(l.cut.from,0)}</b></span>${locked?'':`<button type="button" class="btn sm rst" data-uncut>${l.cut.pct>=100?'▶ Unpause':'↩ Back to'} ${money(l.cut.from,0)}</button>`}</div>`:''}</div>`}
 function bindNeed(k,l,def){const uc=$('#sheet').querySelector('[data-uncut]');if(uc)uc.onclick=()=>{const before=cutTo(l,null,def);setTimeout(()=>planEditSheet(k),60);toast(`${l.name} back to ${money(before.cut.from,0)}`,()=>{cutSet(l.id,before,def);setTimeout(()=>planEditSheet(k),60)})};$('#sheet').querySelectorAll('[data-need]').forEach(b=>b.onclick=()=>{const v=l.need===b.dataset.need?null:b.dataset.need;
   if(def)changeDefault({do:'set',t:'cat',id:l.id,f:'need',v,old:l.need});
   else{setMonth('cat',l.id,'need',v);if(TPL&&TPL.plan&&TPL.plan.cats.some(c=>c.id===l.id))saveTemplate(p=>{const c=p.cats.find(x=>x.id===l.id);if(c){if(v)c.need=v;else delete c.need}})}
@@ -2316,10 +2434,10 @@ function triageSheet(){
   const tot=a=>a.reduce((x,c)=>x+cutFrom(c),0);
   const pctOf=c=>trimPct[c.id]??(c.cut&&c.cut.pct<100?c.cut.pct:defPct());
   const freed=lines.reduce((a,c)=>a+(c.cut?cutFrom(c)-(+c.planned||0):0),0);
-  const chips=c=>`<span class="tq">${NEEDS.map(([v])=>`<button type="button" class="need mini ${v}" data-tq="${v}" data-tid="${esc(c.id)}" aria-pressed="${(c.need||'')===v}">${({must:'Must',trim:'Trim',pause:'Pause'})[v]}</button>`).join('')}</span>`;
+  const chips=c=>`<span class="tq">${NEEDS.map(([v])=>`<button type="button" class="need mini ${v}" data-tq="${v}" data-tid="${esc(c.id)}" aria-pressed="${(c.need||'')===v}">${({must:'Keep',trim:'Trim',pause:'Pause'})[v]}</button>`).join('')}</span>`;
   const amt=c=>c.cut?`<span class="ta"><s>${money(c.cut.from,0)}</s><b>${money(c.planned,0)}</b></span>`:`<b class="ta">${money(c.planned,0)}</b>`;
-  const rst=c=>c.cut?`<button type="button" class="btn sm rst" data-tr="${esc(c.id)}">↩ Back to ${money(c.cut.from,0)}</button>`:'';
-  const row=(c,acts)=>`<div class="trow2"><div class="trow"><span class="tn"><b>${esc(c.name)}</b><small>${esc(gName(c))}${c.cut?` · ${c.cut.pct>=100?'paused':'trimmed '+c.cut.pct+'%'}`:''}</small></span>${amt(c)}</div><div class="tact">${chips(c)}<span class="gap"></span>${acts||''}</div></div>`;
+  const rst=c=>c.cut?`<button type="button" class="btn sm rst" data-tr="${esc(c.id)}">${c.cut.pct>=100?'▶ Unpause':'↩ Back to'} ${money(c.cut.from,0)}</button>`:'';
+  const row=(c,acts)=>`<div class="trow2" data-flip="t${esc(c.id)}"><div class="trow"><span class="tn"><b>${esc(c.name)}</b><small>${esc(gName(c))}${c.cut?` · ${c.cut.pct>=100?'paused':'trimmed '+c.cut.pct+'%'}`:''}</small></span>${amt(c)}</div><div class="tact">${chips(c)}<span class="gap"></span>${acts||''}</div></div>`;
   const pauseAct=c=>c.cut&&c.cut.pct>=100?rst(c):`<button type="button" class="btn sm" data-tp="${esc(c.id)}">Pause</button>${rst(c)}`;
   const trimAct=c=>{const p=pctOf(c),same=c.cut&&c.cut.pct===p;return `<span class="pctin"><button type="button" data-pm="-5" data-tid="${esc(c.id)}" aria-label="Less">−</button><input data-pct="${esc(c.id)}" inputmode="numeric" maxlength="2" value="${p}" aria-label="Percent to trim">%<button type="button" data-pm="5" data-tid="${esc(c.id)}" aria-label="More">+</button></span><span class="tprev" data-tpv="${esc(c.id)}">→ ${money(Math.round(cutFrom(c)*(100-p)/100),0)}</span>${same?'':`<button type="button" class="btn sm line" data-tt="${esc(c.id)}">${c.cut?'Update':'Trim'}</button>`}${rst(c)}`};
   const pause=by('pause'),trim=by('trim'),must=by('must'),none=by('');
@@ -2327,10 +2445,10 @@ function triageSheet(){
   const y=$('#sheet').scrollTop;
   openSheet(head(gap>0.5?`Find ${money(gap,0)}`:'What can give?')+`
    <div class="tgap ${gap>0.5?'over':'ok'}">${gap>0.5?`Planned expenses are <b>${money(gap,0)}</b> over planned income.`:`Balanced ✓ <span class="muted">${money(-gap,0)} still unassigned</span>`}${freed>0.5?` <span class="muted">· ${money(freed,0)} freed so far</span>`:''}</div>
-   <p class="muted" style="margin:4px 2px 0">Tap Must, Trim or Pause on any line to move it. Every change can be undone with ↩.</p>
+   <p class="muted" style="margin:4px 2px 0"><b>Keep</b> leaves a line as planned. <b>Trim</b> lowers it by the % you choose. <b>Pause</b> sets it to $0 for this month. Tap any of them to move a line; ↩ always undoes.</p>
    ${pause.length?`<h3 class="th pause">Can pause <small>up to ${money(tot(pause),0)}</small></h3><div class="card">${pause.map(c=>row(c,pauseAct(c))).join('')}</div>`:''}
    ${trim.length?`<h3 class="th trim">Can trim <small id="trimFree">at your % frees ${money(trimFree(),0)}</small></h3><div class="card">${trim.map(c=>row(c,trimAct(c))).join('')}</div>`:''}
-   ${must.length?`<h3 class="th must">Must pay <small>${money(tot(must),0)} · leave as is</small></h3><div class="card">${must.map(c=>row(c,rst(c))).join('')}</div>`:''}
+   ${must.length?`<h3 class="th must">Keep as planned <small>${money(tot(must),0)}</small></h3><div class="card">${must.map(c=>row(c,rst(c))).join('')}</div>`:''}
    ${none.length?`<h3 class="th">Not sorted yet <small>tap one to sort it</small></h3><div class="card">${none.map(c=>row(c,rst(c))).join('')}</div>`:''}
    <p class="muted" style="margin-top:12px">Changes ${def?'the every-month plan':esc(mName(key,'s'))+'’s plan only'}.</p>`,()=>{
     const sh=$('#sheet');sh.scrollTop=y;
@@ -2350,7 +2468,7 @@ function triageSheet(){
     sh.querySelectorAll('[data-pct]').forEach(i=>{i.oninput=()=>{const c=line(i.dataset.pct),v=parseInt(i.value,10);if(c&&v>0)setP(c,v)};i.onblur=()=>{const c=line(i.dataset.pct);if(c)i.value=pctOf(c)}});
     sh.querySelectorAll('[data-tq]').forEach(b=>b.onclick=()=>{const c=line(b.dataset.tid);if(!c)return;const v=c.need===b.dataset.tq?null:b.dataset.tq,old=c.need;
       const put=x=>{if(def)changeDefault({do:'set',t:'cat',id:c.id,f:'need',v:x,old:c.need});else{setMonth('cat',c.id,'need',x);if(TPL&&TPL.plan&&TPL.plan.cats.some(q=>q.id===c.id))saveTemplate(p=>{const q=p.cats.find(z=>z.id===c.id);if(q){if(x)q.need=x;else delete q.need}})}};
-      put(v);again();toast(`${c.name}: ${v?({must:'Must pay',trim:'Can trim',pause:'Can pause'})[v]:'not sorted'}`,()=>{put(old);again()})});
+      put(v);again();toast(`${c.name}: ${v?({must:'keep as planned',trim:'can trim',pause:'can pause'})[v]:'not sorted'}`,()=>{put(old);again()})});
   });
 }
 document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('[data-triage]');if(b){e.stopPropagation();triageSheet()}});
@@ -2383,9 +2501,10 @@ document.addEventListener('click',e=>{
 function planBar(t,l,def,locked,SC){
   const k=t+':'+l.id,amt=t==='inc'?(+l.amt||0):(+l.planned||0),d=def?null:tplLine(t,l.id),dAmt=d?(t==='inc'?d.amt:d.planned):null;
   let mark='';if(!def){if(l.only||!d)mark=`only ${esc(mName(key,'s'))}`;else if(dAmt!==amt)mark=`usually ${money(dAmt,0)}`;if(l.items&&l.items.length)mark=`${l.items.length} item${l.items.length>1?'s':''}`+(mark?' · '+mark:'')}
+  if(l.cut)mark=(l.cut.pct>=100?'⏸ paused':'trimmed '+l.cut.pct+'%')+' · was '+money(l.cut.from,0);
   const att=!def&&t!=='inc'&&attCount(l)>0,shown=t!=='inc'&&!amt&&l.show;
   const w=SC>0?Math.min(100,amt/SC*100):0;
-  return `<button type="button" class="pbr pbr2${t==='cat'&&planAdd&&planSel.has(l.id)?' picked':''}" data-pedit="${k}" ${t==='cat'?`data-pk="${esc(l.kind)}" data-pid="${esc(l.id)}"`:''}><span class="pbbar"><em style="width:${w}%"></em><span class="pbn">${esc(l.name)}${att?'<svg class="clip" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5l-8.6 8.6a5.5 5.5 0 0 1-7.8-7.8l8.6-8.6a3.7 3.7 0 0 1 5.2 5.2l-8.6 8.6a1.8 1.8 0 0 1-2.6-2.6l7.9-7.9"/></svg>':''}${shown?'<span class="pbe">shown in Actual</span>':''}</span></span><span class="pbamt"><b>${amt?money(amt,0):'<span class="muted">—</span>'}</b>${mark?`<small>${mark}</small>`:''}</span></button>`;
+  return `<button type="button" class="pbr pbr2${t==='cat'&&planAdd&&planSel.has(l.id)?' picked':''}" data-flip="p${k}" data-pedit="${k}" ${t==='cat'?`data-pk="${esc(l.kind)}" data-pid="${esc(l.id)}"`:''}><span class="pbbar"><em style="width:${w}%"></em><span class="pbn">${esc(l.name)}${att?'<svg class="clip" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5l-8.6 8.6a5.5 5.5 0 0 1-7.8-7.8l8.6-8.6a3.7 3.7 0 0 1 5.2 5.2l-8.6 8.6a1.8 1.8 0 0 1-2.6-2.6l7.9-7.9"/></svg>':''}${shown?'<span class="pbe">shown in Actual</span>':''}</span></span><span class="pbamt"><b>${amt?money(amt,0):'<span class="muted">—</span>'}</b>${mark?`<small>${mark}</small>`:''}</span></button>`;
 }
 
 
@@ -2698,7 +2817,9 @@ async function moveImg(rec){
   rec.img=k;
 }
 /* ---------------- sheets ---------------- */
-function openSheet(html,after){$('#sheet').innerHTML='<div class="grab"></div>'+html;$('#veil').classList.add('open');if(after)after()}
+function openSheet(html,after){const sh=$('#sheet'),snap=$('#veil').classList.contains('open')?flipSnap(sh):null;sh.innerHTML='<div class="grab"></div>'+html;$('#veil').classList.add('open');if(after)after();sheetStuck();flipPlay(snap,sh)}
+function sheetStuck(){const h=document.querySelector('#sheet .shead');if(h)h.classList.toggle('stuck',$('#sheet').scrollTop>6)}
+$('#sheet').addEventListener('scroll',sheetStuck,{passive:true});
 function closeSheet(){if(!$('#veil').classList.contains('open'))return;$('#veil').classList.remove('open');render()}
 $('#veil').addEventListener('click',e=>{if(e.target.id==='veil'||e.target.closest('[data-close]'))closeSheet()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeSheet()});
@@ -2714,7 +2835,7 @@ function evalExpr(src){
   function add(){let v=mul();while(peek()==='+'||peek()==='-'){const o=s[i++];const r=mul();v=o==='+'?v+r:v-r}return v}
   const v=add();return i===s.length&&isFinite(v)?Math.round(v*100)/100:NaN;
 }
-const isUnused=(c,C)=>!c.show&&c.planned===0&&!(C.by[c.id].carry>0)&&C.by[c.id].spent===0;
+const isUnused=(c,C)=>!c.show&&!c.cut&&c.planned===0&&!(C.by[c.id].carry>0)&&C.by[c.id].spent===0;
 function incomePick(){
   const C=calc(S.plan,S.txns,S.k),shown=new Set(S.plan.income.filter(i=>i.amt>0||(C.inc[i.id]&&C.inc[i.id].got>0)).map(i=>i.id));
   const rest=S.plan.income.filter(i=>!shown.has(i.id));
@@ -2871,7 +2992,7 @@ document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest
     x0=e.touches[0].clientX;y0=e.touches[0].clientY;t0=Date.now()},{passive:true});
   document.addEventListener('touchend',e=>{if(x0===null)return;const t=e.changedTouches[0],dx=t.clientX-x0,dy=t.clientY-y0;x0=null;
     if(Date.now()-t0>700||Math.abs(dx)<70||Math.abs(dx)<Math.abs(dy)*1.8)return;
-    if(tab==='shop'){shShift(dx<0?1:-1);return}
+    if(tab==='shop')return;
     (dx<0?$('#next'):$('#prev')).click()},{passive:true});
 })();
 
@@ -3183,7 +3304,9 @@ const shWeekOf=ds=>{const d=new Date(ds+'T12:00:00');d.setDate(d.getDate()-d.get
 const shFmt=(ds,o)=>new Date(ds+'T12:00:00').toLocaleDateString(undefined,o||{month:'short',day:'numeric'});
 const shToday=()=>shDs(new Date());
 function shWeekLabel(w){const e=shAdd(w,6);return shFmt(w)+' – '+(w.slice(5,7)===e.slice(5,7)?String(+e.slice(8)):shFmt(e))}
-const shDay=()=>{const t=shToday(),e=shAdd(shWk,6);return t<shWk?shWk:t>e?e:t};
+const shDay=()=>shToday();
+const shKD=k=>String(k).slice(0,10);
+function shPerLabel(k){const W=SH&&SH.weeks[k],o={weekday:'short',month:'short',day:'numeric'};return shFmt(shKD(k),o)+' – '+(W&&W.end?shFmt(W.end,o):'now')}
 const shUnitTxt=(q,u)=>{const n=+q;if(u==='each'||!u)return '×'+(n||1);const pl=n===1?u:u==='box'?'boxes':u==='bunch'?'bunches':u==='loaf'?'loaves':/^(lb|oz|kg|g|fl oz|dozen)$/.test(u)?u:u+'s';return (n||'')+' '+pl};
 const shEvery=n=>(SH_EVERY.find(x=>x[0]===n)||[0,'Every '+n+' weeks'])[1];
 const shWeekData=(d,w)=>d.weeks[w]||(d.weeks[w]={buys:[]});
@@ -3210,85 +3333,176 @@ function shSeed(){
    ['food',Q,'Organic pasta',1,'box',1,2.79],['food',Q,'Red kidney beans',2,'can',1,4.58],
    ['food',Q,'Organic peanut butter',1,'jar',3,5.99],['food',Q,'Organic oats',2,'lb',2,4.38],['food',Q,'Honey',1,'jar',6,9.99],['food',Q,'Organic chia seeds',8,'oz',6,5.99],
    ['food',Q,'Organic sunflower seeds',8,'oz',6,3.49],['food',Q,'Organic sesame seeds',8,'oz',8,4.49],['food',Q,'Organic flax seeds',8,'oz',6,3.49]];
-  return {v:1,stores:[H,F,W,Q],items:L.map(([sec,store,name,qty,unit,every,price])=>({id:rid(),sec,store,name,qty,unit,every,price})),weeks:{},map:{}};
+  const d={v:1,cur:shToday(),stores:[H,F,W,Q],items:L.map(([sec,store,name,qty,unit,every,price])=>({id:rid(),sec,store,name,qty,unit,every,price})),weeks:{},map:{}};shOrdInit(d);d.weeks[d.cur]={buys:[]};return d;
 }
 async function shOpen(){
   if(!shWk)shWk=shWeekOf(shToday());
   if(shLoading)return;shLoading=true;
   try{const r=await readJSON(SHP);
-    if(r.data&&r.data.items){SH=r.data}
-    else{const seed=shSeed();SH=seed;shSave(d=>{if(!d.items.length){d.stores=seed.stores;d.items=seed.items}})}
+    if(r.data&&r.data.items){SH=r.data;if(SH.items.some(it=>it.ord==null))shSave(shOrdInit);
+      if(!SH.cur){const ks=Object.keys(SH.weeks||{}).sort(),c=ks.length?ks[ks.length-1]:shWeekOf(shToday());shSave(d=>{if(!d.cur)d.cur=c;shWeekData(d,d.cur)})}
+      shWk=SH.cur}
+    else{const seed=shSeed();SH=seed;shWk=seed.cur;shSave(d=>{if(!d.items.length){d.stores=seed.stores;d.items=seed.items;d.cur=seed.cur;d.weeks=seed.weeks}})}
   }catch(e){if(!SH)SH={failed:true}}
   shLoading=false;if(tab==='shop'&&!$('#veil').classList.contains('open'))render();
 }
 function shSave(fn){
   if(!SH||SH.failed)return;fn(SH);if(tab==='shop'&&!$('#veil').classList.contains('open'))render();setSync('Saving…');
-  shQueue=shQueue.then(()=>updateJSON(SHP,d=>{if(!d.items)Object.assign(d,shEmpty());fn(d)},shEmpty)).then(d=>{SH=d;setSync(mode==='demo'?'Demo mode · saved on this device':'Saved to Dropbox')},e=>setSync(e.message||'Could not save',true));
+  shQueue=shQueue.then(()=>updateJSON(SHP,d=>{if(!d.items)Object.assign(d,shEmpty());fn(d)},shEmpty)).then(d=>{SH=d;if(d.cur)shWk=d.cur;setSync(mode==='demo'?'Demo mode · saved on this device':'Saved to Dropbox')},e=>setSync(e.message||'Could not save',true));
   return shQueue;
 }
 function shStores(){const s=[...(SH.stores||[])];for(const it of SH.items)if(it.store&&!s.includes(it.store))s.push(it.store);return s}
 const shLast=(id,w)=>{let best=null;for(const [k,v] of Object.entries(SH.weeks))if(k<w)for(const b of v.buys||[])if(b.item===id&&(!best||b.d>best))best=b.d;return best};
-function shDue(it,w){if(it.every===1)return true;if(!it.every)return false;const l=shLast(it.id,w);if(!l)return true;return (new Date(w)-new Date(shWeekOf(l)))/6048e5>=it.every-0.01}
+function shDue(it,w){if(it.every===1)return true;if(!it.every)return false;const l=shLast(it.id,w);if(!l)return true;return (new Date(shKD(w)+'T12:00:00')-new Date(l+'T12:00:00'))/864e5>=it.every*7-3.5}
 function shCat(sec){const P=(S&&S.plan)||(TPL&&TPL.plan);if(!P)return null;const m=SH&&SH.map&&SH.map[sec];
   if(m){const c=P.cats.find(x=>x.id===m);if(c)return c}
   const re={food:/^(food|grocer)/i,toil:/toilet/i,clean:/clean/i}[sec];return P.cats.find(c=>re.test(c.name))||null}
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&tab==='shop'&&!$('#veil').classList.contains('open'))render()});
+let shCol=new Set(),shJustDragged=false,shDrag=null,shLP=null,shDragOn=false,shTouchT=0;
+/* rough store layout: produce → bakery → meat & fish → deli → dairy & eggs → pantry → spices → drinks → frozen */
+const SH_AISLE=[[/black pepper|paprika|turmeric|cumin|spice|cinnamon|oregano|seasoning|\bsalt\b|bay lea|chili powder|curry|nutmeg/i,70],
+ [/juice|coca|cola|soda|coke|sparkling|\bwater\b|coffee|\btea\b|drink|lemonade/i,80],
+ [/frozen|ice cream/i,90],
+ [/bread|bagel|tortilla|\bbuns?\b|muffin|croissant|baguette/i,20],
+ [/chicken|pork|beef|steak|salmon|\bcod\b|fish|turkey|shrimp|sausage|bacon|wing|lamb|goat|meat|tilapia/i,30],
+ [/peanut butter|almond butter/i,60],
+ [/feta|parmesan|\bdeli\b|hummus|\bham\b|salami/i,40],
+ [/milk|\beggs?\b|yogurt|butter|cream|cheddar|cheese/i,50],
+ [/rice|pasta|flour|maize|oat|beans?\b|honey|mayo|\boil\b|seeds?\b|chia|flax|sesame|sunflower|olive|sauce|cereal|sugar|lentil|soup|broth|\bnuts?\b|noodle/i,60],
+ [/spinach|broccoli|zucchini|carrot|onion|cauliflower|cilantro|coleslaw|lime|tomato|cucumber|pepper|lemon|potato|plantain|rosemary|thyme|\bmint\b|berr|banana|avocado|kiwi|apple|garlic|ginger|lettuce|grape|orange|herb|salad|mushroom|celery|cabbage|kale|parsley|basil|squash|melon|\bpears?\b|peach|mango|pineapple|fruit|veg/i,10]];
+const SH_AISLE2={toil:[[/tooth|floss|mouthwash/i,10],[/shampoo|conditioner|hair/i,20],[/body wash|soap|deodorant|lotion|razor|shav/i,30],[/toilet paper|tissue/i,40],[/wipe|diaper|baby/i,50]],
+  clean:[[/dish/i,10],[/laundry|detergent|softener|bleach/i,20],[/cleaner|spray|disinfect/i,30],[/paper towel|trash|bag|foil|wrap/i,40],[/sponge|glove|brush/i,50]]};
+const shAisle=it=>{if(it.sec!=='food'){for(const [re,r] of (SH_AISLE2[it.sec]||[]))if(re.test(it.name))return r;return 60}for(const [re,r] of SH_AISLE)if(re.test(it.name))return r;return 65};
+const shOrd=it=>it.ord!=null?it.ord:shAisle(it)*1000;
+const shByOrd=(a,b)=>shOrd(a)-shOrd(b)||a.name.localeCompare(b.name);
+function shOrdInit(d){d.items.forEach((it,i)=>{if(it.ord==null)it.ord=shAisle(it)*1000+i})}
+function shOrdFor(d,it){
+  const sib=d.items.filter(x=>x.id!==it.id&&x.sec===it.sec&&(x.store||'')===(it.store||'')).sort(shByOrd);
+  if(!sib.length)return shAisle(it)*1000;const r=shAisle(it);let prev=null;for(const x of sib)if(shAisle(x)<=r)prev=x;
+  if(!prev)return shOrd(sib[0])-10;const nx=sib[sib.indexOf(prev)+1];return nx?(shOrd(prev)+shOrd(nx))/2:shOrd(prev)+10}
 function shopHTML(){
   const ph=`<div class="pagehead"><span class="pi" style="--hue1:#2fae7a;--hue2:#2fae7a">${CART_SVG}</span><b>Shopping</b><span class="m">· weekly list</span></div>`;
   if(!SH)return ph+'<p class="empty">Loading your shopping list…</p>';
   if(SH.failed)return ph+'<div class="card pad"><p>Couldn’t load the shopping list.</p><button class="btn" id="shRetry">Try again</button></div>';
-  const w=shWk,bs=shBuys(w),thisW=shWeekOf(shToday());
-  const listed=SH.items.filter(it=>shDue(it,w)||bs.some(b=>b.item===it.id));
-  const got=listed.filter(it=>bs.some(b=>b.item===it.id)).length;
-  const priced=bs.reduce((a,b)=>a+(+b.price||0),0),est=listed.reduce((a,it)=>a+(+it.price||0),0);
-  let left='';
-  if(S&&S.plan&&S.k===(w>thisW?w:shDay()).slice(0,7)){const C=calc(S.plan,S.txns,S.k);
-    left=SH_SECS.map(([s])=>{const c=shCat(s);if(!c||!C.by[c.id])return '';return `${esc(c.name)} <b>${money(C.by[c.id].avail,0)}</b>`}).filter(Boolean).join(' · ');
-    if(left)left=`<div class="shleft">Left in ${esc(mName(S.k,'s'))}: ${left}</div>`}
-  let h=ph+`<div class="wknav"><button type="button" data-shw="-7" aria-label="Previous week">‹</button><b>${esc(shWeekLabel(w))}${w===thisW?' <small>· this week</small>':''}</b><button type="button" data-shw="7" aria-label="Next week">›</button></div>
-  <div class="card shsum"><div class="r"><span>Got <b>${got}</b> of ${listed.length} on the list</span><span>Bills <b id="shBillTot">…</b></span></div>
-   <div class="r sub"><span>Prices entered ${money(priced)}</span><span>List estimate ~${money(est,0)}</span></div>${left}</div>
-  <div class="shseg" role="tablist">${[...SH_SECS,['bills','Bills']].map(([s,n])=>`<button type="button" data-shsec="${s}" aria-pressed="${shSec===s}">${n}</button>`).join('')}</div>`;
-  h+=`<div class="shtools"><button type="button" data-shrep>📊 What we buy</button>${shSec==='bills'?'':`<button type="button" data-shedit aria-pressed="${shEditing}">${shEditing?'Done editing':'✎ Edit list'}</button>`}</div>`;
-  if(shEditing&&shSec!=='bills')h+=`<p class="muted shedhint">Tap ⊖ to remove an item, or tap an item to change it.</p>`;
-  if(shSec==='bills')return h+`<div class="card" id="shBills"><p class="empty">Loading bills…</p></div><button type="button" class="btn full" data-shbill style="margin-top:12px">+ Enter a bill</button>
-   <p class="muted" style="margin:10px 4px">A bill goes into Actual under the category you choose, with its photo kept in Receipts.</p>`;
+  if(!SH_SECS.some(x=>x[0]===shSec))shSec='food';
+  if(SH.cur)shWk=SH.cur;
+  const w=shWk,bs=shBuys(w),T=shToday(),wkSet=new Set(bs.map(b=>b.item)),todaySet=new Set(bs.filter(b=>b.d===T).map(b=>b.item));
+  const listed=SH.items.filter(it=>shDue(it,w)||wkSet.has(it.id)),got=listed.filter(it=>wkSet.has(it.id)).length;
+  const paid=bs.reduce((a,b)=>a+(+b.price||0),0),days=Math.round((new Date(T+'T12:00:00')-new Date(shKD(w)+'T12:00:00'))/864e5);
+  let h=ph+`<div class="wkbar${days>=7?' due':''}"><span><b>This week</b><small>since ${esc(shFmt(shKD(w),{weekday:'short',month:'short',day:'numeric'}))}${days>=7?` · ${days} days ago`:''}</small></span><button type="button" class="btn sm${days>=7?'':' line'}" data-shnewwk>New week</button></div>
+  <div class="card shsum"><div class="r"><span>Got <b>${got}</b> of ${listed.length} on the list</span><span>Paid <b>${money(paid)}</b></span></div></div>
+  <div class="shseg three" role="tablist">${SH_SECS.map(([s,n])=>`<button type="button" data-shsec="${s}" aria-pressed="${shSec===s}">${n}</button>`).join('')}</div>
+  <div class="shtools"><button type="button" data-shrep>📊 What we buy</button><button type="button" data-shedit aria-pressed="${shEditing}">${shEditing?'Done editing':'✎ Edit list'}</button></div>`;
+  if(shEditing)h+=`<p class="muted shedhint">Tap ⊖ to remove an item, or tap an item to change more about it.</p>`;
   const items=SH.items.filter(it=>it.sec===shSec);
-  if(!items.length)return h+`<div class="card pad"><p style="margin-top:0">No ${esc(SH_SECS.find(x=>x[0]===shSec)[1].toLowerCase())} on your list yet. Tap one to add it:</p><div class="shtip">${SH_TIPS[shSec].map(t=>`<button type="button" data-shnew="${esc(t)}">+ ${esc(t)}</button>`).join('')}</div></div><button type="button" class="btn line full2" data-shnew="" style="margin-top:12px">+ Add another item</button>`;
-  for(const st of shStores()){
-    const its=items.filter(it=>(it.store||'')===st);if(!its.length)continue;
-    const due=its.filter(it=>shDue(it,w)||bs.some(b=>b.item===it.id)),later=its.filter(it=>!due.includes(it));
-    const sb=bs.filter(b=>its.some(it=>it.id===b.item)),sp=sb.reduce((a,b)=>a+(+b.price||0),0);
-    h+=`<h3 class="shst">${esc(st)}<small>${due.filter(it=>bs.some(b=>b.item===it.id)).length}/${due.length} got${sp?' · '+money(sp):''}</small></h3><div class="card">${due.map(shRow).join('')}${later.length?`<div class="shlater">Not due this week</div>${later.map(shRow).join('')}`:''}</div>`;
+  if(!items.length)h+=`<div class="card pad"><p style="margin-top:0">Quick add:</p><div class="shtip">${SH_TIPS[shSec].map(t=>`<button type="button" data-shnew="${esc(t)}">+ ${esc(t)}</button>`).join('')}</div></div>`;
+  const stores=[...shStores(),...(items.some(it=>!it.store)?['']:[])];
+  for(const st of stores){
+    const its=items.filter(it=>(it.store||'')===st);
+    const open=its.filter(it=>!todaySet.has(it.id)).sort(shByOrd),done=its.filter(it=>todaySet.has(it.id)).sort(shByOrd);
+    const dueN=its.filter(it=>shDue(it,w)||wkSet.has(it.id)).length,gotN=its.filter(it=>wkSet.has(it.id)).length,col=shCol.has(st);
+    h+=`<button type="button" class="shst" data-shcol="${esc(st)}" aria-expanded="${!col}" data-flip="h${esc(st)}"><span class="car" aria-hidden="true">›</span><span class="stn">${esc(st||'No store yet')}</span><small>${its.length?`${gotN}/${dueN} got`:'nothing here yet'}</small></button><div class="card shcard"${col?' hidden':''}>${[...open,...done].map(shRow).join('')}${st?`<button type="button" class="shaddrow" data-shnew="" data-st="${esc(st)}">+ Add to ${esc(st)}</button>`:''}</div>`;
   }
-  const none=items.filter(it=>!it.store);if(none.length)h+=`<h3 class="shst">No store yet</h3><div class="card">${none.map(shRow).join('')}</div>`;
-  return h+`<button type="button" class="btn line full2" data-shnew="" style="margin-top:14px">+ Add item</button><button type="button" class="linkb" data-shstores>Stores…</button>`;
+  return h+`<button type="button" class="linkb" data-shstores style="margin-top:8px">Stores…</button>
+   <p class="muted" style="margin:6px 4px">A check mark lasts for the day you bought it. The next day the item is unchecked again but keeps a dated record of what you got this week. Touch and hold an item to drag it to a new place.</p>`;
 }
 function shRow(it){
-  const bs=shBuys(shWk).filter(b=>b.item===it.id),got=bs.length>0,sp=bs.reduce((a,b)=>a+(+b.price||0),0);
-  let sub;
-  if(got){const sts=[...new Set(bs.map(b=>b.store))].filter(s=>s!==it.store);sub='Got '+bs.map(b=>shUnitTxt(b.qty,b.unit)).join(' + ')+(sts.length?' at '+sts.join(', '):'')}
-  else{const l=it.every!==1?shLast(it.id,shWk):null;sub=shUnitTxt(it.qty,it.unit)+(it.every!==1?' · '+shEvery(it.every).toLowerCase()+(l?' · last '+shFmt(l):''):'')}
-  const lead=shEditing?`<button type="button" class="shdel" data-shdel="${esc(it.id)}" aria-label="Remove ${esc(it.name)}">−</button>`:`<button type="button" class="shchk" data-shk="${esc(it.id)}" aria-pressed="${got}" aria-label="${got?'Bought':'Mark as bought'}">${got?'✓':''}</button>`;
-  return `<div class="shrow${got?' got':''}" data-shi="${esc(it.id)}">${lead}<span class="shn"><b>${esc(it.name)}</b><small>${esc(sub)}</small>${it.note?`<i class="shnote">${esc(it.note)}</i>`:''}</span><span class="sha">${sp?money(sp):got?'<span class="addp">+ price</span>':''}</span></div>`;
+  const T=shToday(),all=shBuys(shWk).filter(b=>b.item===it.id).sort((a,b)=>a.d.localeCompare(b.d)),today=all.filter(b=>b.d===T),got=today.length>0,had=all.length>0,due=had||shDue(it,shWk);
+  const q=got?today.map(b=>shUnitTxt(b.qty,b.unit)).join(' + '):shUnitTxt(it.qty,it.unit);
+  const byDay={};for(const b of all)(byDay[b.d]=byDay[b.d]||[]).push(b);
+  const stamps=Object.entries(byDay).map(([d,L])=>`${d===T?'Today':(shFmt(d,{weekday:'short'})+' '+(+d.slice(8,10)))} ${L.map(b=>shUnitTxt(b.qty,b.unit)+(b.store&&b.store!==it.store?' at '+b.store:'')).join(' + ')}`);
+  const paid=all.reduce((a,b)=>a+(+b.price||0),0);
+  let sub='';
+  if(had)sub=`<small class="stamp">✓ ${esc(stamps.join(' · '))}${paid?' · '+money(paid):''}</small>`;
+  else if(!due){const l=shLast(it.id,shWk);sub=`<small>${esc('Not due · '+shEvery(it.every).toLowerCase()+(l?', last '+shFmt(l):''))}</small>`}
+  const lead=shEditing?`<button type="button" class="shdel" data-shdel="${esc(it.id)}" aria-label="Remove ${esc(it.name)}">−</button>`:`<button type="button" class="shchk" data-shk="${esc(it.id)}" aria-pressed="${got}" aria-label="${got?'Bought today. Tap to undo':'Mark as bought today'}">${got?'✓':''}</button>`;
+  return `<div class="shrow${got?' got':''}${had&&!got?' had':''}${due?'':' later'}" data-shi="${esc(it.id)}" data-flip="s${esc(it.id)}">${lead}<button type="button" class="shn" data-sho="${esc(it.id)}"><b>${esc(it.name)}</b>${sub}${it.note?`<i class="shnote">${esc(it.note)}</i>`:''}</button><button type="button" class="shq" data-sho="${esc(it.id)}">${esc(q)}</button></div>`;
 }
 function bindShop(){
   const V=$('#view');
   const rt=$('#shRetry');if(rt)rt.onclick=()=>{SH=null;render();shOpen()};
-  V.querySelectorAll('[data-shw]').forEach(b=>b.onclick=()=>shShift(+b.dataset.shw/7));
   V.querySelectorAll('[data-shsec]').forEach(b=>b.onclick=()=>{shSec=b.dataset.shsec;render()});
-  V.querySelectorAll('[data-shk]').forEach(b=>b.onclick=e=>{e.stopPropagation();const it=SH.items.find(x=>x.id===b.dataset.shk);if(!it)return;
-    if(shBuys(shWk).some(x=>x.item===it.id)){shItemSheet(it.id);return}
-    const w=shWk,buy={id:rid(),item:it.id,name:it.name,sec:it.sec,d:shDay(),qty:it.qty,unit:it.unit,store:it.store,price:null,by:who()};
-    shSave(d=>shWeekData(d,w).buys.push(buy));
-    toast(`Got ${it.name}`,()=>shSave(d=>{const W=d.weeks[w];if(W)W.buys=W.buys.filter(x=>x.id!==buy.id)}))});
-  V.querySelectorAll('[data-shi]').forEach(r=>r.onclick=()=>shEditing?shItemEdit(r.dataset.shi):shItemSheet(r.dataset.shi));
+  V.querySelectorAll('[data-shk]').forEach(b=>b.onclick=e=>{e.stopPropagation();shToggle(b.dataset.shk)});
+  V.querySelectorAll('[data-sho]').forEach(b=>b.onclick=e=>{e.stopPropagation();if(shJustDragged){shJustDragged=false;return}shEditing?shItemEdit(b.dataset.sho):shItemSheet(b.dataset.sho)});
   V.querySelectorAll('[data-shdel]').forEach(b=>b.onclick=e=>{e.stopPropagation();shRemove(b.dataset.shdel)});
+  V.querySelectorAll('[data-shcol]').forEach(b=>b.onclick=()=>shCollapse(b));
   const ed=V.querySelector('[data-shedit]');if(ed)ed.onclick=()=>{shEditing=!shEditing;render()};
-  const rp=V.querySelector('[data-shrep]');if(rp)rp.onclick=shReportSheet;
-  V.querySelectorAll('[data-shnew]').forEach(b=>b.onclick=()=>shItemEdit(null,b.dataset.shnew));
+  const rp=V.querySelector('[data-shrep]');if(rp)rp.onclick=()=>{shRep.wk=null;shReportSheet()};
+  const nw=V.querySelector('[data-shnewwk]');if(nw)nw.onclick=shNewWeekSheet;
+  V.querySelectorAll('[data-shnew]').forEach(b=>b.onclick=()=>shItemEdit(null,b.dataset.shnew,b.dataset.st));
   const ss=V.querySelector('[data-shstores]');if(ss)ss.onclick=shStoresSheet;
-  shBillsView();
 }
+function shToggle(id){
+  const it=SH.items.find(x=>x.id===id);if(!it)return;const w=shWk,T=shToday(),old=shBuys(w).filter(b=>b.item===id&&b.d===T);
+  if(old.length){shSave(d=>{const W=d.weeks[w];if(W)W.buys=W.buys.filter(x=>!(x.item===id&&x.d===T))});
+    toast(`${it.name}: today’s purchase taken off`,()=>shSave(d=>{const W=shWeekData(d,w);for(const b of old)if(!W.buys.some(x=>x.id===b.id))W.buys.push(b)}));return}
+  const buy={id:rid(),item:id,name:it.name,sec:it.sec,d:T,qty:it.qty,unit:it.unit,store:it.store,price:null,by:who()};
+  shSave(d=>shWeekData(d,w).buys.push(buy));
+  toast(`Bought ${it.name}`,()=>shSave(d=>{const W=d.weeks[w];if(W)W.buys=W.buys.filter(x=>x.id!==buy.id)}));
+}
+function shNewWeekSheet(){
+  const k=shWk,bs=shBuys(k),n=new Set(bs.map(b=>b.item)).size,paid=bs.reduce((a,b)=>a+(+b.price||0),0);
+  openSheet(head('Start a new week?')+`<div class="card shsum"><div class="r"><span><b>This week</b></span><span class="sub">${esc(shPerLabel(k))}</span></div>
+    <div class="r"><span><b>${n}</b> item${n===1?'':'s'} · <b>${bs.length}</b> purchase${bs.length===1?'':'s'}</span><span>Paid <b>${money(paid)}</b></span></div></div>
+   <p>The list starts again from zero: no check marks and no quantities for the new week.</p>
+   <p class="muted">This week is kept. See it any time in <b>📊 What we buy → Week by week</b>.</p>
+   <button type="button" class="btn full" id="nwGo">Start a new week</button>`,()=>{
+    $('#nwGo').onclick=()=>{const T=shToday();let nk=T,i=2;while(SH.weeks[nk]||nk===k)nk=T+'~'+(i++);
+      shSave(d=>{shWeekData(d,k).end=T;d.cur=nk;shWeekData(d,nk)});shWk=nk;closeSheet();
+      toast('New week started',()=>{shSave(d=>{const W2=d.weeks[nk];if(W2&&!(W2.buys||[]).length)delete d.weeks[nk];d.cur=k;if(d.weeks[k])delete d.weeks[k].end});shWk=k;render()})};
+  });
+}
+function shCollapse(b){
+  const st=b.dataset.shcol,card=b.nextElementSibling;if(!card)return;const closing=!shCol.has(st);
+  b.setAttribute('aria-expanded',String(!closing));card.style.overflow='hidden';
+  if(closing){shCol.add(st);const h=card.offsetHeight;const a=card.animate([{height:h+'px',opacity:1},{height:'0px',opacity:0}],{duration:240,easing:'ease-in'});a.onfinish=()=>{card.hidden=true;card.style.overflow=''}}
+  else{shCol.delete(st);card.hidden=false;const h=card.offsetHeight;const a=card.animate([{height:'0px',opacity:0},{height:h+'px',opacity:1}],{duration:260,easing:'ease-out'});a.onfinish=()=>{card.style.overflow=''}}
+}
+/* ---- drag to reorder (touch and hold, then move) ---- */
+function shPt(e){return e.touches?e.touches[0]||e.changedTouches[0]:e}
+function shPtStart(e){
+  if(e.type==='touchstart')shTouchT=Date.now();else if(Date.now()-shTouchT<900||e.button>0)return;
+  if(tab!=='shop'||shDrag)return;const row=e.target.closest&&e.target.closest('#view .shcard .shrow');if(!row||e.target.closest('.shchk,.shdel'))return;
+  const p=shPt(e);shLP={row,x:p.clientX,y:p.clientY,cy:p.clientY,timer:setTimeout(shDragBegin,380)};
+}
+function shDragBegin(){
+  if(!shLP)return;const {row,cy}=shLP;shLP=null;const card=row.parentNode,rows=[...card.querySelectorAll('.shrow')];if(rows.length<2)return;
+  shDrag={row,card,rows,i:rows.indexOf(row),to:rows.indexOf(row),y0:cy+scrollY,cy,rects:rows.map(r=>{const b=r.getBoundingClientRect();return {top:b.top+scrollY,h:b.height}}),raf:0};
+  shDragOn=true;row.classList.add('dragging');row.querySelectorAll('.pressed').forEach(e=>e.classList.remove('pressed'));document.body.classList.add('shdragging');try{navigator.vibrate&&navigator.vibrate(18)}catch(x){}
+  rows.forEach(r=>{if(r!==row)r.style.transition='transform .2s ease'});
+  const loop=()=>{if(!shDrag)return;const y=shDrag.cy;let v=0;if(y<110)v=-Math.min(14,(110-y)/5);else if(y>innerHeight-170)v=Math.min(14,(y-(innerHeight-170))/5);if(v){scrollBy(0,v);shDragMove(shDrag.cy)}shDrag.raf=requestAnimationFrame(loop)};
+  shDrag.raf=requestAnimationFrame(loop);shDragMove(cy);
+}
+function shDragMove(cy){
+  const D=shDrag;D.cy=cy;const R=D.rects,i=D.i,first=R[0].top,last=R[R.length-1].top+R[R.length-1].h;
+  let dy=cy+scrollY-D.y0;dy=Math.max(first-R[i].top-8,Math.min(last-R[i].top-R[i].h+8,dy));
+  D.row.style.transform=`translateY(${dy}px) scale(1.02)`;
+  const c=R[i].top+R[i].h/2+dy;let to=i;
+  for(let j=i+1;j<R.length;j++)if(c>R[j].top+R[j].h/2)to=j;
+  for(let j=i-1;j>=0;j--)if(c<R[j].top+R[j].h/2)to=j;
+  D.to=to;D.rows.forEach((r,j)=>{if(j===i)return;const s=(i<j&&j<=to)?-R[i].h:(to<=j&&j<i)?R[i].h:0;r.style.transform=s?`translateY(${s}px)`:''});
+}
+function shDragEnd(){
+  const D=shDrag;shDrag=null;cancelAnimationFrame(D.raf);document.body.classList.remove('shdragging');shJustDragged=true;setTimeout(()=>{shJustDragged=false;shDragOn=false},350);
+  const ids=D.rows.map(r=>r.dataset.shi),[m]=ids.splice(D.i,1);ids.splice(D.to,0,m);
+  if(D.to===D.i){D.rows.forEach(r=>{r.style.transform='';r.style.transition=''});D.row.classList.remove('dragging');return}
+  shSave(d=>{ids.forEach((id,k)=>{const x=d.items.find(y=>y.id===id);if(x)x.ord=(k+1)*10})});
+}
+function shPtMove(e){
+  const p=shPt(e);
+  if(shDrag){if(e.cancelable)e.preventDefault();shDragMove(p.clientY);return}
+  if(shLP){shLP.cy=p.clientY;if(Math.hypot(p.clientX-shLP.x,p.clientY-shLP.y)>8){clearTimeout(shLP.timer);shLP=null}}
+}
+function shPtEnd(e){if(shLP){clearTimeout(shLP.timer);shLP=null}if(shDrag){if(e.cancelable)e.preventDefault();shDragEnd()}}
+document.addEventListener('touchstart',shPtStart,{passive:true});
+document.addEventListener('touchmove',shPtMove,{passive:false});
+document.addEventListener('touchend',shPtEnd,{passive:false});
+document.addEventListener('touchcancel',shPtEnd);
+document.addEventListener('mousedown',shPtStart);
+document.addEventListener('mousemove',e=>{if(Date.now()-shTouchT>900)shPtMove(e)});
+document.addEventListener('mouseup',e=>{if(Date.now()-shTouchT>900)shPtEnd(e)});
+document.addEventListener('contextmenu',e=>{if(e.target.closest&&e.target.closest('.shrow'))e.preventDefault()});
+
 function shShift(n){shWk=shAdd(shWk,7*n);const v=$('#view');v.classList.remove('slideL','slideR');void v.offsetWidth;render();scrollTo(0,0)}
 const shUnitOpts=u=>[...new Set([...SH_UNITS,u].filter(Boolean))].map(x=>`<option ${x===u?'selected':''}>${esc(x)}</option>`).join('');
 const shStoreOpts=s=>[...new Set([...shStores(),s].filter(Boolean))].map(x=>`<option ${x===s?'selected':''}>${esc(x)}</option>`).join('')+'<option value="__new">+ Another store…</option>';
@@ -3299,56 +3513,50 @@ function shRemove(id){const at=SH.items.findIndex(x=>x.id===id);if(at<0)return;c
   shSave(d=>{d.items=d.items.filter(x=>x.id!==id)});if($('#veil').classList.contains('open'))closeSheet();
   toast(`${old.name} removed from the list`,()=>shSave(d=>{if(!d.items.some(x=>x.id===id))d.items.splice(Math.min(at,d.items.length),0,old)}))}
 function shItemSheet(id){
-  const it=SH.items.find(x=>x.id===id);if(!it)return;const w=shWk,bs=shBuys(w).filter(b=>b.item===id);
-  openSheet(head(esc(it.name))+`<p class="muted" style="margin-top:0">${esc(SH_SECS.find(x=>x[0]===it.sec)[1])} · usually ${esc(shUnitTxt(it.qty,it.unit))}${it.store?' at '+esc(it.store):''}${it.price?' · about '+money(it.price):''} · ${esc(shEvery(it.every).toLowerCase())}</p>${it.note?`<div class="shnotebox">${esc(it.note)}</div>`:''}
-   <h3 class="shh">Bought this week <small>${esc(shWeekLabel(w))}</small></h3>
-   <div class="card">${bs.length?bs.map(b=>`<div class="shbuy"><span><b>${esc(shUnitTxt(b.qty,b.unit))}</b><small>${esc(shFmt(b.d,{weekday:'short',month:'short',day:'numeric'}))} · ${esc(b.store||'')}</small></span><input data-bp="${esc(b.id)}" inputmode="decimal" placeholder="Price $" value="${b.price!=null?b.price:''}" aria-label="Price"><button type="button" class="x" data-bx="${esc(b.id)}" aria-label="Remove">×</button></div>`).join(''):'<p class="empty">Not bought yet this week.</p>'}</div>
-   <h3 class="shh">${bs.length?'Bought more?':'Add what you bought'}</h3>
-   <div class="shform"><label>Amount<div class="qty"><button type="button" data-q="-">−</button><input id="shQty" inputmode="decimal" value="${it.qty}"><button type="button" data-q="+">+</button></div></label>
-    <label>Unit<select id="shUnit">${shUnitOpts(it.unit)}</select></label>
-    <label>Store<select id="shStore">${shStoreOpts(it.store)}</select><input id="shStoreN" hidden placeholder="Store name" maxlength="30"></label>
-    <label>Price (optional)<input id="shPrice" inputmode="decimal" placeholder="$"></label>
-    <label class="wide">Day<input type="date" id="shDay" value="${shDay()}" min="${w}" max="${shAdd(w,6)}"></label></div>
-   <p class="muted" id="shErr" style="margin:0 0 8px"></p>
-   <button type="button" class="btn full" id="shAddBuy">Add to this week</button>
-   <button type="button" class="btn line full2" id="shEditIt" style="margin-top:10px">Edit item (name, note, store, how often)</button>
-   <button type="button" class="linkb rmb" id="shRmIt" style="margin-top:4px">Remove from the list</button>`,()=>{
-    let rmArm=false;$('#shRmIt').onclick=()=>{if(!rmArm){rmArm=true;$('#shRmIt').textContent='Tap again to remove it (past weeks keep their record)';return}shRemove(id)};
-    const sh=$('#sheet');shQtyBind(sh);shStorePick($('#shStore'),$('#shStoreN'));
-    sh.querySelectorAll('[data-bp]').forEach(i=>i.onchange=()=>{const v=evalExpr(i.value),p=v>0?v:null,bid=i.dataset.bp;
-      shSave(d=>{const W=d.weeks[w];const b=W&&W.buys.find(x=>x.id===bid);if(b){b.price=p;const t=d.items.find(x=>x.id===id);if(t&&p&&+b.qty===+t.qty&&b.unit===t.unit)t.price=p}});toast(p?`${it.name}: ${money(p)}`:'Price cleared')});
-    sh.querySelectorAll('[data-bx]').forEach(b=>b.onclick=()=>{const bid=b.dataset.bx,old=bs.find(x=>x.id===bid);shSave(d=>{const W=d.weeks[w];if(W)W.buys=W.buys.filter(x=>x.id!==bid)});setTimeout(()=>shItemSheet(id),30);
-      toast('Removed from this week',()=>{shSave(d=>shWeekData(d,w).buys.push(old));setTimeout(()=>shItemSheet(id),30)})});
-    $('#shAddBuy').onclick=()=>{const q=evalExpr($('#shQty').value),pr=$('#shPrice').value.trim(),p=pr?evalExpr(pr):null,st=shStoreVal($('#shStore'),$('#shStoreN'));
-      if(!(q>0)){$('#shErr').textContent='Enter how much you bought.';return}if(pr&&!(p>0)){$('#shErr').textContent='Check the price.';return}
-      const buy={id:rid(),item:id,name:it.name,sec:it.sec,d:$('#shDay').value||shDay(),qty:q,unit:$('#shUnit').value,store:st,price:p,by:who()};
-      shSave(d=>{shWeekData(d,w).buys.push(buy);if(st&&!(d.stores||[]).includes(st))(d.stores=d.stores||[]).push(st)});closeSheet();toast(`Got ${it.name} (${shUnitTxt(q,buy.unit)})`)};
-    $('#shEditIt').onclick=()=>shItemEdit(id);
+  const it=SH.items.find(x=>x.id===id);if(!it)return;const w=shWk,T=shToday(),b=shBuys(w).find(x=>x.item===id&&x.d===T),cur=b||it,pr=b?b.price:it.price;
+  openSheet(head(esc(it.name))+`<div class="shform">
+   <label class="wide">Name<input id="siName" value="${esc(it.name)}" maxlength="40"></label>
+   <label>Quantity<div class="qty"><button type="button" data-q="-" aria-label="Less">−</button><input id="siQty" inputmode="decimal" value="${cur.qty}"><button type="button" data-q="+" aria-label="More">+</button></div></label>
+   <label>Unit<select id="siUnit">${shUnitOpts(cur.unit)}</select></label>
+   <label class="wide">Store<select id="siStore">${shStoreOpts(cur.store)}</select><input id="siStoreN" hidden placeholder="Store name" maxlength="30"></label>
+   <label class="wide"><span>${b?'Price paid today':'Price'} <span class="opt">(optional)</span></span><input id="siPrice" inputmode="decimal" placeholder="$" value="${pr!=null&&pr!==''?pr:''}"></label></div>
+   <p class="muted" id="siErr" style="margin:0 0 8px"></p>
+   <button type="button" class="btn full" id="siSave">Save</button>`,()=>{
+    const sh=$('#sheet');shQtyBind(sh);shStorePick($('#siStore'),$('#siStoreN'));
+    $('#siSave').onclick=()=>{
+      const n=$('#siName').value.trim().slice(0,40),q=evalExpr($('#siQty').value),ps=$('#siPrice').value.trim(),p=ps?evalExpr(ps):null,st=shStoreVal($('#siStore'),$('#siStoreN')),u=$('#siUnit').value;
+      if(!n){$('#siErr').textContent='Give it a name.';return}if(!(q>0)){$('#siErr').textContent='Enter a quantity.';return}if(ps&&!(p>0)){$('#siErr').textContent='Check the price.';return}
+      const moved=st!==(it.store||'');
+      shSave(d=>{const x=d.items.find(y=>y.id===id);if(!x)return;if(st&&!(d.stores||[]).includes(st))(d.stores=d.stores||[]).push(st);
+        Object.assign(x,{name:n,qty:q,unit:u,store:st});if(moved)x.ord=shOrdFor(d,x);
+        const W=d.weeks[w],bb=W&&W.buys.find(y=>y.item===id&&y.d===T);
+        if(bb)Object.assign(bb,{name:n,qty:q,unit:u,store:st,price:p>0?p:null});else x.price=p>0?p:null});
+      closeSheet();toast(`${n} saved`)};
   });
 }
-function shItemEdit(id,name){
-  const it=id?SH.items.find(x=>x.id===id):{sec:shSec==='bills'?'food':shSec,name:name||'',qty:1,unit:'each',store:(shStores()[0]||''),every:1,price:null};if(!it)return;
+function shItemEdit(id,name,store){
+  const it=id?SH.items.find(x=>x.id===id):{sec:SH_SECS.some(x=>x[0]===shSec)?shSec:'food',name:name||'',qty:1,unit:'each',store:(store!=null&&store!==''?store:(shStores()[0]||'')),every:1,price:null};if(!it)return;
   let arm=false;
-  openSheet(head(id?'Change item':'New item')+`<div class="shform">
+  openSheet(head(id?esc(it.name):'New item')+`<div class="shform">
    <label class="wide">Name<input id="ieName" value="${esc(it.name)}" maxlength="40" placeholder="e.g. Toothpaste"></label>
-   <label>List<select id="ieSec">${SH_SECS.map(([s,n])=>`<option value="${s}" ${s===it.sec?'selected':''}>${n}</option>`).join('')}</select></label>
-   <label>Usual store<select id="ieStore">${shStoreOpts(it.store)}</select><input id="ieStoreN" hidden placeholder="Store name" maxlength="30"></label>
-   <label>Usual amount<div class="qty"><button type="button" data-q="-">−</button><input id="ieQty" inputmode="decimal" value="${it.qty}"><button type="button" data-q="+">+</button></div></label>
+   <label>Quantity<div class="qty"><button type="button" data-q="-" aria-label="Less">−</button><input id="ieQty" inputmode="decimal" value="${it.qty}"><button type="button" data-q="+" aria-label="More">+</button></div></label>
    <label>Unit<select id="ieUnit">${shUnitOpts(it.unit)}</select></label>
+   <label class="wide">Store<select id="ieStore">${shStoreOpts(it.store)}</select><input id="ieStoreN" hidden placeholder="Store name" maxlength="30"></label>
+   <label class="wide"><span>Price <span class="opt">(optional)</span></span><input id="iePrice" inputmode="decimal" placeholder="$" value="${it.price||''}"></label></div>
+   <details class="shmore"${id&&(it.note||it.every!==1)?' open':''}><summary>More: list, how often, note</summary><div class="shform">
+   <label>List<select id="ieSec">${SH_SECS.map(([s,n])=>`<option value="${s}" ${s===it.sec?'selected':''}>${n}</option>`).join('')}</select></label>
    <label>How often<select id="ieEvery">${SH_EVERY.map(([n,t])=>`<option value="${n}" ${n===it.every?'selected':''}>${t}</option>`).join('')}</select></label>
-   <label>Usual price (optional)<input id="iePrice" inputmode="decimal" placeholder="$" value="${it.price||''}"></label>
-   <label class="wide">Note (optional)<textarea id="ieNote" rows="2" maxlength="300" placeholder="Brand, size, flavor… e.g. Kerrygold unsalted, the gold foil one">${esc(it.note||'')}</textarea></label></div>
-   <p class="muted" style="margin:-4px 2px 10px">Items you don’t buy every week still show each week, under “Not due this week” until it’s time.</p>
-   <p class="muted" id="ieErr" style="margin:0 0 8px"></p>
+   <label class="wide">Note<textarea id="ieNote" rows="2" maxlength="300" placeholder="Brand, size, flavor… e.g. Kerrygold unsalted, the gold foil one">${esc(it.note||'')}</textarea></label></div></details>
+   <p class="muted" id="ieErr" style="margin:8px 0"></p>
    <button type="button" class="btn full" id="ieSave">${id?'Save':'Add to the list'}</button>
    ${id?'<button type="button" class="linkb rmb" id="ieDel" style="margin-top:6px">Remove from the list</button>':''}`,()=>{
     const sh=$('#sheet');shQtyBind(sh);shStorePick($('#ieStore'),$('#ieStoreN'));if(!id&&!it.name)setTimeout(()=>$('#ieName').focus(),50);
     $('#ieSave').onclick=()=>{const n=$('#ieName').value.trim().slice(0,40),q=evalExpr($('#ieQty').value),pr=$('#iePrice').value.trim(),p=pr?evalExpr(pr):null,st=shStoreVal($('#ieStore'),$('#ieStoreN'));
-      if(!n){$('#ieErr').textContent='Give it a name.';return}if(!(q>0)){$('#ieErr').textContent='Enter the usual amount.';return}
+      if(!n){$('#ieErr').textContent='Give it a name.';return}if(!(q>0)){$('#ieErr').textContent='Enter the quantity.';return}
       const v={name:n,note:$('#ieNote').value.trim().slice(0,300),sec:$('#ieSec').value,store:st,qty:q,unit:$('#ieUnit').value,every:+$('#ieEvery').value,price:p>0?p:null};
-      const nid=id||rid();
-      shSave(d=>{if(st&&!(d.stores||[]).includes(st))(d.stores=d.stores||[]).push(st);const x=d.items.find(y=>y.id===nid);if(x)Object.assign(x,v);else d.items.push(Object.assign({id:nid},v))});
-      shSec=v.sec;closeSheet();toast(id?'Item updated':`${n} added to ${SH_SECS.find(x=>x[0]===v.sec)[1]}`)};
+      const nid=id||rid(),moved=!id||v.store!==(it.store||'')||v.sec!==it.sec;
+      shSave(d=>{if(st&&!(d.stores||[]).includes(st))(d.stores=d.stores||[]).push(st);let x=d.items.find(y=>y.id===nid);if(x)Object.assign(x,v);else{x=Object.assign({id:nid},v);d.items.push(x)}if(moved||x.ord==null)x.ord=shOrdFor(d,x)});
+      shSec=v.sec;closeSheet();toast(id?`${n} saved`:`${n} added to ${SH_SECS.find(x=>x[0]===v.sec)[1]}`)};
     const dl=$('#ieDel');if(dl)dl.onclick=()=>{if(!arm){arm=true;dl.textContent='Tap again to remove it (past weeks keep their record)';return}shRemove(id)};
   });
 }
@@ -3439,7 +3647,10 @@ function shBillSheet(){
 }
 
 /* ---- shopping report: what we buy, how much, where ---- */
-function shRange(r){const tw=shWeekOf(shToday()),ks=Object.keys(SH.weeks).sort();
+function shRange(r){const tw=shWeekOf(shToday()),ks=Object.keys(SH.weeks).sort();let fr;
+  if(r==='4w')fr=shAdd(tw,-21);else if(r==='3m')fr=shAdd(tw,-12*7);else if(r==='yr')fr=tw.slice(0,4)+'-01-01';else fr='0000';
+  const in2=ks.filter(k=>shKD(k)>=fr||(SH.weeks[k].end||'9999')>=fr);return {from:in2[0]||shToday(),to:'9999',nW:Math.max(1,in2.length),ks:in2}}
+function shRangeOld(r){const tw=shWeekOf(shToday()),ks=Object.keys(SH.weeks).sort();
   const first=ks[0]||tw;let from;
   if(r==='4w')from=shAdd(tw,-21);else if(r==='3m')from=shAdd(tw,-12*7);else if(r==='yr')from=shWeekOf(tw.slice(0,4)+'-01-01');else from=first<tw?first:tw;
   const nW=Math.max(1,Math.round((new Date(tw)-new Date(from))/6048e5)+1);return {from,to:tw,nW}}
@@ -3457,20 +3668,34 @@ function shStats(r,sec){
     o.unitPrice=o.pq[o.main]>0?o.pp[o.main]/o.pq[o.main]:null;o.storeTxt=Object.entries(o.stores).sort((a,b)=>b[1]-a[1]).map(([s,n])=>s+(Object.keys(o.stores).length>1?' '+n+'×':'')).join(', ')}
   const never=SH.items.filter(it=>(sec==='all'||it.sec===sec)&&it.every!==0&&!by[it.id]);
   return {rows,stores,never,nW,from,to}}
+
+function shWeekHTML(sec){
+  const ks=Object.keys(SH.weeks).sort();if(!ks.length)return '<p class="empty">No weeks yet.</p>';
+  if(!shRep.wk||!ks.includes(shRep.wk))shRep.wk=SH.cur&&ks.includes(SH.cur)?SH.cur:ks[ks.length-1];
+  const k=shRep.wk,i=ks.indexOf(k),bs=(SH.weeks[k].buys||[]).filter(b=>{const it=SH.items.find(x=>x.id===b.item);return sec==='all'||((it&&it.sec)||b.sec||'food')===sec});
+  const by={};for(const b of bs){const it=SH.items.find(x=>x.id===b.item);const o=by[b.item]||(by[b.item]={name:(it&&it.name)||b.name||'Removed item',store:b.store||(it&&it.store)||'—',qty:{},days:new Set(),paid:0,n:0});
+    o.qty[b.unit]=(o.qty[b.unit]||0)+(+b.qty||0);o.days.add(b.d);o.paid+=+b.price||0;o.n++}
+  const rows=Object.values(by),paid=rows.reduce((a,o)=>a+o.paid,0),stores={};for(const o of rows)(stores[o.store]=stores[o.store]||[]).push(o);
+  const nav=`<div class="wknav sm"><button type="button" data-rw="-1" aria-label="Earlier week" ${i>0?'':'disabled'}>‹</button><b>${esc(shPerLabel(k))}${k===SH.cur?' <small>· this week</small>':''}</b><button type="button" data-rw="1" aria-label="Later week" ${i<ks.length-1?'':'disabled'}>›</button></div>`;
+  return nav+`<div class="card shsum"><div class="r"><span><b>${rows.length}</b> item${rows.length===1?'':'s'} · <b>${bs.length}</b> purchase${bs.length===1?'':'s'}</span><span>Paid <b>${money(paid)}</b></span></div></div>
+   <div class="card">${rows.length?Object.entries(stores).sort((a,b)=>a[0].localeCompare(b[0])).map(([st,L])=>`<div class="rpst">${esc(st)}<small>${L.length} item${L.length===1?'':'s'}${L.reduce((a,o)=>a+o.paid,0)?' · '+money(L.reduce((a,o)=>a+o.paid,0)):''}</small></div>`+L.sort((a,b)=>a.name.localeCompare(b.name)).map(o=>`<div class="rprow"><span class="shn"><b>${esc(o.name)}</b><small>${esc(Object.entries(o.qty).map(([u,q])=>shUnitTxt(r2(q),u)).join(' + '))} · ${esc([...o.days].sort().map(d=>(shFmt(d,{weekday:'short'})+' '+(+d.slice(8,10)))).join(', '))}</small></span><span class="rpa">${o.paid?money(o.paid):'—'}</span></div>`).join('')).join(''):'<p class="empty">Nothing bought this week.</p>'}</div>`;
+}
 function shReportSheet(){
   if(!SH||SH.failed)return;
   const R=shRep,st=shStats(R.range,R.sec);
   const sorts={often:(a,b)=>b.weeks.size-a.weeks.size||b.n-a.n||a.name.localeCompare(b.name),spent:(a,b)=>b.paid-a.paid||b.n-a.n,az:(a,b)=>a.name.localeCompare(b.name)};
   const rows=st.rows.sort(sorts[R.sort]);
   const chip=(k,v,t)=>`<button type="button" data-rk="${k}" data-rv="${v}" aria-pressed="${R[k]===v}">${t}</button>`;
-  const per=st.nW===1?'this week':`${st.nW} weeks`;
+  const per=st.nW===1?'1 week':`${st.nW} weeks`;
   const storeRows=Object.values(st.stores).sort((a,b)=>b.buys-a.buys);
   openSheet(head('What we buy')+`
-   <div class="shchips">${chip('range','4w','4 weeks')}${chip('range','3m','3 months')}${chip('range','yr','This year')}${chip('range','all','All')}</div>
    <div class="shchips">${chip('sec','all','Everything')}${SH_SECS.map(([s,n])=>chip('sec',s,n)).join('')}</div>
+   <h3 class="shh big">Week by week</h3>${shWeekHTML(R.sec)}
+   <h3 class="shh big" style="margin-top:22px">Over time</h3>
+   <div class="shchips">${chip('range','4w','4 weeks')}${chip('range','3m','3 months')}${chip('range','yr','This year')}${chip('range','all','All')}</div>
    <div class="card shsum"><div class="r"><span><b>${rows.length}</b> different items · <b>${rows.reduce((a,o)=>a+o.n,0)}</b> purchases</span><span class="sub">${esc(per)}</span></div>
-    <div class="r"><span>Bills <b id="rpBills">…</b></span><span>per week <b id="rpWeek">…</b></span></div>
-    <div class="r sub"><span>Prices entered on items ${money(rows.reduce((a,o)=>a+o.paid,0))}</span></div></div>
+    <div class="r"><span>Paid (prices you entered) <b>${money(rows.reduce((a,o)=>a+o.paid,0))}</b></span><span>per week <b>${money(rows.reduce((a,o)=>a+o.paid,0)/st.nW,0)}</b></span></div>
+</div>
    <h3 class="shh">Where we shop</h3>
    <div class="card" id="rpStores">${storeRows.length?storeRows.map(s=>`<div class="rprow"><span class="shn"><b>${esc(s.name)}</b><small>${s.items.size} item${s.items.size===1?'':'s'} · ${s.buys} purchase${s.buys===1?'':'s'}</small></span><span class="rpa" data-rps="${esc(s.name)}">${s.priced?money(s.priced):''}</span></div>`).join(''):'<p class="empty">Nothing bought in this period yet.</p>'}</div>
    <h3 class="shh">What and how much</h3><div class="shchips sm" style="margin-bottom:8px">${chip('sort','often','Most often')}${chip('sort','spent','Most spent')}${chip('sort','az','A–Z')}</div>
@@ -3479,22 +3704,19 @@ function shReportSheet(){
    <button type="button" class="btn line full2" id="rpCsv" style="margin-top:14px">⬇ Download as a spreadsheet (CSV)</button>`,()=>{
     const sh=$('#sheet');
     sh.querySelectorAll('[data-rk]').forEach(b=>b.onclick=()=>{shRep[b.dataset.rk]=b.dataset.rv;const y=sh.scrollTop;shReportSheet();$('#sheet').scrollTop=y});
+    sh.querySelectorAll('[data-rw]').forEach(b=>b.onclick=()=>{const ks=Object.keys(SH.weeks).sort(),i=ks.indexOf(shRep.wk)+(+b.dataset.rw);if(i<0||i>=ks.length)return;shRep.wk=ks[i];const y=sh.scrollTop;shReportSheet();$('#sheet').scrollTop=y});
     $('#rpCsv').onclick=()=>{const L=[['Item','List','Weeks bought','Times bought','Total quantity','Per week','Unit','Stores','Total paid','Avg price per unit']];
       for(const o of rows)L.push([o.name,(SH_SECS.find(x=>x[0]===o.sec)||['',''])[1],o.weeks.size+' of '+st.nW,o.n,o.qtyTxt,o.perWk,o.main,o.storeTxt,o.paid?r2(o.paid):'',o.unitPrice?r2(o.unitPrice):'']);
-      const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([L.map(r=>r.map(csvCell).join(',')).join('\n')+'\n'],{type:'text/csv'}));a.download=`shopping-${st.from}-to-${shAdd(st.to,6)}.csv`;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1000)};
-    (async()=>{let all=[];try{const ms=[];for(let m=st.from.slice(0,7);m<=shAdd(st.to,6).slice(0,7);m=addM(m,1))ms.push(m);
-        for(const m of ms)all=all.concat((await loadReceipts(m)).filter(r=>r.week&&r.week>=st.from&&r.week<=st.to))}catch(e){}
-      if(!$('#rpBills'))return;const tot=all.reduce((a,r)=>a+(+r.total||0),0);$('#rpBills').textContent=money(tot)+' · '+all.length+' trip'+(all.length===1?'':'s');$('#rpWeek').textContent=money(tot/st.nW,0);
-      const bs={};for(const r of all){const k=r.store||'—';bs[k]=(bs[k]||0)+(+r.total||0)}
-      sh.querySelectorAll('[data-rps]').forEach(e=>{const v=bs[e.dataset.rps];if(v)e.innerHTML=`${money(v)}<small>in bills</small>`})})();
+      const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([L.map(r=>r.map(csvCell).join(',')).join('\n')+'\n'],{type:'text/csv'}));a.download=`shopping-${shKD(st.from)}-to-${shToday()}.csv`;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1000)};
+
   });
 }
 function shAddSheet(find){
   const w=shWk;
   const list=q=>{q=q.trim().toLowerCase();const r=SH.items.filter(it=>!q||it.name.toLowerCase().includes(q)||(it.store||'').toLowerCase().includes(q)||(it.note||'').toLowerCase().includes(q)).slice(0,60);
-    return (r.length?r.map(it=>{const got=shBuys(w).some(b=>b.item===it.id);return `<button class="fitem" data-sf="${esc(it.id)}"><span class="shchk sm" aria-pressed="${got}">${got?'✓':''}</span><span class="fn"><b>${esc(it.name)}</b><small>${esc(SH_SECS.find(x=>x[0]===it.sec)[1])} · ${esc(it.store||'no store')}</small></span><span class="fi">${esc(shUnitTxt(it.qty,it.unit))}</span></button>`}).join(''):'<p class="empty">Not on your list yet.</p>')
+    return (r.length?r.map(it=>{const got=shBuys(w).some(b=>b.item===it.id&&b.d===shToday());return `<button class="fitem" data-sf="${esc(it.id)}"><span class="shchk sm" aria-pressed="${got}">${got?'✓':''}</span><span class="fn"><b>${esc(it.name)}</b><small>${esc(SH_SECS.find(x=>x[0]===it.sec)[1])} · ${esc(it.store||'no store')}</small></span><span class="fi">${esc(shUnitTxt(it.qty,it.unit))}</span></button>`}).join(''):'<p class="empty">Not on your list yet.</p>')
       +(q&&!SH.items.some(it=>it.name.toLowerCase()===q)?`<button class="fitem" data-sfnew><span class="fn"><b>+ Add “${esc(q)}” as a new item</b></span></button>`:'')};
-  openSheet(head(find?'Find an item':'Add to '+esc(shWeekLabel(w)))+`${find?'':`<button type="button" class="choice" data-shbill><b>🧾 Enter a bill</b><span>Store, total and an optional photo. It counts in Actual.</span></button>`}
+  openSheet(head(find?'Find an item':'Add or find an item')+`
    <input id="sfIn" class="findin" type="search" placeholder="Find an item, e.g. eggs" autocomplete="off"><div id="sfList" class="flist">${list('')}</div>`,()=>{
     const bindL=()=>{$('#sheet').querySelectorAll('[data-sf]').forEach(b=>b.onclick=()=>shItemSheet(b.dataset.sf));const n=$('#sheet').querySelector('[data-sfnew]');if(n)n.onclick=()=>{const v=$('#sfIn').value.trim();shItemEdit(null,v.charAt(0).toUpperCase()+v.slice(1))}};
     const i=$('#sfIn');i.oninput=()=>{$('#sfList').innerHTML=list(i.value);bindL()};bindL();if(find)setTimeout(()=>i.focus(),50);
@@ -3617,9 +3839,9 @@ function pinDots(clearErr){const d=$('#dots');if(!d){render();return}
 /* press feedback for every button */
 (()=>{let cur=null,t0=0;const MIN=140;
   const off=()=>{const b=cur;if(!b)return;cur=null;const wait=Math.max(0,MIN-(Date.now()-t0));clearTimeout(b._pt);b._pt=setTimeout(()=>b.classList.remove('pressed'),wait)};
-  const on=e=>{const b=e.target.closest&&e.target.closest('button,.tile,[data-hb],.fitem');if(!b)return;if(cur&&cur!==b)off();clearTimeout(b._pt);b.classList.add('pressed');cur=b;t0=Date.now()};
+  const on=e=>{const b=e.target.closest&&e.target.closest('button,.tile,[data-hb],.fitem');if(b&&b.closest('.shrow.dragging'))return;if(!b)return;if(cur&&cur!==b)off();clearTimeout(b._pt);b.classList.add('pressed');cur=b;t0=Date.now()};
   document.addEventListener('pointerdown',on,{passive:true,capture:true});
-  ['pointerup','pointercancel','dragstart','blur'].forEach(ev=>(ev==='blur'?window:document).addEventListener(ev,off,{passive:true,capture:true}));
+  ['pointerup','pointercancel','dragstart'].forEach(ev=>document.addEventListener(ev,off,{passive:true,capture:true}));window.addEventListener('blur',e=>{if(e.target===window)off()});
   document.addEventListener('pointerleave',e=>{if(e.target===cur)off()},{passive:true,capture:true});
   document.addEventListener('scroll',off,{passive:true,capture:true});})();
 function bindPin(){
